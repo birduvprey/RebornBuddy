@@ -1,0 +1,26 @@
+C:\Games\Rebornbuddy\Plugins\CombatPotGuy\bin\x86\Release\ClassLibrary.dll
+C:\Games\Rebornbuddy\Plugins\CombatPotGuy\bin\x86\Release\ClassLibrary.pdb
+C:\Games\Rebornbuddy\Plugins\CombatPotGuy\bin\x86\Release\RebornBuddy.exe
+C:\Games\Rebornbuddy\Plugins\CombatPotGuy\bin\x86\Release\GreyMagic.dll
+C:\Games\Rebornbuddy\Plugins\CombatPotGuy\bin\x86\Release\System.Threading.Tasks.Dataflow.dll
+C:\Games\Rebornbuddy\Plugins\CombatPotGuy\bin\x86\Release\Microsoft.Scripting.dll
+C:\Games\Rebornbuddy\Plugins\CombatPotGuy\bin\x86\Release\IronPython.dll
+C:\Games\Rebornbuddy\Plugins\CombatPotGuy\bin\x86\Release\Clio.Localization.dll
+C:\Games\Rebornbuddy\Plugins\CombatPotGuy\bin\x86\Release\RemoteASM.dll
+C:\Games\Rebornbuddy\Plugins\CombatPotGuy\bin\x86\Release\RemoteASMNative.dll
+C:\Games\Rebornbuddy\Plugins\CombatPotGuy\bin\x86\Release\Microsoft.Dynamic.dll
+C:\Games\Rebornbuddy\Plugins\CombatPotGuy\bin\x86\Release\Microsoft.Scripting.Metadata.dll
+C:\Games\Rebornbuddy\Plugins\CombatPotGuy\bin\x86\Release\RebornBuddy.xml
+C:\Games\Rebornbuddy\Plugins\CombatPotGuy\bin\x86\Release\System.Threading.Tasks.Dataflow.xml
+C:\Games\Rebornbuddy\Plugins\CombatPotGuy\bin\x86\Release\IronPython.xml
+C:\Games\Rebornbuddy\Plugins\CombatPotGuy\obj\x86\Release\CombatPotGuy.csproj.GenerateResource.Cache
+C:\Games\Rebornbuddy\Plugins\CombatPotGuy\obj\x86\Release\ClassLibrary.dll
+C:\Games\Rebornbuddy\Plugins\CombatPotGuy\obj\x86\Release\ClassLibrary.pdb
+C:\Games\Rebornbuddy\Plugins\CombatPotGuy\obj\x86\Release\CombatPotGuyPlugin.Gui.resources
+E:\Data\Bots\Code\Not my projects\CombatPotGuy\bin\x86\Release\ClassLibrary.dll
+E:\Data\Bots\Code\Not my projects\CombatPotGuy\bin\x86\Release\ClassLibrary.pdb
+E:\Data\Bots\Code\Not my projects\CombatPotGuy\obj\x86\Release\CombatPotGuy.csprojResolveAssemblyReference.cache
+E:\Data\Bots\Code\Not my projects\CombatPotGuy\obj\x86\Release\CombatPotGuyPlugin.Gui.resources
+E:\Data\Bots\Code\Not my projects\CombatPotGuy\obj\x86\Release\CombatPotGuy.csproj.GenerateResource.Cache
+E:\Data\Bots\Code\Not my projects\CombatPotGuy\obj\x86\Release\ClassLibrary.dll
+E:\Data\Bots\Code\Not my projects\CombatPotGuy\obj\x86\Release\ClassLibrary.pdb

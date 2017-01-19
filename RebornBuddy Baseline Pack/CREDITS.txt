@@ -1,0 +1,103 @@
+#RebornBuddy
+
+#########################################################################
+####         Common RebornBuddy Baseline pack maintained by          ####
+#### @birduvprey / Discord - Donations to PayPal falcnor@gmail.com   ####
+####					   Updated 01/12/2017                        ####
+#########################################################################
+
+#########################################################################
+####                       Discord Information                       ####
+####            RebornBuddy : https://discord.gg/CHFekP5             ####
+####            Protosynth :  https://discord.gg/9bbECsT             ####
+#########################################################################
+
+#### Listing of included botbases, plugins and profiles
+
+ADAM -- @The Commodore and @AnExiledGod
+Agil, Lisbeth, Zekken (updates by @y2krazy) -- @Saga
+Arcade -- @ExMortem
+Artemis, Cyril, Sparrow -- @sodimm
+ATB, Boko, Kefka, Switcharoo -- @Omninewb
+CombatPotGuy, CompanyManualGuy -- Cloud30000 on forums
+Crawler, Destiny, EatMeWPF -- @Wheredidigo
+ExBuddy, ExFateBot -- @ExMatt
+EntraxBuddy -- @Entrax
+Ultima -- Endus on forums
+Profiles by @y2krazy
+Profiles by @sodimm
+Profiles by @Entrax
+
+#### Description of included botbases, plugins and profiles
+#### ADAM - Plugin (paid)
+     Currently the Allagan Data Acquisition Module serves as an external chat client. Chat from the game is transmitted to the server and viewable from the browser anywhere you have an internet connection, it is also possible to send chat from the server (your browser) to the game, which will allow you to interact with others in near real-time and execute any /command. Currently we have a few other features such as a list of items you have gathered or crafted in the last hours, multi-character support and a few other tidbits. We'll be growing very quickly now that we have released.
+#### Agil - Plugin (paid)
+     Agil offers a simple and easy to use UI where you can specify the minimum condition for repairing gear. Once that condition is reached, Agil will stop what you're doing and go to a mender or self-repair depending on the option you chose. Note that as of right now, Rebornbuddy has no official method of flying. This might cause problems on some Heavensward zones if you choose to repair with a mender, since Agil will be obligated to use ground navigation and might get stuck on the irregular zones. For Heavensward zones, it is best to choose the self-repair option if you can.
+#### Lisbeth - Botbase (paid)
+     You just tell her what item you want and how much of it, and she’ll get it for you! Lisbeth is crafting and gathering made simple. It offers an easy to use UI where you can search for item names and make orders for them. As long as your character knows the required crafting and gathering jobs, Lisbeth will calculate the materials required for each one of your orders and get them for you. This involves crafting components, gathering from normal nodes, and buying from vendors. The only setup required is adding your gearsets like you have them in the game. It also offers plenty of advanced customization options you can tinker with if you wish, ranging from stealth behaviors to order processing modality, all in a user friendly UI. Item orders can be customized and offer many options, like specifying food to use while crafting, making the items as collectables, quick synth, etc.
+#### Zekken - Plugin
+     Zekken will make your bot avoid telegraphed spells depending on their shape characteristics. Currently, it avoids frontal and circular spells originating from the mob. A spell that is not currently in Zekken's database will instead make Zekken hide your UI and take a screenshot of it. Right now, there is no way for Rebornbuddy to know if a spell is telegraphed and what its shape is. Because of this, Zekken uses a separate Spell Shape Database that lists spells by ID and provides them with shape characteristics.
+#### Arcade  - Botbase (paid)
+     Plays Cuff-a-Cur
+	 Plays Monster Toss
+	 Plays Crystal Tower Stryker
+	 Plays Moogle's Paw
+	 Plays the Mini Cactpot
+	 Pick which games you want to play
+	 Randomizes time spent at mini-games per your settings
+	 Option to randomize game scores
+	 Collects statistics based on your MGP gain
+	 Optional statistics overlay
+	 Fast Mode
+	 Plays the games as fast as possible
+	 When disabled, randomizes the time spent on every iteration of a game for a more human-like experience
+	 Option to stop the bot after you have gained a certain amount of MGP
+	 Localized for English, Chinese, and German game clients.
+#### Artemis - Botbase 
+     Artemis is a Hunt Bill BotBase. Specify your marks via the UI, and amount required, and hit start, and Artemis will Hunt them down for you. Please note that Artemis does use ExBuddy, so please be mindful when submitting errors that ExFlight can and will crash from time to time. But's it's what's available, see above. The Botbase still has a few bugs, with 3 mobs omitted due to pathing issues, and it will stop, regardless of combat when the marks are complete, but these are being worked on.
+#### Cyril - Plugin
+     Cyril is a Repair Plugin, enable and it will run to a vendor and repair when your gear gets below 5%. There is an option to self repair, but this is in testing. Cyril will only work on Autonomous BotBases i.e OrderBot or FateBot.
+#### Sparrow - Plugin
+     Sparrow is a Companion plugin. Specify your Stance and Feed requirements in settings, and Sparrow will keep your companion summoned, in the correct stance, and fed your chosen feed if available. I will be adding an automatic stance selection at a later date. Please disable any UseChocobo features of your Combat Routines when using Sparrow, as this  will intefere. Sparrow will only work on Autonomous BotBases i.e OrderBot or FateBot.
+#### ATB - Botbase 
+     Combat Assist: Ability to modify routine methods on the fly, don't want to use certain methods? Turn 'em off!
+	 Clean, easy to use, and easy to understand interface.
+	 Easy to use combat routine switching - For those times where the routine you're currently using just doesn't quite cut it.
+	 Hotkey and Click-to-Toggle setting support - choose to use personalized hotkeys, or click to enable and disable rotation settings on the fly.
+	 Informational Overlay - Real-time, easy-to-read overlay that displays what options are currently enabled and disabled.
+	 Quick-Toggle Interface Overlay - A mini version of the main settings page in the form of an overlay.
+	 Quality of Life Options - Enabled to provide some QoL additions such as Auto Talking, Quest Accepting, Cut-scene Skipping, and Sprinting if you like.
+#### Boko - Plugin
+     Simple plugin to control chocobo during combat.
+#### Kefka - Combat Routine (paid)
+     Combat routine base to run all of Omninewb's individual routines.
+#### Switcharoo - Plugin
+     Simple plugin to help set and switch routines without restarting RB.
+#### CombatPotGuy - Plugin
+     Another modified version of GourmetGuy, this time designed to drink Health or Mana potions when either drops below a user-configured threshold.
+#### CompanyManualGuy - Plugin
+     Another modified version of GourmetGuy, set to maintain the Gathering or Crafting XP buff from the manuals as long as you have those manuals in inventory.
+#### Crawler - Botbase  (paid)
+     Combat Assist: Custom combat logic depending on what role you are playing
+	 Automatic Target selection
+	 Light weight for absolute minimal FPS drops
+	 Only BotBase on the Store that has support for any other Plugins*
+#### Destiny - Plugin (paid)
+     FateBot Plugin: Set FateBot's actual Settings
+	 Set what Zone you want to run FateBot in on a per level range basis
+	 Set individual GearSets for each class/job combination
+	 Set FateBot to grind on random mobs when there are no Fates that meet the current requirements
+#### EatMeWPF - Plugin
+     Simple plugin to set and always eat selected food.
+#### ExBuddy - Plugin
+     A comprehensive plugin that extends the ability of RB for fishing, flying, moving, questing, and MUCH MUCH more.
+#### ExFateBot - Botbase 
+     A FateBot clone for RebornBuddy that allows you to use EnableFlight Plugin from ExBuddy.
+#### EntraxBuddy - Profiles
+     A comprehensive gathering profile for unspoiled, scrips, counterfoils and more.
+#### Ultima - Combat Routine 
+     Finally, here it is. The (hopeful) successor to Magitek, built upon the (CoRoutine) foundation of MoreDots. Huge shoutout to Exmortem and Wheredidigo for all their support along the way. This Combat Routine wouldn't exist without their influence/aid.
+#### @y2krazy profiles
+	 Questing, seasonal, class grinding, fishing, mining, botany, Lisbeth orders, Zekken updates.  WAY too many to describe in detail. Includes custom behaviors.
+#### @sodimm profiles
+	 Beast tribe dailies including custom behaviors.

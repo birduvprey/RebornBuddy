@@ -1,0 +1,3 @@
+C:\Games\Rebornbuddy\Plugins\MedicineGuy\obj\Debug\MedicineGuy.csprojResolveAssemblyReference.cache
+C:\Games\Rebornbuddy\Plugins\MedicineGuy\obj\Debug\MedicineGuyPlugin.Gui.resources
+C:\Games\Rebornbuddy\Plugins\MedicineGuy\obj\Debug\MedicineGuy.csproj.GenerateResource.Cache

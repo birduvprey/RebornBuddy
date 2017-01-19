@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE Profile [
+<!ENTITY Collect_Adamantite "1">
+<!ENTITY Collect_Chysahl "1">
+<!ENTITY TurnInAfterLoop "1">
+]>
+<Profile>
+	<Name>Collectable: Adamantite Ore + Chysahl Greens</Name>
+	<KillRadius>50</KillRadius>
+	<CodeChunks>
+		<CodeChunk name="MIN">
+			<![CDATA[
+				ff14bot.Managers.ChatManager.SendChat("/gs change 21");
+				await Buddy.Coroutines.Coroutine.Sleep(2000);
+				if(!Core.Player.HasAura(222))
+				{
+					var result = true;
+					if (MovementManager.IsFlying)
+					{
+						result = await CommonTasks.Land();
+						await Buddy.Coroutines.Coroutine.Sleep(1000);
+					}
+					
+					if (result && Core.Player.IsMounted)
+					{
+						await CommonTasks.StopAndDismount();
+						await Buddy.Coroutines.Coroutine.Sleep(1000);
+					}
+					
+					ff14bot.Managers.Actionmanager.DoAction(238, Core.Player);
+					await Buddy.Coroutines.Coroutine.Sleep(2000);
+				}
+			]]>
+		</CodeChunk>
+		<CodeChunk name="BTN">
+			<![CDATA[
+				ff14bot.Managers.ChatManager.SendChat("/gs change 20");
+				await Buddy.Coroutines.Coroutine.Sleep(2000);
+				if(!Core.Player.HasAura(221))
+				{
+					var result = true;
+
+					if (MovementManager.IsFlying)
+					{
+						result = await CommonTasks.Land();
+						await Buddy.Coroutines.Coroutine.Sleep(1000);
+					}
+					
+					if (result && Core.Player.IsMounted)
+					{
+						Actionmanager.Dismount();
+						await Buddy.Coroutines.Coroutine.Sleep(1000);
+					}
+					
+					ff14bot.Managers.Actionmanager.DoAction(221, Core.Player);
+					await Buddy.Coroutines.Coroutine.Sleep(2000);
+				}
+			]]>
+		</CodeChunk>
+	</CodeChunks>
+	<Order>
+		<While condition="True">
+			<If condition="IsTimeBetween(8,10) or IsTimeBetween(20,22)">
+				<!-- TODO: Be less lazy and go to tailfeather? -->
+				<If condition="not IsOnMap(397)">
+					<TeleportTo name="Falcon's Nest" aetheryteId="71" />
+					<MoveTo XYZ="467.8192, 212.5399, 699.0173" />
+				</If>
+				<RunCode name="BTN" />
+				<If condition="&Collect_Chysahl; != 0">
+					<GatherCollectable loops="1" spawnTimeout="200" cordialType="Cordial">
+						<GatherObjects>
+							<GatherObject>Unspoiled Lush Vegetation Patch</GatherObject>
+						</GatherObjects>
+						<Collectables>
+							<Collectable Name="Chysahl Greens" Value="470" />
+						</Collectables>
+						<GatherRotation>Collect470</GatherRotation>
+						<HotSpots>
+							<HotSpot Radius="90" XYZ="-684.4172, 130.6977, -600.1046" />
+						</HotSpots>
+					</GatherCollectable>
+				</If>
+				<If condition="&Collect_Chysahl; == 0">
+					<GatherCollectable loops="1" spawnTimeout="200" gatherIncrease="Quality" cordialType="Cordial">
+						<GatherObjects>
+							<GatherObject>Unspoiled Lush Vegetation Patch</GatherObject>
+						</GatherObjects>
+						<ItemNames>
+							<ItemName>Chysahl Greens</ItemName>
+						</ItemNames>
+						<GatherRotation>Unspoiled</GatherRotation>
+						<HotSpots>
+							<HotSpot Radius="90" XYZ="-684.4172, 130.6977, -600.1046" />
+						</HotSpots>
+					</GatherCollectable>
+				</If>
+				<LogMessage message="Waiting for now...until we find something better to do." />
+				<WaitWhile condition="IsTimeBetween(8,10) or IsTimeBetween(20,22)" />
+			</If>
+			<If condition="IsTimeBetween(10,12) or IsTimeBetween(22,24)">
+				<If condition="not IsOnMap(402)">
+					<TeleportTo name="Helix" aetheryteId="74" />
+					<MoveTo XYZ="-731.6299, -186.9606, -599.0782" />
+				</If>
+				<RunCode name="MIN" />
+				<If condition="&Collect_Adamantite; != 0">
+					<GatherCollectable loops="1" spawnTimeout="200" cordialType="Cordial">
+						<GatherObjects>
+							<GatherObject>Unspoiled Mineral Deposit</GatherObject>
+						</GatherObjects>
+						<Collectables>
+							<Collectable Name="Adamantite Ore" Value="470" />
+						</Collectables>
+						<GatherRotation>Collect470</GatherRotation>
+						<GatherSpots>
+							<StealthApproachGatherSpot stealthLocation="70.86564, -0.4920825, -858.0936"
+							                           nodeLocation="72.07767, 0.7522836, -854.5031" />
+							<StealthApproachGatherSpot stealthLocation="20.53567, -1.213719, -827.198"
+							                           nodeLocation="25.29292, 0.5668808, -833.7905" />
+							<StealthApproachGatherSpot stealthLocation="89.52304, -1.827069, -791.0764"
+							                           nodeLocation="79.63015, 0.5219008, -804.5839" />
+						</GatherSpots>
+						<HotSpots>
+							<HotSpot Radius="90" XYZ="57.50256, 21.00859, -835.1724" />
+						</HotSpots>
+					</GatherCollectable>
+				</If>
+				<If condition="&Collect_Adamantite; == 0">
+					<GatherCollectable loops="1" spawnTimeout="200" cordialType="Cordial">
+						<GatherObjects>
+							<GatherObject>Unspoiled Mineral Deposit</GatherObject>
+						</GatherObjects>
+						<ItemNames>
+							<ItemName>Adamantite Ore</ItemName>
+						</ItemNames>
+						<GatherRotation>Unspoiled</GatherRotation>
+						<GatherSpots>
+							<StealthApproachGatherSpot stealthLocation="70.86564, -0.4920825, -858.0936"
+							                           nodeLocation="72.07767, 0.7522836, -854.5031" />
+							<StealthApproachGatherSpot stealthLocation="20.53567, -1.213719, -827.198"
+							                           nodeLocation="25.29292, 0.5668808, -833.7905" />
+							<StealthApproachGatherSpot stealthLocation="89.52304, -1.827069, -791.0764"
+							                           nodeLocation="79.63015, 0.5219008, -804.5839" />
+						</GatherSpots>
+						<HotSpots>
+							<HotSpot Radius="90" XYZ="57.50256, 21.00859, -835.1724" />
+						</HotSpots>
+					</GatherCollectable>
+				</If>
+				<LogMessage message="Waiting for now...until we find something better to do." />
+				<WaitWhile condition="IsTimeBetween(10,12) or IsTimeBetween(22,24)" />
+			</If>
+			<If condition="IsTimeBetween(0,8) or IsTimeBetween(12,20)">
+				<If condition="&TurnInAfterLoop; != 0">
+					<TurnInCollectables>
+						<ShopPurchases>
+							<ShopPurchase shopItem="RedGatherToken" />
+						</ShopPurchases>
+					</TurnInCollectables>
+				</If>
+				<LogMessage message="Stop being so lazy!" />
+				<WaitWhile condition="IsTimeBetween(0,8) or IsTimeBetween(12,20)" />
+			</If>
+		</While>
+	</Order>
+</Profile>

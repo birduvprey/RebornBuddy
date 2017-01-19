@@ -1,0 +1,758 @@
+[
+  {
+    "Id": 1001206,
+    "Name": "Alistair",
+    "Aetheryte": 49,
+    "Zone": 129,
+    "Road": null,
+    "Location": {
+      "X": -246.9976,
+      "Y": 16.0,
+      "Z": 49.1761
+    }
+  },
+  {
+    "Id": 1003255,
+    "Name": "Syvinmhas",
+    "Aetheryte": 41,
+    "Zone": 128,
+    "Road": null,
+    "Location": {
+      "X": 13.09951,
+      "Y": 44.5,
+      "Z": 157.2106
+    }
+  },
+  {
+    "Id": 1003251,
+    "Name": "Leofrun",
+    "Aetheryte": 0,
+    "Zone": 128,
+    "Road": null,
+    "Location": {
+      "X": 15.97732,
+      "Y": 40.2,
+      "Z": 1.251203
+    }
+  },
+  {
+    "Id": 1000394,
+    "Name": "Erkenbaud",
+    "Aetheryte": 2,
+    "Zone": 132,
+    "Road": null,
+    "Location": {
+      "X": 26.73881,
+      "Y": -8.0,
+      "Z": 95.43526
+    }
+  },
+  {
+    "Id": 1000395,
+    "Name": "Clementain",
+    "Aetheryte": 0,
+    "Zone": 133,
+    "Road": null,
+    "Location": {
+      "X": -182.7243,
+      "Y": 9.067491,
+      "Z": -95.59009
+    }
+  },
+  {
+    "Id": 1001277,
+    "Name": "Maeloc",
+    "Aetheryte": 0,
+    "Zone": 133,
+    "Road": null,
+    "Location": {
+      "X": 156.0811,
+      "Y": 15.5,
+      "Z": -130.695
+    }
+  },
+  {
+    "Id": 1004416,
+    "Name": "Zuzutyro",
+    "Aetheryte": 0,
+    "Zone": 130,
+    "Road": null,
+    "Location": {
+      "X": 30.92056,
+      "Y": 7.0,
+      "Z": -83.72356
+    }
+  },
+  {
+    "Id": 1004420,
+    "Name": "Averitt",
+    "Aetheryte": 47,
+    "Zone": 131,
+    "Road": null,
+    "Location": {
+      "X": 139.0599,
+      "Y": 4.0,
+      "Z": 0.3201944
+    }
+  },
+  {
+    "Id": 1004415,
+    "Name": "Hehezofu",
+    "Aetheryte": 34,
+    "Zone": 130,
+    "Road": null,
+    "Location": {
+      "X": -153.8757,
+      "Y": 12.0,
+      "Z": -22.87667
+    }
+  },
+  {
+    "Id": 1003257,
+    "Name": "Maeloc",
+    "Aetheryte": 26,
+    "Zone": 134,
+    "Road": null,
+    "Location": {
+      "X": 199.488,
+      "Y": 98.47483,
+      "Z": -203.9123
+    }
+  },
+  {
+    "Id": 1003259,
+    "Name": "Merchant & Mender",
+    "Aetheryte": 0,
+    "Zone": 135,
+    "Road": null,
+    "Location": {
+      "X": 202.472,
+      "Y": 14.09601,
+      "Z": 675.4113
+    }
+  },
+  {
+    "Id": 1003258,
+    "Name": "Merchant & Mender",
+    "Aetheryte": 0,
+    "Zone": 135,
+    "Road": null,
+    "Location": {
+      "X": 554.3871,
+      "Y": 88.63627,
+      "Z": -46.84058
+    }
+  },
+  {
+    "Id": 1003261,
+    "Name": "Merchant & Mender",
+    "Aetheryte": 0,
+    "Zone": 137,
+    "Road": null,
+    "Location": {
+      "X": 462.8874,
+      "Y": 16.79759,
+      "Z": 484.7227
+    }
+  },
+  {
+    "Id": 1003262,
+    "Name": "Merchant & Mender",
+    "Aetheryte": 0,
+    "Zone": 137,
+    "Road": null,
+    "Location": {
+      "X": -34.32534,
+      "Y": 71.75401,
+      "Z": -36.0625
+    }
+  },
+  {
+    "Id": 1003263,
+    "Name": "Merchant & Mender",
+    "Aetheryte": 0,
+    "Zone": 138,
+    "Road": null,
+    "Location": {
+      "X": 663.8287,
+      "Y": 9.744605,
+      "Z": 494.7283
+    }
+  },
+  {
+    "Id": 1003264,
+    "Name": "Merchant & Mender",
+    "Aetheryte": 0,
+    "Zone": 138,
+    "Road": null,
+    "Location": {
+      "X": 241.2145,
+      "Y": -24.99924,
+      "Z": 233.9283
+    }
+  },
+  {
+    "Id": 1003266,
+    "Name": "Merchant & Mender",
+    "Aetheryte": 0,
+    "Zone": 138,
+    "Road": null,
+    "Location": {
+      "X": 57.071,
+      "Y": -3.11829,
+      "Z": 63.44406
+    }
+  },
+  {
+    "Id": 1005181,
+    "Name": "Merchant & Mender",
+    "Aetheryte": 0,
+    "Zone": 138,
+    "Road": null,
+    "Location": {
+      "X": -89.07496,
+      "Y": -24.94441,
+      "Z": 81.29597
+    }
+  },
+  {
+    "Id": 1005180,
+    "Name": "Merchant & Mender",
+    "Aetheryte": 0,
+    "Zone": 138,
+    "Road": null,
+    "Location": {
+      "X": 20.66621,
+      "Y": -10.33294,
+      "Z": -67.07877
+    }
+  },
+  {
+    "Id": 1003268,
+    "Name": "Merchant & Mender",
+    "Aetheryte": 0,
+    "Zone": 139,
+    "Road": null,
+    "Location": {
+      "X": 424.7212,
+      "Y": 4.098778,
+      "Z": 112.1271
+    }
+  },
+  {
+    "Id": 1003270,
+    "Name": "Junkmonger",
+    "Aetheryte": 0,
+    "Zone": 139,
+    "Road": null,
+    "Location": {
+      "X": 237.642,
+      "Y": -0.9192204,
+      "Z": 248.7912
+    }
+  },
+  {
+    "Id": 1005182,
+    "Name": "Merchant & Mender",
+    "Aetheryte": 0,
+    "Zone": 180,
+    "Road": null,
+    "Location": {
+      "X": -104.7386,
+      "Y": 64.00773,
+      "Z": -203.7362
+    }
+  },
+  {
+    "Id": 1000220,
+    "Name": "Merchant & Mender",
+    "Aetheryte": 0,
+    "Zone": 148,
+    "Road": null,
+    "Location": {
+      "X": 15.36449,
+      "Y": -8.011558,
+      "Z": -12.32143
+    }
+  },
+  {
+    "Id": 1000396,
+    "Name": "Merchant & Mender",
+    "Aetheryte": 0,
+    "Zone": 148,
+    "Road": null,
+    "Location": {
+      "X": 85.37393,
+      "Y": -8.0,
+      "Z": -102.8138
+    }
+  },
+  {
+    "Id": 1000717,
+    "Name": "Merchant & Mender",
+    "Aetheryte": 0,
+    "Zone": 148,
+    "Road": null,
+    "Location": {
+      "X": 177.5448,
+      "Y": -32.04232,
+      "Z": 321.6585
+    }
+  },
+  {
+    "Id": 1000222,
+    "Name": "Merchant & Mender",
+    "Aetheryte": 0,
+    "Zone": 152,
+    "Road": null,
+    "Location": {
+      "X": -214.7817,
+      "Y": 2.191374,
+      "Z": 298.5432
+    }
+  },
+  {
+    "Id": 1000579,
+    "Name": "Junkmonger",
+    "Aetheryte": 0,
+    "Zone": 152,
+    "Road": null,
+    "Location": {
+      "X": 13.86312,
+      "Y": -4.759318,
+      "Z": 220.4692
+    }
+  },
+  {
+    "Id": 1002371,
+    "Name": "Merchant & Mender",
+    "Aetheryte": 0,
+    "Zone": 152,
+    "Road": null,
+    "Location": {
+      "X": -478.5937,
+      "Y": 7.536946,
+      "Z": 201.6703
+    }
+  },
+  {
+    "Id": 1000397,
+    "Name": "Merchant & Mender",
+    "Aetheryte": 0,
+    "Zone": 153,
+    "Road": null,
+    "Location": {
+      "X": 164.9208,
+      "Y": 9.314227,
+      "Z": -59.6621
+    }
+  },
+  {
+    "Id": 1000597,
+    "Name": "Merchant & Mender",
+    "Aetheryte": 0,
+    "Zone": 153,
+    "Road": null,
+    "Location": {
+      "X": -165.5573,
+      "Y": 9.869228,
+      "Z": -76.663
+    }
+  },
+  {
+    "Id": 1002372,
+    "Name": "Merchant & Mender",
+    "Aetheryte": 0,
+    "Zone": 153,
+    "Road": null,
+    "Location": {
+      "X": -213.1424,
+      "Y": 20.90274,
+      "Z": 365.1974
+    }
+  },
+  {
+    "Id": 1002376,
+    "Name": "Merchant & Mender",
+    "Aetheryte": 0,
+    "Zone": 154,
+    "Road": null,
+    "Location": {
+      "X": 8.000854,
+      "Y": -44.73338,
+      "Z": 220.9162
+    }
+  },
+  {
+    "Id": 1000718,
+    "Name": "Merchant & Mender",
+    "Aetheryte": 0,
+    "Zone": 154,
+    "Road": null,
+    "Location": {
+      "X": 333.8266,
+      "Y": -5.550671,
+      "Z": 330.3866
+    }
+  },
+  {
+    "Id": 1000230,
+    "Name": "Merchant & Mender",
+    "Aetheryte": 0,
+    "Zone": 154,
+    "Road": null,
+    "Location": {
+      "X": 420.3606,
+      "Y": -3.795246,
+      "Z": -122.7712
+    }
+  },
+  {
+    "Id": 1003737,
+    "Name": "Merchant & Mender",
+    "Aetheryte": 0,
+    "Zone": 140,
+    "Road": null,
+    "Location": {
+      "X": 42.44503,
+      "Y": 45.13517,
+      "Z": -263.4549
+    }
+  },
+  {
+    "Id": 1004422,
+    "Name": "Merchant & Mender",
+    "Aetheryte": 0,
+    "Zone": 140,
+    "Road": null,
+    "Location": {
+      "X": -307.3693,
+      "Y": 18.61392,
+      "Z": -149.7009
+    }
+  },
+  {
+    "Id": 1004038,
+    "Name": "Merchant & Mender",
+    "Aetheryte": 0,
+    "Zone": 140,
+    "Road": null,
+    "Location": {
+      "X": -463.3703,
+      "Y": 23.02016,
+      "Z": -380.4055
+    }
+  },
+  {
+    "Id": 1003724,
+    "Name": "Merchant & Mender",
+    "Aetheryte": 0,
+    "Zone": 140,
+    "Road": null,
+    "Location": {
+      "X": 209.9121,
+      "Y": 52.03812,
+      "Z": 136.2902
+    }
+  },
+  {
+    "Id": 1004421,
+    "Name": "Merchant & Mender",
+    "Aetheryte": 0,
+    "Zone": 140,
+    "Road": null,
+    "Location": {
+      "X": -314.4664,
+      "Y": 33.25,
+      "Z": 391.6377
+    }
+  },
+  {
+    "Id": 1001563,
+    "Name": "Merchant & Mender",
+    "Aetheryte": 0,
+    "Zone": 141,
+    "Road": null,
+    "Location": {
+      "X": -11.68758,
+      "Y": -2.04808,
+      "Z": -150.3593
+    }
+  },
+  {
+    "Id": 1004426,
+    "Name": "Merchant & Mender",
+    "Aetheryte": 0,
+    "Zone": 145,
+    "Road": null,
+    "Location": {
+      "X": -405.367,
+      "Y": -54.1446,
+      "Z": 97.62759
+    }
+  },
+  {
+    "Id": 1004428,
+    "Name": "Merchant & Mender",
+    "Aetheryte": 0,
+    "Zone": 145,
+    "Road": null,
+    "Location": {
+      "X": -535.3561,
+      "Y": 4.220985,
+      "Z": -235.4796
+    }
+  },
+  {
+    "Id": 1004429,
+    "Name": "Junkmonger",
+    "Aetheryte": 0,
+    "Zone": 146,
+    "Road": null,
+    "Location": {
+      "X": -158.5613,
+      "Y": 27.02415,
+      "Z": -432.8073
+    }
+  },
+  {
+    "Id": 1004430,
+    "Name": "Merchant & Mender",
+    "Aetheryte": 0,
+    "Zone": 146,
+    "Road": null,
+    "Location": {
+      "X": -278.4936,
+      "Y": 8.193831,
+      "Z": 382.6174
+    }
+  },
+  {
+    "Id": 1004160,
+    "Name": "Merchant & Mender",
+    "Aetheryte": 0,
+    "Zone": 147,
+    "Road": null,
+    "Location": {
+      "X": -26.06529,
+      "Y": 6.984498,
+      "Z": 475.0516
+    }
+  },
+  {
+    "Id": 1004598,
+    "Name": "Merchant & Mender",
+    "Aetheryte": 0,
+    "Zone": 147,
+    "Road": null,
+    "Location": {
+      "X": -2.01193,
+      "Y": 42.9939,
+      "Z": 29.56977
+    }
+  },
+  {
+    "Id": 1006798,
+    "Name": "Merchant & Mender",
+    "Aetheryte": 0,
+    "Zone": 155,
+    "Road": null,
+    "Location": {
+      "X": 242.7267,
+      "Y": 302.0,
+      "Z": -256.5718
+    }
+  },
+  {
+    "Id": 1006800,
+    "Name": "Merchant & Mender",
+    "Aetheryte": 0,
+    "Zone": 155,
+    "Road": null,
+    "Location": {
+      "X": -413.2639,
+      "Y": 210.8949,
+      "Z": -274.1775
+    }
+  },
+  {
+    "Id": 1006799,
+    "Name": "Merchant & Mender",
+    "Aetheryte": 0,
+    "Zone": 155,
+    "Road": null,
+    "Location": {
+      "X": 235.629,
+      "Y": 222.2132,
+      "Z": 321.7823
+    }
+  },
+  {
+    "Id": 1006899,
+    "Name": "Independent Mender",
+    "Aetheryte": 0,
+    "Zone": 156,
+    "Road": null,
+    "Location": {
+      "X": 18.17452,
+      "Y": 28.99997,
+      "Z": -730.7797
+    }
+  },
+  {
+    "Id": 1006898,
+    "Name": "Merchant & Mender",
+    "Aetheryte": 0,
+    "Zone": 156,
+    "Road": null,
+    "Location": {
+      "X": 430.9167,
+      "Y": -5.362859,
+      "Z": -455.3823
+    }
+  },
+  {
+    "Id": 1012074,
+    "Name": "Mender of Sticks",
+    "Aetheryte": 0,
+    "Zone": 400,
+    "Road": null,
+    "Location": {
+      "X": 290.6847,
+      "Y": -42.65496,
+      "Z": 578.1329
+    }
+  },
+  {
+    "Id": 1011913,
+    "Name": "Traveling Mender",
+    "Aetheryte": 0,
+    "Zone": 398,
+    "Road": null,
+    "Location": {
+      "X": 479.0042,
+      "Y": -51.1414,
+      "Z": 28.99744
+    }
+  },
+  {
+    "Id": 1011926,
+    "Name": "Vath Artisan",
+    "Aetheryte": 0,
+    "Zone": 398,
+    "Road": null,
+    "Location": {
+      "X": 68.39536,
+      "Y": -49.25517,
+      "Z": -158.7032
+    }
+  },
+  {
+    "Id": 1012094,
+    "Name": "Goblin Tinker",
+    "Aetheryte": 0,
+    "Zone": 478,
+    "Road": null,
+    "Location": {
+      "X": 80.76875,
+      "Y": 207.0345,
+      "Z": 1.52367
+    }
+  },
+  {
+    "Id": 1011229,
+    "Name": "Independent Mender",
+    "Aetheryte": 0,
+    "Zone": 397,
+    "Road": null,
+    "Location": {
+      "X": 501.5101,
+      "Y": 212.5399,
+      "Z": 715.9165
+    }
+  },
+  {
+    "Id": 1011906,
+    "Name": "Merchant & Mender",
+    "Aetheryte": 0,
+    "Zone": 397,
+    "Road": null,
+    "Location": {
+      "X": -295.1402,
+      "Y": 126.7599,
+      "Z": 1.316498
+    }
+  },
+  {
+    "Id": 1011948,
+    "Name": "Mender of Wreckage",
+    "Aetheryte": 0,
+    "Zone": 401,
+    "Road": null,
+    "Location": {
+      "X": -647.3202,
+      "Y": -123.882,
+      "Z": 526.4993
+    }
+  },
+  {
+    "Id": 1012062,
+    "Name": "Zundu Fix-it",
+    "Aetheryte": 0,
+    "Zone": 401,
+    "Road": null,
+    "Location": {
+      "X": -564.0433,
+      "Y": -52.55127,
+      "Z": -416.5692
+    }
+  },
+  {
+    "Id": 1011199,
+    "Name": "Niall",
+    "Aetheryte": 0,
+    "Zone": 419,
+    "Road": null,
+    "Location": {
+      "X": -211.3513,
+      "Y": -16.13492,
+      "Z": -53.89837
+    }
+  },
+  {
+    "Id": 1013732,
+    "Name": "Independent Mender",
+    "Aetheryte": 0,
+    "Zone": 399,
+    "Road": null,
+    "Location": {
+      "X": -45.33979,
+      "Y": 100.8344,
+      "Z": -194.6133
+    }
+  },
+  {
+    "Id": 1012143,
+    "Name": "Reconditioning Node",
+    "Aetheryte": 0,
+    "Zone": 402,
+    "Road": null,
+    "Location": {
+      "X": -638.1442,
+      "Y": -176.4502,
+      "Z": -552.1166
+    }
+  },
+  {
+    "Id": 1012135,
+    "Name": "Junkmonger",
+    "Aetheryte": 0,
+    "Zone": 463,
+    "Road": null,
+    "Location": {
+      "X": 33.13184,
+      "Y": 38.43,
+      "Z": 2.267746
+    }
+  }
+]

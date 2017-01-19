@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Profile>
+	<Name>Collectable: Free Range Collect550</Name>
+	<KillRadius>50</KillRadius>
+	<Order>
+		<While condition="True">
+			<GatherCollectable DiscoverUnknowns="true" AlwaysGather="false" Radius="8"
+			                   FreeRange="true" FreeRangeCondition="Condition.TrueFor(1, TimeSpan.FromMinutes(30))"
+			                   CordialType="Cordial">
+				<Collectables>
+					<!-- 550 -->
+					<Collectable Name="Radiant Fire Moraine" Value="550" />
+					<Collectable Name="Bright Fire Rock" Value="550" />
+					<Collectable Name="Fire Moraine" Value="550" />
+					<Collectable Name="Radiant Lightning Moraine" Value="550" />
+					<Collectable Name="Bright Lightning Rock" Value="550" />
+					<Collectable Name="Lightning Moraine" Value="550" />
+					<Collectable Name="Clary Sage" Value="550" />
+					<Collectable Name="Furymint" Value="550" />
+					<Collectable Name="Highland Oregano" Value="550" />
+					<Collectable Name="Black Soil" Value="550" />
+					<Collectable Name="Peat Moss" Value="550" />
+					<Collectable Name="Granular Clay" Value="550" />
+				</Collectables>
+				<ItemNames>
+					<ItemName>Timeworn Dragonskin Map</ItemName>
+				</ItemNames>
+				<GatherRotation>Collect550</GatherRotation>
+			</GatherCollectable>
+		</While>
+	</Order>
+</Profile>

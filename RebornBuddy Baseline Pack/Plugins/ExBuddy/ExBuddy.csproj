@@ -1,0 +1,298 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F09A01D8-DEFF-4A41-8951-1077E1B69BEA}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ExBuddy</RootNamespace>
+    <AssemblyName>ExBuddy</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Clio.Localization">
+      <HintPath>..\Assembly\Clio.Localization.dll</HintPath>
+    </Reference>
+    <Reference Include="GreyMagic">
+      <HintPath>..\Assembly\GreyMagic.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="Quest Behaviors_1537820551">
+      <HintPath>..\Assembly\Quest Behaviors_1537820551.dll</HintPath>
+    </Reference>
+    <Reference Include="RebornBuddy">
+      <HintPath>..\Assembly\RebornBuddy.exe</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Attributes\OffsetAttribute.cs" />
+    <Compile Include="Data\MasterpieceSupplyDutyResult.cs" />
+    <Compile Include="Data\RequiredItemResult.cs" />
+    <Compile Include="Data\SqlData.cs" />
+    <Compile Include="Helpers\ConditionTimer.cs" />
+    <Compile Include="Localization\Localization.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Localization.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Localization\LocalizationInitializer.cs" />
+    <Compile Include="Offsets\SecondaryOffsets.cs" />
+    <Compile Include="Plugins\Skywatcher\Objects\Location.cs" />
+    <Compile Include="Plugins\Skywatcher\Objects\LocationIndex.cs" />
+    <Compile Include="Plugins\Skywatcher\Objects\WeatherRate.cs" />
+    <Compile Include="Plugins\Skywatcher\Objects\WeatherRateIndex.cs" />
+    <Compile Include="Plugins\Skywatcher\Objects\WeatherRates.cs" />
+    <Compile Include="Plugins\Skywatcher\Providers\LocationProvider.cs" />
+    <Compile Include="Plugins\Skywatcher\Providers\WeatherRateProvider.cs" />
+    <Compile Include="Plugins\Skywatcher\SaintCoinachWeatherProvider.cs" />
+    <Compile Include="SecondaryOffsetManager.cs" />
+    <Compile Include="Agents\AetherialReduction.cs" />
+    <Compile Include="Attributes\LoggerNameAttribute.cs" />
+    <Compile Include="ExBuddySettings.cs" />
+    <Compile Include="ExCoroutineAction.cs">
+      <ExcludeFromStyleCop>False</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="GameObjects\Npcs\CustomNpc.cs" />
+    <Compile Include="GameObjects\Npcs\FreeCompanyChest.cs" />
+    <Compile Include="GameObjects\Npcs\SummoningBell.cs" />
+    <Compile Include="GameObjects\Npcs\MasterPieceSupply.cs" />
+    <Compile Include="GameObjects\Npcs\ShopExchangeCurrency.cs" />
+    <Compile Include="Helpers\Cordial.cs" />
+    <Compile Include="Helpers\Memory.cs" />
+    <Compile Include="Helpers\SkywatcherPlugin.cs" />
+    <Compile Include="Interfaces\IAetheryteId.cs" />
+    <Compile Include="Interfaces\IInteractWithNpc.cs" />
+    <Compile Include="Interfaces\ILogColors.cs" />
+    <Compile Include="Interfaces\INpc.cs" />
+    <Compile Include="Interfaces\ITeleportLocation.cs" />
+    <Compile Include="Interfaces\IZoneId.cs" />
+    <Compile Include="Logging\LogColors.cs" />
+    <Compile Include="Enumerations\CordialTime.cs" />
+    <Compile Include="Enumerations\CordialType.cs" />
+    <Compile Include="Enumerations\SendActionResult.cs" />
+    <Compile Include="Helpers\Abilities.cs" />
+    <Compile Include="Helpers\Actions.cs" />
+    <Compile Include="Helpers\AsyncHelper.cs" />
+    <Compile Include="Helpers\Behaviors.cs" />
+    <Compile Include="Logging\Logger.cs" />
+    <Compile Include="Interfaces\IGetOverridePriority.cs" />
+    <Compile Include="Interfaces\IFlightEnabledPlayerMover.cs" />
+    <Compile Include="Navigation\FlightMovementArgs.cs" />
+    <Compile Include="Navigation\FlightNavigationArgs.cs" />
+    <Compile Include="Interfaces\IFlightMovementArgs.cs" />
+    <Compile Include="Interfaces\IFlightNavigationArgs.cs" />
+    <Compile Include="Interfaces\IFlightVars.cs" />
+    <Compile Include="OrderBotTags\Behaviors\ExDisablePluginsTag.cs" />
+    <Compile Include="OrderBotTags\Behaviors\ExEnablePluginsTag.cs" />
+    <Compile Include="OrderBotTags\Behaviors\ExCompanyChestDepositTag.cs" />
+    <Compile Include="OrderBotTags\Behaviors\ExUseAethernetTag.cs" />
+    <Compile Include="OrderBotTags\Behaviors\ExLogTag.cs" />
+    <Compile Include="OrderBotTags\Behaviors\ExMoveToTag.cs" />
+    <Compile Include="OrderBotTags\Behaviors\ExSalvageTag.cs" />
+    <Compile Include="OrderBotTags\Behaviors\ExPurifyTag.cs" />
+    <Compile Include="OrderBotTags\Behaviors\ExTurnInGuildLeveTag.cs" />
+    <Compile Include="OrderBotTags\Behaviors\ExPickupGuildLeveTag.cs" />
+    <Compile Include="Enumerations\MoveToType.cs" />
+    <Compile Include="OrderBotTags\Behaviors\Objects\Data.cs" />
+    <Compile Include="OrderBotTags\Behaviors\Objects\Locations.cs" />
+    <Compile Include="OrderBotTags\Behaviors\Objects\ShopItem.cs" />
+    <Compile Include="OrderBotTags\Behaviors\Objects\ShopItemInfo.cs" />
+    <Compile Include="OrderBotTags\Behaviors\Objects\ShopPurchase.cs" />
+    <Compile Include="OrderBotTags\Behaviors\Objects\ShopType.cs" />
+    <Compile Include="Interfaces\IGatherSpot.cs" />
+    <Compile Include="OrderBotTags\Fish\PatienceTug.cs" />
+    <Compile Include="OrderBotTags\Gather\GatherSpots\GatherSpotCollection.cs" />
+    <Compile Include="OrderBotTags\Gather\GatherSpots\IndirectApproachGatherSpot.cs" />
+    <Compile Include="OrderBotTags\Gather\GatherSpots\RandomApproachGatherSpot.cs" />
+    <Compile Include="OrderBotTags\Gather\GatherSpots\StealthApproachGatherSpot.cs" />
+    <Compile Include="OrderBotTags\Gather\GatherSpots\StealthGatherSpot.cs" />
+    <Compile Include="Interfaces\INamedItem.cs" />
+    <Compile Include="OrderBotTags\Gather\NamedItemCollection.cs" />
+    <Compile Include="OrderBotTags\Gather\Rotations\Collect505GatheringRotation.cs" />
+    <Compile Include="OrderBotTags\Gather\Rotations\Collect495GatheringRotation.cs" />
+    <Compile Include="OrderBotTags\Gather\Rotations\Collect490GatheringRotation.cs" />
+    <Compile Include="OrderBotTags\Gather\Rotations\GetTwoHQGatheringRotation.cs" />
+    <Compile Include="OrderBotTags\Gather\Rotations\EphemeralRotation.cs" />
+    <Compile Include="OrderBotTags\Objects\Collectable.cs" />
+    <Compile Include="Navigation\Collisions.cs" />
+    <Compile Include="Helpers\Condition.cs" />
+    <Compile Include="Extensions.cs" />
+    <Compile Include="NoAetheryteRunToZoneReturnStrategy.cs" />
+    <Compile Include="NoAetheryteUseAethernetReturnStrategy.cs" />
+    <Compile Include="NoAetheryteUseTransportReturnStrategy.cs" />
+    <Compile Include="NoOpReturnStrategy.cs" />
+    <Compile Include="Interfaces\IReturnStrategy.cs" />
+    <Compile Include="Helpers\ObjectCache{T}.cs" />
+    <Compile Include="Helpers\ReflectionHelper.cs" />
+    <Compile Include="DefaultReturnStrategy.cs" />
+    <Compile Include="Navigation\FlightEnabledNavigator.cs" />
+    <Compile Include="Navigation\FlightEnabledSlideMover.cs" />
+    <Compile Include="Navigation\FlightPath.cs" />
+    <Compile Include="Navigation\FlightPoint.cs" />
+    <Compile Include="OrderBotTags\Behaviors\ExProfileBehavior.cs" />
+    <Compile Include="OrderBotTags\Behaviors\ExFlyToTag.cs" />
+    <Compile Include="OrderBotTags\Behaviors\ExTurnInCollectablesTag.cs" />
+    <Compile Include="OrderBotTags\Fish\Bait.cs" />
+    <Compile Include="OrderBotTags\Fish\ExFishTag.cs" />
+    <Compile Include="OrderBotTags\Fish\FishResult.cs" />
+    <Compile Include="OrderBotTags\Fish\FishSpots\FishSpot.cs" />
+    <Compile Include="OrderBotTags\Fish\Keeper.cs" />
+    <Compile Include="Enumerations\KeeperAction.cs" />
+    <Compile Include="Enumerations\VirtualKeys.cs" />
+    <Compile Include="OrderBotTags\Gather\ExGatherTag.cs" />
+    <Compile Include="Enumerations\GatherIncrease.cs" />
+    <Compile Include="Attributes\GatheringRotationAttribute.cs" />
+    <Compile Include="OrderBotTags\Gather\GatherSpots\GatherSpot.cs" />
+    <Compile Include="Enumerations\GatherSpotType.cs" />
+    <Compile Include="OrderBotTags\Gather\GatherStrategy.cs" />
+    <Compile Include="Interfaces\IGatheringRotation.cs" />
+    <Compile Include="OrderBotTags\Objects\GatherItem.cs" />
+    <Compile Include="Plugins\ExBotPlugin{T}.cs" />
+    <Compile Include="Plugins\RetainerMaid\RetainerMaid.cs" />
+    <Compile Include="Providers\MasterPieceSupplyDataProvider.cs" />
+    <Compile Include="Agents\Agent{T}.cs" />
+    <Compile Include="Agents\Desynthesis.cs" />
+    <Compile Include="Windows\Bait.cs" />
+    <Compile Include="Windows\FreeCompanyChest.cs" />
+    <Compile Include="Windows\Gathering.cs" />
+    <Compile Include="Windows\GatheringMasterpiece.cs" />
+    <Compile Include="Windows\GuildLeve.cs" />
+    <Compile Include="Windows\InputNumeric.cs" />
+    <Compile Include="Windows\MasterPieceSupply.cs" />
+    <Compile Include="Windows\PurifyDialog.cs" />
+    <Compile Include="Windows\PurifyItemSelector.cs" />
+    <Compile Include="Windows\PurifyResult.cs" />
+    <Compile Include="Windows\SalvageDialog.cs" />
+    <Compile Include="Windows\SalvageItemSelector.cs" />
+    <Compile Include="Windows\SalvageResult.cs" />
+    <Compile Include="Windows\SelectYesnoCount.cs" />
+    <Compile Include="Windows\SelectYesNoItem.cs" />
+    <Compile Include="Windows\ShopExchangeCurrency.cs" />
+    <Compile Include="Windows\Window{TWindow,TAgent}.cs" />
+    <Compile Include="Windows\Window{TWindow}.cs" />
+    <None Include="Data\ExBuddy.s3db" />
+    <None Include="Data\ExBuddy_CN.s3db" />
+    <None Include="Data\locationIndex.json" />
+    <None Include="Data\weatherRateIndex.json" />
+    <None Include="OrderBotTags\Gather\Prototype\SafeCollectAdamantite.cs.proto" />
+    <Compile Include="OrderBotTags\Gather\Rotations\Collect115GatheringRotation.cs" />
+    <Compile Include="OrderBotTags\Gather\Rotations\Collect345GatheringRotation.cs" />
+    <Compile Include="OrderBotTags\Gather\Rotations\Collect450GatheringRotation.cs" />
+    <Compile Include="OrderBotTags\Gather\Rotations\Collect470GatheringRotation.cs" />
+    <Compile Include="OrderBotTags\Gather\Rotations\Collect550GatheringRotation.cs" />
+    <Compile Include="OrderBotTags\Gather\Rotations\Collect570GatheringRotation.cs" />
+    <Compile Include="OrderBotTags\Gather\Rotations\CollectableGatheringRotation.cs" />
+    <Compile Include="OrderBotTags\Gather\Rotations\DefaultCollectGatheringRotation.cs" />
+    <Compile Include="OrderBotTags\Gather\Rotations\DiscoverUnknownsGatheringRotation.cs" />
+    <Compile Include="OrderBotTags\Gather\Rotations\ElementalGatheringRotation.cs" />
+    <Compile Include="OrderBotTags\Gather\Rotations\GatheringRotation.cs" />
+    <Compile Include="OrderBotTags\Gather\Rotations\GatheringSkillOrderGatheringRotation.cs" />
+    <Compile Include="OrderBotTags\Gather\Rotations\MapGatheringRotation.cs" />
+    <Compile Include="OrderBotTags\Gather\Rotations\NewbsDynamicRotation.cs" />
+    <Compile Include="OrderBotTags\Gather\Rotations\RegularNodeGatheringRotation.cs" />
+    <Compile Include="OrderBotTags\Gather\Rotations\SmartGatheringRotation.cs" />
+    <Compile Include="OrderBotTags\Gather\Rotations\SmartQualityGatheringRotation.cs" />
+    <Compile Include="OrderBotTags\Gather\Rotations\SmartYieldGatheringRotation.cs" />
+    <Compile Include="OrderBotTags\Gather\Rotations\TopsoilGatheringRotation.cs" />
+    <Compile Include="OrderBotTags\Gather\Rotations\UnspoiledGatheringRotation.cs" />
+    <Compile Include="OrderBotTags\Gather\Rotations\YieldAndQualityGatheringRotation.cs" />
+    <Compile Include="OrderBotTags\Objects\CollectableBase.cs" />
+    <Compile Include="OrderBotTags\Objects\CollectableTurnIn.cs" />
+    <Compile Include="Plugins\EnableFlight\EnableFlight.cs" />
+    <Compile Include="Plugins\Skywatcher\FF14AnglerWeatherProvider.cs" />
+    <Compile Include="Plugins\Skywatcher\HttpClientExtensions.cs" />
+    <Compile Include="Interfaces\IWeatherProvider.cs" />
+    <Compile Include="Plugins\Skywatcher\Skywatcher.cs" />
+    <Compile Include="Plugins\Skywatcher\WeatherData.cs" />
+    <Compile Include="Plugins\Skywatcher\WeatherResponse.cs" />
+    <Compile Include="Plugins\Skywatcher\WeatherResult.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Data\msd.xml" />
+    <Content Include="Data\msd_cn.xml" />
+    <Content Include="OrderBotTags\Behaviors\Examples\ExBuddy_[O][ALC][LEVE]_Lanolin+EnchantedElectrumInk-TurnIns.xml" />
+    <Content Include="OrderBotTags\Behaviors\Examples\TurnInCollectables.xml" />
+    <Content Include="OrderBotTags\Behaviors\Examples\UseAethernet.xml" />
+    <Content Include="OrderBotTags\Fish\Examples\Fishing_Forager_Supra_Lucis.xml" />
+    <Content Include="OrderBotTags\Fish\Examples\Fishing_IlluminatiPerch.xml" />
+    <Content Include="OrderBotTags\Fish\Examples\Fishing_WarmwaterBichir.xml" />
+    <Content Include="OrderBotTags\Gather\Examples\AdamantiteChysahl.xml" />
+    <Content Include="OrderBotTags\Gather\Examples\AdamantiteOre_AzysLla.xml" />
+    <Content Include="OrderBotTags\Gather\Examples\ChysahlGreens_CWH.xml" />
+    <Content Include="OrderBotTags\Gather\Examples\Cyclops Onion.xml" />
+    <Content Include="OrderBotTags\Gather\Examples\EphemeralAll.xml" />
+    <Content Include="OrderBotTags\Gather\Examples\FreeRangeCollect450.xml" />
+    <Content Include="OrderBotTags\Gather\Examples\FreeRangeCollect550.xml" />
+    <Content Include="OrderBotTags\Gather\Examples\FreeRangeCollectAll.xml" />
+    <Content Include="OrderBotTags\Gather\Examples\FreeRangeGatherAll.xml" />
+    <Content Include="OrderBotTags\Gather\Examples\Hardsilver Ore.xml" />
+    <Content Include="OrderBotTags\Gather\Examples\Highland Wheat.xml" />
+    <Content Include="OrderBotTags\Gather\Examples\Mythrite Ore.xml" />
+    <Content Include="OrderBotTags\Gather\Examples\Mythrite Sand.xml" />
+    <Content Include="OrderBotTags\Gather\Examples\Porcini_Churning.xml" />
+    <Content Include="OrderBotTags\Gather\Examples\Raw Chrysolite.xml" />
+    <Content Include="OrderBotTags\Gather\Examples\Raw Larimar.xml" />
+    <Content Include="OrderBotTags\Gather\Examples\Raw Mormorion.xml" />
+    <Content Include="OrderBotTags\Gather\Examples\Stalk of Ramie.xml" />
+    <Content Include="OrderBotTags\Gather\Examples\Titanium Ore.xml" />
+    <Content Include="OrderBotTags\Gather\Examples\Transform\Botany-Crystal Farming.xml" />
+    <Content Include="OrderBotTags\Gather\Examples\Transform\GatherToGatherCollectable.xslt" />
+    <Content Include="OrderBotTags\Gather\Examples\Wyrm Obsidian.xml" />
+    <Content Include="OrderBotTags\Gather\Prototype\Profiles\AdamantiteOre_AzysLla.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="OrderBotTags\Schema\Fish.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Localization\Localization.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Localization.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Localization\Localization.zh-CN.resx" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

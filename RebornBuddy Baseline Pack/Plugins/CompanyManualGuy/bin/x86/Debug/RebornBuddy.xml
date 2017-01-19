@@ -1,0 +1,4091 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>RebornBuddy</name>
+    </assembly>
+    <members>
+        <member name="P:ff14bot.AClasses.BotBase.IsAutonomous">
+            <summary>
+            Return false if human presence is needed.
+            </summary>
+        </member>
+        <member name="M:ff14bot.Interfaces.IBotPlugin.OnPulse">
+            <summary> Executes the pulse action. This is called every "tick" of the bot. </summary>
+        </member>
+        <member name="M:ff14bot.Interfaces.IBotPlugin.OnInitialize">
+            <summary> Executes the initialize action. This is called at initial bot startup. (When the bot itself is started, not when Start() is called) </summary>
+        </member>
+        <member name="M:ff14bot.Interfaces.IBotPlugin.OnShutdown">
+            <summary> Executes the shutdown action. This is called when the bot is shutting down and when plugins are being reloaded. </summary>
+        </member>
+        <member name="M:ff14bot.Interfaces.IBotPlugin.OnEnabled">
+            <summary> Executes the enabled action. This is called when the user has enabled this specific plugin via the GUI. </summary>
+        </member>
+        <member name="M:ff14bot.Interfaces.IBotPlugin.OnDisabled">
+            <summary> Executes the disabled action. This is called whent he user has disabled this specific plugin via the GUI. </summary>
+        </member>
+        <member name="M:ff14bot.AClasses.BotPlugin.OnPulse">
+            <summary> Executes the pulse action. This is called every "tick" of the bot. </summary>
+        </member>
+        <member name="M:ff14bot.AClasses.BotPlugin.OnInitialize">
+            <summary> Executes the initialize action.</summary>
+        </member>
+        <member name="M:ff14bot.AClasses.BotPlugin.OnShutdown">
+            <summary> Executes the shutdown action. This is called when the bot is shutting down and when plugins are being reloaded. </summary>
+        </member>
+        <member name="M:ff14bot.AClasses.BotPlugin.OnEnabled">
+            <summary> Executes the enabled action. This is called when the user has enabled this specific plugin via the GUI. </summary>
+        </member>
+        <member name="M:ff14bot.AClasses.BotPlugin.OnDisabled">
+            <summary> Executes the disabled action. This is called when the user has disabled this specific plugin via the GUI. </summary>
+        </member>
+        <member name="T:ff14bot.App">
+            <summary>
+            Interaction logic for App.xaml
+            </summary>
+            <summary>
+            App
+            </summary>
+        </member>
+        <member name="M:ff14bot.App.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="M:ff14bot.App.Main">
+            <summary>
+            Application Entry Point.
+            </summary>
+        </member>
+        <member name="T:TreeSharp.ActionRunCoroutine">
+            <summary>
+            Represents an action that runs a coroutine.
+            </summary>
+            <remarks>
+            <para>The <see cref="T:TreeSharp.RunStatus"/> that this action returns depends on the <see cref="T:Buddy.Coroutines.Coroutine"/> being run.</para>
+            <para>If the coroutine yields, the action returns <see cref="F:TreeSharp.RunStatus.Running"/> and does not resume until next tick.</para>
+            <para>If the coroutine returns boolean <c>false</c>, the action returns <see cref="F:TreeSharp.RunStatus.Failure"/>.</para>
+            <para>If the coroutine terminates with any other result than boolean <c>false</c>, the action returns <see cref="F:TreeSharp.RunStatus.Success"/>.</para>
+            </remarks>
+        </member>
+        <member name="M:TreeSharp.ActionRunCoroutine.#ctor(System.Func{System.Object,Buddy.Coroutines.Coroutine})">
+            <summary>
+            Initializes a new instance with the specified coroutine producer.
+            </summary>
+            <param name="coroutineProducer">A function that produces a coroutine.</param>
+        </member>
+        <member name="M:TreeSharp.ActionRunCoroutine.#ctor(System.Func{System.Object,System.Threading.Tasks.Task{System.Boolean}})">
+            <summary>
+            Initializes a new instance with the specified task producer.
+            </summary>
+            <param name="taskProducer">A function that produces a task that is regarded as the root of a coroutine.</param>
+        </member>
+        <member name="M:TreeSharp.ActionRunCoroutine.#ctor(System.Func{System.Object,ff14bot.Behavior.CoroutineTask{System.Boolean}})">
+            <summary>
+            Initializes a new instance with the specified coroutine task producer.
+            </summary>
+            <param name="taskProducer">A function that produces a coroutine task that is regarded as the root of a coroutine.</param>
+        </member>
+        <member name="M:TreeSharp.ActionRunCoroutine.#ctor(System.Func{System.Object,System.Threading.Tasks.Task})">
+            <summary>
+            Initializes a new instance with the specified task producer.
+            </summary>
+            <param name="taskProducer">A function that produces a task that is regarded as the root of a coroutine.</param>
+        </member>
+        <member name="M:TreeSharp.ActionRunCoroutine.#ctor(System.Func{System.Object,ff14bot.Behavior.CoroutineTask})">
+            <summary>
+            Initializes a new instance with the specified coroutine task producer.
+            </summary>
+            <param name="taskProducer">A function that produces a coroutine task that is regarded as the root of a coroutine.</param>
+        </member>
+        <member name="M:ff14bot.Behavior.CommonTasks.ExecuteCoroutine(TreeSharp.Composite,System.Object)">
+            <summary>
+            Executes the composite inside a coroutine.
+            </summary>
+            <param name="composite"></param>
+            <param name="context"></param>
+            <returns><c>true</c> if the composite finished with <see cref="F:TreeSharp.RunStatus.Success"/>; otherwise <c>false</c>.</returns>
+        </member>
+        <member name="M:ff14bot.Behavior.CommonTasks.CloseTradeWindows">
+            <summary>
+            Checks the status of the global settings for handling trade windows and the closes and blacklists players based on those settings
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ff14bot.Behavior.CommonTasks.StopAndDismount">
+            <summary>
+            Stops the player from moving and dismounts.
+            Function 'sleeps' for the proper amount of time after stopping or dismounting
+            If player is already stopped and dismounting the function does not sleep
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ff14bot.Behavior.CommonTasks.ConvertToMateria(ff14bot.Managers.BagSlot,System.Int32)">
+            <summary>
+            Coroutine that will attempt to convert an item to materia.
+            </summary>
+            <param name="bagslot">Slot that contains the item to convert</param>
+            <param name="sleepDuration">How long to sleep after clicking yes in milliseconds.</param>
+            <returns>
+            Returns CannotSpiritbond if slot is not valid or item is not convertible
+            Returns SpiritbondNotComplete if bagslot spiritbond percent is less than 100
+            Returns Failure if we attempted to convert the item but something went wrong
+            Returns Success otherwise
+            </returns>
+        </member>
+        <member name="T:ff14bot.Behavior.CoroutineTask">
+            <summary>
+            Represents a coroutine task that can be derived from to implement coroutine parts with state. This class is awaitable.
+            </summary>
+            <example></example>
+        </member>
+        <member name="M:ff14bot.Behavior.CoroutineTask.Run">
+            <summary>
+            Provides the body of this coroutine task.
+            </summary>
+        </member>
+        <member name="M:ff14bot.Behavior.CoroutineTask.GetAwaiter">
+            <summary>
+            Gets the awaiter for this coroutine task.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:ff14bot.Behavior.CoroutineTask`1">
+            <summary>
+            Represents a coroutine task that returns a value and that can be derived from to implement coroutine parts with state. This class is awaitable.
+            </summary>
+            <example></example>
+        </member>
+        <member name="M:ff14bot.Behavior.CoroutineTask`1.Run">
+            <summary>
+            Provides the body of this coroutine task.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ff14bot.Behavior.CoroutineTask`1.GetAwaiter">
+            <summary>
+            Gets the awaiter for this coroutine task.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:ff14bot.Behavior.HookExecutor">
+            <summary>A simple Action composite, to facilitate executing TreeHook composites. It is not recommended you use this for
+            		 any built-in hooks. Only use this if using a custom hook location!</summary>
+            <remarks>Created 3/22/2011.</remarks>
+        </member>
+        <member name="M:ff14bot.Behavior.HookExecutor.#ctor(System.String,System.String,TreeSharp.Composite)">
+            <summary>Constructor.</summary>
+            <remarks>Created 3/22/2011.</remarks>
+            <param name="location">The location of the hook.</param>
+            <param name="description">A meaningful description for this hook location.</param>
+            <param name="defaultComposite"></param>
+        </member>
+        <member name="T:ff14bot.Behavior.TreeHooks">
+            <summary>A simplistic class to facilitate hooking into logic trees.</summary>
+            <remarks>Created 3/22/2011.</remarks>
+        </member>
+        <member name="M:ff14bot.Behavior.TreeHooks.AddHook(System.String,TreeSharp.Composite)">
+            <summary>Inserts a hook at the specified location. This appends the behavior to the end of the list.</summary>
+            <remarks>Created 3/9/2011.</remarks>
+            <param name="location">The location.</param>
+            <param name="behavior">The behavior.</param>
+        </member>
+        <member name="M:ff14bot.Behavior.TreeHooks.InsertHook(System.String,System.Int32,TreeSharp.Composite)">
+            <summary>Inserts a hook at the specified location. This inserts the behavior to the specified index in the hook list.</summary>
+            <remarks>Created 3/9/2011.</remarks>
+            <param name="location">The location.</param>
+            <param name="index"> </param>
+            <param name="behavior">The behavior.</param>
+        </member>
+        <member name="M:ff14bot.Behavior.TreeHooks.RemoveHook(System.String,TreeSharp.Composite)">
+            <summary> Removes a hook at the specified location. </summary>
+            <remarks> Created 1/28/2012. </remarks>
+            <param name="location"> The location. </param>
+            <param name="behavior"> The behavior. </param>
+        </member>
+        <member name="M:ff14bot.Behavior.TreeHooks.ClearHook(System.String)">
+            <summary> Removes all hooks at the specified location. </summary>
+            <param name="location"> The location. </param>
+        </member>
+        <member name="M:ff14bot.Behavior.TreeHooks.ReplaceHook(System.String,TreeSharp.Composite)">
+            <summary>Replaces all hooks at the specified location, with one that you provide.</summary>
+            <remarks>Created 3/9/2011.</remarks>
+            <param name="location">The location.</param>
+            <param name="behavior">The behavior.</param>
+        </member>
+        <member name="M:ff14bot.Behavior.TreeHooks.GetHookComposite(System.String)">
+            <summary>Gets a hook composite. Returns an empty PrioritySelector if no children are valid. WILL NEVER RETURN NULL.</summary>
+            <remarks>Created 3/21/2011.</remarks>
+            <param name="location">The location.</param>
+            <returns>The hook composite.</returns>
+        </member>
+        <member name="E:ff14bot.Behavior.TreeHooks.OnHooksCleared">
+            <summary> Event queue for all listeners interested in OnHooksCleared events. </summary>
+        </member>
+        <member name="M:ff14bot.BotBases.FateBot.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+            <filterpriority>2</filterpriority>
+        </member>
+        <member name="M:ff14bot.BotBases.FateBot.SetFate(ff14bot.Managers.FateData)">
+            <summary>
+            Sets the currentfate to the provided fatedata, also sets the poi.
+            </summary>
+            <param name="fate"></param>
+        </member>
+        <member name="M:ff14bot.BotBases.FateBot.Start">
+            <summary> Starts this bot. Do any initialization here. </summary>
+        </member>
+        <member name="M:ff14bot.BotBases.FateBot.Stop">
+            <summary> Stops this bot. Do any pre-dispose cleanup here. </summary>
+        </member>
+        <member name="P:ff14bot.BotBases.FateBot.Name">
+            <summary> Gets the name of this bot. </summary>
+        </member>
+        <member name="P:ff14bot.BotBases.FateBot.Description">
+            <summary> Gets the description. </summary>
+            <value> The description. </value>
+        </member>
+        <member name="P:ff14bot.BotBases.FateBot.IsPrimaryType">
+            <summary> Gets a value indicating whether this bot is a primary bot. (Should be executed "at all times" excluding when a secondary bot has need to run. See: mixed-mode). </summary>
+        </member>
+        <member name="T:ff14bot.Helpers.JsonSettings">
+            <summary>
+            Main settings class for rebornbuddy. Inherit this if you want to make your own settings class
+            </summary>
+        </member>
+        <member name="P:ff14bot.Helpers.JsonSettings._revision">
+            <summary>
+            Override this field when you change the default values for a setting and use the UpdateDefaultValueAttribute attribute to updatethem
+            </summary>
+        </member>
+        <member name="T:ff14bot.CharacterManagement.AutoEquipper">
+            <summary>
+            Represents a class that implements operations to auto equip items for the current character.
+            </summary>
+            <remarks>
+            <para>An instance of this class is available through the <see cref="!:CharacterManager"/> class.</para>
+            </remarks>
+        </member>
+        <member name="P:ff14bot.CharacterManagement.AutoEquipper.TargetCheckTime">
+            <summary>
+            Gets or sets the target time, in milliseconds, of the AutoEquip item check. AutoEquip will run through all bag items over a period of this time.
+            </summary>
+            <remarks>
+            This is also, in most cases, the maximum time it will take for a new item to be considered for equipping.
+            </remarks>
+        </member>
+        <member name="P:ff14bot.CharacterManagement.AutoEquipper.DisregardTime">
+            <summary>
+            Gets or sets the "disregard" time, in milliseconds, of the AutoEquip item check. AutoEquip will automatically recheck an item after it has not been checked for this period of time.
+            </summary>
+        </member>
+        <member name="T:ff14bot.Helpers.LocalizedDictionary`2">
+            <summary>
+            LocalizedDictionary provides a dictionary that provides 3 different keys, a user-supplied type(often an int), and two strings
+            </summary>    
+            <typeparam name="K">Primary Key Type</typeparam>
+            <typeparam name="V">Value Type</typeparam>
+        </member>
+        <member name="M:ff14bot.Helpers.LocalizedDictionary`2.Add(`0,System.String,System.String,`1)">
+            <summary>
+            Adds the item to the dictionaries. If englishkey or Localizedkey are null or empty then the item is only the primarykey will be used
+            </summary>
+            <param name="primaryKey"></param>
+            <param name="englishKey"></param>
+            <param name="localizedKey"></param>
+            <param name="val"></param>
+        </member>
+        <member name="M:ff14bot.Managers.CraftingManager.SetRecipe(System.UInt32)">
+            <summary>
+            Attempts to select the provided recipe
+            </summary>
+            <param name="recipeId"></param>
+            <returns>true if we know the recipe and could set it, false otherwise</returns>
+        </member>
+        <member name="P:ff14bot.Managers.CraftingManager.CanCraft">
+            <summary>
+            Returns true if we can craft the currently selected recipe
+            </summary>
+        </member>
+        <member name="T:ff14bot.Managers.GameStatsManager">
+            <summary>A game stats.</summary>
+        </member>
+        <member name="M:ff14bot.Managers.GameStatsManager.Reset">
+            <summary>Resets this object.</summary>
+        </member>
+        <member name="M:ff14bot.Managers.GameStatsManager.StartMeasuring">
+            <summary>Starts a measuring.</summary>
+        </member>
+        <member name="M:ff14bot.Managers.GameStatsManager.StopMeasuring">
+            <summary>Stops a measuring.</summary>
+        </member>
+        <member name="M:ff14bot.Managers.GameStatsManager.Died">
+            <summary>Increase death count</summary>
+        </member>
+        <member name="E:ff14bot.Managers.GameStatsManager.OnInfoPanelUpdated">
+            <summary>Event queue for all listeners interested in OnInfoPanelUpdated events.</summary>
+        </member>
+        <member name="P:ff14bot.Managers.GameStatsManager.Deaths">
+            <summary>Gets the deaths.</summary>
+            <value>The deaths.</value>
+        </member>
+        <member name="P:ff14bot.Managers.GameStatsManager.XPPerHour">
+            <summary>Gets the XP per hour.</summary>
+            <value>The XP per hour.</value>
+        </member>
+        <member name="P:ff14bot.Managers.GameStatsManager.DeathsPerHour">
+            <summary>Gets the deaths per hour.</summary>
+            <value>The deaths per hour.</value>
+        </member>
+        <member name="P:ff14bot.Managers.GameStatsManager.TimeToLevel">
+            <summary>Gets the time to level.</summary>
+            <value>The time to level.</value>
+        </member>
+        <member name="P:ff14bot.Managers.GameStatsManager.TicksPerSecond">
+            <summary>Gets the ticks per second.</summary>
+            <value>The ticks per second.</value>
+        </member>
+        <member name="P:ff14bot.Managers.GameStatsManager.IsMeasuring">
+            <summary>Gets a value indicating whether this object is measuring.</summary>
+            <value>true if this object is measuring, false if not.</value>
+        </member>
+        <member name="T:ff14bot.Managers.GameStatsManager.InfoPanelUpdatedDelegate">
+            <summary>Information panel updated delegate.</summary>
+        </member>
+        <member name="T:ff14bot.Managers.GardenManager">
+            <summary>
+            Handles interacting with private gardens
+            </summary>
+        </member>
+        <member name="M:ff14bot.Managers.GardenManager.Fertilize(System.Int32)">
+            <summary>
+            Attempts to fertilize the active plant with the provided fertilizer
+            </summary>
+            <param name="itemId">Defaults to fishmeal</param>
+            <returns></returns>
+        </member>
+        <member name="M:ff14bot.Managers.GardenManager.GetCrop(ff14bot.Objects.EventObject)">
+            <summary>
+            Gets the item that the plant will yield
+            </summary>
+            <param name="plant"></param>
+            <returns>Returns an Item if the plant will yield something, null otherwise</returns>
+        </member>
+        <member name="P:ff14bot.Managers.GardenManager.Plants">
+            <summary>
+            Gets all the plants visible to the objectmanager
+            </summary>
+        </member>
+        <member name="P:ff14bot.Managers.GardenManager.ReadyToFertilize">
+            <summary>
+            Returns true if we have an active plant and the fertilize window is open
+            </summary>
+        </member>
+        <member name="M:ff14bot.Managers.GatheringManager.ShouldPause(ff14bot.Objects.SpellData)">
+             <summary>
+            Returns true if we cannot cast a gathering spell because we are mid swing or just after opening the window
+             </summary>
+             <param name="spell"></param>
+             <returns></returns>
+        </member>
+        <member name="F:ff14bot.Managers.LeveManager.NativeVector_NV2.First">
+            <summary></summary>
+        </member>
+        <member name="F:ff14bot.Managers.LeveManager.NativeVector_NV2.Last">
+            <summary></summary>
+        </member>
+        <member name="F:ff14bot.Managers.LeveManager.NativeVector_NV2.End">
+            <summary></summary>
+        </member>
+        <member name="F:ff14bot.Managers.LeveManager.NativeVector_NV2.Allocator">
+            <summary></summary>
+        </member>
+        <member name="M:ff14bot.Managers.LeveManager.NativeVector_NV2.ToString">
+            <summary>
+            Returns the fully qualified type name of this instance.
+            </summary>
+            <returns>
+            A <see cref="T:System.String"/> containing a fully qualified type name.
+            </returns>
+        </member>
+        <member name="M:ff14bot.Managers.QuestWork.IsTodoChecked(System.Int32,System.Int32)">
+            <summary>Checks if the quest step has proggressed past the provided step or that the objective at the given index has been completed. </summary>
+            <param name="step"></param>
+            <param name="objectiveIndex">Starts at 0</param>
+            <returns>true if objective is completed.</returns>
+        </member>
+        <member name="M:ff14bot.Managers.QuestWork.GetTodoArgs(System.Int32)">
+            <summary>
+            Gets the values used for tracking quest progress at the current step ie:
+            Obtain caches of ... 0/3
+            objectiveIndex starts at 0 and goes up from there
+            </summary>
+            <param name="objectiveIndex">Starts at 0</param>
+            <returns>A tuple, first value is currently completed and second value is how many are needed</returns>
+        </member>
+        <member name="M:ff14bot.Managers.QuestWork.GetTodoArgs(System.Int32,System.Int32)">
+            <summary>
+            Gets the values used for tracking quest progress at the given step ie:
+            Obtain caches of ... 0/3
+            objectiveIndex starts at 0 and goes up from there
+            </summary>
+            <param name="step">step to check</param>
+            <param name="objectiveIndex">Starts at 0</param>
+            <returns>A tuple, first value is currently completed and second value is how many are needed</returns>
+        </member>
+        <member name="M:ff14bot.Managers.QuestLogManager.QuestObjectives(System.Int32)">
+            <summary>
+            Returns the quest objective offsets for the quests current step
+            </summary>
+            <param name="questId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ff14bot.Managers.QuestLogManager.HasAtLeastOneQuest(System.Int32[])">
+            <summary>
+            Returns true if the user has atleast one of the quests in the list.
+            </summary>
+            <param name="list"></param>
+            <returns></returns>
+        </member>
+        <member name="P:ff14bot.Managers.BookData.AtmaWeaponType">
+            <summary>
+            Gladiator_Sword = 1,
+            Monk = 2,
+            Warrior = 3,
+            Dragoon = 4,
+            Bard = 5,
+            WhiteMage = 6,
+            BlackMage = 7,
+            Summoner = 8,
+            Scholar = 9,
+            Gladiator_Shield = 10,
+            Ninja  = 11
+            </summary>
+        </member>
+        <member name="T:NeoGaia.ConnectionHandler.Packet">
+            <summary>
+                A base packet class that handles serialization, and deserialization.
+                All custom packets must inherit from this class, and be adorned with the <see cref="T:ProtoBuf.ProtoContractAttribute"/>
+                attribute.
+            </summary>
+            <remarks>https://code.google.com/p/protobuf-net/wiki/GettingStarted</remarks>
+        </member>
+        <member name="M:NeoGaia.ConnectionHandler.NavigationPath.op_Inequality(NeoGaia.ConnectionHandler.NavigationPath,NeoGaia.ConnectionHandler.NavigationPath)">
+            <summary>
+            Compares two NavigationPaths for inequality.
+            </summary>
+            <param name="left">The left.</param>
+            <param name="right">The right.</param>
+            <returns></returns>
+        </member>
+        <member name="M:NeoGaia.ConnectionHandler.NavigationPath.op_Equality(NeoGaia.ConnectionHandler.NavigationPath,NeoGaia.ConnectionHandler.NavigationPath)">
+            <summary>
+            Compares two Navigation paths for equality.
+            </summary>
+            <param name="left">The left.</param>
+            <param name="right">The right.</param>
+            <returns></returns>
+        </member>
+        <member name="P:NeoGaia.ConnectionHandler.NavigationPath.PathLength">
+            <summary> Gets the length of the path. </summary>
+            <value> The length of the path. </value>
+        </member>
+        <member name="M:TronBonne.PacketOpcodeAttribute.Match(System.Object)">
+            <summary>
+                When overridden in a derived class, returns a value that indicates whether this instance equals a specified object.
+            </summary>
+            <returns>
+                true if this instance equals <paramref name="obj" />; otherwise, false.
+            </returns>
+            <param name="obj">An <see cref="T:System.Object" /> to compare with this instance of <see cref="T:System.Attribute" />. </param>
+        </member>
+        <member name="M:TronBonne.PacketOpcodeAttribute.Equals(TronBonne.PacketOpcodeAttribute)">
+            <summary>
+                Indicates whether the current object is equal to another object of the same type.
+            </summary>
+            <returns>
+                true if the current object is equal to the <paramref name="other" /> parameter; otherwise, false.
+            </returns>
+            <param name="other">An object to compare with this object.</param>
+        </member>
+        <member name="M:TronBonne.PacketOpcodeAttribute.Equals(System.Object)">
+            <summary>
+                Returns a value that indicates whether this instance is equal to a specified object.
+            </summary>
+            <returns>
+                true if <paramref name="obj" /> equals the type and value of this instance; otherwise, false.
+            </returns>
+            <param name="obj">An <see cref="T:System.Object" /> to compare with this instance or null. </param>
+        </member>
+        <member name="M:TronBonne.PacketOpcodeAttribute.GetHashCode">
+            <summary>
+                Returns the hash code for this instance.
+            </summary>
+            <returns>
+                A 32-bit signed integer hash code.
+            </returns>
+        </member>
+        <member name="T:TronBonne.IncludeProtoTypeAttribute">
+            <summary>
+            A simple attribute to instruct the packet system to include this class as a Protobuf serialized type.
+            However, it may not be used as a packet!
+            </summary>
+        </member>
+        <member name="T:TronBonne.NetworkClient">
+            <summary>
+                A client, providing connection functionality to a server instance.
+            </summary>
+        </member>
+        <member name="M:TronBonne.NetworkClient.Dispose">
+            <summary>
+                Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+        </member>
+        <member name="M:TronBonne.NetworkClient.Connect(System.Boolean)">
+            <summary>
+                Connects to the pre-defined remote host, asynchronously or synchronously.
+            </summary>
+            <param name="async">if set to <c>true</c> [asynchronous].</param>
+        </member>
+        <member name="P:TronBonne.NetworkClient.IsValid">
+            <summary>
+                Gets a value indicating whether this connection is (still) valid.
+            </summary>
+            <value>
+                <c>true</c> if [is valid]; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:TronBonne.SocketRelay.IsStale">
+            <summary>
+                Gets a value indicating whether a connection is stale and could be disposed of. Connections are considered stale if
+                they haven't sent any traffic for the past three minutes.
+            </summary>
+            <value>
+                <c>true</c> if [is stale]; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:TronBonne.SocketRelay.IsValid">
+            <summary>
+                Gets a value indicating whether this connection is valid - i.e. its socket is non-null and actually connected.
+            </summary>
+            <value>
+                <c>true</c> if [is valid]; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="M:TronBonne.ByteArrayExtensions.Dump(System.Byte[],System.Int32)">
+            <summary>
+                Dumps a byte array in a "hex editor" fashin.
+            </summary>
+            <param name="array"></param>
+            <param name="indent"></param>
+            <returns></returns>
+        </member>
+        <member name="T:TronBonne.NetworkUtilities">
+            <summary>
+                Some useful utilities.
+            </summary>
+        </member>
+        <member name="T:TronBonne.Packet">
+            <summary>
+                A base packet class that handles serialization, and deserialization.
+                All custom packets must inherit from this class, and be adorned with the <see cref="T:ProtoBuf.ProtoContractAttribute"/>
+                attribute.
+            </summary>
+            <remarks>https://code.google.com/p/protobuf-net/wiki/GettingStarted</remarks>
+        </member>
+        <member name="M:TronBonne.Packet.ClearTimestamp">
+            <summary>
+            Clears the timestamp for this packet, so it may be used as a response packet, with the fields populated from the sender.
+            </summary>
+        </member>
+        <member name="M:TronBonne.Packet.GetTimestamp">
+            <summary>
+            Gets the Timestamp field of this packet, as a usable DateTime object.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TronBonne.Packet.As``1">
+            <summary>
+            
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:TronBonne.Packet.ToString">
+            <summary>
+                Returns a string that represents the current object.
+            </summary>
+            <returns>
+                A string that represents the current object.
+            </returns>
+        </member>
+        <member name="P:TronBonne.Packet.Opcode">
+            <summary>
+                The opcode of this packet.
+            </summary>
+        </member>
+        <member name="M:TronBonne.ClientConnection.Dispose">
+            <summary>
+                Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:TronBonne.ClientConnection.Create(System.Net.Sockets.Socket)">
+            <summary>
+                Creates a new client connection object from the specified socket.
+            </summary>
+            <param name="socket">The socket.</param>
+            <returns></returns>
+        </member>
+        <member name="P:TronBonne.ClientConnection.HasConnectedRecently">
+            <summary>
+                Gets a value indicating whether a ClientConnection has connected within the last minute. This is used to protect
+                clients that have connected recently against being instantly disconnected when a stale connection check batch runs.
+            </summary>
+            <value>
+                <c>true</c> if [has connected recently]; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="T:TronBonne.NetworkServer">
+            <summary>
+                Core class for the server.
+            </summary>
+        </member>
+        <member name="M:TronBonne.NetworkServer.Start">
+            <summary>
+                Starts this server instance.
+            </summary>
+        </member>
+        <member name="M:TronBonne.NetworkServer.EnumerateConnections">
+            <summary>
+                Enumerates the connections in a thread-safe way, obtaining a read lock on the collection in the process.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TronBonne.NetworkServer.Dispose">
+            <summary>
+                Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:ff14bot.Interfaces.INavigationProvider.MoveToRandomSpotWithin(Clio.Utilities.Vector3,System.Single,System.String)">
+            <summary>
+            Move to a random point within radius of location
+            </summary>
+            <param name="location"></param>
+            <param name="radius"></param>
+            <param name="destination"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ff14bot.Behavior.BrainBehavior.CreateBrain">
+            <summary> Creates the brain logic used by all bots etc. </summary>
+            <returns></returns>
+            <remarks>Created 2012-06-25</remarks>
+        </member>
+        <member name="M:ff14bot.Behavior.BrainBehavior.CheckAetheryteIds">
+            <summary>
+            Returns the aetheryte id we should teleport to
+            </summary>
+            <param name="ids"></param>
+            <returns></returns>
+        </member>
+        <member name="P:ff14bot.Behavior.BrainBehavior.CombatLogic">
+            <summary>
+            Composite that calls Heal,CombatBuff, and then Combat behaviors in that order
+            </summary>
+        </member>
+        <member name="M:ff14bot.Behavior.CommonBehaviors.MoveTo(ff14bot.Behavior.ValueRetriever{Clio.Utilities.Vector3},System.String,TreeSharp.Composite,ff14bot.Behavior.ValueRetriever{System.TimeSpan})">
+            <summary>
+            Creates a behavior to move the current character to the specified location. This will always return <see cref="F:TreeSharp.RunStatus.Success"/>.
+            </summary>
+            <param name="location">The location.</param>
+            <param name="destination">The destination name.</param>
+            <param name="onFailed">A composite to run if path generation fails.</param>
+            <param name="timeout">The timeout.</param>
+            <returns></returns>
+            <remarks>Created 3/11/2012.</remarks>
+        </member>
+        <member name="M:ff14bot.Behavior.CommonBehaviors.MoveAndStop(ff14bot.Behavior.ValueRetriever{Clio.Utilities.Vector3},System.Single,System.Boolean,System.String,TreeSharp.RunStatus)">
+            <summary> Creates a behavior to move the current character to the specified location, and stop when within the specified range. </summary>
+            <remarks> Created 3/11/2012. </remarks>
+            <param name="location"> The location. </param>
+            <param name="range"> The range. </param>
+            <param name="stopInRange">Whether to stop when within the specified range.</param>
+            <param name="destinationName"> </param>
+            <param name="stopStatus">If you are using this within a Sequence, you may want to change this to Success. </param>
+            <returns> . </returns>
+        </member>
+        <member name="M:ff14bot.Behavior.CommonBehaviors.MoveStop">
+            <summary> Creates a behavior to force all movement to stop for the current character. This will always return <see cref="F:TreeSharp.RunStatus.Success"/>. </summary>
+            <remarks> Created 3/11/2012. </remarks>
+            <returns> . </returns>
+        </member>
+        <member name="M:ff14bot.Behavior.CommonBehaviors.CreateSprintBehavior">
+            <summary>Creates mount behavior.</summary>
+            <remarks>superreeen, 05.07.2013.</remarks>
+            <returns>The new mount behavior.</returns>
+        </member>
+        <member name="M:ff14bot.Behavior.CommonBehaviors.CreateMountBehavior">
+            <summary>Creates mount behavior.</summary>
+            <remarks>superreeen, 05.07.2013.</remarks>
+            <returns>The new mount behavior.</returns>
+        </member>
+        <member name="M:ff14bot.Behavior.CommonBehaviors.CreateTeleportBehavior(ff14bot.Behavior.ValueRetriever{System.UInt32},ff14bot.Behavior.ValueRetriever{System.UInt32})">
+            <summary>Creates teleport behavior.</summary>
+        </member>
+        <member name="M:ff14bot.Behavior.CommonBehaviors.MoveToLos(ff14bot.Behavior.ValueRetriever{ff14bot.Objects.GameObject},System.Boolean)">
+            <summary> Creates a behavior to move the current character to line of sight with the specified character, and optionally stop when within LOS of the character.</summary>
+            <remarks> Created 3/11/2012. </remarks>
+            <param name="unit"> The unit. </param>
+            <param name="stopInLos"> (optional) the stop in range. </param>
+            <returns> . </returns>
+        </member>
+        <member name="T:ff14bot.Behavior.ThrottlePasses">
+            <summary>
+              Implements a 'throttle' composite. This composite limits the number of times the child 
+              will be run within a given time span.  Returns cappedStatus if limit reached, otherwise
+              Returns result of child
+            </summary>
+            <remarks>
+              Created 10/28/2012.
+            </remarks>
+        </member>
+        <member name="M:ff14bot.Behavior.ThrottlePasses.#ctor(System.Int32,System.TimeSpan,TreeSharp.RunStatus,TreeSharp.Composite)">
+            <summary>
+              Implements a 'throttle' composite. This composite limits the number of times the child 
+              will be run within a given time span.  Returns cappedStatus for attempts after limit reached, 
+              otherwise returns result of child
+            </summary>
+            <param name = "limit">max number of occurrences</param>
+            <param name = "timeFrame">time span for occurrences</param>
+            <param name="limitStatus">RunStatus to return when limit reached</param>
+            <param name = "child">composite children to tick (run)</param>
+        </member>
+        <member name="M:ff14bot.Behavior.ThrottlePasses.#ctor(System.TimeSpan,TreeSharp.Composite)">
+            <summary>
+              Implements a 'throttle' composite. This composite limits the number of times the child 
+              to running once within a given time span.  Returns Failure if attempted to run after
+              limit reached in timeframe, otherwise returns result of child
+            </summary>
+            <param name = "timeFrame">wait TimeSpan after child success before another attempt</param>
+            <param name = "child">composite children to tick (run)</param>
+        </member>
+        <member name="M:ff14bot.Behavior.ThrottlePasses.#ctor(System.Int32,System.Int32,TreeSharp.Composite)">
+            <summary>
+              Implements a 'throttle' composite. This composite limits the number of times the child 
+              will be run within a given time span.  Returns Failure for attempts after limit reached, 
+              otherwise returns result of child
+            </summary>
+            <param name = "Limit">max number of occurrences</param>
+            <param name = "timeFrame">time span for occurrences in seconds</param>
+            <param name = "child">composite children to tick (run)</param>
+        </member>
+        <member name="M:ff14bot.Behavior.ThrottlePasses.#ctor(System.Int32,TreeSharp.Composite)">
+            <summary>
+              Implements a 'throttle' composite. This composite limits the number of times the child 
+              will be run within a given time span.  Returns Failure if limit reached, otherwise
+              Returns result of child
+            </summary>
+            <param name = "timeFrame">time span for occurrences in seconds</param>
+            <param name = "child">composite children to tick (run)</param>
+        </member>
+        <member name="P:ff14bot.Behavior.ThrottlePasses.TimeFrame">
+            <summary>
+            time span that Limit child Successes can occur
+            </summary>
+        </member>
+        <member name="P:ff14bot.Behavior.ThrottlePasses.Limit">
+            <summary>
+            maximum number of child Successes that can occur within TimeFrame
+            </summary>
+        </member>
+        <member name="T:ff14bot.Behavior.Throttle">
+            <summary>
+              Implements a 'throttle' composite. This composite limits the number of times the child 
+              returns RunStatus.Success within a given time span.  Returns cappedStatus if limit reached, 
+              otherwise returns result of child
+            </summary>
+            <remarks>
+              Created 10/28/2012.
+            </remarks>
+        </member>
+        <member name="M:ff14bot.Behavior.Throttle.#ctor(System.Int32,System.TimeSpan,TreeSharp.RunStatus,TreeSharp.Composite)">
+            <summary>
+              Creates a 'throttle' composite. This composite limits the number of times the child 
+              returns RunStatus.Success within a given time span.  Returns cappedStatus if limit reached, 
+              otherwise returns result of child
+            </summary>
+            <param name = "limit">max number of occurrences</param>
+            <param name = "timeFrame">time span for occurrences</param>
+            <param name="limitStatus">RunStatus to return when limit reached</param>
+            <param name = "child">composite children to tick (run)</param>
+        </member>
+        <member name="M:ff14bot.Behavior.Throttle.#ctor(System.TimeSpan,TreeSharp.Composite)">
+            <summary>
+              Creates a 'throttle' composite. This composite limits the number of times the child 
+              returns RunStatus.Success within a given time span.  Returns Failure if limit reached, 
+              otherwise returns result of child
+            </summary>
+            <param name = "timeFrame">time span for occurrences</param>
+            <param name = "child">composite children to tick (run)</param>
+        </member>
+        <member name="M:ff14bot.Behavior.Throttle.#ctor(System.Int32,System.TimeSpan,TreeSharp.Composite)">
+            <summary>
+              Creates a 'throttle' composite. This composite limits the number of times the child 
+              returns RunStatus.Success within a given time span.  Returns Failure if limit reached, 
+              otherwise returns result of child
+            </summary>
+            <param name = "timeFrame">time span for occurrences</param>
+            <param name = "child">composite children to tick (run)</param>
+        </member>
+        <member name="M:ff14bot.Behavior.Throttle.#ctor(System.Int32,System.Int32,TreeSharp.Composite)">
+            <summary>
+              Creates a 'throttle' composite. This composite limits the number of times the child 
+              returns RunStatus.Success within a given time span.  Returns Failure if limit reached, 
+              otherwise returns result of child
+            </summary>
+            <param name = "Limit">max number of occurrences</param>
+            <param name = "timeFrame">time span for occurrences in seconds</param>
+            <param name = "child">composite children to tick (run)</param>
+        </member>
+        <member name="M:ff14bot.Behavior.Throttle.#ctor(System.Int32,TreeSharp.Composite)">
+            <summary>
+              Creates a 'throttle' composite. This composite limits the number of times the child 
+              returns RunStatus.Success within a given time span.  Returns Failure if limit reached, 
+              otherwise returns result of child
+            </summary>
+            <param name = "timeFrame">wait in seconds after child success before another attempt</param>
+            <param name = "child">composite children to tick (run)</param>
+        </member>
+        <member name="M:ff14bot.Behavior.Throttle.#ctor(TreeSharp.Composite)">
+            <summary>
+              Creates a 'throttle' composite. This composite limits the number of times the child 
+              returns RunStatus.Success to once per 250ms.  Returns Failure if limit reached, 
+              otherwise returns result of child
+            </summary>
+            <param name = "timeFrame">time span for occurrences in seconds</param>
+            <param name = "child">composite children to tick (run)</param>
+        </member>
+        <member name="P:ff14bot.Behavior.Throttle.TimeFrame">
+            <summary>
+            time span that Limit child Successes can occur
+            </summary>
+        </member>
+        <member name="P:ff14bot.Behavior.Throttle.Limit">
+            <summary>
+            maximum number of child Successes that can occur within TimeFrame
+            </summary>
+        </member>
+        <member name="M:ff14bot.BotBases.OrderBot.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+            <filterpriority>2</filterpriority>
+        </member>
+        <member name="M:ff14bot.BotBases.OrderBot.Start">
+            <summary> Starts this bot. Do any initialization here. </summary>
+        </member>
+        <member name="M:ff14bot.BotBases.OrderBot.Stop">
+            <summary> Stops this bot. Do any pre-dispose cleanup here. </summary>
+        </member>
+        <member name="P:ff14bot.BotBases.OrderBot.Name">
+            <summary> Gets the name of this bot. </summary>
+        </member>
+        <member name="P:ff14bot.BotBases.OrderBot.Description">
+            <summary> Gets the description. </summary>
+            <value> The description. </value>
+        </member>
+        <member name="P:ff14bot.BotBases.OrderBot.IsPrimaryType">
+            <summary> Gets a value indicating whether this bot is a primary bot. (Should be executed "at all times" excluding when a secondary bot has need to run. See: mixed-mode). </summary>
+        </member>
+        <member name="P:ff14bot.BotBases.OrderBot.ConfigWindow">
+            <summary> Gets the configuration window for this bot. </summary>
+        </member>
+        <member name="T:ff14bot.Helpers.Poi">
+            <summary> Poi. </summary>
+            <remarks> Nesox, 2013-07-04. </remarks>
+        </member>
+        <member name="M:ff14bot.Helpers.Poi.#cctor">
+            <summary> Static constructor. </summary>
+            <remarks> Nesox, 2013-07-04. </remarks>
+        </member>
+        <member name="M:ff14bot.Helpers.Poi.#ctor(ff14bot.Helpers.PoiType)">
+            <summary> Constructor. </summary>
+            <remarks> Nesox, 2013-07-04. </remarks>
+            <param name="type"> The type. </param>
+        </member>
+        <member name="M:ff14bot.Helpers.Poi.#ctor(ff14bot.Objects.GameObject,ff14bot.Helpers.PoiType)">
+            <summary> Constructor. </summary>
+            <remarks> Nesox, 2013-07-04. </remarks>
+            <param name="obj">  The object. </param>
+            <param name="type"> The type. </param>
+        </member>
+        <member name="M:ff14bot.Helpers.Poi.#ctor(ff14bot.Managers.FateData,ff14bot.Helpers.PoiType)">
+            <summary> Constructor. </summary>
+            <remarks> Nesox, 2013-07-04. </remarks>
+            <param name="obj">  The object. </param>
+            <param name="type"> The type. </param>
+        </member>
+        <member name="M:ff14bot.Helpers.Poi.#ctor(Clio.Utilities.Vector3,ff14bot.Helpers.PoiType)">
+            <summary> Constructor. </summary>
+            <remarks> Nesox, 2013-07-04. </remarks>
+            <param name="location"> The location. </param>
+            <param name="type">     The type. </param>
+        </member>
+        <member name="M:ff14bot.Helpers.Poi.#ctor(ff14bot.Navigation.HotSpot,ff14bot.Helpers.PoiType)">
+            <summary> Constructor. </summary>
+            <remarks> Nesox, 2013-07-04. </remarks>
+            <param name="location"> The location. </param>
+            <param name="type">     The type. </param>
+        </member>
+        <member name="M:ff14bot.Helpers.Poi.Clear(System.String)">
+            <summary>
+            Clears the current poi.
+            </summary>
+            <param name="reason">The reason.</param>
+            <remarks>Created by Nesox 2012-02-05</remarks>
+        </member>
+        <member name="M:ff14bot.Helpers.Poi.ToString">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents this instance.
+            </summary>
+            <returns>
+            A <see cref="T:System.String"/> that represents this instance.
+            </returns>
+            <remarks>Created by Nesox 2012-02-05</remarks>
+        </member>
+        <member name="P:ff14bot.Helpers.Poi.Current">
+            <summary> Gets or sets the current poi. </summary>
+            <value> The current. </value>
+        </member>
+        <member name="P:ff14bot.Helpers.Poi.Unit">
+            <summary> Gets or sets the entity. </summary>
+            <value> The entity. </value>
+        </member>
+        <member name="P:ff14bot.Helpers.Poi.Fate">
+            <summary> Gets or sets the entity. </summary>
+            <value> The entity. </value>
+        </member>
+        <member name="P:ff14bot.Helpers.Poi.Type">
+            <summary> Gets or sets the type. </summary>
+            <value> The type. </value>
+        </member>
+        <member name="P:ff14bot.Helpers.Poi.Location">
+            <summary> Gets or sets the location. </summary>
+            <value> The location. </value>
+        </member>
+        <member name="P:ff14bot.Helpers.Poi.Name">
+            <summary> Gets or sets the name. </summary>
+            <value> The name. </value>
+        </member>
+        <member name="T:SQLite.SQLiteConnection">
+            <summary>
+            Represents an open connection to a SQLite database.
+            </summary>
+        </member>
+        <member name="M:SQLite.SQLiteConnection.#ctor(System.String,System.Boolean)">
+            <summary>
+            Constructs a new SQLiteConnection and opens a SQLite database specified by databasePath.
+            </summary>
+            <param name="databasePath">
+            Specifies the path to the database file.
+            </param>
+            <param name="storeDateTimeAsTicks">
+            Specifies whether to store DateTime properties as ticks (true) or strings (false). You
+            absolutely do want to store them as Ticks in all new projects. The default of false is
+            only here for backwards compatibility. There is a *significant* speed advantage, with no
+            down sides, when setting storeDateTimeAsTicks = true.
+            </param>
+        </member>
+        <member name="M:SQLite.SQLiteConnection.#ctor(System.String,SQLite.SQLiteOpenFlags,System.Boolean)">
+            <summary>
+            Constructs a new SQLiteConnection and opens a SQLite database specified by databasePath.
+            </summary>
+            <param name="databasePath">
+            Specifies the path to the database file.
+            </param>
+            <param name="storeDateTimeAsTicks">
+            Specifies whether to store DateTime properties as ticks (true) or strings (false). You
+            absolutely do want to store them as Ticks in all new projects. The default of false is
+            only here for backwards compatibility. There is a *significant* speed advantage, with no
+            down sides, when setting storeDateTimeAsTicks = true.
+            </param>
+        </member>
+        <member name="F:SQLite.SQLiteConnection._preserveDuringLinkMagic">
+            <summary>
+            Used to list some code that we want the MonoTouch linker
+            to see, but that we never want to actually execute.
+            </summary>
+        </member>
+        <member name="M:SQLite.SQLiteConnection.GetMapping(System.Type,SQLite.CreateFlags)">
+            <summary>
+            Retrieves the mapping that is automatically generated for the given type.
+            </summary>
+            <param name="type">
+            The type whose mapping to the database is returned.
+            </param>         
+            <param name="createFlags">
+            Optional flags allowing implicit PK and indexes based on naming conventions
+            </param>     
+            <returns>
+            The mapping represents the schema of the columns of the database and contains 
+            methods to set and get properties of objects.
+            </returns>
+        </member>
+        <member name="M:SQLite.SQLiteConnection.GetMapping``1">
+            <summary>
+            Retrieves the mapping that is automatically generated for the given type.
+            </summary>
+            <returns>
+            The mapping represents the schema of the columns of the database and contains 
+            methods to set and get properties of objects.
+            </returns>
+        </member>
+        <member name="M:SQLite.SQLiteConnection.DropTable``1">
+            <summary>
+            Executes a "drop table" on the database.  This is non-recoverable.
+            </summary>
+        </member>
+        <member name="M:SQLite.SQLiteConnection.CreateTable``1(SQLite.CreateFlags)">
+            <summary>
+            Executes a "create table if not exists" on the database. It also
+            creates any specified indexes on the columns of the table. It uses
+            a schema automatically generated from the specified type. You can
+            later access this schema by calling GetMapping.
+            </summary>
+            <returns>
+            The number of entries added to the database schema.
+            </returns>
+        </member>
+        <member name="M:SQLite.SQLiteConnection.CreateTable(System.Type,SQLite.CreateFlags)">
+            <summary>
+            Executes a "create table if not exists" on the database. It also
+            creates any specified indexes on the columns of the table. It uses
+            a schema automatically generated from the specified type. You can
+            later access this schema by calling GetMapping.
+            </summary>
+            <param name="ty">Type to reflect to a database table.</param>
+            <param name="createFlags">Optional flags allowing implicit PK and indexes based on naming conventions.</param>  
+            <returns>
+            The number of entries added to the database schema.
+            </returns>
+        </member>
+        <member name="M:SQLite.SQLiteConnection.CreateIndex(System.String,System.String,System.String[],System.Boolean)">
+            <summary>
+            Creates an index for the specified table and columns.
+            </summary>
+            <param name="indexName">Name of the index to create</param>
+            <param name="tableName">Name of the database table</param>
+            <param name="columnNames">An array of column names to index</param>
+            <param name="unique">Whether the index should be unique</param>
+        </member>
+        <member name="M:SQLite.SQLiteConnection.CreateIndex(System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            Creates an index for the specified table and column.
+            </summary>
+            <param name="indexName">Name of the index to create</param>
+            <param name="tableName">Name of the database table</param>
+            <param name="columnName">Name of the column to index</param>
+            <param name="unique">Whether the index should be unique</param>
+        </member>
+        <member name="M:SQLite.SQLiteConnection.CreateIndex(System.String,System.String,System.Boolean)">
+            <summary>
+            Creates an index for the specified table and column.
+            </summary>
+            <param name="tableName">Name of the database table</param>
+            <param name="columnName">Name of the column to index</param>
+            <param name="unique">Whether the index should be unique</param>
+        </member>
+        <member name="M:SQLite.SQLiteConnection.CreateIndex(System.String,System.String[],System.Boolean)">
+            <summary>
+            Creates an index for the specified table and columns.
+            </summary>
+            <param name="tableName">Name of the database table</param>
+            <param name="columnNames">An array of column names to index</param>
+            <param name="unique">Whether the index should be unique</param>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:SQLite.SQLiteConnection.CreateIndex``1(System.Linq.Expressions.Expression{System.Func{``0,System.Object}},System.Boolean)" -->
+        <member name="M:SQLite.SQLiteConnection.NewCommand">
+            <summary>
+            Creates a new SQLiteCommand. Can be overridden to provide a sub-class.
+            </summary>
+            <seealso cref="M:SQLite.SQLiteCommand.OnInstanceCreated(System.Object)"/>
+        </member>
+        <member name="M:SQLite.SQLiteConnection.CreateCommand(System.String,System.Object[])">
+            <summary>
+            Creates a new SQLiteCommand given the command text with arguments. Place a '?'
+            in the command text for each of the arguments.
+            </summary>
+            <param name="cmdText">
+            The fully escaped SQL.
+            </param>
+            <param name="args">
+            Arguments to substitute for the occurences of '?' in the command text.
+            </param>
+            <returns>
+            A <see cref="T:SQLite.SQLiteCommand"/>
+            </returns>
+        </member>
+        <member name="M:SQLite.SQLiteConnection.Execute(System.String,System.Object[])">
+            <summary>
+            Creates a SQLiteCommand given the command text (SQL) with arguments. Place a '?'
+            in the command text for each of the arguments and then executes that command.
+            Use this method instead of Query when you don't expect rows back. Such cases include
+            INSERTs, UPDATEs, and DELETEs.
+            You can set the Trace or TimeExecution properties of the connection
+            to profile execution.
+            </summary>
+            <param name="query">
+            The fully escaped SQL.
+            </param>
+            <param name="args">
+            Arguments to substitute for the occurences of '?' in the query.
+            </param>
+            <returns>
+            The number of rows modified in the database as a result of this execution.
+            </returns>
+        </member>
+        <member name="M:SQLite.SQLiteConnection.Query``1(System.String,System.Object[])">
+            <summary>
+            Creates a SQLiteCommand given the command text (SQL) with arguments. Place a '?'
+            in the command text for each of the arguments and then executes that command.
+            It returns each row of the result using the mapping automatically generated for
+            the given type.
+            </summary>
+            <param name="query">
+            The fully escaped SQL.
+            </param>
+            <param name="args">
+            Arguments to substitute for the occurences of '?' in the query.
+            </param>
+            <returns>
+            An enumerable with one result for each row returned by the query.
+            </returns>
+        </member>
+        <member name="M:SQLite.SQLiteConnection.DeferredQuery``1(System.String,System.Object[])">
+            <summary>
+            Creates a SQLiteCommand given the command text (SQL) with arguments. Place a '?'
+            in the command text for each of the arguments and then executes that command.
+            It returns each row of the result using the mapping automatically generated for
+            the given type.
+            </summary>
+            <param name="query">
+            The fully escaped SQL.
+            </param>
+            <param name="args">
+            Arguments to substitute for the occurences of '?' in the query.
+            </param>
+            <returns>
+            An enumerable with one result for each row returned by the query.
+            The enumerator will call sqlite3_step on each call to MoveNext, so the database
+            connection must remain open for the lifetime of the enumerator.
+            </returns>
+        </member>
+        <member name="M:SQLite.SQLiteConnection.Query(SQLite.TableMapping,System.String,System.Object[])">
+            <summary>
+            Creates a SQLiteCommand given the command text (SQL) with arguments. Place a '?'
+            in the command text for each of the arguments and then executes that command.
+            It returns each row of the result using the specified mapping. This function is
+            only used by libraries in order to query the database via introspection. It is
+            normally not used.
+            </summary>
+            <param name="map">
+            A <see cref="T:SQLite.TableMapping"/> to use to convert the resulting rows
+            into objects.
+            </param>
+            <param name="query">
+            The fully escaped SQL.
+            </param>
+            <param name="args">
+            Arguments to substitute for the occurences of '?' in the query.
+            </param>
+            <returns>
+            An enumerable with one result for each row returned by the query.
+            </returns>
+        </member>
+        <member name="M:SQLite.SQLiteConnection.DeferredQuery(SQLite.TableMapping,System.String,System.Object[])">
+            <summary>
+            Creates a SQLiteCommand given the command text (SQL) with arguments. Place a '?'
+            in the command text for each of the arguments and then executes that command.
+            It returns each row of the result using the specified mapping. This function is
+            only used by libraries in order to query the database via introspection. It is
+            normally not used.
+            </summary>
+            <param name="map">
+            A <see cref="T:SQLite.TableMapping"/> to use to convert the resulting rows
+            into objects.
+            </param>
+            <param name="query">
+            The fully escaped SQL.
+            </param>
+            <param name="args">
+            Arguments to substitute for the occurences of '?' in the query.
+            </param>
+            <returns>
+            An enumerable with one result for each row returned by the query.
+            The enumerator will call sqlite3_step on each call to MoveNext, so the database
+            connection must remain open for the lifetime of the enumerator.
+            </returns>
+        </member>
+        <member name="M:SQLite.SQLiteConnection.Table``1">
+            <summary>
+            Returns a queryable interface to the table represented by the given type.
+            </summary>
+            <returns>
+            A queryable object that is able to translate Where, OrderBy, and Take
+            queries into native SQL.
+            </returns>
+        </member>
+        <member name="M:SQLite.SQLiteConnection.Get``1(System.Object)">
+            <summary>
+            Attempts to retrieve an object with the given primary key from the table
+            associated with the specified type. Use of this method requires that
+            the given type have a designated PrimaryKey (using the PrimaryKeyAttribute).
+            </summary>
+            <param name="pk">
+            The primary key.
+            </param>
+            <returns>
+            The object with the given primary key. Throws a not found exception
+            if the object is not found.
+            </returns>
+        </member>
+        <member name="M:SQLite.SQLiteConnection.Get``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            Attempts to retrieve the first object that matches the predicate from the table
+            associated with the specified type. 
+            </summary>
+            <param name="predicate">
+            A predicate for which object to find.
+            </param>
+            <returns>
+            The object that matches the given predicate. Throws a not found exception
+            if the object is not found.
+            </returns>
+        </member>
+        <member name="M:SQLite.SQLiteConnection.Find``1(System.Object)">
+            <summary>
+            Attempts to retrieve an object with the given primary key from the table
+            associated with the specified type. Use of this method requires that
+            the given type have a designated PrimaryKey (using the PrimaryKeyAttribute).
+            </summary>
+            <param name="pk">
+            The primary key.
+            </param>
+            <returns>
+            The object with the given primary key or null
+            if the object is not found.
+            </returns>
+        </member>
+        <member name="M:SQLite.SQLiteConnection.Find(System.Object,SQLite.TableMapping)">
+            <summary>
+            Attempts to retrieve an object with the given primary key from the table
+            associated with the specified type. Use of this method requires that
+            the given type have a designated PrimaryKey (using the PrimaryKeyAttribute).
+            </summary>
+            <param name="pk">
+            The primary key.
+            </param>
+            <param name="map">
+            The TableMapping used to identify the object type.
+            </param>
+            <returns>
+            The object with the given primary key or null
+            if the object is not found.
+            </returns>
+        </member>
+        <member name="M:SQLite.SQLiteConnection.Find``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            Attempts to retrieve the first object that matches the predicate from the table
+            associated with the specified type. 
+            </summary>
+            <param name="predicate">
+            A predicate for which object to find.
+            </param>
+            <returns>
+            The object that matches the given predicate or null
+            if the object is not found.
+            </returns>
+        </member>
+        <member name="M:SQLite.SQLiteConnection.BeginTransaction">
+            <summary>
+            Begins a new transaction. Call <see cref="M:SQLite.SQLiteConnection.Commit"/> to end the transaction.
+            </summary>
+            <example cref="T:System.InvalidOperationException">Throws if a transaction has already begun.</example>
+        </member>
+        <member name="M:SQLite.SQLiteConnection.SaveTransactionPoint">
+            <summary>
+            Creates a savepoint in the database at the current point in the transaction timeline.
+            Begins a new transaction if one is not in progress.
+            
+            Call <see cref="M:SQLite.SQLiteConnection.RollbackTo(System.String)"/> to undo transactions since the returned savepoint.
+            Call <see cref="M:SQLite.SQLiteConnection.Release(System.String)"/> to commit transactions after the savepoint returned here.
+            Call <see cref="M:SQLite.SQLiteConnection.Commit"/> to end the transaction, committing all changes.
+            </summary>
+            <returns>A string naming the savepoint.</returns>
+        </member>
+        <member name="M:SQLite.SQLiteConnection.Rollback">
+            <summary>
+            Rolls back the transaction that was begun by <see cref="M:SQLite.SQLiteConnection.BeginTransaction"/> or <see cref="M:SQLite.SQLiteConnection.SaveTransactionPoint"/>.
+            </summary>
+        </member>
+        <member name="M:SQLite.SQLiteConnection.RollbackTo(System.String)">
+            <summary>
+            Rolls back the savepoint created by <see cref="M:SQLite.SQLiteConnection.BeginTransaction"/> or SaveTransactionPoint.
+            </summary>
+            <param name="savepoint">The name of the savepoint to roll back to, as returned by <see cref="M:SQLite.SQLiteConnection.SaveTransactionPoint"/>.  If savepoint is null or empty, this method is equivalent to a call to <see cref="M:SQLite.SQLiteConnection.Rollback"/></param>
+        </member>
+        <member name="M:SQLite.SQLiteConnection.RollbackTo(System.String,System.Boolean)">
+            <summary>
+            Rolls back the transaction that was begun by <see cref="M:SQLite.SQLiteConnection.BeginTransaction"/>.
+            </summary>
+            <param name="noThrow">true to avoid throwing exceptions, false otherwise</param>
+        </member>
+        <member name="M:SQLite.SQLiteConnection.Release(System.String)">
+            <summary>
+            Releases a savepoint returned from <see cref="M:SQLite.SQLiteConnection.SaveTransactionPoint"/>.  Releasing a savepoint 
+               makes changes since that savepoint permanent if the savepoint began the transaction,
+               or otherwise the changes are permanent pending a call to <see cref="M:SQLite.SQLiteConnection.Commit"/>.
+            
+            The RELEASE command is like a COMMIT for a SAVEPOINT.
+            </summary>
+            <param name="savepoint">The name of the savepoint to release.  The string should be the result of a call to <see cref="M:SQLite.SQLiteConnection.SaveTransactionPoint"/></param>
+        </member>
+        <member name="M:SQLite.SQLiteConnection.Commit">
+            <summary>
+            Commits the transaction that was begun by <see cref="M:SQLite.SQLiteConnection.BeginTransaction"/>.
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:SQLite.SQLiteConnection.RunInTransaction(System.Action)" -->
+        <member name="M:SQLite.SQLiteConnection.InsertAll(System.Collections.IEnumerable)">
+            <summary>
+            Inserts all specified objects.
+            </summary>
+            <param name="objects">
+            An <see cref="T:System.Collections.IEnumerable"/> of the objects to insert.
+            </param>
+            <returns>
+            The number of rows added to the table.
+            </returns>
+        </member>
+        <member name="M:SQLite.SQLiteConnection.InsertAll(System.Collections.IEnumerable,System.String)">
+            <summary>
+            Inserts all specified objects.
+            </summary>
+            <param name="objects">
+            An <see cref="T:System.Collections.IEnumerable"/> of the objects to insert.
+            </param>
+            <param name="extra">
+            Literal SQL code that gets placed into the command. INSERT {extra} INTO ...
+            </param>
+            <returns>
+            The number of rows added to the table.
+            </returns>
+        </member>
+        <member name="M:SQLite.SQLiteConnection.InsertAll(System.Collections.IEnumerable,System.Type)">
+            <summary>
+            Inserts all specified objects.
+            </summary>
+            <param name="objects">
+            An <see cref="T:System.Collections.IEnumerable"/> of the objects to insert.
+            </param>
+            <param name="objType">
+            The type of object to insert.
+            </param>
+            <returns>
+            The number of rows added to the table.
+            </returns>
+        </member>
+        <member name="M:SQLite.SQLiteConnection.Insert(System.Object)">
+            <summary>
+            Inserts the given object and retrieves its
+            auto incremented primary key if it has one.
+            </summary>
+            <param name="obj">
+            The object to insert.
+            </param>
+            <returns>
+            The number of rows added to the table.
+            </returns>
+        </member>
+        <member name="M:SQLite.SQLiteConnection.InsertOrReplace(System.Object)">
+            <summary>
+            Inserts the given object and retrieves its
+            auto incremented primary key if it has one.
+            If a UNIQUE constraint violation occurs with
+            some pre-existing object, this function deletes
+            the old object.
+            </summary>
+            <param name="obj">
+            The object to insert.
+            </param>
+            <returns>
+            The number of rows modified.
+            </returns>
+        </member>
+        <member name="M:SQLite.SQLiteConnection.Insert(System.Object,System.Type)">
+            <summary>
+            Inserts the given object and retrieves its
+            auto incremented primary key if it has one.
+            </summary>
+            <param name="obj">
+            The object to insert.
+            </param>
+            <param name="objType">
+            The type of object to insert.
+            </param>
+            <returns>
+            The number of rows added to the table.
+            </returns>
+        </member>
+        <member name="M:SQLite.SQLiteConnection.InsertOrReplace(System.Object,System.Type)">
+            <summary>
+            Inserts the given object and retrieves its
+            auto incremented primary key if it has one.
+            If a UNIQUE constraint violation occurs with
+            some pre-existing object, this function deletes
+            the old object.
+            </summary>
+            <param name="obj">
+            The object to insert.
+            </param>
+            <param name="objType">
+            The type of object to insert.
+            </param>
+            <returns>
+            The number of rows modified.
+            </returns>
+        </member>
+        <member name="M:SQLite.SQLiteConnection.Insert(System.Object,System.String)">
+            <summary>
+            Inserts the given object and retrieves its
+            auto incremented primary key if it has one.
+            </summary>
+            <param name="obj">
+            The object to insert.
+            </param>
+            <param name="extra">
+            Literal SQL code that gets placed into the command. INSERT {extra} INTO ...
+            </param>
+            <returns>
+            The number of rows added to the table.
+            </returns>
+        </member>
+        <member name="M:SQLite.SQLiteConnection.Insert(System.Object,System.String,System.Type)">
+            <summary>
+            Inserts the given object and retrieves its
+            auto incremented primary key if it has one.
+            </summary>
+            <param name="obj">
+            The object to insert.
+            </param>
+            <param name="extra">
+            Literal SQL code that gets placed into the command. INSERT {extra} INTO ...
+            </param>
+            <param name="objType">
+            The type of object to insert.
+            </param>
+            <returns>
+            The number of rows added to the table.
+            </returns>
+        </member>
+        <member name="M:SQLite.SQLiteConnection.Update(System.Object)">
+            <summary>
+            Updates all of the columns of a table using the specified object
+            except for its primary key.
+            The object is required to have a primary key.
+            </summary>
+            <param name="obj">
+            The object to update. It must have a primary key designated using the PrimaryKeyAttribute.
+            </param>
+            <returns>
+            The number of rows updated.
+            </returns>
+        </member>
+        <member name="M:SQLite.SQLiteConnection.Update(System.Object,System.Type)">
+            <summary>
+            Updates all of the columns of a table using the specified object
+            except for its primary key.
+            The object is required to have a primary key.
+            </summary>
+            <param name="obj">
+            The object to update. It must have a primary key designated using the PrimaryKeyAttribute.
+            </param>
+            <param name="objType">
+            The type of object to insert.
+            </param>
+            <returns>
+            The number of rows updated.
+            </returns>
+        </member>
+        <member name="M:SQLite.SQLiteConnection.UpdateAll(System.Collections.IEnumerable)">
+            <summary>
+            Updates all specified objects.
+            </summary>
+            <param name="objects">
+            An <see cref="T:System.Collections.IEnumerable"/> of the objects to insert.
+            </param>
+            <returns>
+            The number of rows modified.
+            </returns>
+        </member>
+        <member name="M:SQLite.SQLiteConnection.Delete(System.Object)">
+            <summary>
+            Deletes the given object from the database using its primary key.
+            </summary>
+            <param name="objectToDelete">
+            The object to delete. It must have a primary key designated using the PrimaryKeyAttribute.
+            </param>
+            <returns>
+            The number of rows deleted.
+            </returns>
+        </member>
+        <member name="M:SQLite.SQLiteConnection.Delete``1(System.Object)">
+            <summary>
+            Deletes the object with the specified primary key.
+            </summary>
+            <param name="primaryKey">
+            The primary key of the object to delete.
+            </param>
+            <returns>
+            The number of objects deleted.
+            </returns>
+            <typeparam name='T'>
+            The type of object.
+            </typeparam>
+        </member>
+        <member name="M:SQLite.SQLiteConnection.DeleteAll``1">
+            <summary>
+            Deletes all the objects from the specified table.
+            WARNING WARNING: Let me repeat. It deletes ALL the objects from the
+            specified table. Do you really want to do that?
+            </summary>
+            <returns>
+            The number of objects deleted.
+            </returns>
+            <typeparam name='T'>
+            The type of objects to delete.
+            </typeparam>
+        </member>
+        <member name="P:SQLite.SQLiteConnection.BusyTimeout">
+            <summary>
+            Sets a busy handler to sleep the specified amount of time when a table is locked.
+            The handler will sleep multiple times until a total time of <see cref="P:SQLite.SQLiteConnection.BusyTimeout"/> has accumulated.
+            </summary>
+        </member>
+        <member name="P:SQLite.SQLiteConnection.TableMappings">
+            <summary>
+            Returns the mappings from types to tables that the connection
+            currently understands.
+            </summary>
+        </member>
+        <member name="P:SQLite.SQLiteConnection.IsInTransaction">
+            <summary>
+            Whether <see cref="M:SQLite.SQLiteConnection.BeginTransaction"/> has been called and the database is waiting for a <see cref="M:SQLite.SQLiteConnection.Commit"/>.
+            </summary>
+        </member>
+        <member name="T:SQLite.SQLiteConnectionString">
+            <summary>
+            Represents a parsed connection string.
+            </summary>
+        </member>
+        <member name="M:SQLite.SQLiteCommand.OnInstanceCreated(System.Object)">
+             <summary>
+             Invoked every time an instance is loaded from the database.
+             </summary>
+             <param name="obj">
+             The newly created object.
+             </param>
+             <remarks>
+             This can be overridden in combination with the <see cref="M:SQLite.SQLiteConnection.NewCommand"/>
+             method to hook into the life-cycle of objects.
+            
+             Type safety is not possible because MonoTouch does not support virtual generic methods.
+             </remarks>
+        </member>
+        <member name="T:SQLite.PreparedSqlLiteInsertCommand">
+            <summary>
+            Since the insert never changed, we only need to prepare once.
+            </summary>
+        </member>
+        <member name="M:SQLite.TableQuery`1.CompileNullBinaryExpression(System.Linq.Expressions.BinaryExpression,SQLite.TableQuery{`0}.CompileResult)">
+            <summary>
+            Compiles a BinaryExpression where one of the parameters is null.
+            </summary>
+            <param name="parameter">The non-null parameter</param>
+        </member>
+        <member name="T:ff14bot.NeoProfiles.Targeting">
+            <summary> Targeting. </summary>
+            <remarks> Nesox, 2012-09-20. </remarks>
+        </member>
+        <member name="M:ff14bot.NeoProfiles.Targeting.Pulse">
+            <summary> Pulses this object. </summary>
+        </member>
+        <member name="P:ff14bot.NeoProfiles.Targeting.Provider">
+            <summary> Gets or sets the provider. </summary>
+            <value> The provider. </value>
+        </member>
+        <member name="P:ff14bot.NeoProfiles.Targeting.LastEntities">
+            <summary> Gets or sets the last objects. </summary>
+            <value> The last objects. </value>
+        </member>
+        <member name="P:ff14bot.NeoProfiles.Targeting.FirstUnit">
+            <summary> Gets the first npc. </summary>
+            <value> The first npc. </value>
+        </member>
+        <member name="P:ff14bot.NeoProfiles.Targeting.FirstEntity">
+            <summary> Gets the first object. </summary>
+            <value> The first object. </value>
+        </member>
+        <member name="E:ff14bot.NeoProfiles.Targeting.OnUpdate">
+            <summary> Event queue for all listeners interested in OnUpdate events. </summary>
+        </member>
+        <member name="M:ff14bot.Managers.CombatTargeting.#ctor">
+            <summary> Default constructor. </summary>
+        </member>
+        <member name="P:ff14bot.Managers.CombatTargeting.Instance">
+            <summary> Gets the instance. </summary>
+            <value> The instance. </value>
+        </member>
+        <member name="T:ff14bot.NeoProfiles.ITargetingProvider">
+            <summary> Interface for targeting provider. </summary>
+        </member>
+        <member name="M:ff14bot.NeoProfiles.ITargetingProvider.GetObjectsByWeight">
+            <summary> Gets the objects by weight. </summary>
+            <returns> The objects by weight. </returns>
+        </member>
+        <member name="M:ff14bot.Managers.FateCombatTargetingProvider.GetObjectsByWeight">
+            <summary> Gets the objects by weight. </summary>
+            <remarks> Nesox, 2013-06-29. </remarks>
+            <returns> The objects by weight. </returns>
+        </member>
+        <member name="M:ff14bot.Managers.FateCombatTargetingProvider.IsValidUnit(System.Boolean,ff14bot.Objects.BattleCharacter)">
+            <summary> Query if 'unit' is valid unit. </summary>
+            <remarks> Nesox, 2013-06-29. </remarks>
+        </member>
+        <member name="M:ff14bot.Managers.FateCombatTargetingProvider.GetScoreForUnit(ff14bot.Objects.BattleCharacter)">
+            <summary> Gets score for a unit. </summary>
+            <remarks> Nesox, 2013-06-29. </remarks>
+            <param name="unit"> The unit. </param>
+            <returns> The score for unit. </returns>
+        </member>
+        <member name="M:ff14bot.Managers.SmallDutyCombatTargetingProvider.GetObjectsByWeight">
+            <summary> Gets the objects by weight. </summary>
+            <remarks> Nesox, 2013-06-29. </remarks>
+            <returns> The objects by weight. </returns>
+        </member>
+        <member name="M:ff14bot.Managers.SmallDutyCombatTargetingProvider.IsValidUnit(System.Boolean,ff14bot.Objects.BattleCharacter,ff14bot.Objects.BattleCharacter,ff14bot.Navigation.HotSpot[])">
+            <summary> Query if 'unit' is valid unit. </summary>
+            <remarks> Nesox, 2013-06-29. </remarks>
+        </member>
+        <member name="M:ff14bot.Managers.SmallDutyCombatTargetingProvider.GetScoreForUnit(ff14bot.Managers.SmallDutyCombatTargetingProvider.Score)">
+            <summary> Gets score for a unit. </summary>
+            <remarks> Nesox, 2013-06-29. </remarks>
+            <param name="unit"> The unit. </param>
+            <returns> The score for unit. </returns>
+        </member>
+        <member name="T:ff14bot.Managers.DefaultCombatTargetingProvider">
+            <summary> Default combat targeting provider. </summary>
+            <remarks> Nesox, 2013-06-29. </remarks>
+        </member>
+        <member name="M:ff14bot.Managers.DefaultCombatTargetingProvider.GetObjectsByWeight">
+            <summary> Gets the objects by weight. </summary>
+            <remarks> Nesox, 2013-06-29. </remarks>
+            <returns> The objects by weight. </returns>
+        </member>
+        <member name="M:ff14bot.Managers.DefaultCombatTargetingProvider.IsValidUnit(ff14bot.Objects.BattleCharacter)">
+            <summary> Query if 'unit' is valid unit. </summary>
+            <remarks> Nesox, 2013-06-29. </remarks>
+            <param name="unit">          The unit. </param>
+            <param name="inLineOfSight"> true if in line of sight. </param>
+            <param name="blackspots">    The blackspots. </param>
+            <returns> true if valid unit, false if not. </returns>
+        </member>
+        <member name="M:ff14bot.Managers.DefaultCombatTargetingProvider.GetScoreForUnit(ff14bot.Objects.BattleCharacter)">
+            <summary> Gets score for a unit. </summary>
+            <remarks> Nesox, 2013-06-29. </remarks>
+            <param name="unit"> The unit. </param>
+            <returns> The score for unit. </returns>
+        </member>
+        <member name="T:ff14bot.Managers.NativeVector">
+            <summary></summary>
+        </member>
+        <member name="F:ff14bot.Managers.NativeVector.First">
+            <summary></summary>
+        </member>
+        <member name="F:ff14bot.Managers.NativeVector.Last">
+            <summary></summary>
+        </member>
+        <member name="F:ff14bot.Managers.NativeVector.End">
+            <summary></summary>
+        </member>
+        <member name="F:ff14bot.Managers.NativeVector.Allocator">
+            <summary></summary>
+        </member>
+        <member name="M:ff14bot.Managers.NativeVector.ToString">
+            <summary>
+            Returns the fully qualified type name of this instance.
+            </summary>
+            <returns>
+            A <see cref="T:System.String"/> containing a fully qualified type name.
+            </returns>
+        </member>
+        <member name="F:ff14bot.Managers.NativeVectorV2`1.First">
+            <summary></summary>
+        </member>
+        <member name="F:ff14bot.Managers.NativeVectorV2`1.Last">
+            <summary></summary>
+        </member>
+        <member name="F:ff14bot.Managers.NativeVectorV2`1.End">
+            <summary></summary>
+        </member>
+        <member name="F:ff14bot.Managers.NativeVectorV2`1.Allocator">
+            <summary></summary>
+        </member>
+        <member name="M:ff14bot.Managers.NativeVectorV2`1.ToString">
+            <summary>
+            Returns the fully qualified type name of this instance.
+            </summary>
+            <returns>
+            A <see cref="T:System.String"/> containing a fully qualified type name.
+            </returns>
+        </member>
+        <member name="M:ff14bot.Managers.FateManager.Update">
+            <summary> Updates the <see cref="T:ff14bot.Managers.FateManager"/>'s object storage lists. </summary>
+        </member>
+        <member name="P:ff14bot.Managers.FateManager.AllFates">
+            <summary> Gets a list of fates. </summary>
+            <value> A List of fates. </value>
+        </member>
+        <member name="P:ff14bot.Managers.FateManager.GetRawFates">
+            <summary>
+            Call this if you are operating in another thread.
+            </summary>
+        </member>
+        <member name="M:ff14bot.Managers.ChatLogEntry.Respond(System.String)">
+            <summary>
+            Respond to incoming message
+            FreeCompany,Say,Shout,Yell,and LinkShells all respond on that channel
+            Tells and all GM Messages respond in private
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="P:ff14bot.Managers.ChatLogEntry.SenderDisplayName">
+            <summary>
+            What is displayed on the chat window
+            </summary>
+        </member>
+        <member name="P:ff14bot.Managers.ChatLogEntry.SenderReplyName">
+            <summary>
+            Name to use if sending a reply.
+            </summary>
+        </member>
+        <member name="M:ff14bot.Managers.GamelogManager.Updatedelta">
+            <summary>
+            Run this when the start button is pressed so that we disregard all old messages
+            </summary>
+        </member>
+        <member name="P:ff14bot.Managers.GamelogManager.CurrentBuffer">
+            <summary>
+            All the current lines in the log buffer
+            </summary>
+        </member>
+        <member name="T:ff14bot.Managers.GameSettingsManager">
+            <summary>
+            Class that handles getting and setting of in-game settings.
+            </summary>
+        </member>
+        <member name="P:ff14bot.Managers.GameSettingsManager.FaceTargetOnAction">
+            <summary>
+            Gets and sets the status of the "Automatically face target when using action." setting in Character Config->Target->Target Settings
+            </summary>
+        </member>
+        <member name="P:ff14bot.Managers.GameSettingsManager.FlightMode">
+            <summary>
+            Gets and sets the status of the "Flying Mount Takeoff" setting in Character Config->Control
+            True = Manual Mode False = Auto
+            </summary>
+        </member>
+        <member name="T:ff14bot.Managers.BagSlot">
+            <summary>
+            Class represents an grid slot within a bag
+            Using this class outside a framelock is not supported as the values are not cached.
+            </summary>
+        </member>
+        <member name="M:ff14bot.Managers.BagSlot.CanUse(ff14bot.Objects.GameObject)">
+            <summary>
+            Checks if we can use the provided item.
+            </summary>
+            <param name="target">Gameobject to check. If null then we follow the games default item logic.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ff14bot.Managers.BagSlot.UseItem(ff14bot.Objects.GameObject)">
+            <summary>
+            Attempts to use the item
+            </summary>
+            <param name="target">Gameobject to use item on. If null then we follow the games default item logic.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ff14bot.Managers.BagSlot.UseItem(Clio.Utilities.Vector3)">
+            <summary>
+            Attempts to use the item
+            </summary>
+            <param name="target">location to use item on.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ff14bot.Managers.BagSlot.Move(ff14bot.Managers.BagSlot)">
+            <summary>
+            Attempts to move the contents of the current bagslot to the destination
+            </summary>
+            <param name="destination">Where to move</param>
+            <returns>True if succeded, false otherwise</returns>
+        </member>
+        <member name="P:ff14bot.Managers.BagSlot.RawItemId">
+            <summary>
+            This returns the raw unmodified id of the item in the slot.
+            </summary>
+        </member>
+        <member name="P:ff14bot.Managers.BagSlot.TrueItemId">
+            <summary>
+            This returns the ID of the item in the slot, modified if it is a HQ item or collectable
+            </summary>
+        </member>
+        <member name="T:ff14bot.Managers.Bag">
+            <summary>
+            This class holds a grid of slots
+            </summary>
+        </member>
+        <member name="M:ff14bot.Managers.Bag.GetEnumerator">
+            <summary>
+            Returns all the slots within the bag
+            </summary>
+        </member>
+        <member name="P:ff14bot.Managers.Bag.Item(System.Int32)">
+            <summary>
+            Returns the bagslot at the given index
+            </summary>
+        </member>
+        <member name="P:ff14bot.Managers.Bag.Item(ff14bot.Enums.EquipmentSlot)">
+            <summary>
+            Returns the bagslot at the given index
+            </summary>
+        </member>
+        <member name="P:ff14bot.Managers.Bag.FilledSlots">
+            <summary>
+            Returns all the filled slots within the bag
+            </summary>
+        </member>
+        <member name="P:ff14bot.Managers.InventoryManager.EquippedItems">
+            <summary>
+            Returns all the slots for Equipment
+            </summary>
+        </member>
+        <member name="P:ff14bot.Managers.InventoryManager.FilledSlots">
+            <summary>
+            Returns all the items in the main inventory and key items
+            </summary>
+        </member>
+        <member name="P:ff14bot.Managers.InventoryManager.FilledArmorySlots">
+            <summary>
+            Returns all currently equipped items and filled item slots in the armory
+            </summary>
+        </member>
+        <member name="P:ff14bot.Managers.InventoryManager.FilledInventoryAndArmory">
+            <summary>
+            Returns all the items in inventory, key items, equipped items, and armory.
+            </summary>
+        </member>
+        <member name="M:ff14bot.Managers.Lua.GetReturnValues(System.String,System.String)">
+            <summary>Gets the return values of a lua statement.</summary>
+            <remarks>Created by Nesox 2012-02-04.</remarks>
+            <exception cref="T:System.ArgumentException">        Thrown when one or more arguments have
+            unsupported or illegal values.</exception>
+            <exception cref="T:System.InvalidOperationException">Thrown when the requested operation is invalid.</exception>
+            <param name="lua">       The lua.</param>
+            <param name="scriptName">(Optional) Name of the script.</param>
+            <returns>The return values.</returns>
+        </member>
+        <member name="M:ff14bot.NeoProfiles.ConditionParser.HasAtLeastOneQuest(System.Int32[])">
+            <summary>
+            Returns true if the user has atleast one of the quests in the list.
+            </summary>
+            <param name="list"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ff14bot.NeoProfiles.ConditionParser.IsTodoChecked(System.Int32,System.Int32,System.Int32)">
+            <summary>Checks if the quest step has proggressed past the provided step or that the objective at the given index has been completed. </summary>
+            <param name="questId">global quest id</param>
+            <param name="step"></param>
+            <param name="objectiveIndex">Starts at 0</param>
+            <returns>true if objective is completed.</returns>
+        </member>
+        <member name="T:ff14bot.NeoProfiles.GameEvents">
+            <summary> Game events. </summary>
+            <remarks> Nesox, 2013-01-08. </remarks>
+        </member>
+        <member name="M:ff14bot.NeoProfiles.GameEvents.#cctor">
+            <summary> Static constructor. </summary>
+            <remarks> Nesox, 2013-01-08. </remarks>
+        </member>
+        <member name="M:ff14bot.NeoProfiles.GameEvents.LoadEventCheckers(System.Type)">
+            <summary>
+            Recursively loads all event checkers from a type (if it's a class), including nested classes.
+            </summary>
+            <param name="t"></param>
+        </member>
+        <member name="M:ff14bot.NeoProfiles.GameEvents.Update">
+            <summary>
+            Updates this instance.
+            </summary>
+            <remarks>Created 2012-05-05</remarks>
+        </member>
+        <member name="E:ff14bot.NeoProfiles.GameEvents.OnPlayerDied">
+            <summary>
+            Occurs when [player dies].
+            </summary>
+            <remarks>Created 2012-06-16</remarks>
+        </member>
+        <member name="E:ff14bot.NeoProfiles.GameEvents.OnLevelUp">
+            <summary>
+            Occurs when [player level up].
+            </summary>
+            <remarks>Created 2012-05-07</remarks>
+        </member>
+        <member name="E:ff14bot.NeoProfiles.GameEvents.OnClassChanged">
+            <summary>
+            Occurs when [player level up].
+            </summary>
+            <remarks>Created 2012-05-07</remarks>
+        </member>
+        <member name="E:ff14bot.NeoProfiles.GameEvents.OnMapChanged">
+            <summary>
+            Occurs when [player changes world].
+            </summary>
+            <remarks>Created 2012-05-07</remarks>
+        </member>
+        <member name="M:ff14bot.NeoProfiles.ProfileBehavior.LogError(System.String,System.Object[])">
+            <summary>
+            Logs an error then stops the bot
+            </summary>
+            <param name="text"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:ff14bot.NeoProfiles.ProfileBehavior.Start">
+            <summary> Called when [start]. </summary>
+            <remarks>Created 2012-06-18</remarks>
+        </member>
+        <member name="M:ff14bot.NeoProfiles.ProfileBehavior.Done">
+            <summary> Called when [done]. </summary>
+            <remarks>Created 2012-07-02</remarks>
+        </member>
+        <member name="M:ff14bot.NeoProfiles.ProfileBehavior.ResetCachedDone">
+            <summary> Resets the cached done. </summary>
+            <remarks>Created 2012-07-02</remarks>
+        </member>
+        <member name="M:ff14bot.NeoProfiles.ProfileBehavior.CreateBehavior">
+            <summary> Creates the behavior. </summary>
+            <returns> The new behavior. </returns>
+        </member>
+        <member name="M:ff14bot.NeoProfiles.ProfileBehavior.UpdateBehavior">
+            <summary> Updates the behavior. </summary>
+        </member>
+        <member name="M:ff14bot.NeoProfiles.ProfileBehavior.ToString">
+            <summary> Returns a string that represents the current object. </summary>
+            <returns> A string that represents the current object. </returns>
+        </member>
+        <member name="M:ff14bot.NeoProfiles.ProfileBehavior.Equals(ff14bot.NeoProfiles.ProfileBehavior)">
+            <summary>
+            Indicates whether the current object is equal to another object of the same type.
+            </summary>
+            <returns>
+            true if the current object is equal to the <paramref name="other"/> parameter; otherwise, false.
+            </returns>
+            <param name="other">An object to compare with this object.</param>
+        </member>
+        <member name="M:ff14bot.NeoProfiles.ProfileBehavior.Equals(System.Object)">
+            <summary>
+            Determines whether the specified <see cref="T:System.Object"/> is equal to the current <see cref="T:System.Object"/>.
+            </summary>
+            <returns>
+            true if the specified <see cref="T:System.Object"/> is equal to the current <see cref="T:System.Object"/>; otherwise, false.
+            </returns>
+            <param name="obj">The <see cref="T:System.Object"/> to compare with the current <see cref="T:System.Object"/>. </param><filterpriority>2</filterpriority>
+        </member>
+        <member name="M:ff14bot.NeoProfiles.ProfileBehavior.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type. 
+            </summary>
+            <returns>
+            A hash code for the current <see cref="T:System.Object"/>.
+            </returns>
+            <filterpriority>2</filterpriority>
+        </member>
+        <member name="M:ff14bot.NeoProfiles.ProfileBehavior.op_Equality(ff14bot.NeoProfiles.ProfileBehavior,ff14bot.NeoProfiles.ProfileBehavior)">
+            <summary>
+            Implements the operator ==.
+            </summary>
+            <param name="left">The left.</param>
+            <param name="right">The right.</param>
+            <returns>
+            The result of the operator.
+            </returns>
+            <remarks>Created 2012-07-02</remarks>
+        </member>
+        <member name="M:ff14bot.NeoProfiles.ProfileBehavior.op_Inequality(ff14bot.NeoProfiles.ProfileBehavior,ff14bot.NeoProfiles.ProfileBehavior)">
+            <summary>
+            Implements the operator !=.
+            </summary>
+            <param name="left">The left.</param>
+            <param name="right">The right.</param>
+            <returns>
+            The result of the operator.
+            </returns>
+            <remarks>Created 2012-07-02</remarks>
+        </member>
+        <member name="P:ff14bot.NeoProfiles.ProfileBehavior.IsDone">
+            <summary> Gets a value indicating whether this profile behavior is done. </summary>
+            <value>
+              <c>true</c> if this profile behavior is done; otherwise, <c>false</c>.
+            </value>
+            <remarks>Created 2012-07-02</remarks>
+        </member>
+        <member name="P:ff14bot.NeoProfiles.ProfileBehavior.StatusText">
+            <summary> Gets or sets the status text. </summary>
+            <value> The status text. </value>
+            <remarks>Created 2012-07-02</remarks>
+        </member>
+        <member name="P:ff14bot.NeoProfiles.ProfileBehavior.IsDoneCache">
+            <summary> Gets a value indicating whether this instance has a cached done. </summary>
+            <value>
+            	<c>true</c> if this instance has cached done; otherwise, <c>false</c>.
+            </value>
+            <remarks>Created 2012-07-02</remarks>
+        </member>
+        <member name="P:ff14bot.NeoProfiles.ProfileBehavior.Behavior">
+            <summary> Gets the behavior. </summary>
+            <remarks>Created 2012-07-02</remarks>
+        </member>
+        <member name="M:ff14bot.NeoProfiles.Tags.ClimbHill.OnResetCachedDone">
+            <summary>
+            This gets called when a while loop starts over so reset anything that is used inside the IsDone check
+            </summary>
+        </member>
+        <member name="F:ff14bot.NeoProfiles.CraftAction._alternate">
+            <summary>
+            So that we can output the same line to the log without it being removed for spam
+            </summary>
+        </member>
+        <member name="F:ff14bot.NeoProfiles.StopCrafting.alternate">
+            <summary>
+            So that we can output the same line to the log without it being removed for spam
+            </summary>
+        </member>
+        <member name="F:ff14bot.NeoProfiles.EatFood.alternate">
+            <summary>
+            So that we can output the same line to the log without it being removed for spam
+            </summary>
+        </member>
+        <member name="P:ff14bot.NeoProfiles.Tags.HuntBehavior.Position">
+            <summary>
+            Gets the position.
+            </summary>
+            <remarks>Created 2012-02-08</remarks>
+        </member>
+        <member name="P:ff14bot.NeoProfiles.Tags.HuntBehavior.Target">
+            <summary>
+            Gets the object.
+            </summary>
+            <remarks>Created 2012-02-08</remarks>
+        </member>
+        <member name="M:ff14bot.NeoProfiles.NoCombatMoveToTag.OnResetCachedDone">
+            <summary>
+            This gets called when a while loop starts over so reset anything that is used inside the IsDone check
+            </summary>
+        </member>
+        <member name="M:ff14bot.NeoProfiles.Tags.SimpleDutyTag.OnResetCachedDone">
+            <summary>
+            This gets called when a while loop starts over so reset anything that is used inside the IsDone check
+            </summary>
+        </member>
+        <member name="P:ff14bot.NeoProfiles.Tags.EmoteNPCTag.StatusText">
+            <summary>
+            Gets the status text.
+            </summary>
+            <remarks>Created 2012-02-08</remarks>
+        </member>
+        <member name="M:ff14bot.NeoProfiles.NeoProfileManager.UpdateGrindArea">
+            <summary> Updates the grind area. </summary>
+            <remarks> Nesox, 2013-07-03. </remarks>
+        </member>
+        <member name="M:ff14bot.NeoProfiles.NeoProfileManager.UpdateCurrentProfileBehavior">
+            <summary>
+            Updates the current profile behavior.
+            </summary>
+            <remarks>Created 2012-04-12</remarks>
+        </member>
+        <member name="M:ff14bot.NeoProfiles.NeoProfileManager.Load(System.String,System.Boolean)">
+            <summary>
+            Loads a profile from the specified path.
+            </summary>
+            <param name="profilePath">The profile path.</param>
+            <param name="rememberPath"> </param>
+            <remarks>Created 2012-04-12</remarks>
+        </member>
+        <member name="P:ff14bot.NeoProfiles.NeoProfileManager.CurrentProfile">
+            <summary> Gets or sets the current profile being used by the bot. </summary>
+            <value> The current. </value>
+        </member>
+        <member name="P:ff14bot.NeoProfiles.NeoProfileManager.CurrentGrindArea">
+            <summary> Gets the current grind area being used by the bot. </summary>
+            <value> The current grind area. </value>
+        </member>
+        <member name="P:ff14bot.NeoProfiles.NeoProfileManager.OrderManager">
+            <summary>
+            Gets the order manager.
+            </summary>
+            <remarks>Created 2012-04-12</remarks>
+        </member>
+        <member name="P:ff14bot.NeoProfiles.NeoProfileManager.CurrentProfileBehavior">
+            <summary>
+            Gets the current profile behavior.
+            </summary>
+            <remarks>Created 2012-04-12</remarks>
+        </member>
+        <member name="P:ff14bot.Managers.PartyManager.AllMembers">
+            <summary>
+            Returns list of all party members regardless if they are in the objectmanager. PartyMember.GameObject may be null!
+            </summary>
+        </member>
+        <member name="P:ff14bot.Managers.PartyManager.VisibleMembers">
+            <summary>
+            Returns list of party member objects that are visible in the objectmanager.
+            </summary>
+        </member>
+        <member name="M:ff14bot.Managers.WorldManager.Teleport(System.UInt32)">
+            <summary>
+            Starts teleport to given zone
+            </summary>
+            <param name="positiononmenu">0 is start of teleport list</param>
+            <returns></returns>
+        </member>
+        <member name="M:ff14bot.Managers.WorldManager.HasAetheryteId(System.UInt32)">
+            <summary>
+            Returns true if user can teleport to given ID
+            </summary>
+            <param name="AetheryteId">Aetheryte ID to check</param>
+            <returns></returns>
+        </member>
+        <member name="M:ff14bot.Managers.WorldManager.TeleportById(System.UInt32)">
+            <summary>
+            Teleport user to given 
+            </summary>
+            <param name="AetheryteId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ff14bot.Managers.WorldManager.CanTeleport">
+            <summary>
+            Check if user can cast teleport
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ff14bot.Managers.WorldManager.Teleport(System.String)">
+            <summary>
+            Teleport user to given Aetheryte based on name
+            </summary>
+            <param name="location">Location to teleport to, capitlization doesnt matter.</param>
+            <returns></returns>
+        </member>
+        <member name="P:ff14bot.Managers.WorldManager.CanFly">
+            <summary>
+            Returns true if you have the ability to fly in the current zone
+            </summary>
+        </member>
+        <member name="P:ff14bot.Managers.WorldManager.AvailableLocations">
+            <summary>
+            List of avalible locations to teleport to.
+            </summary>
+        </member>
+        <member name="P:ff14bot.Managers.WorldManager.InSanctuary">
+            <summary>
+            Returns true if player is currently in a sanctuary
+            </summary>
+        </member>
+        <member name="P:ff14bot.Managers.WorldManager.RawZoneId">
+            <summary>
+            Returns RAW Id for the current zone 
+            This function is not what you are looking for in most cases
+            Use ZoneId instead.
+            </summary>
+        </member>
+        <member name="P:ff14bot.Managers.WorldManager.ZoneId">
+            <summary>
+            Returns Id for the current zone
+            </summary>
+        </member>
+        <member name="P:ff14bot.Managers.WorldManager.SubZoneId">
+            <summary>
+            Returns the subzoneid
+            </summary>
+        </member>
+        <member name="M:Giga.Common.NavMesh.RemoveConnection(System.Int32,System.Int32)">
+            <summary>
+            Removes the connection from <paramref name="node1"/> to <paramref name="node2"/>.
+            </summary>
+            <param name="node1"></param>
+            <param name="node2"></param>
+            <returns>A boolean indicating whether the connection was successfully removed.</returns>
+        </member>
+        <member name="M:Giga.Common.NavMeshBuilder.Clean">
+            <summary>
+            Removes all invalid (deleted) nodes and updates neighbor refs.
+            </summary>
+        </member>
+        <member name="M:Giga.Common.NavMeshBuilder.FindClosest(Clio.Utilities.Vector3,System.Predicate{Giga.Common.NavMeshBuilderNode})">
+            <summary>
+            Finds the closest node to a location that matches a predicate.
+            </summary>
+            <param name="loc"></param>
+            <param name="predicate"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Giga.Common.NavMeshBuilder.AddConnection(Giga.Common.NavMeshBuilderNode,Giga.Common.NavMeshBuilderNode)">
+            <summary>
+            Adds a connection from the <paramref name="this"/>-node to the <paramref name="neighbor"/> node.
+            </summary>
+            <param name="this"></param>
+            <param name="neighbor"></param>
+        </member>
+        <member name="M:ff14bot.Navigation.GaiaNavigator.#ctor(System.Single)">
+            <summary>
+            Initializes a new instance of the NeoGaiaNavigator class.
+            </summary>
+        </member>
+        <member name="M:ff14bot.Navigation.HotSpot.ToVector3">
+            <summary>
+            Toes the vector3.
+            </summary>
+            <returns></returns>
+            <remarks>Created by Nesox 2012-02-04</remarks>
+        </member>
+        <member name="M:ff14bot.Navigation.HotSpot.WithinHotSpot2D(Clio.Utilities.Vector3,System.Single)">
+            <summary>
+            checks if location resides in or on a hotspot boundry.
+            </summary>
+            <param name="loc"></param>
+            <param name="distance"></param>
+            <returns></returns>
+        </member>
+        <member name="P:ff14bot.Navigation.HotSpot.Y">
+            <summary>
+            Gets Y coordinate.
+            </summary>
+        </member>
+        <member name="P:ff14bot.Navigation.HotSpot.Z">
+            <summary>
+            Gets Z coordinate.
+            </summary>
+        </member>
+        <member name="P:ff14bot.Navigation.BlackSpot.Y">
+            <summary>
+            Gets Y coordinate.
+            </summary>
+        </member>
+        <member name="P:ff14bot.Navigation.BlackSpot.Z">
+            <summary>
+            Gets Z coordinate.
+            </summary>
+        </member>
+        <member name="M:ff14bot.Managers.PluginManager.SetEnabledPlugins(System.String[])">
+            <summary> Sets a list of plugins to be enabled. </summary>
+            <remarks> Created 4/26/2012. </remarks>
+            <param name="plugins"> A variable-length parameters list containing plugins. </param>
+        </member>
+        <member name="M:ff14bot.Managers.PluginManager.GetEnabledPlugins">
+            <summary> Gets the enabled plugins. </summary>
+            <remarks> Created 4/26/2012. </remarks>
+            <returns>
+            An enumerator that allows foreach to be used to process get enabled plugins in this
+            collection.
+            </returns>
+        </member>
+        <member name="M:ff14bot.Managers.PluginManager.PulseAllPlugins">
+            <summary> Pulses all plugins. </summary>
+            <remarks> Created 3/21/2012. </remarks>
+        </member>
+        <member name="M:ff14bot.Managers.PluginManager.PulsePlugin(ff14bot.Interfaces.IBotPlugin)">
+            <summary> Pulses a specific plugin instance. </summary>
+            <remarks> Created 3/21/2012. </remarks>
+            <param name="plugin"> The plugin. </param>
+        </member>
+        <member name="P:ff14bot.Managers.PluginManager.Plugins">
+            <summary> Gets all the currently loaded plugins. </summary>
+            <value> The plugins. </value>
+        </member>
+        <member name="E:ff14bot.Managers.PluginManager.OnPluginsReloaded">
+            <summary>
+            Occurs when [on plugins reloaded].
+            </summary>
+            <remarks>Created 2012-06-07</remarks>
+        </member>
+        <member name="M:ff14bot.NeoProfiles.GrindArea.RequirementsMet">
+            <summary>
+            Checks if requierments are met for this grindarea.
+            </summary>
+            <returns></returns>
+            <remarks>Created by Nesox 2012-02-04</remarks>
+        </member>
+        <member name="M:ff14bot.NeoProfiles.GrindArea.ToString">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents the current <see cref="T:System.Object"/>.
+            </summary>
+            <returns>
+            A <see cref="T:System.String"/> that represents the current <see cref="T:System.Object"/>.
+            </returns>
+            <filterpriority>2</filterpriority>
+        </member>
+        <member name="M:ff14bot.NeoProfiles.NeoProfile.Load(System.String)">
+            <summary>
+            Loads a new <see cref="T:ff14bot.NeoProfiles.NeoProfile"/> instance from a path.
+            </summary>
+            <param name="path"></param>
+            <exception cref="T:System.IO.FileNotFoundException">Thrown when there exists no file at <see cref="P:ff14bot.NeoProfiles.NeoProfile.Path"/>.</exception>
+            <exception cref="T:System.Xml.XmlException">Thrown if the XML file at <see cref="P:ff14bot.NeoProfiles.NeoProfile.Path"/> is not valid XML.</exception>
+        </member>
+        <member name="M:ff14bot.NeoProfiles.NeoProfile.Load(System.Xml.Linq.XElement,System.String)">
+            <summary>
+            Loads a new <see cref="T:ff14bot.NeoProfiles.NeoProfile"/> instance from an element.
+            </summary>
+            <param name="element">The element.</param>
+            <param name="path"></param>
+            <returns></returns>
+        </member>
+        <member name="P:ff14bot.NeoProfiles.NeoProfile.Path">
+            <summary>
+            The full path to the XML file, or null if it was not loaded from file.
+            </summary>
+        </member>
+        <member name="P:ff14bot.NeoProfiles.NeoProfile.BehaviorDirectory">
+            <summary> Gets or sets the name. </summary>
+            <value> The name. </value>
+        </member>
+        <member name="P:ff14bot.NeoProfiles.NeoProfile.Name">
+            <summary> Gets or sets the name. </summary>
+            <value> The name. </value>
+        </member>
+        <member name="P:ff14bot.NeoProfiles.NeoProfile.Order">
+            <summary> Gets or sets the order. </summary>
+            <value> The order. </value>
+        </member>
+        <member name="T:ff14bot.NeoProfiles.ProfileOrderManager">
+            <summary>
+            Handles loading etc. of the profile order
+            </summary>
+            <remarks>Created 2012-06-27</remarks>
+        </member>
+        <member name="M:ff14bot.NeoProfiles.ProfileOrderManager.#ctor(System.Collections.Generic.List{ff14bot.NeoProfiles.ProfileBehavior})">
+            <summary>
+            Initializes a new instance of the <see cref="T:ff14bot.NeoProfiles.ProfileOrderManager"/> class.
+            </summary>
+            <param name="behaviors">The behaviors.</param>
+            <remarks>Created 2012-06-27</remarks>
+        </member>
+        <member name="F:ff14bot.NeoProfiles.ProfileOrderManager.CurrentBehavior">
+            <summary>
+            Gets the current behavior.
+            </summary>
+            <remarks>Created 2012-06-27</remarks>
+        </member>
+        <member name="M:ff14bot.NeoProfiles.ProfileOrderManager.UpdateCurrentBehavior">
+            <summary>
+            Updates the current behavior.
+            </summary>
+            <remarks>Created 2012-06-27</remarks>
+        </member>
+        <member name="M:ff14bot.NeoProfiles.MoveToTag.OnResetCachedDone">
+            <summary>
+            This gets called when a while loop starts over so reset anything that is used inside the IsDone check
+            </summary>
+        </member>
+        <member name="P:ff14bot.NeoProfiles.Tags.UseItemTag.StatusText">
+            <summary>
+            Gets the status text.
+            </summary>
+            <remarks>Created 2012-02-08</remarks>
+        </member>
+        <member name="P:ff14bot.NeoProfiles.Tags.UseObjectTag.StatusText">
+            <summary>
+            Gets the status text.
+            </summary>
+            <remarks>Created 2012-02-08</remarks>
+        </member>
+        <member name="P:ff14bot.NeoProfiles.Tags.WaitWhileTag.IsDone">
+            <summary> Gets a value indicating whether this object is done. </summary>
+            <value> true if this object is done, false if not. </value>
+        </member>
+        <member name="P:ff14bot.Objects.GameObject.IsFateGone">
+            <summary>
+            Returns false is target is not a fatemob. Otherwise returns true if mob has fateid and fateid is no longer active.
+            </summary>
+        </member>
+        <member name="P:ff14bot.Objects.GameObject.FateId">
+            <summary>
+            Returns the ID of the fate the object belongs to. returns 0 if no fate associated.
+            </summary>
+        </member>
+        <member name="P:ff14bot.Objects.GameObject.Heading">
+            <summary>
+            Returns current heading in radians
+            </summary>
+        </member>
+        <member name="P:ff14bot.Objects.Character.TaggerObjectId">
+            <summary>
+            Returns the objectId of the player that tagged the target, if the player is in a party it returns the partyId
+            </summary>
+        </member>
+        <member name="P:ff14bot.Objects.Character.TaggerType">
+            <summary>
+            Returns 2 if tagger is in a party, 1 if not, 0 if not yet tagged
+            </summary>
+        </member>
+        <member name="P:ff14bot.Objects.Character.Tapped">
+            <summary>
+            Returns true if target has been tapped
+            </summary>
+        </member>
+        <member name="P:ff14bot.Objects.BattleCharacter.IsDying">
+            <summary>
+            Returns true if unit is in a 'downed' state and is unable to be attacked
+            </summary>
+        </member>
+        <member name="M:ff14bot.Objects.Chocobo.DismissChocobo">
+            <summary>
+            Task to dismount and dismiss chocobo
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="F:ff14bot.Objects.Chocobo.BlockSummon">
+            <summary>
+            Setting this to true will force CanSummon and CanSummonWith to return false. 
+            Used to block summoning when we are going to perform a task that must be performed without the companion.
+            </summary>
+        </member>
+        <member name="M:ff14bot.Objects.Chocobo.ForceSummon">
+            <summary>
+            Disregards CanSummon check and summons the chocobo if the gyhsall greens can be used. 
+            Should only be used when we want to ignore mount settings for some reason
+            </summary>
+        </member>
+        <member name="P:ff14bot.Objects.Chocobo.IsStabled">
+            <summary>
+            Returns true if the player's chocobo is currently stabled.
+            </summary>
+        </member>
+        <member name="T:ff14bot.Objects.SpellData">
+            <summary>
+                This class houses the information for spells
+            </summary>
+        </member>
+        <member name="P:ff14bot.Objects.SpellData.Name">
+            <summary>
+            Returns the english name of the spell
+            </summary>
+        </member>
+        <member name="P:ff14bot.Objects.SpellData.LocalizedName">
+            <summary>
+            Returns the name of the spell in the games currently selected localization
+            </summary>
+        </member>
+        <member name="P:ff14bot.Objects.SpellData.BaseCost">
+            <summary>
+            Returns the cost of the spell at level 1
+            </summary>
+        </member>
+        <member name="P:ff14bot.Objects.SpellData.Cost">
+            <summary>
+            Returns the cost of the spell at the players current level
+            </summary>
+        </member>
+        <member name="P:ff14bot.Objects.SpellData.BaseCastTime">
+            <summary>
+            This returns how long the base cast time of a spell is.
+            </summary>
+        </member>
+        <member name="P:ff14bot.Objects.SpellData.AdjustedCastTime">
+            <summary>
+            This returns how long it will take the user to cast adjusted by spell haste etc
+            </summary>
+        </member>
+        <member name="P:ff14bot.Objects.SpellData.BaseCooldown">
+            <summary>
+            Returns the raw recast for spell
+            </summary>
+        </member>
+        <member name="P:ff14bot.Objects.SpellData.AdjustedCooldown">
+            <summary>
+            Returns recast for spell adjusted by skill/spell haste
+            </summary>
+        </member>
+        <member name="P:ff14bot.Objects.SpellData.Cooldown">
+            <summary>
+            Returns current time left on cooldown
+            </summary>
+        </member>
+        <member name="P:ff14bot.Objects.SpellData.LevelAcquired">
+            <summary>
+            Returns level acquired
+            </summary>
+        </member>
+        <member name="T:ff14bot.Objects.Pet">
+            <summary>
+            Functions involving the control of the players pet
+            </summary>
+        </member>
+        <member name="M:ff14bot.Objects.Pet.Place(Clio.Utilities.Vector3)">
+            <summary>
+            Command your pet to move to the specified location
+            </summary>
+            <param name="location"></param>
+        </member>
+        <member name="M:ff14bot.Objects.Pet.CanCast(System.String,ff14bot.Objects.GameObject)">
+            <summary>
+            Returns true if within range, not on cooldown and within los.
+            </summary>
+            <param name="spellName"></param>
+            <param name="targetObject"></param>
+            <returns></returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:ff14bot.Objects.Pet.DoAction(System.String,ff14bot.Objects.GameObject)" -->
+        <member name="M:ff14bot.Objects.Pet.CanCast(ff14bot.Objects.PetSpellData,ff14bot.Objects.GameObject)">
+            <summary>
+            Returns true if within range, not on cooldown and within los.
+            </summary>
+            <param name="spellName"></param>
+            <param name="targetObject"></param>
+            <returns></returns>
+        </member>
+        <member name="P:ff14bot.Objects.Pet.PetMovement">
+            <summary>
+            Current PetMovement
+            </summary>
+        </member>
+        <member name="P:ff14bot.Objects.Pet.PetStance">
+            <summary>
+            Current Stance
+            </summary>
+        </member>
+        <member name="P:ff14bot.Objects.Pet.PetMode">
+            <summary>
+            Current Mode
+            </summary>
+        </member>
+        <member name="P:ff14bot.Objects.Pet.CurrentActions">
+            <summary>
+            Returns list of current known skills
+            Value is cached for 1 minute
+            </summary>
+        </member>
+        <member name="M:ff14bot.RemoteWindows.HousingChocoboList.SelectChocobo(System.UInt32)">
+            <summary>
+            Selects the chocobo at the given slot, we use index-1 cause the list starts at 0 for the first non-Personal chocobo
+            </summary>
+            <param name="index"></param>
+        </member>
+        <member name="M:ff14bot.RemoteWindows.HousingMyChocobo.ClickLineContains(System.String)">
+            <summary>
+            Clicks the line that contains the supplied text
+            </summary>
+            <param name="text"></param>
+        </member>
+        <member name="M:ff14bot.RemoteWindows.HousingMyChocobo.ClickLineEquals(System.String)">
+            <summary>
+            Clicks the line that equals the supplied text
+            </summary>
+            <param name="text"></param>
+        </member>
+        <member name="M:ff14bot.RemoteWindows.MaterializeDialog.Open(ff14bot.Managers.BagSlot)">
+            <summary>
+            Attempts to open the window with the provided bagslot.
+            </summary>
+            <param name="bagSlot"></param>
+        </member>
+        <member name="M:ff14bot.RemoteWindows.SelectIconString.ClickLineContains(System.String)">
+            <summary>
+            Clicks the line that contains the supplied text
+            </summary>
+            <param name="text"></param>
+        </member>
+        <member name="M:ff14bot.RemoteWindows.SelectIconString.ClickLineEquals(System.String)">
+            <summary>
+            Clicks the line that equals the supplied text
+            </summary>
+            <param name="text"></param>
+        </member>
+        <member name="M:ff14bot.RemoteWindows.SelectString.ClickLineContains(System.String)">
+            <summary>
+            Clicks the line that contains the supplied text
+            </summary>
+            <param name="text"></param>
+        </member>
+        <member name="M:ff14bot.RemoteWindows.SelectString.ClickLineEquals(System.String)">
+            <summary>
+            Clicks the line that equals the supplied text
+            </summary>
+            <param name="text"></param>
+        </member>
+        <member name="F:ff14bot.RemoteWindows.Shop.paddingshit">
+            <summary>
+            This string is actually multiple bytes, gg visual studio interface
+            </summary>
+        </member>
+        <member name="M:ff14bot.RemoteWindows.Shop.Purchase(System.UInt32,System.UInt32)">
+            <summary>
+            Purchase item from store
+            </summary>
+            <param name="itemId"></param>
+            <param name="itemCount">This value will never exced what the normal game ui allows</param>
+            <returns>number of items purchased</returns>
+        </member>
+        <member name="P:ff14bot.RemoteWindows.Trade.TradeStage">
+            <summary>
+            Stage at which the trade system is currently at, 3 is both parties are idle after inital exchange
+            </summary>
+        </member>
+        <member name="P:ff14bot.RemoteWindows.Trade.Trader">
+            <summary>
+            Returns name of the player we are trading with
+            Returns null until the trade request is atleast stage 3
+            </summary>
+        </member>
+        <member name="T:ff14bot.Windows.BotSettings.GlobalSettingsWindow">
+            <summary>
+            Interaction logic for GlobalSettings.xaml
+            </summary>
+            <summary>
+            GlobalSettingsWindow
+            </summary>
+        </member>
+        <member name="M:ff14bot.Windows.BotSettings.GlobalSettingsWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:ff14bot.Windows.FateBotSettingsWindow.FateBotSettingsWindow">
+            <summary>
+            Interaction logic for FateBotSettingsWindow.xaml
+            </summary>
+            <summary>
+            FateBotSettingsWindow
+            </summary>
+        </member>
+        <member name="M:ff14bot.Windows.FateBotSettingsWindow.FateBotSettingsWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:ff14bot.Windows.PvPBotSettingsWindow.PvPBotSettingsWindow">
+            <summary>
+            Interaction logic for FishBotSettingsWindow.xaml
+            </summary>
+            <summary>
+            PvPBotSettingsWindow
+            </summary>
+        </member>
+        <member name="M:ff14bot.Windows.PvPBotSettingsWindow.PvPBotSettingsWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:ff14bot.Windows.FishBotSettingsWindow.FishBotSettingsWindow">
+            <summary>
+            Interaction logic for FishBotSettingsWindow.xaml
+            </summary>
+            <summary>
+            FishBotSettingsWindow
+            </summary>
+        </member>
+        <member name="M:ff14bot.Windows.FishBotSettingsWindow.FishBotSettingsWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:ff14bot.Windows.GatherBotSettingsWindow.GatherBotSettingsWindow">
+            <summary>
+            Interaction logic for GatherBotSettingsWindow.xaml
+            </summary>
+            <summary>
+            GatherBotSettingsWindow
+            </summary>
+        </member>
+        <member name="M:ff14bot.Windows.GatherBotSettingsWindow.GatherBotSettingsWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:ff14bot.LoginWindow">
+            <summary>
+            Interaction logic for LoginWindow.xaml
+            </summary>
+            <summary>
+            LoginWindow
+            </summary>
+        </member>
+        <member name="M:ff14bot.LoginWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:ff14bot.ProcessSelectorWindow">
+            <summary>
+            Interaction logic for ProcessSelectorWindow.xaml
+            </summary>
+            <summary>
+            ProcessSelectorWindow
+            </summary>
+        </member>
+        <member name="M:ff14bot.ProcessSelectorWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:ff14bot.Forms.ugh.MainWpf">
+            <summary>
+            Interaction logic for MainWpf.xaml
+            </summary>
+            <summary>
+            MainWpf
+            </summary>
+        </member>
+        <member name="M:ff14bot.Forms.ugh.MainWpf.togglestate(System.Object,System.EventArgs)">
+            <summary>
+            should be called after operations have completed and state is finalized
+            </summary>
+            <param name="thing"></param>
+            <param name="stuff"></param>
+        </member>
+        <member name="M:ff14bot.Forms.ugh.MainWpf.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="F:ff14bot.Helpers.MathHelper.Arc">
+            <summary>
+            Old default value that was passed to the IsFlanking and IsBehind functions
+            </summary>
+        </member>
+        <member name="T:ff14bot.Helpers.MultiKeyDictionary`3">
+            <summary>
+            Multi-Key Dictionary Class
+            </summary>    
+            <typeparam name="K">Primary Key Type</typeparam>
+            <typeparam name="L">Sub Key Type</typeparam>
+            <typeparam name="V">Value Type</typeparam>
+        </member>
+        <member name="T:ff14bot.Managers.Actionmanager">
+            <summary>
+            Handles casting actions and checking if they are ready
+            </summary>
+        </member>
+        <member name="M:ff14bot.Managers.Actionmanager.CanCastLocation(System.String,Clio.Utilities.Vector3)">
+            <summary>
+            Returns true if the following:
+                If we are in Line-of-sight
+                If there is no error code on the spellcheck
+                If there is no spell queued and the spell is not a ground targeting spell and the spell has less then 500ms on its cd
+            </summary>
+            <param name="spellName"></param>
+            <param name="targetObject"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ff14bot.Managers.Actionmanager.CanCastLocation(System.UInt32,Clio.Utilities.Vector3)">
+            <summary>
+            Returns true if the following:
+                If we are in Line-of-sight
+                If there is no error code on the spellcheck
+                If there is no spell queued and the spell is not a ground targeting spell and the spell has less then 500ms on its cd
+            </summary>
+            <param name="spellName"></param>
+            <param name="targetObject"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ff14bot.Managers.Actionmanager.CanCastLocation(ff14bot.Objects.SpellData,Clio.Utilities.Vector3)">
+            <summary>
+            Returns true if the following:
+                If we are in Line-of-sight
+                If there is no error code on the spellcheck
+                If there is no spell queued and the spell is not a ground targeting spell and the spell has less then 500ms on its cd
+            </summary>
+            <param name="cache"></param>
+            <param name="targetObject"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ff14bot.Managers.Actionmanager.CanCast(System.String,ff14bot.Objects.GameObject)">
+            <summary>
+            Returns true if the following:
+                If we are in Line-of-sight
+                If there is no error code on the spellcheck
+            </summary>
+            <param name="spellName"></param>
+            <param name="targetObject"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ff14bot.Managers.Actionmanager.CanCast(System.UInt32,ff14bot.Objects.GameObject)">
+            <summary>
+            Returns true if the following:
+                If we are in Line-of-sight
+                If there is no error code on the spellcheck
+            </summary>
+            <param name="spellName"></param>
+            <param name="targetObject"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ff14bot.Managers.Actionmanager.CanCast(ff14bot.Objects.SpellData,ff14bot.Objects.GameObject)">
+            <summary>
+            Returns true if the following:
+                If we are in Line-of-sight
+                If there is no error code on the spellcheck
+            </summary>
+            <param name="cache"></param>
+            <param name="targetObject"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ff14bot.Managers.Actionmanager.HasSpell(System.String)">
+            <summary>
+            Returns true if the spell name is known
+            </summary>
+            <param name="spellName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ff14bot.Managers.Actionmanager.HasSpell(System.UInt32)">
+            <summary>
+            Returns true if spell id is known
+            </summary>
+            <param name="spellId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ff14bot.Managers.Actionmanager.StopCasting">
+            <summary>
+            Stops casting immediately
+            </summary>
+        </member>
+        <member name="M:ff14bot.Managers.Actionmanager.Dismount">
+            <summary>
+            Dismount from current mount
+            </summary>
+        </member>
+        <member name="M:ff14bot.Managers.Actionmanager.InteractWith(ff14bot.Objects.GameObject)">
+            <summary>
+            Simulates a right click on a object
+            </summary>
+            <param name="obj">object to right click</param>
+        </member>
+        <member name="M:ff14bot.Managers.Actionmanager.Sprint">
+            <summary>
+            Sprints
+            </summary>
+        </member>
+        <member name="M:ff14bot.Managers.Actionmanager.InSpellInRangeLOS(System.UInt32,ff14bot.Objects.GameObject)">
+            <summary>
+            Check if current gameobject is within range and los
+            </summary>
+            <param name="spellId"></param>
+            <param name="targetObject"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ff14bot.Managers.Actionmanager.InSpellInRangeLOS(System.String,ff14bot.Objects.GameObject)">
+            <summary>
+            Check if current gameobject is within range and los
+            </summary>
+            <param name="spellname"></param>
+            <param name="targetObject"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ff14bot.Managers.Actionmanager.InSpellInRangeLOS(System.UInt32,Clio.Utilities.Vector3)">
+            <summary>
+            Check if current gameobject is within range and los
+            </summary>
+            <param name="spellId"></param>
+            <param name="targetObject"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ff14bot.Managers.Actionmanager.InSpellInRangeLOS(System.String,Clio.Utilities.Vector3)">
+            <summary>
+            Check if current gameobject is within range and los
+            </summary>
+            <param name="spellname"></param>
+            <param name="targetObject"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ff14bot.Managers.Actionmanager.ClearActionCache">
+            <summary>
+            Clears the actioncache
+            </summary>
+        </member>
+        <member name="P:ff14bot.Managers.Actionmanager.MountId">
+             <summary>
+             Returns the mount id the bot will try to use. uint.MaxValue is used for random.
+             
+             
+                 if (Chocobo.Summoned)
+                     return 1;
+            
+                 if (settings.ForceMount || Chocobo.IsStabled)
+                     return settings.MountId;
+            
+                 return 1;
+             
+             </summary>
+        </member>
+        <member name="P:ff14bot.Managers.Actionmanager.CanMount">
+            <summary>
+            Returns the errorcode, 0 is no error and we can mount
+            </summary>
+        </member>
+        <member name="P:ff14bot.Managers.Actionmanager.ComboTimeLeft">
+            <summary>
+            Returns seconds left before current combo chain resets
+            </summary>
+        </member>
+        <member name="P:ff14bot.Managers.Actionmanager.LastSpellId">
+            <summary>
+            Last spell id that is part of a combo
+            </summary>
+        </member>
+        <member name="P:ff14bot.Managers.Actionmanager.LastSpell">
+            <summary>
+            Gets the last casted spell that was part of a combo chain
+            </summary>
+        </member>
+        <member name="P:ff14bot.Managers.Actionmanager.IsSprintReady">
+            <summary>
+            Returns true if Sprint() will work.
+            </summary>
+        </member>
+        <member name="P:ff14bot.Managers.Actionmanager.CurrentActions">
+            <summary>
+            Returns list of current known skills
+            Value is cached for 1 minute
+            </summary>
+        </member>
+        <member name="M:ff14bot.Managers.AsmManager.SpellRecast(System.UInt32)">
+            <summary>
+            returns the number of milliseconds of recast value for a given spell id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="P:ff14bot.Managers.BotManager.Bots">
+            <summary>
+            List of all loaded botbases
+            </summary>
+        </member>
+        <member name="P:ff14bot.Managers.BotManager.Current">
+            <summary>
+            Current BotBase
+            </summary>
+        </member>
+        <member name="P:ff14bot.Managers.Item.Attributes">
+            <summary>
+            Dictionary of the stats and their values on the item
+            </summary>
+        </member>
+        <member name="P:ff14bot.Managers.Item.IsWeapon">
+            <summary>
+            Returns true if item can go in the mainhand or offhand
+            </summary>
+        </member>
+        <member name="P:ff14bot.Managers.Item.IsValidForCurrentClass">
+            <summary>
+            Returns true if the items affinity allows the current class/job
+            </summary>
+        </member>
+        <member name="P:ff14bot.Managers.Item.IsArmor">
+            <summary>
+            Returns true if item is armor
+            </summary>
+        </member>
+        <member name="T:ff14bot.Managers.DataManager">
+            <summary>
+            Class handles getting spell,item, and aura data based on id or name
+            </summary>
+        </member>
+        <member name="F:ff14bot.Managers.DataManager.SpellCache">
+            <summary>
+            Dictionary containing spellobjects stored by id and english name and the current localized name
+            </summary>
+        </member>
+        <member name="F:ff14bot.Managers.DataManager.SpellsWithJobsCache">
+            <summary>
+            Dictionary containing spellobjects that have a job type associated with them
+            </summary>
+        </member>
+        <member name="F:ff14bot.Managers.DataManager.PetSpellCache">
+            <summary>
+            All the spelldata for pets
+            </summary>
+        </member>
+        <member name="F:ff14bot.Managers.DataManager.BattleNPCCache">
+            <summary>
+            Dictionary containing BattleNPCs stored by id
+            </summary>
+        </member>
+        <member name="F:ff14bot.Managers.DataManager.EventNPCCache">
+            <summary>
+            Dictionary containing EventNPCs stored by id
+            </summary>
+        </member>
+        <member name="F:ff14bot.Managers.DataManager.GatheringCache">
+            <summary>
+            Dictionary containing GatheringResult stored by GatheringType
+            </summary>
+        </member>
+        <member name="F:ff14bot.Managers.DataManager.ItemCache">
+            <summary>
+            Dictionary containing itemobjects stored by id and english name and current language.
+            </summary>
+        </member>
+        <member name="F:ff14bot.Managers.DataManager.AuraCache">
+            <summary>
+            Dictionary containing auras in their english name sorted by id.
+            </summary>
+        </member>
+        <member name="M:ff14bot.Managers.DataManager.GetBattleNPCData(System.UInt32)">
+            <summary>
+            Gets battlenpc information based on id.
+            </summary>
+            <param name="spellId"></param>
+            <returns>null if battlenpc could not be found</returns>
+        </member>
+        <member name="M:ff14bot.Managers.DataManager.GetEventNPCData(System.UInt32)">
+            <summary>
+            Gets battlenpc information based on id.
+            </summary>
+            <param name="spellId"></param>
+            <returns>null if battlenpc could not be found</returns>
+        </member>
+        <member name="M:ff14bot.Managers.DataManager.GetSpellData(System.UInt32)">
+            <summary>
+            Get spell object based on id
+            </summary>
+            <param name="spellId"></param>
+            <returns>null if spell could not be found</returns>
+        </member>
+        <member name="M:ff14bot.Managers.DataManager.GetSpellData(System.String)">
+            <summary>
+            Get spell object based on name
+            </summary>
+            <param name="spellname"></param>
+            <returns>null if spell could not be found</returns>
+        </member>
+        <member name="M:ff14bot.Managers.DataManager.GetPetSpellData(System.String)">
+            <summary>
+            Get pet spell object based on name
+            </summary>
+            <param name="spellname"></param>
+            <returns>null if spell could not be found</returns>
+        </member>
+        <member name="M:ff14bot.Managers.DataManager.GetAuraNameById(System.UInt32)">
+            <summary>
+            Gets a aura name by id
+            </summary>
+            <param name="spellId"></param>
+            <returns>null if could not be found</returns>
+        </member>
+        <member name="M:ff14bot.Managers.DataManager.GetItem(System.UInt32,System.Boolean)">
+            <summary>
+            Get item object based on id
+            </summary>
+            <param name="itemId"></param>
+            <param name="highQuality">True if the item is high quality</param>
+            <returns>null if could not be found</returns>
+        </member>
+        <member name="M:ff14bot.Managers.DataManager.GetItem(System.String)">
+            <summary>
+            Get item object based on name
+            </summary>
+            <param name="itemName"></param>
+            <returns>null if could not be found</returns>
+        </member>
+        <member name="P:ff14bot.Managers.MovementManager.IsMoving">
+            <summary>
+            Returns if character is currently moving. This variable is not cached.
+            </summary>
+        </member>
+        <member name="P:ff14bot.Managers.MovementManager.IsTurning">
+            <summary>
+            Returns if character is currently turning. This variable is not cached.
+            </summary>
+        </member>
+        <member name="P:ff14bot.Managers.MovementManager.Speed">
+            <summary>
+            Returns characters current speed. This variable is not cached.
+            </summary>
+        </member>
+        <member name="M:ff14bot.Managers.RoutineManager.PickRoutine">
+            <summary>
+            Selects an active routine
+            The first routine with a partial match with <see cref="P:ff14bot.Managers.RoutineManager.PreferedRoutine"/> is selected first if it is set.
+            If there is only one match for the current class, then that is selected. If there is more then one option then a dialog is displayed.
+            </summary>
+        </member>
+        <member name="E:ff14bot.Managers.RoutineManager.Reloaded">
+            <summary>
+            Fired when routines have been reloaded
+            </summary>
+        </member>
+        <member name="E:ff14bot.Managers.RoutineManager.PickRoutineFired">
+            <summary>
+            Fired at the very start of PickRoutine
+            Good place to set PreferedRoutine
+            </summary>
+        </member>
+        <member name="E:ff14bot.Managers.RoutineManager.RoutineChanged">
+            <summary>
+            Fired when the routine has changed
+            </summary>
+        </member>
+        <member name="P:ff14bot.Managers.RoutineManager.AllRoutines">
+            <summary>
+            List of all loaded routines, including ones that don't match the players class
+            </summary>
+        </member>
+        <member name="P:ff14bot.Managers.RoutineManager.Routines">
+            <summary>
+            List of all routines that support the players class.
+            </summary>
+        </member>
+        <member name="P:ff14bot.Managers.RoutineManager.PreferedRoutine">
+            <summary>
+            Partial match against routine name during startup and switching classes
+            Can be assigned to.
+            </summary>
+        </member>
+        <member name="P:ff14bot.Managers.RoutineManager.Current">
+            <summary>
+            Current combat routine
+            Setting this will change the routine used in the botbases
+            Calls shutdown on the previous routine and initalize on the new one
+            </summary>
+        </member>
+        <member name="T:ff14bot.Managers.AgentModule">
+            <summary>
+            This class handles accessing datasets behind ui windows
+            </summary>
+        </member>
+        <member name="T:ff14bot.Managers.RaptureAtkUnitManager">
+            <summary>
+            This class handles accessing ingame windows
+            </summary>
+        </member>
+        <member name="M:ff14bot.Managers.RaptureAtkUnitManager.GetWindowByName(System.String)">
+            <summary>
+            Gets window control handler by name
+            </summary>
+            <param name="name">Name of the window</param>
+            <returns></returns>
+        </member>
+        <member name="M:ff14bot.Managers.RaptureAtkUnitManager.Update">
+            <summary> Updates the <see cref="T:ff14bot.Managers.FateManager"/>'s object storage lists. </summary>
+        </member>
+        <member name="P:ff14bot.Managers.RaptureAtkUnitManager.GetRawControls">
+            <summary>
+            Call this if you are operating in another thread.
+            </summary>
+        </member>
+        <member name="P:ff14bot.Managers.RaptureAtkUnitManager.Controls">
+            <summary> Gets a list of AtkAddonControl. </summary>
+            <value> A List of AtkAddonControl. </value>
+        </member>
+        <member name="M:ff14bot.Objects.Auras.GetAuraStacksById(System.Int32)">
+            <summary>
+            Returns the amount of stacks for a given aura id
+            </summary>
+            <param name="id">aura id to lookup</param>
+            <returns>-1 if aura is not present, #of stacks if aura is stackable, undefined otherwise</returns>
+        </member>
+        <member name="T:ff14bot.Objects.Aura">
+            <summary>
+            The values within this class are only good for one frame, discard object after that.
+            </summary>
+        </member>
+        <member name="F:ff14bot.Managers.GameObjectManager.Attackers">
+            <summary>
+            List of characters currently on the threat list
+            </summary>
+        </member>
+        <member name="M:ff14bot.Managers.GameObjectManager.Clear">
+            <summary> Clears the entity manager of any cached values and forces a refresh on next Update() call </summary>
+        </member>
+        <member name="M:ff14bot.Managers.GameObjectManager.Update">
+            <summary> Updates the <see cref="!:EntityManager"/>'s object storage lists. </summary>
+        </member>
+        <member name="M:ff14bot.Managers.GameObjectManager.GetObjectsOfType``1(System.Boolean,System.Boolean)">
+            <summary>
+            Gets object of the specified type.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="allowInheritance">Indicates whether to also get objects that derives from the specified type (ie. WoWPlayer derives from WoWUnit, so specifying WoWUnit and true would also return all players).</param>
+            <param name="includeMeIfFound">Indicates whether to include the local player.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ff14bot.Managers.GameObjectManager.GetObjectById``1(System.UInt32,System.Boolean)">
+            <summary>
+            Gets a entity by it's ref.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="ref">The ref.</param>
+            <param name="allowInheritance">if set to <c>true</c> [allow inheritance].</param>
+            <returns></returns>
+            <remarks>
+            Created 2012-02-27
+            </remarks>
+        </member>
+        <member name="P:ff14bot.Managers.GameObjectManager.NumberOfAttackers">
+            <summary>
+            Current number of units on the attacker.
+            </summary>
+        </member>
+        <member name="P:ff14bot.Managers.GameObjectManager.GameObjects">
+            <summary> Gets a list of entities. </summary>
+            <value> A List of entities. </value>
+        </member>
+        <member name="M:ff14bot.Managers.FastObjectFactory.CreateObjectFactory(System.Type)">
+            <summary>
+            Create a new instance of the specified type
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ff14bot.Objects.LocalPlayer.SetFacing(System.Single)">
+            <summary>
+            Sets the players rotation
+            </summary>
+            <param name="rotation">in radians</param>
+        </member>
+        <member name="M:ff14bot.Objects.LocalPlayer.Face(Clio.Utilities.Vector3)">
+            <summary>
+            Face the player twoards the given vector
+            </summary>
+            <param name="position"></param>
+        </member>
+        <member name="M:ff14bot.Objects.LocalPlayer.Face(ff14bot.Objects.GameObject)">
+            <summary>
+            Face the player to the passed gameobject
+            </summary>
+            <param name="gameObject"></param>
+        </member>
+        <member name="P:ff14bot.Objects.LocalPlayer.Levels">
+            <summary>
+            Dictionary of current levels for localplayers classes
+            </summary>
+        </member>
+        <member name="P:ff14bot.Objects.LocalPlayer.CurrentTargetObjId">
+            <summary>
+            Object id of the current target, 0 if no target
+            </summary>
+        </member>
+        <member name="T:Pathfinding.Arc">
+            <summary>
+            An arc is defined with its two extremity nodes StartNode and EndNode therefore it is oriented.
+            It is also characterized by a crossing factor named 'Weight'.
+            This value represents the difficulty to reach the ending node from the starting one.
+            </summary>
+        </member>
+        <member name="M:Pathfinding.Arc.#ctor(Pathfinding.Node,Pathfinding.Node)">
+            <summary>
+            Arc constructor.
+            </summary>
+            <exception cref="T:System.ArgumentNullException">Extremity nodes cannot be null.</exception>
+            <exception cref="T:System.ArgumentException">StartNode and EndNode must be different.</exception>
+            <param name="Start">The node from which the arc starts.</param>
+            <param name="End">The node to which the arc ends.</param>
+        </member>
+        <member name="M:Pathfinding.Arc.CalculateLength">
+            <summary>
+            Performs the calculous that returns the arc's length
+            Can be overriden for derived types of arcs that are not linear.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Pathfinding.Arc.ToString">
+            <summary>
+            Returns the textual description of the arc.
+            object.ToString() override.
+            </summary>
+            <returns>String describing this arc.</returns>
+        </member>
+        <member name="M:Pathfinding.Arc.Equals(System.Object)">
+            <summary>
+            Object.Equals override.
+            Tells if two arcs are equal by comparing StartNode and EndNode.
+            </summary>
+            <exception cref="T:System.ArgumentException">Cannot compare an arc with another type.</exception>
+            <param name="O">The arc to compare with.</param>
+            <returns>'true' if both arcs are equal.</returns>
+        </member>
+        <member name="M:Pathfinding.Arc.GetHashCode">
+            <summary>
+            Object.GetHashCode override.
+            </summary>
+            <returns>HashCode value.</returns>
+        </member>
+        <member name="P:Pathfinding.Arc.StartNode">
+            <summary>
+            Gets/Sets the node from which the arc starts.
+            </summary>
+            <exception cref="T:System.ArgumentNullException">StartNode cannot be set to null.</exception>
+            <exception cref="T:System.ArgumentException">StartNode cannot be set to EndNode.</exception>
+        </member>
+        <member name="P:Pathfinding.Arc.EndNode">
+            <summary>
+            Gets/Sets the node to which the arc ends.
+            </summary>
+            <exception cref="T:System.ArgumentNullException">EndNode cannot be set to null.</exception>
+            <exception cref="T:System.ArgumentException">EndNode cannot be set to StartNode.</exception>
+        </member>
+        <member name="P:Pathfinding.Arc.Weight">
+            <summary>
+            Sets/Gets the weight of the arc.
+            This value is used to determine the cost of moving through the arc.
+            </summary>
+        </member>
+        <member name="P:Pathfinding.Arc.Passable">
+            <summary>
+            Gets/Sets the functional state of the arc.
+            'true' means that the arc is in its normal state.
+            'false' means that the arc will not be taken into account (as if it did not exist or if its cost were infinite).
+            </summary>
+        </member>
+        <member name="P:Pathfinding.Arc.Length">
+            <summary>
+            Gets arc's length.
+            </summary>
+        </member>
+        <member name="P:Pathfinding.Arc.Cost">
+            <summary>
+            Gets the cost of moving through the arc.
+            Can be overriden when not simply equals to Weight*Length.
+            </summary>
+        </member>
+        <member name="T:Pathfinding.Heuristic">
+            <summary>
+            A heuristic is a function that associates a value with a node to gauge it considering the node to reach.
+            </summary>
+        </member>
+        <member name="T:Pathfinding.AStarz">
+            <summary>
+            Class to search the best path between two nodes on a graph.
+            </summary>
+        </member>
+        <member name="M:Pathfinding.AStarz.#ctor(Pathfinding.Graph)">
+            <summary>
+            AStar Constructor.
+            </summary>
+            <param name="G">The graph on which AStar will perform the search.</param>
+        </member>
+        <member name="M:Pathfinding.AStarz.SearchPath(Pathfinding.Node,Pathfinding.Node)">
+            <summary>
+            Searches for the best path to reach the specified EndNode from the specified StartNode.
+            </summary>
+            <exception cref="T:System.ArgumentNullException">StartNode and EndNode cannot be null.</exception>
+            <param name="StartNode">The node from which the path must start.</param>
+            <param name="EndNode">The node to which the path must end.</param>
+            <returns>'true' if succeeded / 'false' if failed.</returns>
+        </member>
+        <member name="M:Pathfinding.AStarz.Initialize(Pathfinding.Node,Pathfinding.Node)">
+            <summary>
+            Use for a 'step by step' search only. This method is alternate to SearchPath.
+            Initializes AStar before performing search steps manually with NextStep.
+            </summary>
+            <exception cref="T:System.ArgumentNullException">StartNode and EndNode cannot be null.</exception>
+            <param name="StartNode">The node from which the path must start.</param>
+            <param name="EndNode">The node to which the path must end.</param>
+        </member>
+        <member name="M:Pathfinding.AStarz.NextStep">
+            <summary>
+            Use for a 'step by step' search only. This method is alternate to SearchPath.
+            The algorithm must have been initialize before.
+            </summary>
+            <exception cref="T:System.InvalidOperationException">You must initialize AStar before using NextStep().</exception>
+            <returns>'true' unless the search ended.</returns>
+        </member>
+        <member name="M:Pathfinding.AStarz.ResultInformation(System.Int32@,System.Double@)">
+            <summary>
+            Returns information on the result.
+            </summary>
+            <param name="NbArcsOfPath">The number of arcs in the result path / -1 if no result.</param>
+            <param name="CostOfPath">The cost of the result path / -1 if no result.</param>
+            <returns>'true' if the search succeeded / 'false' if it failed.</returns>
+        </member>
+        <member name="P:Pathfinding.AStarz.EuclidianHeuristic">
+            <summary>
+            Heuristic based on the euclidian distance : Sqrt(Dx²+Dy²+Dz²)
+            </summary>
+        </member>
+        <member name="P:Pathfinding.AStarz.MaxAlongAxisHeuristic">
+            <summary>
+            Heuristic based on the maximum distance : Max(|Dx|, |Dy|, |Dz|)
+            </summary>
+        </member>
+        <member name="P:Pathfinding.AStarz.ManhattanHeuristic">
+            <summary>
+            Heuristic based on the manhattan distance : |Dx|+|Dy|+|Dz|
+            </summary>
+        </member>
+        <member name="P:Pathfinding.AStarz.ChoosenHeuristic">
+            <summary>
+            Gets/Sets the heuristic that AStar will use.
+            It must be homogeneous to arc's cost.
+            </summary>
+        </member>
+        <member name="P:Pathfinding.AStarz.DijkstraHeuristicBalance">
+            <summary>
+            This value must belong to [0; 1] and it determines the influence of the heuristic on the algorithm.
+            If this influence value is set to 0, then the search will behave in accordance with the Dijkstra algorithm.
+            If this value is set to 1, then the cost to come to the current node will not be used whereas only the heuristic will be taken into account.
+            </summary>
+            <exception cref="T:System.ArgumentException">Value must belong to [0;1].</exception>
+        </member>
+        <member name="P:Pathfinding.AStarz.Open">
+            <summary>
+            Use for debug in 'step by step' mode only.
+            Returns all the tracks found in the 'Open' list of the algorithm at a given time.
+            A track is a list of the nodes visited to come to the current node.
+            </summary>
+        </member>
+        <member name="P:Pathfinding.AStarz.Closed">
+            <summary>
+            Use for debug in a 'step by step' mode only.
+            Returns all the tracks found in the 'Closed' list of the algorithm at a given time.
+            A track is a list of the nodes visited to come to the current node.
+            </summary>
+        </member>
+        <member name="P:Pathfinding.AStarz.Initialized">
+            <summary>
+            To know if the search has been initialized.
+            </summary>
+        </member>
+        <member name="P:Pathfinding.AStarz.SearchStarted">
+            <summary>
+            To know if the search has been started.
+            </summary>
+        </member>
+        <member name="P:Pathfinding.AStarz.SearchEnded">
+            <summary>
+            To know if the search has ended.
+            </summary>
+        </member>
+        <member name="P:Pathfinding.AStarz.PathFound">
+            <summary>
+            To know if a path has been found.
+            </summary>
+        </member>
+        <member name="P:Pathfinding.AStarz.StepCounter">
+            <summary>
+            Use for a 'step by step' search only.
+            Gets the number of the current step.
+            -1 if the search has not been initialized.
+            0 if it has not been started.
+            </summary>
+        </member>
+        <member name="P:Pathfinding.AStarz.PathByNodes">
+            <summary>
+            Gets the array of nodes representing the found path.
+            </summary>
+            <exception cref="T:System.InvalidOperationException">You cannot get a result unless the search has ended.</exception>
+        </member>
+        <member name="P:Pathfinding.AStarz.PathByCoordinates">
+            <summary>
+            Gets the array of points representing the found path.
+            </summary>
+            <exception cref="T:System.InvalidOperationException">You cannot get a result unless the search has ended.</exception>
+        </member>
+        <member name="T:Pathfinding.Graph">
+            <summary>
+            Graph structure. It is defined with :
+            It is defined with both a list of nodes and a list of arcs.
+            </summary>
+        </member>
+        <member name="M:Pathfinding.Graph.#ctor">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="M:Pathfinding.Graph.Clear">
+            <summary>
+            Empties the graph.
+            </summary>
+        </member>
+        <member name="M:Pathfinding.Graph.AddNode(Pathfinding.Node)">
+            <summary>
+            Directly Adds a node to the graph.
+            </summary>
+            <param name="NewNode">The node to add.</param>
+            <returns>'true' if it has actually been added / 'false' if the node is null or if it is already in the graph.</returns>
+        </member>
+        <member name="M:Pathfinding.Graph.AddNode(System.Single,System.Single,System.Single)">
+            <summary>
+            Creates a node, adds to the graph and returns its reference.
+            </summary>
+            <param name="x">X coordinate.</param>
+            <param name="y">Y coordinate.</param>
+            <param name="z">Z coordinate.</param>
+            <returns>The reference of the new node / null if the node is already in the graph.</returns>
+        </member>
+        <member name="M:Pathfinding.Graph.AddNode(System.Single,System.Single,System.Single,System.Int32,System.Int32[])">
+            <summary>
+            Creates a node, adds to the graph and returns its reference.
+            </summary>
+            <param name="x">X coordinate.</param>
+            <param name="y">Y coordinate.</param>
+            <param name="z">Z coordinate.</param>
+            <param name="id">Id of the node</param>
+            <returns>The reference of the new node / null if the node is already in the graph.</returns>
+        </member>
+        <member name="M:Pathfinding.Graph.AddNode(Clio.Utilities.Vector3,System.Int32,System.Int32[])">
+            <summary>
+            Creates a node, adds to the graph and returns its reference.
+            </summary>
+            <param name="x">X coordinate.</param>
+            <param name="y">Y coordinate.</param>
+            <param name="z">Z coordinate.</param>
+            <param name="id">Id of the node</param>
+            <returns>The reference of the new node / null if the node is already in the graph.</returns>
+        </member>
+        <member name="M:Pathfinding.Graph.AddArc(Pathfinding.Arc)">
+            <summary>
+            Directly Adds an arc to the graph.
+            </summary>
+            <exception cref="T:System.ArgumentException">Cannot add an arc if one of its extremity nodes does not belong to the graph.</exception>
+            <param name="NewArc">The arc to add.</param>
+            <returns>'true' if it has actually been added / 'false' if the arc is null or if it is already in the graph.</returns>
+        </member>
+        <member name="M:Pathfinding.Graph.AddArc(Pathfinding.Node,Pathfinding.Node,System.Single)">
+            <summary>
+            Creates an arc between two nodes that are already registered in the graph, adds it to the graph and returns its reference.
+            </summary>
+            <exception cref="T:System.ArgumentException">Cannot add an arc if one of its extremity nodes does not belong to the graph.</exception>
+            <param name="StartNode">Start node for the arc.</param>
+            <param name="EndNode">End node for the arc.</param>
+            <param name="Weight">Weight for the arc.</param>
+            <returns>The reference of the new arc / null if the arc is already in the graph.</returns>
+        </member>
+        <member name="M:Pathfinding.Graph.Add2Arcs(Pathfinding.Node,Pathfinding.Node,System.Single)">
+            <summary>
+            Adds the two opposite arcs between both specified nodes to the graph.
+            </summary>
+            <exception cref="T:System.ArgumentException">Cannot add an arc if one of its extremity nodes does not belong to the graph.</exception>
+            <param name="Node1"></param>
+            <param name="Node2"></param>
+            <param name="Weight"></param>
+        </member>
+        <member name="M:Pathfinding.Graph.RemoveNode(Pathfinding.Node)">
+            <summary>
+            Removes a node from the graph as well as the linked arcs.
+            </summary>
+            <param name="NodeToRemove">The node to remove.</param>
+            <returns>'true' if succeeded / 'false' otherwise.</returns>
+        </member>
+        <member name="M:Pathfinding.Graph.RemoveArc(Pathfinding.Arc)">
+            <summary>
+            Removes a node from the graph as well as the linked arcs.
+            </summary>
+            <param name="ArcToRemove">The arc to remove.</param>
+            <returns>'true' if succeeded / 'false' otherwise.</returns>
+        </member>
+        <member name="M:Pathfinding.Graph.ClosestNode(System.Single,System.Single,System.Single,System.Single@,System.Boolean)">
+            <summary>
+            This function will find the closest node from a geographical position in space.
+            </summary>
+            <param name="PtX">X coordinate of the point from which you want the closest node.</param>
+            <param name="PtY">Y coordinate of the point from which you want the closest node.</param>
+            <param name="PtZ">Z coordinate of the point from which you want the closest node.</param>
+            <param name="Distance">The distance to the closest node.</param>
+            <param name="IgnorePassableProperty">if 'false', then nodes whose property Passable is set to false will not be taken into account.</param>
+            <returns>The closest node that has been found.</returns>
+        </member>
+        <member name="M:Pathfinding.Graph.ClosestNodes(Clio.Utilities.Vector3,System.Int32,System.Boolean)">
+            <summary>
+            returns the three closest nodes to a point
+            </summary>
+            <param name="point"></param>
+            <param name="IgnorePassableProperty"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Pathfinding.Graph.FarthestNodes(Clio.Utilities.Vector3,System.Int32,System.Boolean)">
+            <summary>
+            returns the three closest nodes to a point
+            </summary>
+            <param name="point"></param>
+            <param name="IgnorePassableProperty"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Pathfinding.Graph.FarthestNode(System.Single,System.Single,System.Single,System.Single@,System.Boolean)">
+            <summary>
+            This function will find the farthest node from a geographical position in space.
+            </summary>
+            <param name="PtX">X coordinate of the point from which you want the closest node.</param>
+            <param name="PtY">Y coordinate of the point from which you want the closest node.</param>
+            <param name="PtZ">Z coordinate of the point from which you want the closest node.</param>
+            <param name="Distance">The distance to the closest node.</param>
+            <param name="IgnorePassableProperty">if 'false', then nodes whose property Passable is set to false will not be taken into account.</param>
+            <returns>The closest node that has been found.</returns>
+        </member>
+        <member name="P:Pathfinding.Graph.Nodes">
+            <summary>
+            Gets the List interface of the nodes in the graph.
+            </summary>
+        </member>
+        <member name="P:Pathfinding.Graph.Arcs">
+            <summary>
+            Gets the List interface of the arcs in the graph.
+            </summary>
+        </member>
+        <member name="T:Pathfinding.Node">
+            <summary>
+            Basically a node is defined with a geographical position in space.
+            It is also characterized with both collections of outgoing arcs and incoming arcs.
+            </summary>
+        </member>
+        <member name="M:Pathfinding.Node.#ctor(System.Single,System.Single,System.Single)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="PositionX">X coordinate.</param>
+            <param name="PositionY">Y coordinate.</param>
+            <param name="PositionZ">Z coordinate.</param>
+        </member>
+        <member name="M:Pathfinding.Node.ChangeXYZ(System.Single,System.Single,System.Single)">
+            <summary>
+            Modifies X, Y and Z coordinates
+            </summary>
+            <param name="PositionX">X coordinate.</param>
+            <param name="PositionY">Y coordinate.</param>
+            <param name="PositionZ">Z coordinate.</param>
+        </member>
+        <member name="M:Pathfinding.Node.ToString">
+            <summary>
+            object.ToString() override.
+            Returns the textual description of the node.
+            </summary>
+            <returns>String describing this node.</returns>
+        </member>
+        <member name="M:Pathfinding.Node.Equals(System.Object)">
+            <summary>
+            Object.Equals override.
+            Tells if two nodes are equal by comparing positions.
+            </summary>
+            <exception cref="T:System.ArgumentException">A Node cannot be compared with another type.</exception>
+            <param name="O">The node to compare with.</param>
+            <returns>'true' if both nodes are equal.</returns>
+        </member>
+        <member name="M:Pathfinding.Node.Clone">
+            <summary>
+            Returns a copy of this node.
+            </summary>
+            <returns>The reference of the new object.</returns>
+        </member>
+        <member name="M:Pathfinding.Node.GetHashCode">
+            <summary>
+            Object.GetHashCode override.
+            </summary>
+            <returns>HashCode value.</returns>
+        </member>
+        <member name="M:Pathfinding.Node.EuclidianDistance(Pathfinding.Node,Pathfinding.Node)">
+            <summary>
+            Returns the euclidian distance between two nodes : Sqrt(Dx²+Dy²+Dz²)
+            </summary>
+            <param name="N1">First node.</param>
+            <param name="N2">Second node.</param>
+            <returns>Distance value.</returns>
+        </member>
+        <member name="M:Pathfinding.Node.SquareEuclidianDistance(Pathfinding.Node,Pathfinding.Node)">
+            <summary>
+            Returns the square euclidian distance between two nodes : Dx²+Dy²+Dz²
+            </summary>
+            <exception cref="T:System.ArgumentNullException">Argument nodes must not be null.</exception>
+            <param name="N1">First node.</param>
+            <param name="N2">Second node.</param>
+            <returns>Distance value.</returns>
+        </member>
+        <member name="M:Pathfinding.Node.ManhattanDistance(Pathfinding.Node,Pathfinding.Node)">
+            <summary>
+            Returns the manhattan distance between two nodes : |Dx|+|Dy|+|Dz|
+            </summary>
+            <exception cref="T:System.ArgumentNullException">Argument nodes must not be null.</exception>
+            <param name="N1">First node.</param>
+            <param name="N2">Second node.</param>
+            <returns>Distance value.</returns>
+        </member>
+        <member name="M:Pathfinding.Node.MaxDistanceAlongAxis(Pathfinding.Node,Pathfinding.Node)">
+            <summary>
+            Returns the maximum distance between two nodes : Max(|Dx|, |Dy|, |Dz|)
+            </summary>
+            <exception cref="T:System.ArgumentNullException">Argument nodes must not be null.</exception>
+            <param name="N1">First node.</param>
+            <param name="N2">Second node.</param>
+            <returns>Distance value.</returns>
+        </member>
+        <member name="P:Pathfinding.Node.Passable">
+            Gets/Sets the functional state of the node.
+            'true' means that the node is in its normal state.
+            'false' means that the node will not be taken into account (as if it did not exist).
+        </member>
+        <member name="P:Pathfinding.Node.X">
+            <summary>
+            Gets X coordinate.
+            </summary>
+        </member>
+        <member name="P:Pathfinding.Node.Y">
+            <summary>
+            Gets Y coordinate.
+            </summary>
+        </member>
+        <member name="P:Pathfinding.Node.Z">
+            <summary>
+            Gets Z coordinate.
+            </summary>
+        </member>
+        <member name="P:Pathfinding.Node.Position">
+            <summary>
+            Gets/Sets the geographical position of the node.
+            </summary>
+            <exception cref="T:System.ArgumentNullException">Cannot set the Position to null.</exception>
+        </member>
+        <member name="T:ff14bot.UpdateWindow">
+            <summary>
+            Interaction logic for UpdateWindow.xaml
+            </summary>
+            <summary>
+            UpdateWindow
+            </summary>
+        </member>
+        <member name="M:ff14bot.UpdateWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Pathfinding.SortableList">
+            <summary>
+            The SortableList allows to maintain a list sorted as long as needed.
+            If no IComparer interface has been provided at construction, then the list expects the Objects to implement IComparer.
+            If the list is not sorted it behaves like an ordinary list.
+            When sorted, the list's "Add" method will put new objects at the right place.
+            As well the "Contains" and "IndexOf" methods will perform a binary search.
+            </summary>
+        </member>
+        <member name="M:Pathfinding.SortableList.#ctor">
+            <summary>
+            Default constructor.
+            Since no IComparer is provided here, added objects must implement the IComparer interface.
+            </summary>
+        </member>
+        <member name="M:Pathfinding.SortableList.#ctor(System.Int32)">
+            <summary>
+            Constructor.
+            Since no IComparer is provided, added objects must implement the IComparer interface.
+            </summary>
+            <param name="Capacity">Capacity of the list (<see cref="P:System.Collections.ArrayList.Capacity">ArrayList.Capacity</see>)</param>
+        </member>
+        <member name="M:Pathfinding.SortableList.#ctor(System.Collections.IComparer)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="Comparer">Will be used to compare added elements for sort and search operations.</param>
+        </member>
+        <member name="M:Pathfinding.SortableList.#ctor(System.Collections.IComparer,System.Int32)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="Comparer">Will be used to compare added elements for sort and search operations.</param>
+            <param name="Capacity">Capacity of the list (<see cref="P:System.Collections.ArrayList.Capacity">ArrayList.Capacity</see>)</param>
+        </member>
+        <member name="M:Pathfinding.SortableList.Add(System.Object)">
+            <summary>
+            IList implementation.
+            If the <see cref="P:Pathfinding.SortableList.KeepSorted">KeepSorted</see> property is set to true, the object will be added at the right place.
+            Else it will be added at the end of the list.
+            </summary>
+            <param name="O">The object to add.</param>
+            <returns>The index where the object has been added.</returns>
+            <exception cref="T:System.ArgumentException">The SortableList is set to use object's IComparable interface, and the specifed object does not implement this interface.</exception>
+        </member>
+        <member name="M:Pathfinding.SortableList.Contains(System.Object)">
+            <summary>
+            IList implementation.
+            Search for a specified object in the list.
+            If the list is sorted, a <see cref="M:System.Collections.ArrayList.BinarySearch(System.Int32,System.Int32,System.Object,System.Collections.IComparer)">BinarySearch</see> is performed using IComparer interface.
+            Else the <see cref="M:Pathfinding.SortableList.Equals(System.Object)">Object.Equals</see> implementation is used.
+            </summary>
+            <param name="O">The object to look for</param>
+            <returns>true if the object is in the list, otherwise false.</returns>
+        </member>
+        <member name="M:Pathfinding.SortableList.IndexOf(System.Object)">
+            <summary>
+            IList implementation.
+            Returns the index of the specified object in the list.
+            If the list is sorted, a <see cref="M:System.Collections.ArrayList.BinarySearch(System.Int32,System.Int32,System.Object,System.Collections.IComparer)">BinarySearch</see> is performed using IComparer interface.
+            Else the <see cref="M:Pathfinding.SortableList.Equals(System.Object)">Object.Equals</see> implementation of objects is used.
+            </summary>
+            <param name="O">The object to locate.</param>
+            <returns>
+            If the object has been found, a positive integer corresponding to its position.
+            If the objects has not been found, a negative integer which is the bitwise complement of the index of the next element.
+            </returns>
+        </member>
+        <member name="M:Pathfinding.SortableList.Clear">
+            <summary>
+            IList implementation.
+            Idem <see cref="T:System.Collections.ArrayList">ArrayList</see>
+            </summary>
+        </member>
+        <member name="M:Pathfinding.SortableList.Insert(System.Int32,System.Object)">
+            <summary>
+            IList implementation.
+            Inserts an objects at a specified index.
+            Cannot be used if the list has its KeepSorted property set to true.
+            </summary>
+            <param name="Index">The index before which the object must be added.</param>
+            <param name="O">The object to add.</param>
+            <exception cref="T:System.ArgumentException">The SortableList is set to use object's IComparable interface, and the specifed object does not implement this interface.</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">Index is less than zero or Index is greater than Count.</exception>
+            <exception cref="T:System.InvalidOperationException">If the object is added at the specify index, the list will not be sorted any more and the <see cref="P:Pathfinding.SortableList.KeepSorted"/> property is set to true.</exception>
+        </member>
+        <member name="M:Pathfinding.SortableList.Remove(System.Object)">
+            <summary>
+            IList implementation.
+            Idem <see cref="T:System.Collections.ArrayList">ArrayList</see>
+            </summary>
+            <param name="Value">The object whose value must be removed if found in the list.</param>
+        </member>
+        <member name="M:Pathfinding.SortableList.RemoveAt(System.Int32)">
+            <summary>
+            IList implementation.
+            Idem <see cref="T:System.Collections.ArrayList">ArrayList</see>
+            </summary>
+            <param name="Index">Index of object to remove.</param>
+        </member>
+        <member name="M:Pathfinding.SortableList.CopyTo(System.Array,System.Int32)">
+            <summary>
+            IList.ICollection implementation.
+            Idem <see cref="T:System.Collections.ArrayList">ArrayList</see>
+            </summary>
+            <param name="array"></param>
+            <param name="arrayIndex"></param>
+        </member>
+        <member name="M:Pathfinding.SortableList.GetEnumerator">
+            <summary>
+            IList.IEnumerable implementation.
+            Idem <see cref="T:System.Collections.ArrayList">ArrayList</see>
+            </summary>
+            <returns>Enumerator on the list.</returns>
+        </member>
+        <member name="M:Pathfinding.SortableList.Clone">
+            <summary>
+            ICloneable implementation.
+            Idem <see cref="T:System.Collections.ArrayList">ArrayList</see>
+            </summary>
+            <returns>Cloned object.</returns>
+        </member>
+        <member name="M:Pathfinding.SortableList.IndexOf(System.Object,System.Int32)">
+            <summary>
+            Idem IndexOf(object), but starting at a specified position in the list
+            </summary>
+            <param name="O">The object to locate.</param>
+            <param name="Start">The index for start position.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Pathfinding.SortableList.IndexOf(System.Object,Pathfinding.SortableList.Equality)">
+            <summary>
+            Idem IndexOf(object), but with a specified equality function
+            </summary>
+            <param name="O">The object to locate.</param>
+            <param name="AreEqual">Equality function to use for the search.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Pathfinding.SortableList.IndexOf(System.Object,System.Int32,Pathfinding.SortableList.Equality)">
+            <summary>
+            Idem IndexOf(object), but with a start index and a specified equality function
+            </summary>
+            <param name="O">The object to locate.</param>
+            <param name="Start">The index for start position.</param>
+            <param name="AreEqual">Equality function to use for the search.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Pathfinding.SortableList.ToString">
+            <summary>
+            Object.ToString() override.
+            Build a string to represent the list.
+            </summary>
+            <returns>The string refecting the list.</returns>
+        </member>
+        <member name="M:Pathfinding.SortableList.Equals(System.Object)">
+            <summary>
+            Object.Equals() override.
+            </summary>
+            <returns>true if object is equal to this, otherwise false.</returns>
+        </member>
+        <member name="M:Pathfinding.SortableList.GetHashCode">
+            <summary>
+            Object.GetHashCode() override.
+            </summary>
+            <returns>HashCode value.</returns>
+        </member>
+        <member name="M:Pathfinding.SortableList.Sort">
+            <summary>
+            Sorts the elements in the list using <see cref="M:System.Collections.ArrayList.Sort">ArrayList.Sort</see>.
+            Does nothing if the list is already sorted.
+            </summary>
+        </member>
+        <member name="M:Pathfinding.SortableList.AddRange(System.Collections.ICollection)">
+            <summary>
+            If the <see cref="P:Pathfinding.SortableList.KeepSorted">KeepSorted</see> property is set to true, the object will be added at the right place.
+            Else it will be appended to the list.
+            </summary>
+            <param name="C">The object to add.</param>
+            <returns>The index where the object has been added.</returns>
+            <exception cref="T:System.ArgumentException">The SortableList is set to use object's IComparable interface, and the specifed object does not implement this interface.</exception>
+        </member>
+        <member name="M:Pathfinding.SortableList.InsertRange(System.Int32,System.Collections.ICollection)">
+            <summary>
+            Inserts a collection of objects at a specified index.
+            Should not be used if the list is the KeepSorted property is set to true.
+            </summary>
+            <param name="Index">The index before which the objects must be added.</param>
+            <param name="C">The object to add.</param>
+            <exception cref="T:System.ArgumentException">The SortableList is set to use objects's IComparable interface, and the specifed object does not implement this interface.</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">Index is less than zero or Index is greater than Count.</exception>
+            <exception cref="T:System.InvalidOperationException">If the object is added at the specify index, the list will not be sorted any more and the <see cref="P:Pathfinding.SortableList.KeepSorted"/> property is set to true.</exception>
+        </member>
+        <member name="M:Pathfinding.SortableList.LimitNbOccurrences(System.Object,System.Int32)">
+            <summary>
+            Limits the number of occurrences of a specified value.
+            Same values are equals according to the Equals() method of objects in the list.
+            The first occurrences encountered are kept.
+            </summary>
+            <param name="Value">Value whose occurrences number must be limited.</param>
+            <param name="NbValuesToKeep">Number of occurrences to keep</param>
+        </member>
+        <member name="M:Pathfinding.SortableList.RemoveDuplicates">
+            <summary>
+            Removes all duplicates in the list.
+            Each value encountered will have only one representant.
+            </summary>
+        </member>
+        <member name="M:Pathfinding.SortableList.IndexOfMin">
+            <summary>
+            Returns the object of the list whose value is minimum
+            </summary>
+            <returns>The minimum object in the list</returns>
+        </member>
+        <member name="M:Pathfinding.SortableList.IndexOfMax">
+            <summary>
+            Returns the object of the list whose value is maximum
+            </summary>
+            <returns>The maximum object in the list</returns>
+        </member>
+        <member name="P:Pathfinding.SortableList.IsSorted">
+            <summary>
+            'Get only' property that indicates if the list is sorted.
+            </summary>
+        </member>
+        <member name="P:Pathfinding.SortableList.KeepSorted">
+            <summary>
+            Get : Indicates if the list must be kept sorted from now on.
+            Set : Tells the list if it must stay sorted or not. Impossible to set to true if the list is not sorted.
+            <see cref="P:Pathfinding.SortableList.KeepSorted">KeepSorted</see>==true implies that <see cref="P:Pathfinding.SortableList.IsSorted">IsSorted</see>==true
+            </summary>
+            <exception cref="T:System.InvalidOperationException">Cannot be set to true if the list is not sorted yet.</exception>
+        </member>
+        <member name="P:Pathfinding.SortableList.AddDuplicates">
+            <summary>
+            If set to true, it will not be possible to add an object to the list if its value is already in the list.
+            </summary>
+        </member>
+        <member name="P:Pathfinding.SortableList.Item(System.Int32)">
+            <summary>
+            IList implementation.
+            Gets - or sets - object's value at a specified index.
+            The set operation is impossible if the <see cref="P:Pathfinding.SortableList.KeepSorted">KeepSorted</see> property is set to true.
+            </summary>
+            <exception cref="T:System.ArgumentOutOfRangeException">Index is less than zero or Index is greater than Count.</exception>
+            <exception cref="T:System.InvalidOperationException">[] operator cannot be used to set a value if KeepSorted property is set to true.</exception>
+        </member>
+        <member name="P:Pathfinding.SortableList.IsFixedSize">
+            <summary>
+            IList implementation.
+            Idem <see cref="T:System.Collections.ArrayList">ArrayList</see>
+            </summary>
+        </member>
+        <member name="P:Pathfinding.SortableList.IsReadOnly">
+            <summary>
+            IList implementation.
+            Idem <see cref="T:System.Collections.ArrayList">ArrayList</see>
+            </summary>
+        </member>
+        <member name="P:Pathfinding.SortableList.Count">
+            <summary>
+            IList.ICollection implementation.
+            Idem <see cref="T:System.Collections.ArrayList">ArrayList</see>
+            </summary>
+        </member>
+        <member name="P:Pathfinding.SortableList.IsSynchronized">
+            <summary>
+            IList.ICollection implementation.
+            Idem <see cref="T:System.Collections.ArrayList">ArrayList</see>
+            </summary>
+        </member>
+        <member name="P:Pathfinding.SortableList.SyncRoot">
+            <summary>
+            IList.ICollection implementation.
+            Idem <see cref="T:System.Collections.ArrayList">ArrayList</see>
+            </summary>
+        </member>
+        <member name="P:Pathfinding.SortableList.Capacity">
+            <summary>
+            Idem <see cref="T:System.Collections.ArrayList">ArrayList</see>
+            </summary>
+        </member>
+        <member name="T:Pathfinding.SortableList.Equality">
+            <summary>
+            Defines an equality for two objects
+            </summary>
+        </member>
+        <member name="T:Pathfinding.Track">
+            <summary>
+            A track is a succession of nodes which have been visited.
+            Thus when it leads to the target node, it is easy to return the result path.
+            These objects are contained in Open and Closed lists.
+            </summary>
+        </member>
+        <member name="F:ff14bot.Radar.RadarForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:ff14bot.Radar.RadarForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:ff14bot.Radar.RadarForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:ff14bot.TreeRoot.Stop(System.String)">
+            <summary>
+            Sets the mainbot thread to stop executing.
+            </summary>
+            <param name="reason"></param>
+        </member>
+        <member name="E:ff14bot.TreeRoot.OnStart">
+            <summary> Event queue for all listeners interested in OnStart events. </summary>
+        </member>
+        <member name="E:ff14bot.TreeRoot.OnStop">
+            <summary> Event queue for all listeners interested in OnStop events. </summary>
+        </member>
+    </members>
+</doc>

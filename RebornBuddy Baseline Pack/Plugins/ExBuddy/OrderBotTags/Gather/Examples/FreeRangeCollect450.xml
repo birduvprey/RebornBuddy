@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Profile>
+	<Name>Collectable: Free Range Collect 450</Name>
+	<KillRadius>50</KillRadius>
+	<Order>
+		<While condition="True">
+			<GatherCollectable DiscoverUnknowns="true" AlwaysGather="false" Radius="8"
+			                   FreeRange="true" FreeRangeCondition="Condition.TrueFor(1, TimeSpan.FromMinutes(30))"
+			                   CordialType="Cordial">
+				<Collectables>
+					<!-- 450 -->
+					<Collectable Name="Cuprite" Value="450" />
+					<Collectable Name="Red Quartz" Value="450" />
+					<Collectable Name="Light Kidney Ore" Value="450" />
+					<Collectable Name="Abalathian Mistletoe" Value="450" />
+					<Collectable Name="Heavens Lemon" Value="450" />
+					<Collectable Name="Morel" Value="450" />
+				</Collectables>
+				<ItemNames>
+					<ItemName>Timeworn Dragonskin Map</ItemName>
+				</ItemNames>
+				<GatherRotation>Collect450</GatherRotation>
+			</GatherCollectable>
+		</While>
+	</Order>
+</Profile>
