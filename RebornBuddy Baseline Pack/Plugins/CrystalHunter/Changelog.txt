@@ -1,0 +1,20 @@
+v1.1
+Updated to include movement code for Idyllshire
+
+
+v1.2
+Hopefully fixed teleport to next zone issue
+
+v1.3
+Added a check for nodules (on by default).
+If you have any nodules in your inventory it will ignore the crystals required for it.
+
+v2.0
+Rewritten the internal logic.
+Movement in Idyllshire should now be fixed...
+	Set Idyllshire Aetheryte Unlocked to true if you have unlocked the Aetheryte to move out
+Allow setting of jobs per zone.
+	You can choose to turn this on / off - If you're running multiple combat routines be wary of RebornBuddy prompting for the routine to use.
+
+v2.1
+Fixed a bug with having Astral / Umbral nodules in inventory whereby if you have one the plugin braks out of the contained code

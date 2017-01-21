@@ -3,7 +3,7 @@
 #########################################################################
 ####         Common RebornBuddy Baseline pack maintained by          ####
 #### @birduvprey / Discord - Donations to PayPal falcnor@gmail.com   ####
-####					   Updated 01/12/2017                        ####
+####					   Updated 01/21/2017                        ####
 #########################################################################
 
 #########################################################################
@@ -21,6 +21,7 @@ Artemis, Cyril, Sparrow -- @sodimm
 ATB, Boko, Kefka, Switcharoo -- @Omninewb
 CombatPotGuy, CompanyManualGuy -- Cloud30000 on forums
 Crawler, Destiny, EatMeWPF -- @Wheredidigo
+Crystal Hunter -- ZeeZee on forums
 ExBuddy, ExFateBot -- @ExMatt
 EntraxBuddy -- @Entrax
 Ultima -- Endus on forums
@@ -101,3 +102,6 @@ Profiles by @Entrax
 	 Questing, seasonal, class grinding, fishing, mining, botany, Lisbeth orders, Zekken updates.  WAY too many to describe in detail. Includes custom behaviors.
 #### @sodimm profiles
 	 Beast tribe dailies including custom behaviors.
+#### Cyrstal Hunter - Plugin
+	 Ice Crystal, Earth Crystal, Wind Crystal, Lightning Crystal, Water Crystal, Fire Crystal
+	 By default it will aim for 3 of each before teleporting to the next zone, but you can change this value in the settings.
