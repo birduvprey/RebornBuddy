@@ -1,0 +1,2869 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+Known issues with this profile:
+	None!
+
+Things that need to be manually done/Places the bot will stop:
+	- Clicking SelectStrings for quest "Washed Up"
+	
+Things that could be optimized:
+	None!
+
+-->
+<Profile>
+	<Name>Questing - 1-15 Limsa Lominsa (Arcanist/Marauder)</Name>
+	<KillRadius>50</KillRadius>
+	<BehaviorDirectory>../Quest Behaviors</BehaviorDirectory>
+	<CodeChunks>
+		<CodeChunk Name="AMizzenmastRepast">
+		<![CDATA[ 
+				foreach(ff14bot.Managers.BagSlot slot in ff14bot.Managers.InventoryManager.FilledInventoryAndArmory)
+				{
+					BagSlot EquipSlot = ff14bot.Managers.InventoryManager.GetBagByInventoryBagId(ff14bot.Enums.InventoryBagId.EquippedItems)[ff14bot.Enums.EquipmentSlot.Feet];
+					if(slot.RawItemId == 3760)
+					{
+						slot.Move(EquipSlot);
+					}
+				}
+        ]]>
+		</CodeChunk>
+		<CodeChunk Name="MeetGreetAndDeceit_Hello">
+		<![CDATA[ 
+				ff14bot.Managers.ChatManager.SendHello();
+        ]]>
+		</CodeChunk>
+		<CodeChunk Name="MeetGreetAndDeceit_ThankYou">
+		<![CDATA[ 
+				ff14bot.Managers.ChatManager.SendThankYou();
+        ]]>
+		</CodeChunk>
+	</CodeChunks>
+	<GrindAreas>
+		<GrindArea name="LowerLaNoscea_Level4">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="47.63577, 60.93054, 94.4513" name="Lower La Noscea to Level 4" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="49" />
+				<TargetMob Id="417" />
+			</TargetMobs>
+			<MinLevel>0</MinLevel>
+			<MaxLevel>3</MaxLevel>
+		</GrindArea>
+		<GrindArea name="MiddleLaNoscea_Level5">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="120.9564, 78.08142, -192.7794" name="Middle La Noscea to Level 5" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob name="Tiny Mandragora" />
+				<TargetMob name="Bee Cloud" />
+			</TargetMobs>
+			<MinLevel>3</MinLevel>
+			<MaxLevel>6</MaxLevel>
+		</GrindArea>
+		<GrindArea name="FurtherAfield">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="127.6382, 77.92426, -180.4489" name="Further Afield" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="405" />
+			</TargetMobs>
+			<MinLevel>4</MinLevel>
+			<MaxLevel>7</MaxLevel>
+		</GrindArea>
+		<GrindArea name="PlowsharesToSwords">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="-64.79494, 54.49197, -253.2742" name="Plowshares to Swords" />
+			</Hotspots>
+			<TargetMobs>
+				<!-- <TargetMob Id="418" /> -->
+				<TargetMob Id="421" />
+			</TargetMobs>
+			<MinLevel>7</MinLevel>
+			<MaxLevel>10</MaxLevel>
+		</GrindArea>
+		<GrindArea name="OrangeCrush">
+			<Hotspots>
+				<Hotspot Radius="100" XYZ="101.6652, 59.38769, -79.6555" name="Orange Crush" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="401" />
+			</TargetMobs>
+			<MinLevel>6</MinLevel>
+			<MaxLevel>10</MaxLevel>
+		</GrindArea>
+		<GrindArea name="MiddleLaNoscea_Level10">
+			<Hotspots>
+				<Hotspot Radius="100" XYZ="-53.34299, 45.47593, -353.0586" name="Middle La Noscea to Level 10" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="405" />
+				<TargetMob Id="395" />
+			</TargetMobs>
+			<MinLevel>6</MinLevel>
+			<MaxLevel>10</MaxLevel>
+		</GrindArea>
+		<GrindArea name="LowerLaNoscea_Level14">
+			<Hotspots>
+				<Hotspot Radius="100" XYZ="84.03502, 19.74317, 786.6178" name="Lower La Noscea to Level 14" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="561" />
+				<TargetMob Id="117" />
+			</TargetMobs>
+			<MinLevel>9</MinLevel>
+			<MaxLevel>15</MaxLevel>
+		</GrindArea>
+		<GrindArea name="ConstantCarvings">
+			<Hotspots>
+				<Hotspot Radius="100" XYZ="26.39096, 35.43816, 676.4034" name="Constant Carvings" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="399" />
+			</TargetMobs>
+			<MinLevel>9</MinLevel>
+			<MaxLevel>15</MaxLevel>
+		</GrindArea>
+		<GrindArea name="NailedIt">
+			<Hotspots>
+				<Hotspot Radius="100" XYZ="-47.82696, 46.5643, 537.5451" name="Nailed It" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="117" />
+			</TargetMobs>
+			<MinLevel>9</MinLevel>
+			<MaxLevel>15</MaxLevel>
+		</GrindArea>
+		<GrindArea name="LowerLaNoscea_Level15">
+			<Hotspots>
+				<Hotspot Radius="100" XYZ="84.03502, 19.74317, 786.6178" name="Lower La Noscea to Level 14" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="561" />
+				<TargetMob Id="117" />
+			</TargetMobs>
+			<MinLevel>9</MinLevel>
+			<MaxLevel>15</MaxLevel>
+		</GrindArea>
+		<GrindArea name="WayOfTheMarauder_WharfRat">
+			<Hotspots>
+				<Hotspot Radius="100" XYZ="-10.1936, 44.80988, 99.69167" name="Way of the Marauder - Wharf Rat" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="417" />
+			</TargetMobs>
+			<MinLevel>1</MinLevel>
+			<MaxLevel>5</MaxLevel>
+		</GrindArea>
+		<GrindArea name="WayOfTheMarauder_LostLamb">
+			<Hotspots>
+				<Hotspot Radius="100" XYZ="89.14595, 46.44084, 159.3749" name="Way of the Marauder - Lost Lamb" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="392" />
+			</TargetMobs>
+			<MinLevel>1</MinLevel>
+			<MaxLevel>5</MaxLevel>
+		</GrindArea>
+		<GrindArea name="WayOfTheMarauder_LittleLadybug">
+			<Hotspots>
+				<Hotspot Radius="100" XYZ="89.14595, 46.44084, 159.3749" name="Way of the Marauder - Little Ladybug" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="49" />
+			</TargetMobs>
+			<MinLevel>1</MinLevel>
+			<MaxLevel>5</MaxLevel>
+		</GrindArea>
+		<GrindArea name="WayOfTheArcanist_WharfRat">
+			<Hotspots>
+				<Hotspot Radius="100" XYZ="27.98192, 60.71832, 140.7081" name="Way of the Arcanist - Wharf Rat" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="417" />
+			</TargetMobs>
+			<MinLevel>1</MinLevel>
+			<MaxLevel>5</MaxLevel>
+		</GrindArea>
+		<GrindArea name="WayOfTheArcanist_Aureliae">
+			<Hotspots>
+				<Hotspot Radius="100" XYZ="235.8685, 44.6366, 45.72026" name="Way of the Arcanist - Aureliae" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="563" />
+			</TargetMobs>
+			<MinLevel>1</MinLevel>
+			<MaxLevel>5</MaxLevel>
+		</GrindArea>
+		<GrindArea name="WayOfTheArcanist_LittleLadybug">
+			<Hotspots>
+				<Hotspot Radius="100" XYZ="27.98192, 60.71832, 140.7081" name="Way of the Arcanist - Little Ladybug" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="49" />
+			</TargetMobs>
+			<MinLevel>1</MinLevel>
+			<MaxLevel>5</MaxLevel>
+		</GrindArea>
+		<GrindArea name="WhatsInTheBox_WildDodo">
+			<Hotspots>
+				<Hotspot Radius="100" XYZ="377.4641, 65.45548, -96.5779" name="What's in the Box" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="393" />
+			</TargetMobs>
+			<MinLevel>3</MinLevel>
+			<MaxLevel>6</MaxLevel>
+		</GrindArea>
+		<GrindArea name="WhatsInTheBox_TinyMandragora">
+			<Hotspots>
+				<Hotspot Radius="100" XYZ="377.4641, 65.45548, -96.5779" name="What's in the Box" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="405" />
+			</TargetMobs>
+			<MinLevel>3</MinLevel>
+			<MaxLevel>6</MaxLevel>
+		</GrindArea>
+		<GrindArea name="TacticalPlanning_Roseling">
+			<Hotspots>
+				<Hotspot Radius="100" XYZ="670.5566, 19.74119, 434.1906" name="Tactical Planning - Roselings" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="400" />
+			</TargetMobs>
+			<MinLevel>9</MinLevel>
+			<MaxLevel>13</MaxLevel>
+		</GrindArea>
+		<GrindArea name="TacticalPlanning_WildJackal">
+			<Hotspots>
+				<Hotspot Radius="100" XYZ="677.155, 36.19621, 379.617" name="Tactical Planning - Wild Jackals" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="399" />
+			</TargetMobs>
+			<MinLevel>9</MinLevel>
+			<MaxLevel>13</MaxLevel>
+		</GrindArea>
+		<GrindArea name="WakeOfDestruction">
+			<Hotspots>
+				<Hotspot Radius="100" XYZ="412.8922, 75.57413, -331.1144" name="Wake of Destruction - Galagos" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="408" />
+			</TargetMobs>
+			<MinLevel>7</MinLevel>
+			<MaxLevel>10</MaxLevel>
+		</GrindArea>
+		<GrindArea name="HuntingLog_Arcanist_03">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="56.76714, 47.54637, 187.944" name="Hunting Log - Arcanist 03" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="392" />
+			</TargetMobs>
+			<MinLevel>1</MinLevel>
+			<MaxLevel>5</MaxLevel>
+		</GrindArea>
+		<GrindArea name="ASheepishRequest">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="102.2707, 47.88934, 168.8453" name="A Sheepish Request - Lost Lambs" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="392" />
+			</TargetMobs>
+			<MinLevel>1</MinLevel>
+			<MaxLevel>5</MaxLevel>
+		</GrindArea>
+		<GrindArea name="GloryDays">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="247.461, 38.61436, 61.28891" name="Glory Days - Aureliae" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="563" />
+			</TargetMobs>
+			<MinLevel>2</MinLevel>
+			<MaxLevel>6</MaxLevel>
+		</GrindArea>
+		<GrindArea name="TheRatsInTheWharf">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="31.09422, 60.14614, 140.8759" name="The Rats in the Wharf - Wharf Rats" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="417" />
+			</TargetMobs>
+			<MinLevel>0</MinLevel>
+			<MaxLevel>4</MaxLevel>
+		</GrindArea>
+		<GrindArea name="CryMeALiver">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="177.6492, 33.76923, 68.79064" name="Cry Me a Liver - Rivertoads" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="349" />
+			</TargetMobs>
+			<MinLevel>2</MinLevel>
+			<MaxLevel>6</MaxLevel>
+		</GrindArea>
+		<GrindArea name="FlourPower">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="430.2758, 78.10374, -341.0595" name="Flour Power - Galagos" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="408" />
+			</TargetMobs>
+			<MinLevel>6</MinLevel>
+			<MaxLevel>10</MaxLevel>
+		</GrindArea>
+		<GrindArea name="KeepingItFresh">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="-226.1028, 13.10442, -325.4893" name="Keeping It Fresh - Water Sprites" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="56" />
+			</TargetMobs>
+			<MinLevel>8</MinLevel>
+			<MaxLevel>12</MaxLevel>
+		</GrindArea>
+		<GrindArea name="OutToDry">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="-226.8702, 13.80645, -336.4286" name="Out to Dry - Megalocrabs" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="561" />
+			</TargetMobs>
+			<MinLevel>8</MinLevel>
+			<MaxLevel>12</MaxLevel>
+		</GrindArea>
+	</GrindAreas>
+	<Order>
+		<BotSettings AutoEquip="1" />
+		<!-- Coming to Limsa Lominsa -->
+		<If Condition="not IsQuestCompleted(65643)">
+			<If Condition="not HasQuest(65643)">
+				<WaitWhile Condition="Managers.QuestLogManager.InCutscene" />
+				<!-- Select Mouse Controls -->
+				<SelectStringClick Slot="0" />
+				<MoveTo UseMesh="False" XYZ="-39.84137, 20, -4.959229" />
+				<If Condition="IsQuestAcceptQualified(65643)">
+					<PickupQuest NpcId="1001028" QuestId="65643" />
+				</If>
+			</If>
+			<If Condition="GetQuestStep(65643) == 1">
+				<MoveTo Distance="1" UseMesh="False" XYZ="10.54266, 20.99922, 12.66558" />
+				<UseTransport QuestId="65643" StepId="1" NpcId="1002732" XYZ="10.54266, 20.99922, 12.66558" />
+			</If>
+			<If Condition="GetQuestStep(65643) == 255">
+				<MoveTo Distance="1" UseMesh="False" XYZ="18.00043, 40.21601, -5.336614" />
+				<TurnIn QuestId="65643" NpcId="1002697" XYZ="18.00043, 40.21601, -5.336614" />
+			</If>
+		</If>
+		
+		<If Condition="Core.Player.CurrentJob == Enums.ClassJobType.Arcanist">
+			<!-- Close to Home -->
+			<If Condition="not IsQuestCompleted(65645)">
+				<If Condition="not HasQuest(65645)">
+					<If Condition="IsQuestAcceptQualified(65645)">
+						<PickupQuest NpcId="1002697" QuestId="65645" XYZ="18.00043, 40.21601, -5.336614" />
+					</If>
+				</If>
+				<If Condition="GetQuestStep(65645) == 1">
+					<If Condition="not IsQuestCompleted(65647)">
+					<!-- Making a Name -->
+						<If Condition="not HasQuest(65647)">
+							<MoveTo Distance="2" UseMesh="False" Name="Niniya" XYZ="8.499207, 39.50549, 3.555298" />
+							<PickupQuest NpcId="1002698" QuestId="65647" />
+						</If>
+						<If Condition="GetQuestStep(65647) == 1">
+							<MoveTo Distance="1" UseMesh="False" Name="Skaenrael" XYZ="16.85506, 40.21601, -5.482252" />
+							<MoveTo Distance="1" UseMesh="False" Name="Skaenrael" XYZ="7.919373, 40.00018, 17.47156" />
+							<UseTransport QuestId="65647" StepId="1" NpcId="1000969" XYZ="7.919373, 40.00018, 17.47156" />
+						</If>
+						<If Condition="GetQuestStep(65647) == 2">
+							<UseObject NpcIds="2001563,2001564,2001565,2001566,2001567,2001568" QuestId="65647" StepId="2">
+								<HotSpots>
+									<HotSpot XYZ="3.616333, 20.00452, 9.750427" Radius="25" />
+									<HotSpot XYZ="-3.067139, 20.00452, 9.964111" Radius="25" />
+									<HotSpot XYZ="-11.39856, 19.97406, 6.637634" Radius="25" />
+									<HotSpot XYZ="-18.32611, 20.00452, 1.724182" Radius="25" />
+									<HotSpot XYZ="-30.47229, 19.97406, 0.8086548" Radius="25" />
+									<HotSpot XYZ="-44.72424, 20.00452, -0.5036011" Radius="25" />
+								</HotSpots>
+							</UseObject>
+						</If>
+						<If Condition="GetQuestStep(65647) == 255">
+							<TurnIn ItemId="2000447" QuestId="65647" NpcId="1003604" XYZ="-60.44104, 18.00032, -4.348877" />
+						</If>
+					</If>
+					<If Condition="GetQuestById(65645).QuestI8AH == 0">
+						<If Condition="not Managers.WorldManager.HasAetheryteId(8)">
+							<MoveTo Name="Limsa Lominsa Aetheryte" Distance="1" XYZ="-80.31275, 18.90033, -1.551555" />
+							<UseObject NpcId="8" UseTimes="1" BlacklistAfter="True" UseDistance="10" XYZ="-79.81915, 18.80033, -2.929894" Radius="10" WaitTime="5000" Condition="not Managers.WorldManager.HasAetheryteId(8)" />
+							<UseTransport NpcId="8" UseTimes="1" DialogOption="2" BlacklistAfter="True" UseDistance="10" XYZ="-79.81915, 18.80033, -2.929894" Radius="10" WaitTime="5000" />
+						</If>
+					</If>
+					<If Condition="GetQuestById(65645).QuestI8AH == 1">
+						<TalkTo InteractDistance="3.0"  NpcId="1000895" XYZ="-335.7443, 12.89977, 1.388489" />
+					</If>
+					<If Condition="GetQuestById(65645).QuestI8AH == 2">
+						<HandOver ItemId="2000105" NpcId="1001217" XYZ="-140.856, 18.2, 17.01373" QuestId="65645" Step="1" />
+					</If>
+				</If>
+				<If Condition="GetQuestStep(65645) == 255">
+					<If Condition="IsOnMap(129)">
+						<MoveTo Name="Limsa Lominsa Upper Decks" Distance="0" XYZ="-7.13642, 20.84274, 27.17651" />
+					</If>
+					<If Condition="IsOnMap(128)">
+						<If Condition="GetQuestStep(65645) == 255">
+							<TurnIn QuestId="65645" NpcId="1000972" XYZ="17.79586, 40.21601, -5.386823" InteractDistance="3.0" />
+						</If>
+					</If>
+				</If>
+			</If>
+		</If>
+		
+		<If Condition="Core.Player.CurrentJob == Enums.ClassJobType.Marauder">
+			<!-- Close to Home -->
+			<If Condition="not IsQuestCompleted(65644)">
+				<If Condition="not HasQuest(65644)">
+					<If Condition="IsQuestAcceptQualified(65644)">
+						<PickupQuest NpcId="1002697" QuestId="65644" XYZ="20.27917, 40.19993, -6.118958" />
+					</If>
+				</If>
+				<If Condition="GetQuestStep(65644) == 1">
+					<If Condition="not IsQuestCompleted(65647)">
+					<!-- Making a Name -->
+						<If Condition="not HasQuest(65647)">
+							<MoveTo Distance="2" UseMesh="False" Name="Niniya" XYZ="8.499207, 39.50549, 3.555298" />
+							<PickupQuest NpcId="1002698" QuestId="65647" />
+						</If>
+						<If Condition="GetQuestStep(65647) == 1">
+							<MoveTo Distance="1" UseMesh="False" Name="Skaenrael" XYZ="16.85506, 40.21601, -5.482252" />
+							<MoveTo Distance="1" UseMesh="False" Name="Skaenrael" XYZ="7.919373, 40.00018, 17.47156" />
+							<UseTransport QuestId="65647" StepId="1" NpcId="1000969" XYZ="7.919373, 40.00018, 17.47156" />
+						</If>
+						<If Condition="GetQuestStep(65647) == 2">
+							<UseObject NpcIds="2001563,2001564,2001565,2001566,2001567,2001568" QuestId="65647" StepId="2">
+								<HotSpots>
+									<HotSpot XYZ="3.616333, 20.00452, 9.750427" Radius="25" />
+									<HotSpot XYZ="-3.067139, 20.00452, 9.964111" Radius="25" />
+									<HotSpot XYZ="-11.39856, 19.97406, 6.637634" Radius="25" />
+									<HotSpot XYZ="-18.32611, 20.00452, 1.724182" Radius="25" />
+									<HotSpot XYZ="-30.47229, 19.97406, 0.8086548" Radius="25" />
+									<HotSpot XYZ="-44.72424, 20.00452, -0.5036011" Radius="25" />
+								</HotSpots>
+							</UseObject>
+						</If>
+						<If Condition="GetQuestStep(65647) == 255">
+							<TurnIn ItemId="2000447" QuestId="65647" NpcId="1003604" XYZ="-60.44104, 18.00032, -4.348877" />
+						</If>
+					</If>
+					<If Condition="GetQuestById(65644).QuestI8AH == 0">
+						<If Condition="not Managers.WorldManager.HasAetheryteId(8)">
+							<MoveTo Name="Aetheryte" Distance="3" XYZ="-78.30451, 18.80033, -1.541196" />
+							<UseObject NpcId="8" UseTimes="1" BlacklistAfter="True" UseDistance="10" XYZ="-79.90813, 18.90033, 0.6400635" Radius="10" WaitTime="5000" Condition="not Managers.WorldManager.HasAetheryteId(8)" />
+							<UseTransport NpcId="8" UseTimes="1" DialogOption="2" BlacklistAfter="True" UseDistance="10" XYZ="-79.90813, 18.90033, 0.6400635" Radius="10" WaitTime="5000" />
+						</If>
+					</If>
+					<If Condition="GetQuestById(65644).QuestI8AH == 1">
+						<If Condition="IsOnMap(129)">
+							<MoveTo Name="Limsa Lominsa Upper Decks" Distance="0" XYZ="-7.13642, 20.84274, 27.17651" />
+						</If>
+						<TalkTo InteractDistance="3.0" NpcId="1000926" XYZ="-10.05573, 44.99979, -245.8076" />
+					</If>
+					<If Condition="GetQuestById(65644).QuestI8AH == 2">
+						<If Condition="IsOnMap(128)">
+							<MoveTo Name="Limsa Lominsa Lower Decks" Distance="0" XYZ="-9.65393, 42.99996, -25.46598" />
+						</If>
+						<If Condition="IsOnMap(129)">
+							<HandOver ItemId="2000104" QuestId="65644" StepId="1" NpcId="1001217" XYZ="-140.856, 18.2, 17.01373" />
+						</If>
+					</If>
+				</If>
+				<If Condition="GetQuestStep(65644) == 255">
+					<If Condition="IsOnMap(129)">
+						<MoveTo Name="Limsa Lominsa Upper Decks" Distance="0" XYZ="-7.13642, 20.84274, 27.17651" />
+					</If>
+					<If Condition="IsOnMap(128)">
+						<If Condition="GetQuestStep(65644) == 255">
+							<TurnIn QuestId="65644" NpcId="1000972" XYZ="17.79586, 40.21601, -5.386823" InteractDistance="3.0" />
+						</If>
+					</If>
+				</If>
+			</If>
+			
+			<!-- Way of the Marauder -->
+			<If Condition="not IsQuestCompleted(65847)">
+				<If Condition="not HasQuest(65847)">
+					<MoveTo Name="Blauthota" XYZ="-10.05573, 44.99979, -245.8076" />
+					<If Condition="IsQuestAcceptQualified(65847)">
+						<PickupQuest NpcId="1000926" QuestId="65847" XYZ="-10.05573, 44.99979, -245.8076" />
+					</If>
+				</If>
+				<If Condition="GetQuestStep(65847) == 1">
+					<UseTransport InteractDistance="3.0" NpcId="1000927" XYZ="-1.205505, 44.99989, -255.8786" />
+				</If>
+				<If Condition="GetQuestStep(65847) == 2">
+					<If Condition="IsOnMap(128)">
+						<MoveTo Name="Limsa Lominsa Lower Decks" Distance="0" XYZ="-9.65393, 42.99996, -25.46598" />
+					</If>
+					<If Condition="IsOnMap(129)">
+						<MoveTo Name="Middle La Noscea" Distance="0" XYZ="65.0005, 19.99999, 0.349344" />
+					</If>
+					<If Condition="IsOnMap(134)">
+						<Grind grindRef="WayOfTheMarauder_WharfRat" while="HasQuest(65847) and GetQuestById(65847).QuestI8A &lt; 19" />
+						<Grind grindRef="WayOfTheMarauder_LostLamb" while="HasQuest(65847) and GetQuestById(65847).QuestI8B &lt; 19" />
+						<Grind grindRef="WayOfTheMarauder_LittleLadybug" while="HasQuest(65847) and GetQuestStep(65847) == 2" />
+					</If>
+				</If>
+				<If Condition="GetQuestStep(65847) == 255">
+					<If Condition="IsOnMap(134)">
+						<MoveTo Name="Limsa Lominsa Lower Decks" Distance="0" XYZ="-44.29542, 35.0597, 156.0052" />
+					</If>
+					<If Condition="IsOnMap(129)">
+						<MoveTo Name="Limsa Lominsa Upper Decks" Distance="0" XYZ="-7.13642, 20.84274, 27.17651" />
+					</If>
+					<TurnIn QuestId="65847" NpcId="1000927" XYZ="-1.205505, 44.99989, -255.8786" />
+				</If>
+			</If>
+		</If>
+		
+		<!-- A Sheepish Request -->
+        <If Condition="not IsQuestCompleted(65652)">
+            <If Condition="not HasQuest(65652)">
+                <MoveTo Name="H'lahono" XYZ="-65.62909, 41.99999, -139.4522" />
+                <If Condition="IsQuestAcceptQualified(65652)">
+	                <PickupQuest NpcId="1000959" QuestId="65652" XYZ="-65.62909, 41.99999, -139.4522" />
+                </If>
+            </If>
+        </If>
+		
+		<!-- A Thousand Words -->
+        <If Condition="not IsQuestCompleted(65653)">
+            <If Condition="not HasQuest(65653)">
+                <MoveTo Name="Latisha" XYZ="-58.85406, 42.29973, -164.0803" />
+                <If Condition="IsQuestAcceptQualified(65653)">
+	                <PickupQuest NpcId="1001537" QuestId="65653" XYZ="-58.85406, 42.29973, -164.0803" />
+                </If>
+            </If>
+			<If Condition="GetQuestStep(65653) == 1">
+				<TalkTo InteractDistance="3.0" NpcId="1000957" XYZ="-49.27142, 43.99999, -146.3799" />
+            </If>
+			<If Condition="GetQuestStep(65653) == 2">
+				<HandOver ItemId="2000455" QuestId="65653" StepId="2" NpcId="1000937" XYZ="-12.22253, 44.99988, -251.8807" />
+            </If>
+        </If>
+		
+		<!-- Lost and Found -->
+        <If Condition="not IsQuestCompleted(65655)">
+            <If Condition="not HasQuest(65655)">
+                <MoveTo Name="Ginnade" XYZ="-4.654114, 44.99985, -241.8403" />
+                <If Condition="IsQuestAcceptQualified(65655)">
+	                <PickupQuest NpcId="1000938" QuestId="65655" XYZ="-4.654114, 44.99985, -241.8403" />
+                </If>
+            </If>
+        </If>
+		
+		<!-- Licensed to Reave -->
+        <If Condition="not IsQuestCompleted(65654)">
+            <If Condition="not HasQuest(65654)">
+                <MoveTo Name="Mordyn" XYZ="1.754761, 44, -164.2329" />
+                <If Condition="IsQuestAcceptQualified(65654)">
+	                <PickupQuest NpcId="1000916" QuestId="65654" XYZ="1.754761, 44, -164.2329" />
+                </If>
+            </If>
+			<If Condition="GetQuestStep(65654) == 1">
+				<TalkTo InteractDistance="3.0" NpcId="1000915" XYZ="18.38708, 47.6, -162.1271" />
+            </If>
+			<If Condition="GetQuestStep(65654) == 2">
+				<If Condition="HasQuest(65654) and GetQuestById(65654).QuestI8AH == 0">
+					<HandOver ItemId="2000451" NpcId="1000938" XYZ="-4.654114, 44.99985, -241.8403" />
+				</If>
+				<If Condition="HasQuest(65654) and GetQuestById(65654).QuestI8AH == 1">
+					<HandOver ItemId="2000451" QuestId="65654" StepId="2" NpcId="1000947" XYZ="-54.64258, 43.99998, -151.2322" />
+				</If>
+            </If>
+        </If>
+		
+		<!-- A Thousand Words -->
+        <If Condition="not IsQuestCompleted(65653)">
+            <If Condition="GetQuestStep(65653) == 255">
+				<TurnIn QuestId="65653" NpcId="1000957" XYZ="-49.27142, 43.99999, -146.3799" />
+            </If>
+        </If>
+		
+		<!-- Licensed to Reave -->
+        <If Condition="not IsQuestCompleted(65654)">
+            <If Condition="GetQuestStep(65654) == 255">
+				<TurnIn QuestId="65654" NpcId="1000915" XYZ="18.38708, 47.6, -162.1271" />
+            </If>
+        </If>
+		
+		<!-- Glory Days -->
+        <If Condition="not IsQuestCompleted(65658)">
+            <If Condition="not HasQuest(65658)">
+                <MoveTo Name="S'dhodjbi" XYZ="-3.280701, 39.51757, -9.414856" />
+                <If Condition="IsQuestAcceptQualified(65658)">
+	                <PickupQuest NpcId="1003601" QuestId="65658" XYZ="-3.280701, 39.51757, -9.414856" />
+                </If>
+            </If>
+			<If Condition="GetQuestStep(65658) == 1">
+				<TalkTo InteractDistance="3.0" NpcId="1001024" XYZ="28.51904, 44.49998, 176.3789" />
+            </If>
+        </If>
+		
+		<!-- Soothing the Savage Siren -->
+        <If Condition="not IsQuestCompleted(66198)">
+            <If Condition="not HasQuest(66198)">
+                <MoveTo Name="O'kalkaya" XYZ="46.67737, 44.65992, 137.1023" />
+                <If Condition="IsQuestAcceptQualified(66198)">
+	                <PickupQuest NpcId="1000919" QuestId="66198" XYZ="46.67737, 44.65992, 137.1023" />
+                </If>
+            </If>
+			<If Condition="GetQuestStep(66198) == 1">
+				<EmoteNPC NpcId="1000918" Emote="kneel" XYZ="84.09241, 44.39991, 132.3414" Radius="10" QuestId="66198" StepId="1" />
+            </If>
+			<If Condition="GetQuestStep(66198) == 2">
+				<EmoteNPC NpcId="1000918" Emote="disappointed" XYZ="84.09241, 44.39991, 132.3414" Radius="10" QuestId="66198" StepId="2" />
+            </If>
+			<If Condition="GetQuestStep(66198) == 3">
+				<EmoteNPC NpcId="1000918" Emote="rally" XYZ="84.09241, 44.39991, 132.3414" Radius="10" QuestId="66198" StepId="3" />
+            </If>
+			<If Condition="GetQuestStep(66198) == 255">
+				<TurnIn QuestId="66198" NpcId="1000919" XYZ="46.67737, 44.65992, 137.1023" />
+            </If>
+        </If>
+		
+		<!-- Lost and Found -->
+        <If Condition="not IsQuestCompleted(65655)">
+            <If Condition="GetQuestStep(65655) == 255">
+				<If Condition="IsOnMap(128)">
+					<MoveTo Name="Limsa Lominsa Lower Decks" Distance="0" XYZ="-9.65393, 42.99996, -25.46598" />
+				</If>
+				<TurnIn QuestId="65655" NpcId="1002433" ItemId="2000453" XYZ="-6.729248, 20.33335, -0.7477417" />
+            </If>
+        </If>
+		
+		<!-- I Stay the Streetlight -->
+        <If Condition="not IsQuestCompleted(65656)">
+            <If Condition="not HasQuest(65656)">
+                <MoveTo Name="N'tanmo" XYZ="-6.759766, 20.33335, 0.5340576" />
+                <If Condition="IsQuestAcceptQualified(65656)">
+	                <PickupQuest NpcId="1002434" QuestId="65656" XYZ="-6.759766, 20.33335, 0.5340576" />
+                </If>
+            </If>
+        </If>
+		
+		<!-- A Sheepish Request -->
+        <If Condition="not IsQuestCompleted(65652)">
+            <If Condition="GetQuestStep(65652) == 1">
+				<TalkTo InteractDistance="3.0" NpcId="1003603" XYZ="20.34021, 20, 4.318237" />
+            </If>
+        </If>
+		
+		<!-- Suspiciously Sober -->
+        <If Condition="not IsQuestCompleted(65648)">
+            <If Condition="not HasQuest(65648)">
+                <MoveTo Name="Ahldskyf" XYZ="-60.44104, 18.00032, -4.348877" />
+                <If Condition="IsQuestAcceptQualified(65648)">
+	                <PickupQuest NpcId="1003604" QuestId="65648" XYZ="-60.44104, 18.00032, -4.348877" />
+                </If>
+            </If>
+        </If>
+		
+		<!-- Edelweiss, Edelweiss -->
+        <If Condition="not IsQuestCompleted(65859)">
+            <If Condition="not HasQuest(65859)">
+                <MoveTo Name="J'nasshym" XYZ="-60.86829, 18.00033, 7.492188" />
+                <If Condition="IsQuestAcceptQualified(65859)">
+	                <PickupQuest NpcId="1003355" QuestId="65859" XYZ="-60.86829, 18.00033, 7.492188" />
+                </If>
+            </If>
+        </If>
+		
+		<!-- Proper Procedure -->
+		<If Condition="not IsQuestCompleted(65649)">
+			<If Condition="not HasQuest(65649)">
+				<MoveTo Name="Sweetnix Rosycheeks" Distance="1" XYZ="-103.0227, 18.00033, 15.12834" />
+				<If Condition="IsQuestAcceptQualified(65649)">
+					<PickupQuest NpcId="1001209" QuestId="65649" XYZ="-103.7461, 18.50033, 16.03717" />
+				</If>
+			</If>
+		</If>
+		
+		<!-- Suspiciously Sober -->
+        <If Condition="not IsQuestCompleted(65648)">
+            <If Condition="GetQuestStep(65648) == 1">
+				<TalkTo InteractDistance="3.0" NpcId="1003274" XYZ="-110.4601, 18, 15.70148" />
+            </If>
+			<If Condition="GetQuestStep(65648) == 255">
+				<MoveTo Name="Frydwyb" Distance="3" XYZ="-146.2248, 18.21202, 16.29534" />
+				<TurnIn QuestId="65648" NpcId="1003275" XYZ="-147.1123, 18.2, 14.3587" />
+            </If>
+        </If>
+		
+		<!-- The Right Price -->
+        <If Condition="not IsQuestCompleted(65650)">
+            <If Condition="not HasQuest(65650)">
+                <MoveTo Name="Swozblaet" XYZ="-140.856, 18.2, 17.01373" />
+                <If Condition="IsQuestAcceptQualified(65650)">
+	                <PickupQuest NpcId="1001217" QuestId="65650" XYZ="-140.856, 18.2, 17.01373" />
+                </If>
+            </If>
+			<If Condition="GetQuestStep(65650) == 1">
+				<If Condition="HasQuest(65650) and GetQuestById(65650).QuestI8AH == 0">
+					<MoveTo Name="Iron Thunder" Distance="3" XYZ="-155.3533, 18.2, 23.4559" />
+					<TalkTo InteractDistance="3.0" NpcId="1001203" XYZ="-156.6034, 18.2, 20.92004" />
+				</If>
+				<If Condition="HasQuest(65650) and GetQuestById(65650).QuestI8AH == 1">
+					<TalkTo InteractDistance="3.0" NpcId="1001208" XYZ="-228.1682, 16, 50.64465" />
+				</If>
+				<If Condition="HasQuest(65650) and GetQuestById(65650).QuestI8AH == 2">
+					<MoveTo Name="Syneyhil" Distance="3" XYZ="-246.5188, 16.2, 40.38499" />
+					<TalkTo InteractDistance="5.0" NpcId="1003254" XYZ="-246.6011, 16.2, 37.12512" />
+				</If>
+            </If>
+			<If Condition="GetQuestStep(65650) == 255">
+				<TurnIn QuestId="65650" NpcId="1003272" ItemId="2000460" XYZ="-262.9282, 16.2, 51.40759" />
+            </If>
+        </If>
+		
+		<!-- Proper Procedure -->
+        <If Condition="not IsQuestCompleted(65649)">
+            <If Condition="GetQuestStep(65649) == 1">
+				<MoveTo Name="P'tahjha" Distance="1.5" XYZ="-340.9627, 12.89977, 5.402972" />
+				<HandOver ItemId="2000448" QuestId="65649" StepId="1" NpcId="1000898" XYZ="-342.2141, 12.8938, 3.494263" />
+            </If>
+        </If>
+		
+		<!-- Duty Calls -->
+        <If Condition="not IsQuestCompleted(65651)">
+            <If Condition="not HasQuest(65651)">
+                <MoveTo Name="P'tahjha" XYZ="-342.2141, 12.8938, 3.494263" />
+                <If Condition="IsQuestAcceptQualified(65651)">
+	                <PickupQuest NpcId="1000898" QuestId="65651" XYZ="-342.2141, 12.8938, 3.494263" />
+                </If>
+            </If>
+        </If>
+		
+		<!-- Proper Procedure -->
+        <If Condition="not IsQuestCompleted(65649)">
+            <If Condition="GetQuestStep(65649) == 255">
+				<TurnIn QuestId="65649" NpcId="1001209" XYZ="-103.7461, 18.50033, 16.03717" />
+            </If>
+        </If>
+		
+		<!-- Duty Calls -->
+        <If Condition="not IsQuestCompleted(65651)">
+            <If Condition="GetQuestStep(65651) == 1">
+				<HandOver ItemId="2000449" QuestId="65651" StepId="1" NpcId="1001023" XYZ="-78.62976, 18.00033, -22.62915" />
+            </If>
+        </If>
+		
+		<!-- I Stay the Streetlight -->
+        <If Condition="not IsQuestCompleted(65656)">
+			<If Condition="GetQuestStep(65656) == 1">
+				<UseItem ItemId="2000444" NpcIds="2001578,2001572,2001573,2001574,2001575,2001576,2001577" QuestId="65656" StepId="1">
+					<HotSpots>
+						<HotSpot XYZ="-65.69012, 20.6759, 17.77667" Radius="10" />
+						<HotSpot XYZ="-65.38495, 21.56091, 54.39832" Radius="10" />
+						<HotSpot XYZ="-84.39771, 21.49988, 81.16272" Radius="10" />
+						<HotSpot XYZ="-117.6624, 21.59149, 134.9354" Radius="10" />
+						<HotSpot XYZ="-145.3422, 22.93427, 159.7162" Radius="10" />
+						<HotSpot XYZ="-162.4934, 15.06061, 136.5835" Radius="10" />
+						<HotSpot XYZ="-137.5296, 9.781006, 170.6416" Radius="10" />
+					</HotSpots>
+				</UseItem>
+			</If>
+			<If Condition="GetQuestStep(65656) == 255">
+				<TurnIn QuestId="65656" NpcId="1000857" XYZ="-165.2705, 5.250006, 164.2938" />
+            </If>
+		</If>
+		
+		<!-- Back in the Water -->
+        <If Condition="not IsQuestCompleted(65657)">
+            <If Condition="not HasQuest(65657)">
+                <MoveTo Name="Sisipu" XYZ="-165.2705, 5.250006, 164.2938" />
+                <If Condition="IsQuestAcceptQualified(65657)">
+	                <PickupQuest NpcId="1000857" QuestId="65657" XYZ="-165.2705, 5.250006, 164.2938" />
+                </If>
+            </If>
+        </If>
+		
+		<!-- Edelweiss, Edelweiss -->
+        <If Condition="not IsQuestCompleted(65859)">
+            <If Condition="GetQuestStep(65859) == 1">
+				<HandOver ItemId="2001513" QuestId="65859" StepId="1" NpcId="1009944" XYZ="-152.6666, 2.856241, 243.183" />
+            </If>
+			<If Condition="GetQuestStep(65859) == 255">
+				<TurnIn QuestId="65859" NpcId="1003355" XYZ="-60.86829, 18.00033, 7.492188" />
+            </If>
+        </If>
+		
+		<!-- A Sheepish Request -->
+        <If Condition="not IsQuestCompleted(65652)">
+            <If Condition="GetQuestStep(65652) == 2">
+				<If Condition="IsOnMap(129)">
+					<MoveTo Name="Middle La Noscea" Distance="0" XYZ="67.81807, 19.99999, 0.3837119" />
+				</If>
+				<Grind grindRef="ASheepishRequest" while="HasQuest(65652) and GetQuestStep(65652) == 2" />
+            </If>
+        </If>
+		
+		<!-- Glory Days -->
+        <If Condition="not IsQuestCompleted(65658)">
+            <If Condition="GetQuestStep(65658) == 2">
+				<If Condition="IsOnMap(129)">
+					<MoveTo Name="Middle La Noscea" Distance="0" XYZ="67.81807, 19.99999, 0.3837119" />
+				</If>
+				<If Condition="IsOnMap(134)">
+					<MoveTo Name="Lower La Noscea" Distance="0" XYZ="207.7071, 65.1903, 285.6768" />
+				</If>
+				<Grind grindRef="GloryDays" while="HasQuest(65658) and GetQuestStep(65658) == 2" />
+            </If>
+        </If>
+		
+		<!-- Back in the Water -->
+        <If Condition="not IsQuestCompleted(65657)">
+            <If Condition="GetQuestStep(65657) == 255">
+				<If Condition="IsOnMap(135)">
+					<MoveTo Name="Limsa Lominsa Upper Decks" Distance="0" XYZ="-53.67422, 75.82907, 116.1976" />
+				</If>
+				<TurnIn QuestId="65657" NpcId="1001000" XYZ="-32.02869, 41.49999, 208.3923" />
+            </If>
+        </If>
+		
+		<!-- The Rats in the Wharf -->
+        <If Condition="not IsQuestCompleted(66197)">
+            <If Condition="not HasQuest(66197)">
+                <MoveTo Name="H'naanza" XYZ="-32.02869, 41.49999, 208.3923" />
+                <If Condition="IsQuestAcceptQualified(66197)">
+	                <PickupQuest NpcId="1001000" QuestId="66197" XYZ="-32.02869, 41.49999, 208.3923" />
+                </If>
+            </If>
+        </If>
+		
+		<!-- Glory Days -->
+        <If Condition="not IsQuestCompleted(65658)">
+            <If Condition="GetQuestStep(65658) == 255">
+				<MoveTo Name="Baderon" Distance="1.5" XYZ="17.74986, 40.21601, -5.134305" />
+				<TurnIn QuestId="65658" NpcId="1000972" ItemId="2000454" XYZ="20.27917, 40.19993, -6.118958" />
+            </If>
+        </If>
+		
+		<!-- Duty Calls -->
+        <If Condition="not IsQuestCompleted(65651)">
+            <If Condition="GetQuestStep(65651) == 255">
+				<MoveTo Name="Latisha" Distance="1.5" XYZ="-57.85454, 42.3, -162.0198" />
+				<TurnIn QuestId="65651" NpcId="1001537" ItemId="2000449" XYZ="-58.85406, 42.29973, -164.0803" />
+            </If>
+        </If>
+		
+		<!-- A Sheepish Request -->
+        <If Condition="not IsQuestCompleted(65652)">
+            <If Condition="GetQuestStep(65652) == 255">
+				<TurnIn QuestId="65652" NpcId="1000959" ItemId="2000450" XYZ="-65.62909, 41.99999, -139.4522" />
+            </If>
+        </If>
+		
+		<!-- Fool Me Once -->
+        <If Condition="not IsQuestCompleted(66199)">
+            <If Condition="not HasQuest(66199)">
+                <MoveTo Name="Niniya" XYZ="8.499207, 39.50549, 3.555298" />
+                <If Condition="IsQuestAcceptQualified(66199)">
+	                <PickupQuest NpcId="1000981" QuestId="66199" XYZ="8.499207, 39.50549, 3.555298" />
+                </If>
+            </If>
+            <If Condition="GetQuestStep(66199) == 255">
+				<If Condition="IsOnMap(128)">
+					<MoveTo Name="Lower La Noscea" Distance="0" XYZ="24.91524, 44.49993, 181.1817" />
+				</If>
+				<TurnIn QuestId="66199" NpcId="1002605" XYZ="277.943, 45.14374, 33.64612" />
+            </If>
+        </If>
+		
+		<!-- The Rats in the Wharf -->
+        <If Condition="not IsQuestCompleted(66197)">
+            <If Condition="GetQuestStep(66197) == 1">
+				<If Condition="IsOnMap(128)">
+					<MoveTo Name="Lower La Noscea" Distance="0" XYZ="24.91524, 44.49993, 181.1817" />
+				</If>
+				<Grind grindRef="TheRatsInTheWharf" while="HasQuest(66197) and GetQuestStep(66197) == 1" />
+            </If>
+			<If Condition="GetQuestStep(66197) == 255">
+				<If Condition="IsOnMap(135)">
+					<MoveTo Name="Limsa Lominsa Upper Decks" Distance="0" XYZ="-53.67422, 75.82907, 116.1976" />
+				</If>
+				<MoveTo Name="Baderon" Distance="1.5" XYZ="17.74986, 40.21601, -5.134305" />
+				<TurnIn QuestId="66197" NpcId="1000972" XYZ="20.27917, 40.19993, -6.118958" />
+            </If>
+        </If>
+		
+		<If Condition="Core.Player.CurrentJob == Enums.ClassJobType.Arcanist">
+			<!-- Way of the Arcanist - Level 1 -->
+			<If Condition="not IsQuestCompleted(65989)">
+				<If Condition="not HasQuest(65989)">
+					<If Condition="IsOnMap(128)">
+						<MoveTo Name="Limsa Lominsa Lower Decks" Distance="0" XYZ="-9.65393, 42.99996, -25.46598" />
+					</If>
+					<MoveTo Name="Murie" XYZ="-335.7443, 12.89977, 1.388489" />
+					<If Condition="IsQuestAcceptQualified(65989)">
+						<PickupQuest NpcId="1000895" QuestId="65989" XYZ="-335.7443, 12.89977, 1.388489" />
+					</If>
+				</If>
+				<If Condition="GetQuestStep(65989) == 1">
+					<UseTransport InteractDistance="3.0" NpcId="1000909" XYZ="-326.3752, 12.89966, 9.994568" />
+				</If>
+				<If Condition="GetQuestStep(65989) == 2">
+					<If Condition="IsOnMap(129)">
+						<MoveTo Name="Limsa Lominsa Upper Decks" Distance="0" XYZ="-7.13642, 20.84274, 27.17651" />
+					</If>
+					<If Condition="IsOnMap(128)">
+						<MoveTo Name="Lower La Noscea" Distance="0" XYZ="24.91524, 44.49993, 181.1817" />
+					</If>
+					<If Condition="IsOnMap(135)">
+						<Grind grindRef="WayOfTheArcanist_WharfRat" while="HasQuest(65989) and GetQuestById(65989).QuestI8AL &lt; 3" />
+						<Grind grindRef="WayOfTheArcanist_Aureliae" while="HasQuest(65989) and GetQuestById(65989).QuestI8BH &lt; 3" />
+						<Grind grindRef="WayOfTheArcanist_LittleLadybug" while="HasQuest(65989) and GetQuestStep(65989) == 2" />
+					</If>
+				</If>
+				<If Condition="GetQuestStep(65989) == 255">
+					<If Condition="IsOnMap(135)">
+						<MoveTo Name="Limsa Lominsa Upper Decks" Distance="0" XYZ="-53.67422, 75.82907, 116.1976" />
+					</If>
+					<If Condition="IsOnMap(128)">
+						<MoveTo Name="Limsa Lominsa Lower Decks" Distance="0" XYZ="-9.65393, 42.99996, -25.46598" />
+					</If>
+					<TurnIn QuestId="65989" NpcId="1000909" XYZ="-326.3752, 12.89966, 9.994568" />
+				</If>
+			</If>
+		</If>
+		
+		<!-- Get to level 4 -->
+		<If Condition="Core.Player.ClassLevel &lt; 4">
+			<If Condition="IsOnMap(129)">
+				<MoveTo Name="Limsa Lominsa Upper Decks" Distance="0" XYZ="-7.13642, 20.84274, 27.17651" />
+			</If>
+			<If Condition="IsOnMap(128)">
+				<MoveTo Name="Lower La Noscea" Distance="0" XYZ="24.91524, 44.49993, 181.1817" />
+			</If>
+			<If Condition="IsOnMap(135)">
+				<Grind grindRef="LowerLaNoscea_Level4" while="Core.Player.ClassLevel &lt; 4" />
+			</If>
+		</If>
+		
+		<!-- On to Summerford -->
+		<If Condition="not IsQuestCompleted(65998)">
+			<If Condition="not HasQuest(65998)">
+				<!-- Back to Limsa Lominsa -->
+				<If Condition="IsOnMap(135)">
+					<MoveTo Name="Limsa Lominsa Upper Decks" Distance="0" XYZ="-53.67422, 75.82907, 116.1976" />
+				</If>
+				<If Condition="IsOnMap(129)">
+					<MoveTo Name="Limsa Lominsa Upper Decks" Distance="0" XYZ="-7.13642, 20.84274, 27.17651" />
+				</If>
+				<If Condition="IsOnMap(128)">
+					<MoveTo XYZ="17.79586, 40.21601, -5.386823" />
+					<If Condition="IsQuestAcceptQualified(65998)">
+						<PickupQuest NpcId="1000972" QuestId="65998" XYZ="17.79586, 40.21601, -5.386823" />
+					</If>
+				</If>
+			</If>
+			<If Condition="GetQuestStep(65998) == 255">
+				<If Condition="IsOnMap(128)">
+					<MoveTo Name="Limsa Lominsa Lower Decks" Distance="0" XYZ="-9.65393, 42.99996, -25.46598" />
+				</If>
+				<If Condition="IsOnMap(129)">
+					<MoveTo Name="Middle La Noscea" Distance="0" XYZ="65.0005, 19.99999, 0.349344" />
+				</If>
+				<If Condition="IsOnMap(134)">
+					<!-- Attune to the Summerford Farms Aetheryte -->
+					<If Condition="not Managers.WorldManager.HasAetheryteId(52)">
+						<MoveTo Name="Aetheryte" Distance="3" XYZ="224.762, 114, -257.0672" />
+						<UseObject NpcId="52" UseTimes="1" BlacklistAfter="True" XYZ="223.3724, 113.1, -256.3625" Radius="10" WaitTime="5000" Condition="not Managers.WorldManager.HasAetheryteId(52)" />
+						<UseTransport NpcId="52" UseTimes="1" DialogOption="0" BlacklistAfter="True" UseDistance="10" XYZ="223.3724, 113.1, -256.3625" Radius="10" WaitTime="5000" />
+					</If>
+					<!-- <MoveTo Name="Staelwyrn" Distance="3" XYZ="205.4218, 112.7266, -223.7576" /> -->
+					<TurnIn QuestId="65998" PostCombatDelay="3" NpcId="1002626" XYZ="207.2633, 112.8604, -222.4308" />
+				</If>
+			</If>
+		</If>
+
+		<!-- The Time Is Ripe -->
+		<If Condition="not IsQuestCompleted(66008)">
+			<If Condition="not HasQuest(66008)">
+				<MoveTo XYZ="198.0769, 112.0542, -229.7374" />
+				<If Condition="IsQuestAcceptQualified(66008)">
+					<PickupQuest NpcId="1002628" QuestId="66008" XYZ="198.0769, 112.0542, -229.7374" />
+				</If>
+			</If>
+			<If Condition="GetQuestStep(66008) == 1">
+				<UseObject  NpcIds="2001249,2001250,2001251,2001252,2001253" QuestId="66008" StepId="1">
+					<HotSpots>
+						<HotSpot XYZ="51.62122, 59.43384, -151.2932" Radius="25" />
+						<HotSpot XYZ="64.5304, 60.25781, -141.9852" Radius="25" />
+						<HotSpot XYZ="52.50623, 68.07043, -223.8652" Radius="25" />
+						<HotSpot XYZ="77.98877, 68.68079, -177.2946" Radius="25" />
+						<HotSpot XYZ="78.14136, 71.09167, -216.8765" Radius="25" />
+					</HotSpots>
+				</UseObject>
+			</If>
+			<If Condition="GetQuestStep(66008) == 255">
+				<TurnIn QuestId="66008" NpcId="1002628" ItemId="2000351" XYZ="197.8636, 112.0171, -229.7246" />
+			</If> 
+		</If>
+		
+		<!-- Rocks in a Hard Place -->
+		<If Condition="not IsQuestCompleted(66007)">
+			<If Condition="not HasQuest(66007)">
+				<MoveTo XYZ="232.6614, 113.0774, -240.6281" />
+				<If Condition="IsQuestAcceptQualified(66007)">
+					<PickupQuest NpcId="1002633" QuestId="66007" XYZ="232.6614, 113.0774, -240.6281" />
+				</If>
+			</If>
+			<If Condition="GetQuestStep(66007) == 1">
+				<UseObject NpcId="2001272" XYZ="219.8062, 113.1151, -244.1902" Radius="20"  QuestId="66007" StepId="1" />
+			</If>
+			<If Condition="GetQuestStep(66007) == 2">
+				<UseObject UseTimes="3" NpcIds="2001246,2001247,2001248">
+					<HotSpots>
+						<HotSpot XYZ="118.7303, 63.70642, -81.46802" Radius="3" />
+						<HotSpot XYZ="108.7205, 65.29333, -118.6695" Radius="3" />
+						<HotSpot XYZ="118.7609, 71.36633, -163.592" Radius="3" />
+					</HotSpots>
+				</UseObject>
+				<UseItem UseTimes="3" NpcIds="2001243,2001244,2001245" ItemId="2000350">
+					<HotSpots>
+						<HotSpot XYZ="114.0612, 63.85901, -99.50415" Radius="3" />
+						<HotSpot XYZ="120.8362, 69.07751, -129.2592" Radius="3" />
+						<HotSpot XYZ="136.4919, 75.15063, -150.6829" Radius="3" />
+					</HotSpots>
+				</UseItem>
+			</If>
+			<If Condition="GetQuestStep(66007) == 255">
+				<TurnIn QuestId="66007" NpcId="1002633" XYZ="232.5627, 113.0739, -240.2533" />
+			</If> 
+		</If>
+		
+		<!-- Dressed to Call -->
+		<If Condition="not IsQuestCompleted(65999)">
+			<If Condition="not HasQuest(65999)">
+				<MoveTo XYZ="205.052, 112.6122, -222.6982" />
+				<If Condition="IsQuestAcceptQualified(65999)">
+					<PickupQuest NpcId="1002626" QuestId="65999" XYZ="205.052, 112.6122, -222.6982" />
+				</If>
+			</If>
+			<If Condition="GetQuestStep(65999) == 255">
+				<!-- Get to level 5 -->
+				<If Condition="Core.Player.ClassLevel &lt; 5">
+					<If Condition="IsOnMap(134)">
+						<Grind grindRef="MiddleLaNoscea_Level5" while="Core.Player.ClassLevel &lt; 5" />
+					</If>
+				</If>
+				<If Condition="Core.Player.CurrentJob == Enums.ClassJobType.Arcanist">
+					<If Condition="not HasAtLeast(3312,1)">
+						<BuyItem ItemIds="3312" ItemCounts="1" DialogOption="2" InteractDistance="3.0" NpcId="1003257" XYZ="201.709, 98.42287, -206.1036" />
+					</If>
+				</If>
+				<If Condition="Core.Player.CurrentJob == Enums.ClassJobType.Marauder">
+					<If Condition="not HasAtLeast(3311,1)">
+						<BuyItem ItemIds="3311" ItemCounts="1" DialogOption="2" InteractDistance="3.0" NpcId="1003257" XYZ="201.709, 98.42287, -206.1036" />
+					</If>
+				</If>
+				<LogMessage Message="Waiting for AutoEquip to do its job..." />
+				<WaitTimer WaitTime="20" />
+				<TurnIn QuestId="65999" NpcId="1002626" XYZ="205.052, 112.6122, -222.6982" />
+			</If>
+		</If>
+		
+		<!-- Orange Crush -->
+        <If Condition="not IsQuestCompleted(66009)">
+            <If Condition="not HasQuest(66009)">
+                <MoveTo Name="Bhirdraeg" XYZ="197.8636, 112.0171, -229.7246" />
+                <If Condition="IsQuestAcceptQualified(66009)">
+	                <PickupQuest NpcId="1002628" QuestId="66009" XYZ="197.8636, 112.0171, -229.7246" />
+                </If>
+            </If>
+			<If Condition="GetQuestStep(66009) == 1">
+				<Grind grindRef="OrangeCrush" while="HasQuest(66009) and GetQuestStep(66009) == 1" />
+            </If>
+			<If Condition="GetQuestStep(66009) == 255">
+	            <TurnIn QuestId="66009" NpcId="1002628" XYZ="197.8636, 112.0171, -229.7246" />
+            </If>
+        </If>
+		
+		<!-- Lurkers in the Grotto -->
+        <If Condition="not IsQuestCompleted(66079)">
+            <If Condition="not HasQuest(66079)">
+				<MoveTo XYZ="205.052, 112.6122, -222.6982" />
+                <If Condition="IsQuestAcceptQualified(66079)">
+	                <PickupQuest NpcId="1002626" QuestId="66079" XYZ="205.052, 112.6122, -222.6982" />
+                </If>
+            </If>
+			<If Condition="GetQuestStep(66079) == 1">
+				<SimpleDuty InteractNpcId="2001582" XYZ="-58.6405, 27.14575, -141.7716" QuestId="66079" Step="1">
+					<HotSpots>
+						<HotSpot XYZ="-57.98938, 26.02087, -128.232" Radius="30" />
+					</HotSpots>
+					<TargetMobs>
+						<TargetMob Id="404" />
+						<TargetMob Id="940" />
+						<TargetMob Id="941" />
+					</TargetMobs>
+				</SimpleDuty>
+				<!--
+				Duty calls.  Click SelectYesno Yes.  Then, time for duty.
+				
+				Map Info
+				Map ID: 252, SubZone ID: 0, Location: <-59.17929, 25.30142, -134.8781>
+				
+				Initial Enemy
+				NPC ID: 941 | Name: Frenzied Mossback | Type: BattleNpc | Location: <-58.18268, 26.05655, -127.8554> | Combat Reach: 2.85 | Lua String: BattleNpc:13C43190 | Status: 1
+				
+				Reinforcements - Auto-engage
+				NPC ID: 404 | Name: Bogy | Type: BattleNpc | Location: <-59.92218, 25.59359, -132.5856> | Combat Reach: 0.8 | Lua String: BattleNpc:13C42490 | Status: 1
+				NPC ID: 940 | Name: Frenzied Goobbue | Type: BattleNpc | Location: <-57.81653, 25.72627, -131.9753> | Combat Reach: 1.9 | Lua String: BattleNpc:13C42790 | Status: 1
+				
+				-->
+			</If>
+			<WaitWhile Condition="GetQuestStep(66079) == 2" />
+			<WaitWhile Condition="GetQuestStep(66079) == 3" />
+			<If Condition="GetQuestStep(66079) == 255">
+	            <TurnIn QuestId="66079" NpcId="1002626" ItemId="2000522" XYZ="207.2633, 112.8604, -222.4308" />
+            </If>
+        </If>
+		
+		<!-- Washed Up -->
+        <If Condition="not IsQuestCompleted(66001)">
+            <If Condition="not HasQuest(66001)">
+				<MoveTo XYZ="205.052, 112.6122, -222.6982" />
+                <If Condition="IsQuestAcceptQualified(66001)">
+	                <PickupQuest NpcId="1002626" QuestId="66001" XYZ="205.052, 112.6122, -222.6982" />
+                </If>
+            </If>
+			<!-- Further Afield -->
+			<If Condition="not IsQuestCompleted(66000)">
+				<If Condition="not HasQuest(66000)">
+					<MoveTo XYZ="203.3827, 111.9367, -215.7475" />
+					<If Condition="IsQuestAcceptQualified(66000)">
+						<PickupQuest NpcId="1002627" QuestId="66000" XYZ="203.3827, 111.9367, -215.7475" />
+					</If>
+				</If>
+				<Grind grindRef="FurtherAfield" while="HasQuest(66000) and GetQuestStep(66000) == 1" />
+				<If Condition="GetQuestStep(66000) == 255">
+					<TurnIn QuestId="66000" NpcId="1002627" XYZ="203.3264, 111.7238, -213.9163" />
+				</If>
+			</If>
+			<If Condition="GetQuestStep(66001) == 1">
+				<If Condition="HasQuest(66001) and GetQuestById(66001).QuestI8AL == 0">
+					<TalkTo InteractDistance="3.0" NpcId="1002639" XYZ="197.1617, 101.0984, -273.579" /> <!-- Swill water -->
+				</If>
+				<If Condition="HasQuest(66001) and GetQuestById(66001).QuestI8AL == 1">
+					<TalkTo InteractDistance="3.0" NpcId="1002638" XYZ="169.3599, 93.96625, -191.3635" /> <!-- Breaded sticks -->
+				</If>
+				<If Condition="HasQuest(66001) and GetQuestById(66001).QuestI8AL == 2">
+					<TalkTo InteractDistance="3.0" NpcId="1002637" XYZ="94.46863, 66.13388, -257.5266" /> <!-- Skirmishing -->
+				</If>
+				<If Condition="HasQuest(66001) and GetQuestById(66001).QuestI8AL == 3">
+					<TalkTo InteractDistance="3.0" NpcId="1002636" XYZ="17.74622, 60.79125, -269.9169" /> <!-- Work is for the weak and witless -->
+				</If>
+				<If Condition="HasQuest(66001) and GetQuestById(66001).QuestI8AL == 4">
+					<TalkTo InteractDistance="3.0" NpcId="1002635" XYZ="33.82922, 54.64603, -150.3167" />
+				</If>
+            </If>
+			<If Condition="GetQuestStep(66001) == 255">
+	            <TurnIn QuestId="66001" NpcId="1002626" XYZ="207.2633, 112.8604, -222.4308" />
+            </If>
+        </If>
+		
+		<!-- Double Dealing -->
+        <If Condition="not IsQuestCompleted(66002)">
+            <If Condition="not HasQuest(66002)">
+				<MoveTo XYZ="205.052, 112.6122, -222.6982" />
+                <If Condition="IsQuestAcceptQualified(66002)">
+	                <PickupQuest NpcId="1002626" QuestId="66002" XYZ="205.052, 112.6122, -222.6982" />
+                </If>
+            </If>
+			<If Condition="GetQuestStep(66002) == 1">
+				<EmoteNPC Emote="doubt" NpcId="1002640" XYZ="131.0902, 45.70909, 134.4471" QuestId="66002" Step="1" />
+            </If>
+			<If Condition="GetQuestStep(66002) == 2">
+				<TalkTo InteractDistance="3.0" NpcId="1002641" XYZ="186.6331, 46.25815, 124.6509" />
+				<TalkTo InteractDistance="3.0" NpcId="1002642" XYZ="191.8822, 46.26205, 128.0688" />
+				<TalkTo InteractDistance="3.0" NpcId="1002643" XYZ="194.4457, 46.41682, 119.2186" />
+            </If>
+			<If Condition="GetQuestStep(66002) == 3">
+				<TalkTo InteractDistance="3.0" NpcId="1002640" XYZ="131.0902, 45.70909, 134.4471" />
+            </If>
+			<If Condition="GetQuestStep(66002) == 4">
+				<UseObject NpcId="2001279" XYZ="132.7992, 45.76172, 134.9354" Radius="10" QuestId="66002" StepId="4" />
+            </If>
+			<If Condition="GetQuestStep(66002) == 5">
+				<HandOver ItemId="2000356" QuestId="66002" StepId="5" NpcId="1002630" XYZ="179.858, 64.61002, 294.7585" />
+            </If>
+		</If>
+		
+		<!-- Yarzon, Yarzoff -->
+        <If Condition="not IsQuestCompleted(66006)">
+            <If Condition="not HasQuest(66006)">
+                <MoveTo Name="Ostfyr" XYZ="188.5862, 65.20107, 292.8663" />
+                <If Condition="IsQuestAcceptQualified(66006)">
+	                <PickupQuest NpcId="1002119" QuestId="66006" XYZ="188.5862, 65.20107, 292.8663" />
+                </If>
+            </If>
+			<If Condition="GetQuestStep(66006) == 1">
+				<UseObject NpcIds="2001240,2001241,2001242" QuestId="66006" StepId="1">
+					<HotSpots>
+						<HotSpot XYZ="120.6531, 44.57153, 37.43042" Radius="10" />
+						<HotSpot XYZ="21.0116, 43.13721, 46.98242" Radius="10" />
+						<HotSpot XYZ="-18.93652, 42.16064, 58.60986" Radius="10" />
+					</HotSpots>
+				</UseObject>
+            </If>
+			<If Condition="GetQuestStep(66006) == 255">
+				<TurnIn QuestId="66006" NpcId="1002119" XYZ="188.5862, 65.20107, 292.8663" />
+            </If>
+        </If>
+		
+		<!-- Double Dealing -->
+        <If Condition="not IsQuestCompleted(66002)">
+			<If Condition="GetQuestStep(66002) == 255">
+				<TurnIn QuestId="66002" NpcId="1002626" ItemId="2000357" XYZ="205.052, 112.6122, -222.6982" />
+            </If>
+        </If>
+		
+		<!-- Loam Maintenance -->
+        <If Condition="not IsQuestCompleted(66003)">
+            <If Condition="not HasQuest(66003)">
+                <If Condition="IsQuestAcceptQualified(66003)">
+	                <PickupQuest NpcId="1002627" QuestId="66003" XYZ="203.3264, 111.7238, -213.9163" />
+                </If>
+            </If>
+			<If Condition="GetQuestStep(66003) == 1">
+				<TalkTo InteractDistance="3.0" NpcId="1002629" XYZ="52.75037, 64.48143, -185.7176" />
+            </If>
+			<If Condition="GetQuestStep(66003) == 2">
+				<UseObject NpcIds="2001239,2001238,2001237" QuestId="66003" StepId="2">
+					<HotSpots>
+						<HotSpot XYZ="-132.9519, 45.36511, -228.9311" Radius="10" />
+						<HotSpot XYZ="-121.7823, 45.97534, -210.8339" Radius="10" />
+						<HotSpot XYZ="-129.3813, 46.67737, -192.5231" Radius="10" />
+					</HotSpots>
+				</UseObject>
+            </If>
+			<If Condition="GetQuestStep(66003) == 255">
+				<TurnIn QuestId="66003" NpcId="1002631" ItemId="2000347" XYZ="0.04577637, 57.85028, -308.7664" />
+            </If>
+        </If>
+		
+		<!-- A Pound of Cure -->
+        <If Condition="not IsQuestCompleted(66010)">
+            <If Condition="not HasQuest(66010)">
+                <MoveTo Name="Khanmhar" XYZ="173.4492, 96.10849, -218.5245" />
+                <If Condition="IsQuestAcceptQualified(66010)">
+	                <PickupQuest NpcId="1002634" QuestId="66010" XYZ="173.4492, 96.10849, -218.5245" />
+                </If>
+            </If>
+			<If Condition="GetQuestStep(66010) == 255">
+				<If Condition="ItemCount(4552) == 0">
+					<BuyItem ItemIds="4552" ItemCounts="1" DialogOption="1" InteractDistance="3.0" NpcId="1003257" XYZ="201.709, 98.42287, -206.1036" />
+				</If>
+				<TurnIn ItemId="4552" QuestId="66010" NpcId="1002632" XYZ="2.5177, 57.76339, -292.8054" />
+			</If>
+        </If>
+		
+		<!-- Cry Me a Liver -->
+        <If Condition="not IsQuestCompleted(66011)">
+            <If Condition="not HasQuest(66011)">
+				<If Condition="IsOnMap(134)">
+					<MoveTo Name="Lower La Noscea" XYZ="207.6219, 65.19169, 285.4482" />
+				</If>
+                <MoveTo Name="Ancreta" XYZ="277.943, 45.14374, 33.64612" />
+                <If Condition="IsQuestAcceptQualified(66011)">
+	                <PickupQuest NpcId="1002605" QuestId="66011" XYZ="277.943, 45.14374, 33.64612" />
+                </If>
+            </If>
+			<If Condition="GetQuestStep(66011) == 1">
+				<Grind grindRef="CryMeALiver" while="HasQuest(66011) and GetQuestStep(66011) == 1" />
+            </If>
+			<If Condition="GetQuestStep(66011) == 2">
+				<HandOver ItemId="2000427" QuestId="66011" StepId="2" NpcId="1002605" XYZ="277.943, 45.14374, 33.64612" />
+            </If>
+			<If Condition="GetQuestStep(66011) == 255">
+				<TurnIn QuestId="66011" NpcId="1002571" ItemId="2000427" XYZ="548.6381, 89.28905, -74.32672" />
+            </If>
+        </If>
+		
+		<!-- Wool's Errand -->
+        <If Condition="not IsQuestCompleted(66012)">
+            <If Condition="not HasQuest(66012)">
+                <MoveTo Name="Anaoc" XYZ="548.6381, 89.28905, -74.32672" />
+                <If Condition="IsQuestAcceptQualified(66012)">
+	                <PickupQuest NpcId="1002571" QuestId="66012" XYZ="548.6381, 89.28905, -74.32672" />
+                </If>
+            </If>
+        </If>
+		
+		<!-- Moegramm Had a Little Lamb -->
+        <If Condition="not IsQuestCompleted(66017)">
+            <If Condition="not HasQuest(66017)">
+                <MoveTo Name="Moegramm" XYZ="540.5203, 89, -74.02161" />
+                <If Condition="IsQuestAcceptQualified(66017)">
+	                <PickupQuest NpcId="1002657" QuestId="66017" XYZ="540.5203, 89, -74.02161" />
+                </If>
+            </If>
+        </If>
+		
+		<!-- Whack-a-Mole -->
+        <If Condition="not IsQuestCompleted(66018)">
+            <If Condition="not HasQuest(66018)">
+                <MoveTo Name="Arenlona" XYZ="532.8297, 88.99998, -72.09894" />
+                <If Condition="IsQuestAcceptQualified(66018)">
+	                <PickupQuest NpcId="1002659" QuestId="66018" XYZ="532.8297, 88.99998, -72.09894" />
+                </If>
+            </If>
+        </If>
+		
+		<!-- Where the Heart Is (Mist) -->
+        <If Condition="not IsQuestCompleted(66750)">
+            <If Condition="not HasQuest(66750)">
+                <MoveTo Name="Ahctkoen" XYZ="508.0186, 79.17175, -61.96692" />
+                <If Condition="IsQuestAcceptQualified(66750)">
+	                <PickupQuest NpcId="1002579" QuestId="66750" XYZ="508.0186, 79.17175, -61.96692" />
+                </If>
+            </If>
+        </If>
+		
+		<!-- Wool's Errand -->
+        <If Condition="not IsQuestCompleted(66012)">
+            <If Condition="GetQuestStep(66012) == 1">
+				<UseObject NpcId="2001487" XYZ="476.829, 80.18616, -76.73767" Radius="10" QuestId="66012" StepId="1" />
+            </If>
+        </If>
+		
+		<!-- Moegramm Had a Little Lamb -->
+        <If Condition="not IsQuestCompleted(66017)">
+            <If Condition="GetQuestStep(66017) == 1">
+				<TalkTo InteractDistance="3.0" NpcId="1002550" XYZ="484.5502, 80.08305, -106.5843" QuestId="66017" StepId="1" />
+            </If>
+			<If Condition="GetQuestStep(66017) == 2">
+				<UseItem NpcId="1002611" ItemId="2000437" XYZ="491.4778, 80.06413, -112.4743" Radius="10" UseTimes="1" BlacklistAfter="True" Condition="HasQuest(66017) and GetQuestById(66017).QuestI8BH &gt; 2" />
+				<UseItem NpcId="1002614" ItemId="2000437" XYZ="495.8418, 79.19914, -95.65887" Radius="10" UseTimes="1" BlacklistAfter="True" Condition="HasQuest(66017) and GetQuestById(66017).QuestI8BH &gt; 1" />
+				<UseItem NpcId="1002600" ItemId="2000437" XYZ="477.6531, 80.07791, -97.7951" Radius="10" UseTimes="1" BlacklistAfter="True" Condition="HasQuest(66017) and GetQuestStep(66017) == 2" />
+            </If>
+        </If>
+		
+		<!-- Where the Heart Is (Mist) -->
+        <If Condition="not IsQuestCompleted(66750)">
+            <If Condition="GetQuestStep(66750) == 1">
+				<TalkTo InteractDistance="3.0" NpcId="1005529" XYZ="593.225, 61.73446, -113.9697" />
+            </If>
+        </If>
+		
+		<!-- Whack-a-Mole -->
+        <If Condition="not IsQuestCompleted(66018)">
+            <If Condition="GetQuestStep(66018) == 1">
+				<UseObject NpcIds="2001497,2001496,2001495" QuestId="66018" StepId="1">
+					<HotSpots>
+						<HotSpot XYZ="470.6646, 68.28406, -173.785" Radius="10" />
+						<HotSpot XYZ="472.2209, 68.37561, -185.9312" Radius="10" />
+						<HotSpot XYZ="455.8021, 68.43665, -186.8467" Radius="10" />
+					</HotSpots>
+				</UseObject>
+            </If>
+        </If>
+		
+		<!-- Moegramm Had a Little Lamb -->
+        <If Condition="not IsQuestCompleted(66017)">
+            <If Condition="GetQuestStep(66017) == 255">
+				<TurnIn QuestId="66017" NpcId="1002657" XYZ="540.5203, 89, -74.02161" />
+            </If>
+        </If>
+		
+		<!-- Whack-a-Mole -->
+        <If Condition="not IsQuestCompleted(66018)">
+            <If Condition="GetQuestStep(66018) == 255">
+				<TurnIn QuestId="66018" NpcId="1002659" XYZ="532.8297, 88.99998, -72.09894" />
+            </If>
+        </If>
+		
+		<!-- Much Ado About Dodos -->
+        <If Condition="not IsQuestCompleted(66016)">
+            <If Condition="not HasQuest(66016)">
+                <MoveTo Name="Moegramm" XYZ="540.5203, 89, -74.02161" />
+                <If Condition="IsQuestAcceptQualified(66016)">
+	                <PickupQuest NpcId="1002657" QuestId="66016" XYZ="540.5203, 89, -74.02161" />
+                </If>
+            </If>
+        </If>
+		
+		<!-- Beetle Juice -->
+        <If Condition="not IsQuestCompleted(66019)">
+            <If Condition="not HasQuest(66019)">
+                <MoveTo Name="Arenlona" XYZ="532.8297, 88.99998, -72.09894" />
+                <If Condition="IsQuestAcceptQualified(66019)">
+	                <PickupQuest NpcId="1002659" QuestId="66019" XYZ="532.8297, 88.99998, -72.09894" />
+                </If>
+            </If>
+        </If>
+		
+		<!-- Much Ado About Dodos -->
+        <If Condition="not IsQuestCompleted(66016)">
+            <If Condition="GetQuestStep(66016) == 1">
+				<TalkTo InteractDistance="3.0" NpcId="1002660" XYZ="541.7715, 83.63054, -5.44751" />
+            </If>
+			<If Condition="GetQuestStep(66016) == 2">
+				<UseItem ItemId="2000435" NpcIds="1002661,1002688,1002687" QuestId="66016" StepId="2">
+					<HotSpots>
+						<HotSpot XYZ="574.7615, 87.52969, -34.43964" Radius="10" />
+						<HotSpot XYZ="478.6602, 81.15916, -38.10181" Radius="10" />
+						<HotSpot XYZ="565.4536, 84.45213, -115.9838" Radius="10" />
+					</HotSpots>
+				</UseItem>
+            </If>
+			<If Condition="GetQuestStep(66016) == 255">
+				<TurnIn QuestId="66016" NpcId="1002657" ItemId="2000436" XYZ="540.5203, 89, -74.02161" />
+            </If>
+        </If>
+		
+		<!-- Beetle Juice -->
+        <If Condition="not IsQuestCompleted(66019)">
+            <If Condition="GetQuestStep(66019) == 1">
+				<UseItem NpcId="2001488" ItemId="2000438" XYZ="440.5431, 68.31458, -176.0434" Radius="10" QuestId="66019" StepId="1" />
+            </If>
+        </If>
+		
+		<!-- Wool's Errand -->
+        <If Condition="not IsQuestCompleted(66012)">
+            <If Condition="GetQuestStep(66012) == 255">
+				<TurnIn QuestId="66012" NpcId="1002652" ItemId="2000428" XYZ="704.8293, 67.3221, -308.4612" />
+            </If>
+        </If>
+		
+		<!-- Flour Power -->
+        <If Condition="not IsQuestCompleted(66013)">
+            <If Condition="not HasQuest(66013)">
+                <MoveTo Name="Weitzaren" XYZ="704.8293, 67.3221, -308.4612" />
+                <If Condition="IsQuestAcceptQualified(66013)">
+	                <PickupQuest NpcId="1002652" QuestId="66013" XYZ="704.8293, 67.3221, -308.4612" />
+                </If>
+            </If>
+        </If>
+		
+		<!-- What Goes Around -->
+        <If Condition="not IsQuestCompleted(66020)">
+            <If Condition="not HasQuest(66020)">
+                <MoveTo Name="Loetrswys" XYZ="707.6981, 66.97676, -309.2241" />
+                <If Condition="IsQuestAcceptQualified(66020)">
+	                <PickupQuest NpcId="1002653" QuestId="66020" XYZ="707.6981, 66.97676, -309.2241" />
+                </If>
+            </If>
+			<If Condition="GetQuestStep(66020) == 1">
+				<If Condition="HasQuest(66020) and GetQuestById(66020).QuestI8AL == 0">
+					<TalkTo InteractDistance="3.0" NpcId="1002655" XYZ="689.3567, 61.71541, -189.5018" />
+				</If>
+				<If Condition="HasQuest(66020) and GetQuestById(66020).QuestI8AL == 1">
+					<TalkTo InteractDistance="3.0" NpcId="1002656" XYZ="609.613, 65.68267, -187.274" />
+				</If>
+				<If Condition="HasQuest(66020) and GetQuestById(66020).QuestI8AL == 2">
+					<TalkTo InteractDistance="3.0" NpcId="1002654" XYZ="603.2349, 78.6908, -307.6677" />
+				</If>
+            </If>
+        </If>
+		
+		<!-- Flour Power -->
+        <If Condition="not IsQuestCompleted(66013)">
+            <If Condition="GetQuestStep(66013) == 1">
+				<Grind grindRef="FlourPower" while="HasQuest(66013) and GetQuestStep(66013) == 1" />
+            </If>
+        </If>
+		
+		<!-- Fire and Brimstone -->
+        <If Condition="not IsQuestCompleted(66021)">
+            <If Condition="not HasQuest(66021)">
+                <MoveTo Name="Broenruht" XYZ="312.4895, 75.94093, -308.217" />
+                <If Condition="IsQuestAcceptQualified(66021)">
+	                <PickupQuest NpcId="1002658" QuestId="66021" XYZ="312.4895, 75.94093, -308.217" />
+                </If>
+            </If>
+			<If Condition="GetQuestStep(66021) == 1">
+				<UseItem ItemId="2000440" NpcIds="2001500,2001502,2001501" QuestId="66021" StepId="1">
+					<HotSpots>
+						<HotSpot XYZ="278.767, 74.93701, -307.8203" Radius="10" />
+						<HotSpot XYZ="294.3618, 73.22803, -270.222" Radius="10" />
+						<HotSpot XYZ="270.2219, 73.59424, -263.2945" Radius="10" />
+					</HotSpots>
+				</UseItem>
+            </If>
+			<If Condition="GetQuestStep(66021) == 255">
+				<TurnIn QuestId="66021" NpcId="1002658" XYZ="312.4895, 75.94093, -308.217" />
+            </If>
+        </If>
+		
+		<!-- What Goes Around -->
+        <If Condition="not IsQuestCompleted(66020)">
+            <If Condition="GetQuestStep(66020) == 255">
+				<TurnIn QuestId="66020" NpcId="1002652" XYZ="704.8293, 67.3221, -308.4612" />
+            </If>
+        </If>
+		
+		<!-- Kobolds Ahoy -->
+        <If Condition="not IsQuestCompleted(66022)">
+            <If Condition="not HasQuest(66022)">
+                <MoveTo Name="Loetrswys" XYZ="707.6981, 66.97676, -309.2241" />
+                <If Condition="IsQuestAcceptQualified(66022)">
+	                <PickupQuest NpcId="1002653" QuestId="66022" XYZ="707.6981, 66.97676, -309.2241" />
+                </If>
+            </If>
+        </If>
+		
+		<!-- Flour Power -->
+        <If Condition="not IsQuestCompleted(66013)">
+            <If Condition="GetQuestStep(66013) == 255">
+				<TurnIn QuestId="66013" NpcId="1002591" ItemId="2000429" XYZ="567.8033, 84.62209, -99.59564" />
+            </If>
+        </If>
+		
+		<!-- Beetle Juice -->
+        <If Condition="not IsQuestCompleted(66019)">
+            <If Condition="GetQuestStep(66019) == 255">
+				<TurnIn QuestId="66019" NpcId="1002659" ItemId="2000439" XYZ="532.8297, 88.99998, -72.09894" />
+            </If>
+        </If>
+		
+		<!-- Kobolds Ahoy -->
+        <If Condition="not IsQuestCompleted(66022)">
+            <If Condition="GetQuestStep(66022) == 1">
+				<TalkTo InteractDistance="3.0" NpcId="1002657" XYZ="540.5203, 89, -74.02161" />
+            </If>
+        </If>
+		
+		<!-- Kobolds and Indigents -->
+        <If Condition="not IsQuestCompleted(66014)">
+            <If Condition="not HasQuest(66014)">
+                <MoveTo Name="Skarnmhar" XYZ="567.8033, 84.62209, -99.59564" />
+                <If Condition="IsQuestAcceptQualified(66014)">
+	                <PickupQuest NpcId="1002591" QuestId="66014" XYZ="567.8033, 84.62209, -99.59564" />
+                </If>
+            </If>
+			<If Condition="GetQuestStep(66014) == 1">
+				<TalkTo InteractDistance="3.0" NpcId="1002678" XYZ="312.1511, 76.26694, -323.3129" />
+            </If>
+        </If>
+		
+		<!-- Kobolds Ahoy -->
+        <If Condition="not IsQuestCompleted(66022)">
+            <If Condition="GetQuestStep(66022) == 2">
+				<TalkTo InteractDistance="3.0" NpcId="1002658" XYZ="312.4895, 75.94093, -308.217" />
+            </If>
+        </If>
+		
+		<!-- Kobolds and Indigents -->
+        <If Condition="not IsQuestCompleted(66014)">
+            <If Condition="GetQuestStep(66014) == 2">
+				<If Condition="IsOnMap(134)">
+					<MoveTo Name="Lower La Noscea" Distance="0" XYZ="207.7071, 65.1903, 285.6768" />
+				</If>
+				<UseObject NpcId="2001489" XYZ="254.4137, 73.3501, -322.1332" Radius="10" QuestId="66014" StepId="2" />
+            </If>
+			<If Condition="GetQuestStep(66014) == 3">
+				<TalkTo InteractDistance="3.0" NpcId="1002678" XYZ="312.1511, 76.26694, -323.3129" />
+            </If>
+			<If Condition="GetQuestStep(66014) == 4">
+				<HandOver ItemId="2000430" QuestId="66014" StepId="4" NpcId="1002591" XYZ="567.8033, 84.62209, -99.59564" />
+            </If>
+			<If Condition="GetQuestStep(66014) == 255">
+				<TurnIn QuestId="66014" NpcId="1002571" XYZ="548.6381, 89.28905, -74.32672" />
+            </If>
+        </If>
+		
+		<!-- Bait and Swat -->
+        <If Condition="not IsQuestCompleted(66015)">
+            <If Condition="not HasQuest(66015)">
+                <MoveTo Name="Anaoc" XYZ="548.6381, 89.28905, -74.32672" />
+                <If Condition="IsQuestAcceptQualified(66015)">
+	                <PickupQuest NpcId="1002571" QuestId="66015" XYZ="548.6381, 89.28905, -74.32672" />
+                </If>
+            </If>
+			<If Condition="GetQuestStep(66015) == 1">
+				<TalkTo InteractDistance="3.0" NpcId="1002659" XYZ="532.8297, 88.99998, -72.09894" />
+            </If>
+			<If Condition="GetQuestStep(66015) == 2">
+				<TalkTo InteractDistance="3.0" NpcId="1002571" XYZ="548.6381, 89.28905, -74.32672" />
+            </If>
+			<If Condition="GetQuestStep(66015) == 3">
+				<TalkTo InteractDistance="3.0" NpcId="1002591" XYZ="567.8033, 84.62209, -99.59564" />
+            </If>
+			<If Condition="GetQuestStep(66015) == 4">
+				<TalkTo InteractDistance="3.0" NpcId="1002221" XYZ="283.1921, 71.65548, -209.4301" />
+            </If>
+			<If Condition="GetQuestStep(66015) == 5">
+				<UseItem NpcId="2001491" ItemId="2000434" XYZ="223.4684, 72.22095, -283.3448" Radius="10" QuestId="66015" StepId="5" />
+            </If>
+			<If Condition="GetQuestStep(66015) == 6">
+				<UseObject NpcId="2001492" XYZ="247.3944, 74.75391, -309.0105" Radius="10" QuestId="66015" StepId="6" />
+            </If>
+			<If Condition="GetQuestStep(66015) == 7">
+				<TalkTo InteractDistance="3.0" NpcId="1002571" XYZ="548.6381, 89.28905, -74.32672" />
+            </If>
+        </If>
+		
+		<!-- Kobolds Ahoy -->
+        <If Condition="not IsQuestCompleted(66022)">
+            <If Condition="GetQuestStep(66022) == 3">
+				<If Condition="IsOnMap(135)">
+					<MoveTo Name="Middle La Noscea" Distance="0" XYZ="227.1267, 74.39925, -345.0402" />
+				</If>
+				<HandOver ItemId="2000562" QuestId="66022" StepId="3" NpcId="1002119" XYZ="188.5862, 65.20107, 292.8663" />
+            </If>
+			<If Condition="GetQuestStep(66022) == 255">
+				<TurnIn QuestId="66022" NpcId="1002626" XYZ="207.2633, 112.8604, -222.4308" />
+            </If>
+        </If>
+		
+		<!-- Plowshares to Swords -->
+        <If Condition="not IsQuestCompleted(66004)">
+            <If Condition="not HasQuest(66004)">
+				<MoveTo XYZ="0.04577637, 57.85028, -308.7664" />
+                <If Condition="IsQuestAcceptQualified(66004)">
+	                <PickupQuest NpcId="1002631" QuestId="66004" XYZ="0.04577637, 57.85028, -308.7664" />
+                </If>
+            </If>
+			<If Condition="GetQuestStep(66004) == 1">
+				<MoveTo Name="Plowshares to Swords" Distance="3" XYZ="-87.0993, 48.55717, -234.4706" />
+				<Grind grindRef="PlowsharesToSwords" while="HasQuest(66004) and GetQuestStep(66004) == 1" />
+            </If>
+			<If Condition="GetQuestStep(66004) == 2">
+				<HandOver ItemId="2000348" QuestId="66004" StepId="2" NpcId="1002631" XYZ="0.04577637, 57.85028, -308.7664" />
+            </If>
+			<If Condition="GetQuestStep(66004) == 255">
+				<TurnIn QuestId="66004" NpcId="1002626" XYZ="205.052, 112.6122, -222.6982" />
+            </If>
+        </If>
+		
+		<!-- Get to level 10 -->
+		<If Condition="Core.Player.ClassLevel &lt; 10">
+			<Grind grindRef="MiddleLaNoscea_Level10" while="Core.Player.ClassLevel &lt; 10" />
+		</If>
+			
+		<!-- Just Deserts -->
+        <If Condition="not IsQuestCompleted(66005)">
+            <If Condition="not HasQuest(66005)">
+                <MoveTo Name="Staelwyrn" XYZ="207.2633, 112.8604, -222.4308" />
+                <If Condition="IsQuestAcceptQualified(66005)">
+	                <PickupQuest NpcId="1002626" QuestId="66005" XYZ="207.2633, 112.8604, -222.4308" />
+                </If>
+            </If>
+			<If Condition="GetQuestStep(66005) == 1">
+				<TalkTo InteractDistance="3.0" NpcId="1002633" XYZ="232.5627, 113.0739, -240.2533" />
+            </If>
+			<If Condition="GetQuestStep(66005) == 2">
+				<TalkTo InteractDistance="3.0" NpcId="1002645" XYZ="-144.2741, 20.32, -336.3242" />
+            </If>
+			<If Condition="GetQuestStep(66005) == 3">
+				<TalkTo InteractDistance="3.0" NpcId="1002646" XYZ="-58.76251, 12.53711, -410.9407" />
+            </If>
+			<If Condition="GetQuestStep(66005) == 4">
+				<SimpleDuty InteractNpcId="1002647" XYZ="-34.86688, 10.90226, -432.1508" QuestId="66005" StepId="4">
+					<HotSpots>
+						<HotSpot XYZ="-20.73982, 11.56289, -443.2011" Radius="30" />
+					</HotSpots>
+					<TargetMobs>
+						<TargetMob Id="30" />
+					</TargetMobs>
+				</SimpleDuty>
+            </If>
+			<WaitWhile Condition="GetQuestStep(66005) == 5" />
+			<If Condition="GetQuestStep(66005) == 6">
+				<TalkTo InteractDistance="3.0" NpcId="1002626" XYZ="207.2633, 112.8604, -222.4308" />
+            </If>
+			<If Condition="GetQuestStep(66005) == 7">
+				<TalkTo InteractDistance="3.0" NpcId="1002626" XYZ="207.2633, 112.8604, -222.4308" />
+            </If>
+			<If Condition="GetQuestStep(66005) == 255">
+				<If Condition="IsOnMap(134)">
+					<MoveTo Name="Limsa Lominsa Lower Decks" Distance="0" XYZ="-44.29542, 35.0597, 156.0052" />
+				</If>
+				<If Condition="IsOnMap(129)">
+					<MoveTo Name="Limsa Lominsa Upper Decks" Distance="0" XYZ="-7.13642, 20.84274, 27.17651" />
+				</If>
+				<If Condition="IsOnMap(128)">
+					<TurnIn QuestId="66005" NpcId="1000972" XYZ="17.4978, 40.21601, -5.345327" />
+				</If>
+            </If>
+        </If>
+		
+		<!-- Bait and Swat -->
+        <If Condition="not IsQuestCompleted(66015)">
+            <If Condition="GetQuestStep(66015) == 255">
+				<TurnIn QuestId="66015" RewardSlot="2" NpcId="1000972" XYZ="17.4978, 40.21601, -5.345327" />
+            </If>
+        </If>
+		
+		<!-- Class Quests -->
+		<If Condition="Core.Player.CurrentJob == Enums.ClassJobType.Arcanist">
+			<!-- What's in the Box - Level 5 -->
+			<If Condition="not IsQuestCompleted(65991)">
+				<If Condition="not HasQuest(65991)">
+					<If Condition="IsOnMap(128)">
+						<MoveTo Name="Limsa Lominsa Lower Decks" Distance="0" XYZ="-9.65393, 42.99996, -25.46598" />
+					</If>
+					<MoveTo Name="Thubyrgeim" XYZ="-326.3752, 12.89966, 9.994568" />
+					<If Condition="IsQuestAcceptQualified(65991)">
+						<PickupQuest NpcId="1000909" QuestId="65991" XYZ="-326.3752, 12.89966, 9.994568" />
+					</If>
+				</If>
+				<If Condition="GetQuestStep(65991) == 1">
+					<If Condition="IsOnMap(129)">
+						<MoveTo Name="Limsa Lominsa Upper Decks" Distance="0" XYZ="-7.13642, 20.84274, 27.17651" />
+					</If>
+					<If Condition="IsOnMap(128)">
+						<MoveTo Name="Lower La Noscea" Distance="0" XYZ="24.91524, 44.49993, 181.1817" />
+					</If>
+					<Grind grindRef="WhatsInTheBox_WildDodo" while="HasQuest(65991) and GetQuestById(65991).QuestI8AL &lt; 3" />
+					<Grind grindRef="WhatsInTheBox_TinyMandragora" while="HasQuest(65991) and GetQuestStep(65991) == 1" />
+				</If>
+				<If Condition="GetQuestStep(65991) == 2">
+					<If Condition="IsOnMap(135)">
+						<MoveTo Name="Limsa Lominsa Upper Decks" Distance="0" XYZ="-53.67422, 75.82907, 116.1976" />
+					</If>
+					<If Condition="IsOnMap(128)">
+						<MoveTo Name="Limsa Lominsa Lower Decks" Distance="0" XYZ="-9.65393, 42.99996, -25.46598" />
+					</If>
+					<TalkTo InteractDistance="3.0" NpcId="1000909" XYZ="-326.3752, 12.89966, 9.994568" />
+				</If>
+				<If Condition="GetQuestStep(65991) == 3">
+					<If Condition="IsOnMap(129)">
+						<MoveTo Name="Middle La Noscea" Distance="0" XYZ="65.0005, 19.99999, 0.349344" />
+					</If>
+					<UseObject NpcId="2002266" XYZ="-0.1373901, 26.07764, 196.5209" Radius="10" QuestId="65991" StepId="3" />
+				</If>
+				<If Condition="GetQuestStep(65991) == 4">
+					<UseObject NpcId="2002476" XYZ="-0.1068726, 25.95557, 196.5514" Radius="10" QuestId="65991" StepId="4" />
+				</If>
+				<If Condition="GetQuestStep(65991) == 255">
+					<If Condition="IsOnMap(134)">
+						<MoveTo Name="Limsa Lominsa Lower Decks" Distance="0" XYZ="-44.29542, 35.0597, 156.0052" />
+					</If>
+					<TurnIn QuestId="65991" NpcId="1000909" ItemId="2000796" XYZ="-326.3752, 12.89966, 9.994568" />
+				</If>
+			</If>
+			
+			<!-- Tactical Planning - Level 10 -->
+			<If Condition="not IsQuestCompleted(65992)">
+				<If Condition="not HasQuest(65992)">
+					<MoveTo Name="Thubyrgeim" XYZ="-326.3752, 12.89966, 9.994568" />
+					<If Condition="IsQuestAcceptQualified(65992)">
+						<PickupQuest NpcId="1000909" QuestId="65992" XYZ="-326.3752, 12.89966, 9.994568" />
+					</If>
+				</If>
+				<If Condition="GetQuestStep(65992) == 1">
+					<If Condition="IsOnMap(129)">
+						<MoveTo Name="Middle La Noscea" Distance="0" XYZ="65.0005, 19.99999, 0.349344" />
+					</If>
+					<If Condition="IsOnMap(134)">
+						<MoveTo Name="Western La Noscea" Distance="0" XYZ="-379.0129, 33.18278, -604.1002" />
+					</If>
+					<If Condition="IsOnMap(138)">
+						<Grind grindRef="TacticalPlanning_WildJackal" while="HasQuest(65992) and GetQuestById(65992).QuestI8BH &lt; 3" />
+						<Grind grindRef="TacticalPlanning_Roseling" while="HasQuest(65992) and GetQuestStep(65992) == 1" />
+					</If>
+				</If>
+				<If Condition="GetQuestStep(65992) == 2">
+					<If Condition="not IsOnMap(129)">
+						<TeleportTo Name="Limsa Lominsa Lower Decks" AetheryteId="8" />
+					</If>
+					<TalkTo InteractDistance="3.0" NpcId="1000909" XYZ="-326.3752, 12.89966, 9.994568" />
+				</If>
+				<If Condition="GetQuestStep(65992) == 3">
+					<TalkTo InteractDistance="3.0" NpcId="1005199" XYZ="-348.3177, -2.37447, 11.91724" />
+				</If>
+				<If Condition="GetQuestStep(65992) == 4">
+					<If Condition="IsOnMap(129)">
+						<MoveTo Name="Middle La Noscea" Distance="0" XYZ="65.0005, 19.99999, 0.349344" />
+					</If>
+					<MoveTo Distance="3" XYZ="-106.7979, 45.6884, -252.3384" />
+					<SimpleDuty InteractNpcId="1005200" XYZ="-106.7979, 45.6884, -252.3384" QuestId="65992" StepId="4">
+						<HotSpots>
+							<HotSpot XYZ="-110.3807, 45.38188, -245.4525" Radius="30" />
+						</HotSpots>
+						<TargetMobs>
+							<TargetMob Id="1949" />
+							<TargetMob Id="1950" />
+						</TargetMobs>
+					</SimpleDuty>
+					<!-- Instance
+					
+					Map ID: 285, SubZone ID: 0, Location: <-110.3807, 45.38188, -245.4525>
+					
+					Enemies
+					Wave 1
+					NPC ID: 1950 | Level: 9 | Name: Goblin Picaroon x3
+					
+					Wave 2
+					NPC ID: 1950 | Level: 9 | Name: Goblin Picaroon x2
+					NPC ID: 1949 | Level: 10 | Name: Goblin Trader
+					
+					Wave 3
+					NPC ID: 1950 | Level: 9 | Name: Goblin Picaroon
+					NPC ID: 1949 | Level: 10 | Name: Goblin Trader
+					
+					-->
+					<WaitWhile Condition="GetQuestStep(65992) == 4" />
+				</If>
+				<If Condition="GetQuestStep(65992) == 5">
+					<TalkTo InteractDistance="3.0" NpcId="1005201" XYZ="-98.49707, 47.27536, -262.3179" />
+					<!-- During TalkTo, a SelectString, click 'Enhancing my strengths.' -->
+				</If>
+				<If Condition="GetQuestStep(65992) == 255">
+					<If Condition="IsOnMap(134)">
+						<MoveTo Name="Limsa Lominsa Lower Decks" Distance="0" XYZ="-44.29542, 35.0597, 156.0052" />
+					</If>
+					<TurnIn QuestId="65992" NpcId="1000909" XYZ="-326.3752, 12.89966, 9.994568" />
+				</If>
+			</If>
+		</If>
+			
+		<If Condition="Core.Player.CurrentJob == Enums.ClassJobType.Marauder">
+			<!-- Axe in the Stone - Level 5 -->
+			<If Condition="not IsQuestCompleted(65849)">
+				<If Condition="not HasQuest(65849)">
+					<MoveTo Name="Wyrnzoen" XYZ="-1.205505, 44.99989, -255.8786" />
+					<If Condition="IsQuestAcceptQualified(65849)">
+						<PickupQuest NpcId="1000927" QuestId="65849" XYZ="-1.205505, 44.99989, -255.8786" />
+					</If>
+				</If>
+				<If Condition="GetQuestStep(65849) == 1">
+					<TalkTo InteractDistance="3.0" NpcId="1002680" XYZ="1.480042, 30.47563, -242.2065" />
+				</If>
+				<If Condition="GetQuestStep(65849) == 2">
+					<If Condition="IsOnMap(128)">
+						<MoveTo Name="Limsa Lominsa Lower Decks" Distance="0" XYZ="-9.65393, 42.99996, -25.46598" />
+					</If>
+					<If Condition="IsOnMap(129)">
+						<MoveTo Name="Middle La Noscea" Distance="0" XYZ="65.0005, 19.99999, 0.349344" />
+					</If>
+					<TalkTo InteractDistance="3.0" NpcId="1002108" XYZ="-57.23663, 43.82968, 45.33447" />
+				</If>
+				<If Condition="GetQuestStep(65849) == 3">
+					<UseSpell XYZ="-68.46729, 43.50342, 20.24866" NpcId="2001480" SpellId="31" />
+					<UseSpell XYZ="-73.80792, 43.25928, 4.623413" NpcId="2001482" SpellId="31" />
+					<UseSpell XYZ="-52.14008, 46.15845, 15.82355" NpcId="2001481" SpellId="31" />
+				</If>
+				<If Condition="GetQuestStep(65849) == 4">
+					<TalkTo InteractDistance="3.0" NpcId="1002108" XYZ="-57.23663, 43.82968, 45.33447" />
+				</If>
+				<If Condition="GetQuestStep(65849) == 5">
+					<UseSpell SpellId="35" NpcId="2001484" XYZ="-14.57245, 47.40979, 12.34448" />
+					<UseSpell SpellId="35" NpcId="2001485" XYZ="1.663208, 48.2948, 9.597839" />
+					<UseSpell SpellId="35" NpcId="2001483" XYZ="-12.31409, 46.40259, 31.47937" />
+				</If>
+				<If Condition="GetQuestStep(65849) == 6">
+					<TalkTo InteractDistance="3.0" NpcId="1002108" XYZ="-57.23663, 43.82968, 45.33447" />
+				</If>
+				<If Condition="GetQuestStep(65849) == 7">
+					<If Condition="IsOnMap(134)">
+						<MoveTo Name="Limsa Lominsa Lower Decks" Distance="0" XYZ="-44.29542, 35.0597, 156.0052" />
+					</If>
+					<If Condition="IsOnMap(129)">
+						<MoveTo Name="Limsa Lominsa Upper Decks" Distance="0" XYZ="-7.13642, 20.84274, 27.17651" />
+					</If>
+					<TalkTo InteractDistance="3.0" NpcId="1000927" XYZ="-1.205505, 44.99989, -255.8786" />
+				</If>
+				<If Condition="GetQuestStep(65849) == 8">
+					<TalkTo InteractDistance="3.0" NpcId="1002679" XYZ="-5.233948, 31.4756, -256.9772" />
+				</If>
+				<If Condition="GetQuestStep(65849) == 9">
+					<If Condition="IsOnMap(128)">
+						<MoveTo Name="Lower La Noscea" Distance="0" XYZ="24.91524, 44.49993, 181.1817" />
+					</If>
+					<UseObject NpcId="2000284" XYZ="130.8461, 35.99597, 28.51904" Radius="10" QuestId="65849" StepId="9" />
+				</If>
+				<If Condition="GetQuestStep(65849) == 10">
+					<SimpleDuty InteractNpcId="1002673" XYZ="158.0986, 33.87595, 92.60693" QuestId="65849" StepId="10">
+						<HotSpots>
+							<HotSpot XYZ="158.8218, 33.73086, 89.79285" Radius="40" />
+							<HotSpot XYZ="193.5239, 30.9835, 110.0713" Radius="40" />
+						</HotSpots>
+						<TargetMobs>
+							<TargetMob Id="825" />
+							<TargetMob Id="827" />
+						</TargetMobs>
+					</SimpleDuty>
+				</If>
+				<If Condition="GetQuestStep(65849) == 255">
+					<WaitTimer WaitTime="5" />
+					<If Condition="IsOnMap(135)">
+						<MoveTo Name="Limsa Lominsa Upper Decks" Distance="0" XYZ="-53.67422, 75.82907, 116.1976" />
+					</If>
+					<TurnIn QuestId="65849" NpcId="1000927" XYZ="-1.205505, 44.99989, -255.8786" />
+				</If>
+			</If>
+			
+			<!-- Wake of Destruction - Level 10 -->
+			<If Condition="not IsQuestCompleted(65850)">
+				<If Condition="not HasQuest(65850)">
+					<MoveTo Name="Wyrnzoen" XYZ="-1.205505, 44.99989, -255.8786" />
+					<If Condition="IsQuestAcceptQualified(65850)">
+						<PickupQuest NpcId="1000927" QuestId="65850" XYZ="-1.205505, 44.99989, -255.8786" />
+					</If>
+				</If>
+				<If Condition="GetQuestStep(65850) == 1">
+					<If Condition="IsOnMap(128)">
+						<MoveTo Name="Lower La Noscea" Distance="0" XYZ="24.91524, 44.49993, 181.1817" />
+					</If>
+					<Grind grindRef="WakeOfDestruction" while="HasQuest(65850) and GetQuestStep(65850) == 1" />
+				</If>
+				<If Condition="GetQuestStep(65850) == 2">
+					<If Condition="IsOnMap(135)">
+						<MoveTo Name="Limsa Lominsa Upper Decks" Distance="0" XYZ="-53.67422, 75.82907, 116.1976" />
+					</If>
+					<TalkTo QuestId="65850" NpcId="1000927" XYZ="-1.205505, 44.99989, -255.8786" />
+				</If>
+				<If Condition="GetQuestStep(65850) == 3">
+					<If Condition="IsOnMap(128)">
+						<MoveTo Name="Limsa Lominsa Lower Decks" Distance="0" XYZ="-9.65393, 42.99996, -25.46598" />
+					</If>
+					<If Condition="IsOnMap(129)">
+						<MoveTo Name="Middle La Noscea" Distance="0" XYZ="65.0005, 19.99999, 0.349344" />
+					</If>
+					<UseObject NpcId="2000286" XYZ="-88.60913, 43.56445, -303.0594" Radius="10" QuestId="65850" StepId="3" />
+				</If>
+				<If Condition="GetQuestStep(65850) == 255">
+					<If Condition="IsOnMap(134)">
+						<MoveTo Name="Limsa Lominsa Lower Decks" Distance="0" XYZ="-44.29542, 35.0597, 156.0052" />
+					</If>
+					<If Condition="IsOnMap(129)">
+						<MoveTo Name="Limsa Lominsa Upper Decks" Distance="0" XYZ="-7.13642, 20.84274, 27.17651" />
+					</If>
+					<TurnIn QuestId="65850" NpcId="1000927" XYZ="-1.205505, 44.99989, -255.8786" />
+				</If>
+			</If>
+		</If>
+		
+		<!-- Sky-high -->
+        <If Condition="not IsQuestCompleted(65933)">
+            <If Condition="not HasQuest(65933)">
+				<If Condition="IsOnMap(129)">
+					<MoveTo Name="Limsa Lominsa Upper Decks" Distance="0" XYZ="-7.13642, 20.84274, 27.17651" />
+				</If>
+                <MoveTo Name="Baderon" XYZ="17.4978, 40.21601, -5.345327" />
+                <If Condition="IsQuestAcceptQualified(65933)">
+	                <PickupQuest NpcId="1000972" QuestId="65933" XYZ="17.4978, 40.21601, -5.345327" />
+                </If>
+            </If>
+		</If>
+		
+		<!-- Meet, Greet, and Deceit
+        <If Condition="not IsQuestCompleted(66023)">
+            <If Condition="not HasQuest(66023)">
+                <MoveTo Name="Gregory" XYZ="-4.16571, 39.51757, 2.731323" />
+                <If Condition="IsQuestAcceptQualified(66023)">
+	                <PickupQuest NpcId="1000980" QuestId="66023" XYZ="-4.16571, 39.51757, 2.731323" />
+                </If>
+            </If>
+			<If Condition="GetQuestStep(66023) == 1">
+				<TalkTo InteractDistance="3.0" NpcId="1000981" XYZ="8.499207, 39.50549, 3.555298" />
+            </If>
+			<If Condition="GetQuestStep(66023) == 2">
+				<SendChat Message="/say I come in peace." QuestId="66023" StepId="2" />
+            </If>
+			<If Condition="GetQuestStep(66023) == 3">
+				<WaitTimer WaitTime="2" />
+				<RunCode Name="MeetGreetAndDeceit_Hello" />
+				<WaitWhile Condition="GetQuestStep(66023) == 3" />
+            </If>
+			<If Condition="GetQuestStep(66023) == 4">
+				<TalkTo InteractDistance="3.0" NpcId="1000984" XYZ="5.264343, 39.51757, -6.240967" />
+            </If>
+			<If Condition="GetQuestStep(66023) == 5">
+				<SendChat Message="/say Greetings and salutations!" QuestId="66023" StepId="5" />
+            </If>
+			<If Condition="GetQuestStep(66023) == 255">
+				<WaitTimer WaitTime="2" />
+				<RunCode Name="MeetGreetAndDeceit_ThankYou" />
+				<TurnIn NpcId="1000984" QuestId="66023" XYZ="5.264343, 39.51757, -6.240967" />
+            </If>
+        </If> -->
+		
+		<!-- Leves of Swiftperch -->
+        <If Condition="not IsQuestCompleted(66229)">
+            <If Condition="not HasQuest(66229)">
+                <MoveTo Name="T'mokkri" Distance="3" XYZ="-10.99797, 40.01701, -10.8948" />
+                <If Condition="IsQuestAcceptQualified(66229)">
+	                <PickupQuest NpcId="1000970" QuestId="66229" XYZ="-12.37512, 40.00016, -12.1615" />
+                </If>
+            </If>
+        </If>
+		
+		<!-- Sky-high -->
+        <If Condition="not IsQuestCompleted(65933)">
+			<If Condition="GetQuestStep(65933) == 255">
+				<If Condition="IsOnMap(128)">
+					<MoveTo Name="Limsa Lominsa Lower Decks" Distance="0" XYZ="-9.65393, 42.99996, -25.46598" />
+				</If>
+				<If Condition="IsOnMap(129)">
+					<MoveTo Name="Middle La Noscea" Distance="0" XYZ="65.0005, 19.99999, 0.349344" />
+				</If>
+				<If Condition="IsOnMap(134)">
+					<TurnIn QuestId="65933" NpcId="1003239" XYZ="-283.6805, 10.59338, -249.3478" />
+				</If>
+            </If>
+        </If>
+		
+		<!-- Keeping It Fresh -->
+        <If Condition="not IsQuestCompleted(65936)">
+            <If Condition="not HasQuest(65936)">
+                <MoveTo Name="Kazai Buoyzai" XYZ="-282.3682, 7.54, -236.8658" />
+                <If Condition="IsQuestAcceptQualified(65936)">
+	                <PickupQuest NpcId="1003243" QuestId="65936" XYZ="-282.3682, 7.54, -236.8658" />
+                </If>
+            </If>
+        </If>
+		
+		<!-- Out to Dry -->
+        <If Condition="not IsQuestCompleted(65935)">
+            <If Condition="not HasQuest(65935)">
+                <MoveTo Name="W'dhovaka" XYZ="-293.9957, 7.54, -225.5436" />
+                <If Condition="IsQuestAcceptQualified(65935)">
+	                <PickupQuest NpcId="1003242" QuestId="65935" XYZ="-293.9957, 7.54, -225.5436" />
+                </If>
+            </If>
+        </If>
+		
+		<!-- Keeping It Fresh -->
+        <If Condition="not IsQuestCompleted(65936)">
+            <If Condition="GetQuestStep(65936) == 1">
+				<Grind grindRef="KeepingItFresh" while="HasQuest(65936) and GetQuestStep(65936) == 1" />
+            </If>
+        </If>
+		
+		<!-- Out to Dry -->
+        <If Condition="not IsQuestCompleted(65935)">
+            <If Condition="GetQuestStep(65935) == 1">
+				<Grind grindRef="OutToDry" while="HasQuest(65935) and GetQuestStep(65935) == 1" />
+            </If>
+        </If>
+		
+		<!-- Keeping It Fresh -->
+        <If Condition="not IsQuestCompleted(65936)">
+            <If Condition="GetQuestStep(65936) == 255">
+				<TurnIn NpcId="1003243" ItemId="2000340" QuestId="65936" XYZ="-282.3682, 7.54, -236.8658" />
+            </If>
+        </If>
+		
+		<!-- Out to Dry -->
+        <If Condition="not IsQuestCompleted(65935)">
+            <If Condition="GetQuestStep(65935) == 255">
+				<TurnIn NpcId="1003242" QuestId="65935" XYZ="-293.9957, 7.54, -225.5436" />
+            </If>
+        </If>
+		
+		<!-- Baiting Buzzards -->
+        <If Condition="not IsQuestCompleted(65937)">
+            <If Condition="not HasQuest(65937)">
+                <MoveTo Name="Kazai Buoyzai" XYZ="-282.3682, 7.54, -236.8658" />
+                <If Condition="IsQuestAcceptQualified(65937)">
+	                <PickupQuest NpcId="1003243" QuestId="65937" XYZ="-282.3682, 7.54, -236.8658" />
+                </If>
+            </If>
+			<If Condition="GetQuestStep(65937) == 1">
+				<UseItem NpcId="2001254" ItemId="2000341" XYZ="-220.0504, 17.80725, -414.5114" Radius="10" QuestId="65937" StepId="1" />
+            </If>
+			<If Condition="GetQuestStep(65937) == 255">
+				<TurnIn NpcId="1003243" QuestId="65937" XYZ="-282.3682, 7.54, -236.8658" />
+            </If>
+        </If>
+		
+		<!-- Courier for a Day -->
+        <If Condition="not IsQuestCompleted(65934)">
+            <If Condition="not HasQuest(65934)">
+                <MoveTo Name="Wyrkrhit" XYZ="-283.6805, 10.59338, -249.3478" />
+                <If Condition="IsQuestAcceptQualified(65934)">
+	                <PickupQuest NpcId="1003239" QuestId="65934" XYZ="-283.6805, 10.59338, -249.3478" />
+                </If>
+            </If>
+			<If Condition="GetQuestStep(65934) == 1">
+				<If Condition="GetQuestById(65934).QuestI8BH == 0">
+					<HandOver ItemId="2000339" NpcId="1003241" XYZ="-207.7821, 31.56916, -629.7551" />
+				</If>
+				<HandOver ItemId="2000338" NpcId="1003240" QuestId="65934" StepId="1" XYZ="-399.7407, 14.02559, -340.9933" />
+            </If>
+			<If Condition="GetQuestStep(65934) == 255">
+				<TurnIn QuestId="65934" NpcId="1003239" XYZ="-283.6805, 10.59338, -249.3478" />
+            </If>
+        </If>
+		
+		<!-- Thanks a Million -->
+        <If Condition="not IsQuestCompleted(65938)">
+            <If Condition="not HasQuest(65938)">
+                <MoveTo Name="Wyrkrhit" XYZ="-283.6805, 10.59338, -249.3478" />
+                <If Condition="IsQuestAcceptQualified(65938)">
+	                <PickupQuest NpcId="1003239" QuestId="65938" XYZ="-283.6805, 10.59338, -249.3478" />
+                </If>
+            </If>
+			<If Condition="GetQuestStep(65938) == 1">
+				<UseObject NpcId="2001255" XYZ="-320.5768, 25.8335, -527.5502" Radius="10" QuestId="65938" StepId="1" />
+            </If>
+			<If Condition="GetQuestStep(65938) == 255">
+				<If Condition="IsOnMap(134)">
+					<MoveTo Distance="0" XYZ="-375.6516, 33.17898, -604.1353" />
+				</If>
+				<!-- Attune to the Swiftperch Aetheryte -->
+				<If Condition="not Managers.WorldManager.HasAetheryteId(13)">
+					<MoveTo Distance="1" XYZ="651.9936, 9.245107, 509.666" />
+					<UseObject NpcId="13" UseTimes="1" BlacklistAfter="True" WaitTime="10000" UseDistance="8" XYZ="651.9936, 9.245107, 509.666" Radius="10" Condition="not Managers.WorldManager.HasAetheryteId(13)" />
+				</If>
+				<If Condition="GetQuestStep(65938) == 255">
+					<TurnIn QuestId="65938" NpcId="1003244" ItemId="2000342" XYZ="650.7209, 7.856782, 527.2144" />
+				</If>
+            </If>
+        </If>
+		
+		<!-- Farmer of Fortune -->
+        <If Condition="not IsQuestCompleted(65940)">
+            <If Condition="not HasQuest(65940)">
+                <MoveTo Name="Lyulf" XYZ="650.7209, 7.856782, 527.2144" />
+                <If Condition="IsQuestAcceptQualified(65940)">
+	                <PickupQuest NpcId="1003244" QuestId="65940" XYZ="650.7209, 7.856782, 527.2144" />
+                </If>
+            </If>
+			<If Condition="GetQuestStep(65940) == 1">
+				<!-- <UseObject NpcIds="2001262,2001263" BlacklistAfter="True" QuestId="65940" StepId="1">
+					<HotSpots>
+						<HotSpot XYZ="681.0559, 41.42822, 356.3744" Radius="10" />
+						<HotSpot XYZ="680.9337, 41.30615, 362.4475" Radius="10" />
+						<HotSpot XYZ="688.4108, 41.58081, 356.5575" Radius="10" />
+					</HotSpots>
+				</UseObject> -->
+				<UseObject NpcId="2001262" XYZ="681.0559, 41.42822, 356.3744" Radius="10" QuestId="65940" StepId="1" />
+            </If>
+			<If Condition="GetQuestStep(65940) == 255">
+				<TurnIn QuestId="65940" NpcId="1003244" ItemId="2000345" XYZ="650.7209, 7.856782, 527.2144" />
+            </If>
+        </If>
+		
+		<!-- Need to Breed -->
+        <If Condition="not IsQuestCompleted(65941)">
+            <If Condition="not HasQuest(65941)">
+                <MoveTo Name="Lyulf" XYZ="650.7209, 7.856782, 527.2144" />
+                <If Condition="IsQuestAcceptQualified(65941)">
+	                <PickupQuest NpcId="1003244" QuestId="65941" XYZ="650.7209, 7.856782, 527.2144" />
+                </If>
+            </If>
+			<If Condition="GetQuestStep(65941) == 1">
+				<UseObject NpcIds="2001268,2001267,2001266,2001265" QuestId="65941" StepId="1">
+					<HotSpots>
+						<HotSpot XYZ="631.5861, 25.3147, 390.3409" Radius="10" />
+						<HotSpot XYZ="590.9972, 23.69727, 370.84" Radius="10" />
+						<HotSpot XYZ="634.3937, 43.07617, 321.9806" Radius="10" />
+						<HotSpot XYZ="529.9304, 27.29834, 321.0956" Radius="10" />
+					</HotSpots>
+				</UseObject>
+			</If>
+			<If Condition="GetQuestStep(65941) == 255">
+				<TurnIn QuestId="65941" NpcId="1003244" ItemId="2000346" XYZ="650.7209, 7.856782, 527.2144" />
+            </If>
+        </If>
+		
+		<!-- Relighting the Torch -->
+        <If Condition="not IsQuestCompleted(65939)">
+            <If Condition="not HasQuest(65939)">
+                <MoveTo Name="Fraeloef" XYZ="655.7563, 8.316302, 521.1719" />
+                <If Condition="IsQuestAcceptQualified(65939)">
+	                <PickupQuest NpcId="1003245" QuestId="65939" XYZ="655.7563, 8.316302, 521.1719" />
+                </If>
+            </If>
+			<If Condition="GetQuestStep(65939) == 1">
+				<TalkTo InteractDistance="3.0" NpcId="1003246" XYZ="443.2288, 14.6451, 452.842" />
+            </If>
+			<If Condition="GetQuestStep(65939) == 2">
+				<UseItem NpcId="2001260" XYZ="602.5024, 28.94629, 361.0131" ItemId="2000343" Radius="10" QuestId="65939" StepId="2" />
+            </If>
+			<If Condition="GetQuestStep(65939) == 3">
+				<UseObject NpcId="2001261" XYZ="602.5024, 28.94629, 361.0131" Radius="10" QuestId="65939" StepId="3" />
+            </If>
+			<If Condition="GetQuestStep(65939) == 4">
+				<HandOver ItemId="2000344" NpcId="1003246" XYZ="443.2288, 14.6451, 452.842" QuestId="65939" StepId="4" />
+            </If>
+			<If Condition="GetQuestStep(65939) == 5">
+				<TalkTo InteractDistance="3.0" NpcId="1003245" XYZ="655.7563, 8.316302, 521.1719" QuestId="65939" StepId="5" />
+            </If>
+			<If Condition="GetQuestStep(65939) == 255">
+				<If Condition="not IsOnMap(128)">
+					<If Condition="not IsOnMap(129)">
+						<TeleportTo Name="Limsa Lominsa Lower Decks" AetheryteId="8" />
+					</If>
+				</If>
+				<If Condition="IsOnMap(129)">
+					<MoveTo Name="Limsa Lominsa Upper Decks" Distance="0" XYZ="-7.13642, 20.84274, 27.17651" />
+				</If>
+				<If Condition="IsOnMap(128)">
+					<TurnIn QuestId="65939" NpcId="1001000" XYZ="-32.02869, 41.49999, 208.3923" />
+				</If>
+            </If>
+        </If>
+		
+		<!-- On to the Drydocks -->
+        <If Condition="not IsQuestCompleted(65942)">
+            <If Condition="not HasQuest(65942)">
+                <MoveTo Name="H'naanza" XYZ="-32.02869, 41.49999, 208.3923" />
+                <If Condition="IsQuestAcceptQualified(65942)">
+	                <PickupQuest NpcId="1001000" QuestId="65942" XYZ="-32.02869, 41.49999, 208.3923" />
+                </If>
+            </If>
+			<If Condition="GetQuestStep(65942) == 255">
+				<If Condition="IsOnMap(128)">
+					<MoveTo Name="Lower La Noscea" Distance="0" XYZ="24.91524, 44.49993, 181.1817" />
+				</If>
+			</If>
+		</If>
+		
+		<!-- A Bridge Too Full -->
+        <If Condition="not IsQuestCompleted(65943)">
+            <If Condition="not HasQuest(65943)">
+                <MoveTo Name="Doesrael" XYZ="102.2507, 68.15523, 328.9387" />
+                <If Condition="IsQuestAcceptQualified(65943)">
+	                <PickupQuest NpcId="1002231" QuestId="65943" XYZ="102.2507, 68.15523, 328.9387" />
+                </If>
+            </If>
+			<If Condition="GetQuestStep(65943) == 1">
+				<TalkTo InteractDistance="3.0" NpcId="1002447" XYZ="113.5424, 68.15523, 376.2111" />
+            </If>
+			<If Condition="GetQuestStep(65943) == 2">
+				<EmoteNPC NpcId="1002450" Emote="soothe" XYZ="42.83203, 71.30162, 389.0287" Radius="10" Condition="GetQuestById(65943).QuestI8AL == 0" />
+				<EmoteNPC NpcId="1002449" Emote="soothe" XYZ="41.7334, 71.30162, 389.639" Radius="10" QuestId="65943" StepId="2" />
+			</If>
+			<If Condition="GetQuestStep(65943) == 3">
+				<TalkTo InteractDistance="3.0" NpcId="1002447" XYZ="113.5424, 68.15523, 376.2111" />
+            </If>
+			<If Condition="GetQuestStep(65943) == 255">
+				<TurnIn QuestId="65943" NpcId="1002231" XYZ="102.2507, 68.15523, 328.9387" />
+            </If>
+        </If>
+		
+		<!-- On to the Drydocks -->
+        <If Condition="not IsQuestCompleted(65942)">
+			<If Condition="GetQuestStep(65942) == 255">
+				<If Condition="IsOnMap(135)">
+					<!-- Attune to the Moraby Drydocks Aetheryte -->
+					<If Condition="not Managers.WorldManager.HasAetheryteId(10)">
+						<MoveTo Distance="1" XYZ="155.2076, 14.11499, 668.6649" />
+						<UseObject NpcId="10" UseTimes="1" BlacklistAfter="True" UseDistance="8" XYZ="155.2076, 14.11499, 668.6649" Radius="10" WaitTime="5000" Condition="not Managers.WorldManager.HasAetheryteId(10)" />
+						<UseTransport NpcId="10" UseTimes="1" DialogOption="0" BlacklistAfter="True" UseDistance="10" XYZ="155.2076, 14.11499, 668.6649" Radius="10" WaitTime="5000" />
+					</If>
+					<TurnIn QuestId="65942" NpcId="1002238" ItemId="2000217" XYZ="247.364, 14.02301, 611.9325" />
+				</If>
+            </If>
+        </If>
+		
+		<!-- Without a Doubt -->
+        <If Condition="not IsQuestCompleted(65948)">
+            <If Condition="not HasQuest(65948)">
+                <MoveTo Name="Ahtbyrm" Distance="3" XYZ="245.1428, 14.16243, 612.1202" />
+                <If Condition="IsQuestAcceptQualified(65948)">
+	                <PickupQuest QuestId="65948" NpcId="1002238" XYZ="245.1428, 14.16243, 612.1202" />
+                </If>
+            </If>
+			<If Condition="GetQuestStep(65948) == 255">
+				<MoveTo XYZ="-34.65332, 8.921356, 861.4479" />
+				<SendChat Message="/targetnpc" />
+				<SendChat Message="/doubt" />
+	            <TurnIn QuestId="65948" NpcId="1002274" XYZ="-34.65332, 8.921356, 861.4479" />
+            </If>
+        </If>
+		
+		<!-- Forbidden Island -->
+        <If Condition="not IsQuestCompleted(65952)">
+            <If Condition="not HasQuest(65952)">
+                <MoveTo Name="A'zumyn" XYZ="-34.71429, 8.921356, 844.9683" />
+                <If Condition="IsQuestAcceptQualified(65952)">
+	                <PickupQuest NpcId="1002446" QuestId="65952" XYZ="-34.71429, 8.921356, 844.9683" />
+                </If>
+            </If>
+			<If Condition="GetQuestStep(65952) == 1">
+				<UseItem NpcIds="2000772,2000774,2000773" ItemId="2000221" QuestId="65952" StepId="1">
+					<HotSpots>
+						<HotSpot XYZ="97.91711, 20.64545, 773.4341" Radius="10" />
+						<HotSpot XYZ="94.59058, 24.76538, 820.6147" Radius="10" />
+						<HotSpot XYZ="46.70776, 30.68579, 756.4659" Radius="10" />
+					</HotSpots>
+				</UseItem>
+            </If>
+			<If Condition="GetQuestStep(65952) == 255">
+				<TurnIn QuestId="65952" NpcId="1002446" XYZ="-34.71429, 8.921356, 844.9683" />
+            </If>
+        </If>
+		
+		<!-- Righting the Shipwright -->
+        <If Condition="not IsQuestCompleted(65951)">
+            <If Condition="not HasQuest(65951)">
+                <MoveTo Name="Haldbroda" XYZ="-34.65332, 8.921356, 861.4479" />
+                <If Condition="IsQuestAcceptQualified(65951)">
+	                <PickupQuest NpcId="1002274" QuestId="65951" XYZ="-34.65332, 8.921356, 861.4479" />
+                </If>
+            </If>
+			<If Condition="GetQuestStep(65951) == 1">
+				<TalkTo InteractDistance="3.0" NpcId="1002456" XYZ="-94.86542, 2.371762, 734.2793" />
+            </If>
+			<If Condition="GetQuestStep(65951) == 2">
+				<UseObject NpcIds="2000769,2000771,2000770" QuestId="65951" StepId="2">
+					<HotSpots>
+						<HotSpot XYZ="-145.0981, 1.052795, 709.1021" Radius="10" />
+						<HotSpot XYZ="-185.6871, -0.1373901, 694.6669" Radius="10" />
+						<HotSpot XYZ="-168.8411, 1.968323, 659.327" Radius="10" />
+					</HotSpots>
+				</UseObject>
+            </If>
+			<If Condition="GetQuestStep(65951) == 3">
+				<HandOver ItemIds="2000222,2000223,2000224" QuestId="65951" StepId="3" NpcId="1002456" XYZ="-94.86542, 2.371762, 734.2793" />
+            </If>
+			<If Condition="GetQuestStep(65951) == 255">
+				<TurnIn QuestId="65951" NpcId="1002238" XYZ="247.364, 14.02301, 611.9325" />
+            </If>
+        </If>
+		
+		<!-- Do Angry Pirates Dream -->
+        <If Condition="not IsQuestCompleted(65949)">
+            <If Condition="not HasQuest(65949)">
+                <MoveTo Name="Ahtbyrm" XYZ="247.364, 14.02301, 611.9325" />
+                <If Condition="IsQuestAcceptQualified(65949)">
+	                <PickupQuest NpcId="1002238" QuestId="65949" XYZ="247.364, 14.02301, 611.9325" />
+                </If>
+            </If>
+			<If Condition="GetQuestStep(65949) == 1">
+				<TalkTo InteractDistance="3.0" QuestId="65951" Step="1" NpcId="1002237" XYZ="167.5593, 14.09592, 683.9244" />
+            </If>
+			<If Condition="GetQuestStep(65949) == 2">
+				<TalkTo InteractDistance="3.0" QuestId="65951" Step="2" NpcId="1002240" XYZ="118.5167, 23.00084, 735.6831" />
+            </If>
+			<If Condition="GetQuestStep(65949) == 3">
+				<TalkTo InteractDistance="3.0" QuestId="65951" Step="3" NpcId="1002463" XYZ="249.897, 6.088318, 773.1287" />
+            </If>
+			<If Condition="GetQuestStep(65949) == 255">
+				<TurnIn QuestId="65949" NpcId="1002237" XYZ="167.5593, 14.09592, 683.9244" />
+            </If>
+        </If>
+		
+		<!-- Constant Carvings -->
+        <If Condition="not IsQuestCompleted(65947)">
+            <If Condition="not HasQuest(65947)">
+                <MoveTo Name="Mimidoa" XYZ="185.1072, 14.09593, 677.3326" />
+                <If Condition="IsQuestAcceptQualified(65947)">
+	                <PickupQuest NpcId="1002236" QuestId="65947" XYZ="185.1072, 14.09593, 677.3326" />
+                </If>
+            </If>
+			<If Condition="GetQuestStep(65947) == 1">
+				<Grind grindRef="ConstantCarvings" while="HasQuest(65947) and GetQuestStep(65947) == 1" />
+            </If>
+			<If Condition="GetQuestStep(65947) == 2">
+				<HandOver ItemId="2000220" QuestId="65947" StepId="2" NpcId="1002445" XYZ="136.8276, 58.9376, 937.4379" />
+            </If>
+			<If Condition="GetQuestStep(65947) == 255">
+	            <TurnIn QuestId="65947" NpcId="1002236" XYZ="185.1072, 14.09593, 677.3326" />
+            </If>
+        </If>
+		
+		<!-- Failure to Lunch -->
+        <If Condition="not IsQuestCompleted(65945)">
+            <If Condition="not HasQuest(65945)">
+                <MoveTo Name="Wafufu" XYZ="225.3298, 14.09604, 621.0269" />
+                <If Condition="IsQuestAcceptQualified(65945)">
+	                <PickupQuest NpcId="1002233" QuestId="65945" XYZ="225.3298, 14.09604, 621.0269" />
+                </If>
+            </If>
+			<If Condition="GetQuestStep(65945) == 1">
+				<If Condition="HasQuest(65945) and GetQuestById(65945).QuestI8AH == 0">
+					<TalkTo InteractDistance="3.0" NpcId="1002455" XYZ="200.1526, 8.973654, 616.0525" />
+				</If>
+				<If Condition="HasQuest(65945) and GetQuestById(65945).QuestI8AH == 1">
+					<UseObject NpcId="2000762" XYZ="217.3342, 8.957031, 606.4392" Radius="10" Condition="HasQuest(65945) and GetQuestById(65945).QuestI8AH == 1"  />
+				</If>
+				<If Condition="HasQuest(65945) and GetQuestById(65945).QuestI8AH == 2">
+					<UseObject NpcId="2000763" XYZ="287.1595, 32.18127, 607.0497" Radius="10" Condition="HasQuest(65945) and GetQuestById(65945).QuestI8AH == 2" />
+				</If>
+				<TalkTo InteractDistance="3.0" NpcId="1002453" XYZ="335.317, 32.19236, 644.5258" />
+            </If>
+			<If Condition="GetQuestStep(65945) == 255">
+				<TurnIn QuestId="65945" NpcId="1002233" ItemId="2000218" XYZ="225.3298, 14.09604, 621.0269" />
+            </If>
+        </If>
+		
+		<!-- What Counts -->
+        <If Condition="not IsQuestCompleted(65944)">
+            <If Condition="not HasQuest(65944)">
+                <MoveTo Name="Yulgi Honalgi" XYZ="181.2618, 9.065946, 611.5358" />
+                <If Condition="IsQuestAcceptQualified(65944)">
+	                <PickupQuest NpcId="1002232" QuestId="65944" XYZ="181.2618, 9.065946, 611.5358" />
+                </If>
+            </If>
+			<If Condition="GetQuestStep(65944) == 1">
+				<If Condition="HasQuest(65944) and GetQuestById(65944).QuestI8AH == 0">
+					<TalkTo InteractDistance="3.0" NpcId="1002234" XYZ="184.0391, 8.974702, 585.931" />
+				</If>
+				<If Condition="HasQuest(65944) and GetQuestById(65944).QuestI8AH == 1">
+					<TalkTo InteractDistance="3.0" NpcId="1002235" XYZ="237.0488, 8.974671, 589.7153" />
+				</If>
+				<If Condition="HasQuest(65944) and GetQuestById(65944).QuestI8AH == 2">
+					<MoveTo Name="Quarterdeck Logs" Distance="1" XYZ="166.04, 8.973654, 590.0262" />
+					<MoveTo Name="Quarterdeck Logs" Distance="1" UseMesh="False" XYZ="169.6889, 10.08609, 590.1076" />
+					<UseObject UseDistance="4.5" NpcId="2000761" XYZ="171.5876, 10.33026, 589.7764" Radius="10" Condition="HasQuest(65944) and GetQuestById(65944).QuestI8AH == 2" />
+				</If>
+				<If Condition="HasQuest(65944) and GetQuestById(65944).QuestI8AH == 3">
+					<If Condition="HasQuest(65944) and GetQuestById(65944).QuestI8BL == 0">
+						<MoveTo Name="Forecastle Planks" Distance="1" UseMesh="False" XYZ="177.0871, 8.973654, 598.5372" />
+						<MoveTo Name="Forecastle Planks" Distance="1" XYZ="210.2024, 8.973654, 598.2333" />
+						<UseObject UseDistance="4.5" NpcId="2000764" XYZ="210.6813, 11.42896, 595.7885" Radius="10" Condition="HasQuest(65944) and GetQuestById(65944).QuestI8BL == 0" />
+					</If>
+					<If Condition="HasQuest(65944) and GetQuestById(65944).QuestI8BL == 1">
+						<MoveTo Name="Forecastle Planks" Distance="1" XYZ="221.6129, 8.973654, 594.2795" />
+						<UseObject UseDistance="4.5" NpcId="2000765" XYZ="218.8601, 11.09326, 593.6521" Radius="10" Condition="HasQuest(65944) and GetQuestById(65944).QuestI8BL == 1" />
+					</If>
+					<If Condition="HasQuest(65944) and GetQuestById(65944).QuestI8BL == 2">
+						<MoveTo Name="Forecastle Planks" Distance="1" XYZ="213.3071, 8.973654, 584.0442" />
+						<MoveTo Name="Forecastle Planks" UseMesh="False" Distance="0.5" XYZ="209.7648, 9.408144, 588.9844" />
+						<UseObject UseDistance="4.5" NpcId="2000760" XYZ="210.1013, 12.52765, 591.4243" Radius="10" Condition="HasQuest(65944) and GetQuestById(65944).QuestI8BL == 2" />
+					</If>
+				</If>
+            </If>
+			<If Condition="GetQuestStep(65944) == 255">
+				<MoveTo Name="Yulgi Honalgi" Distance="1" UseMesh="False" XYZ="213.4628, 8.973654, 583.4894" />
+	            <TurnIn QuestId="65944" NpcId="1002232" XYZ="181.2618, 9.065946, 611.5358" />
+            </If>
+        </If>
+		
+		<!-- Nailed It -->
+        <If Condition="not IsQuestCompleted(65946)">
+            <If Condition="not HasQuest(65946)">
+                <MoveTo Name="Hezzkhezl" XYZ="284.7791, 6.340552, 615.1675" />
+                <If Condition="IsQuestAcceptQualified(65946)">
+	                <PickupQuest NpcId="1002454" QuestId="65946" XYZ="284.7791, 6.340552, 615.1675" />
+                </If>
+            </If>
+			<If Condition="GetQuestStep(65946) == 1">
+				<Grind grindRef="NailedIt" while="HasQuest(65946) and GetQuestStep(65946) == 1" />
+            </If>
+			<If Condition="GetQuestStep(65946) == 255">
+				<TurnIn QuestId="65946" NpcId="1002454" ItemId="2000219" XYZ="284.7791, 6.340552, 615.1675" />
+            </If>
+        </If>
+		
+		<!-- Say It with Flowers -->
+        <If Condition="not IsQuestCompleted(65953)">
+            <If Condition="not HasQuest(65953)">
+                <MoveTo Name="Rostnzeh" XYZ="136.8276, 58.9376, 937.4379" />
+                <If Condition="IsQuestAcceptQualified(65953)">
+	                <PickupQuest NpcId="1002445" QuestId="65953" XYZ="136.8276, 58.9376, 937.4379" />
+                </If>
+            </If>
+			<If Condition="GetQuestStep(65953) == 1">
+				<UseObject NpcIds="2000775,2000776,2000777" QuestId="65953" StepId="1">
+					<HotSpots>
+						<HotSpot XYZ="36.14856, 46.9519, 716.5178" Radius="10" />
+						<HotSpot XYZ="58.64038, 43.38135, 692.8969" Radius="10" />
+						<HotSpot XYZ="68.89441, 46.18909, 676.173" Radius="10" />
+					</HotSpots>
+				</UseObject>
+            </If>
+			<If Condition="GetQuestStep(65953) == 255">
+				<TurnIn QuestId="65953" NpcId="1002237" ItemId="2000225" XYZ="167.5593, 14.09592, 683.9244" />
+            </If>
+        </If>
+		
+		<!-- Get to level 14 -->
+		<If Condition="Core.Player.ClassLevel &lt; 14">
+			<Grind grindRef="LowerLaNoscea_Level14" while="Core.Player.ClassLevel &lt; 14" />
+		</If>
+		
+		<!-- Victory in Peril -->
+        <If Condition="not IsQuestCompleted(65950)">
+            <If Condition="not HasQuest(65950)">
+                <MoveTo Name="Ghimthota" XYZ="167.5593, 14.09592, 683.9244" />
+                <If Condition="IsQuestAcceptQualified(65950)">
+	                <PickupQuest NpcId="1002237" QuestId="65950" XYZ="167.5593, 14.09592, 683.9244" />
+                </If>
+            </If>
+			<If Condition="GetQuestStep(65950) == 1">
+				<TalkTo InteractDistance="3.0" NpcId="1002240" XYZ="118.5167, 23.00084, 735.6831" />
+            </If>
+			<If Condition="GetQuestStep(65950) == 2">
+				<MoveTo Name="Shifty-eyed Sailor" Distance="1" XYZ="105.8582, 53.59641, 674.8581" />
+				<TalkTo InteractDistance="3.0" NpcId="1002651" XYZ="107.6523, 54.64391, 674.9523" />
+            </If>
+			<If Condition="GetQuestStep(65950) == 3">
+				<SimpleDuty QuestId="65950" StepId="3" InteractNpcId="1002237" XYZ="167.5593, 14.09592, 683.9244">
+					<HotSpots>
+						<HotSpot XYZ="171.2825, 12.12707, 632.7764" Radius="30" />
+						<HotSpot XYZ="188.6472, 8.973654, 610.4677" Radius="30" />
+						<HotSpot XYZ="239.0246, 14.09609, 613.6759" Radius="30" />
+					</HotSpots>
+					<TargetMobs>
+						<TargetMob Id="817" Weight="3000" />
+						<TargetMob Id="812" Weight="2000" />
+						<TargetMob Id="811" Weight="1000" />
+					</TargetMobs>
+				</SimpleDuty>
+				<!--
+				Instance
+				
+				Hotspot
+				Map ID: 249, SubZone ID: 337, Location: <159.5456, 12.12681, 639.0673>
+				
+				Enemies
+				NPC ID: 812 | Name: Silent Lackey x2
+				
+				Hotspot
+				Map ID: 249, SubZone ID: 337, Location: <187.9987, 8.973654, 604.6304>
+				
+				Enemies
+				NPC ID: 812 | Name: Silent Lackey x2
+				
+				Cutscene plays here
+				Map ID: 249, SubZone ID: 337, Location: <239.0246, 14.09609, 613.6759>
+				
+				Then fight this guy
+				NPC ID: 811 | Name: Ahtzapfyn the Absorbed
+				
+				Reinforcements
+				NPC ID: 817 | Level: 14 | Name: Silent Lackey
+					THIS IS A HEALER
+				NPC ID: 812 | Name: Silent Lackey x3
+					THESE HAVE PRIORITY
+					
+				Don't attack these
+				NPC ID: 813 | Name: Mamool Ja Mercenary
+				
+				-->
+				<WaitWhile Condition="GetQuestStep(65950) == 3" />
+            </If>
+			<If Condition="GetQuestStep(65950) == 4">
+				<TalkTo InteractDistance="3.0" NpcId="1002238" XYZ="247.364, 14.02301, 611.9325" />
+            </If>
+			<If Condition="GetQuestStep(65950) == 255">
+				<TurnIn QuestId="65950" NpcId="1002237" XYZ="167.5593, 14.09592, 683.9244" />
+            </If>
+        </If>
+		
+		<!-- Men of the Blue Tattoos -->
+        <If Condition="not IsQuestCompleted(66225)">
+            <If Condition="not HasQuest(66225)">
+                <MoveTo Name="Ghimthota" XYZ="167.5593, 14.09592, 683.9244" />
+                <If Condition="IsQuestAcceptQualified(66225)">
+	                <PickupQuest NpcId="1002237" QuestId="66225" XYZ="167.5593, 14.09592, 683.9244" />
+                </If>
+            </If>
+			<If Condition="GetQuestStep(66225) == 255">
+				<If Condition="not IsOnMap(129)">
+					<If Condition="not IsOnMap(128)">
+						<TeleportTo Name="Limsa Lominsa Lower Decks" AetheryteId="8" />
+					</If>
+				</If>
+				<If Condition="IsOnMap(129)">
+					<MoveTo Name="Limsa Lominsa Upper Decks" Distance="0" XYZ="-7.13642, 20.84274, 27.17651" />
+				</If>
+				<If Condition="IsOnMap(128)">
+					<TurnIn QuestId="66225" NpcId="1000972" ItemId="2000520" XYZ="20.27917, 40.19993, -6.118958" />
+				</If>
+            </If>
+        </If>
+		
+		<!-- Feint and Strike -->
+        <If Condition="not IsQuestCompleted(66080)">
+            <If Condition="not HasQuest(66080)">
+                <MoveTo Name="Baderon" XYZ="17.78358, 40.21601, -5.415165" />
+                <If Condition="IsQuestAcceptQualified(66080)">
+	                <PickupQuest NpcId="1000972" QuestId="66080" XYZ="17.78358, 40.21601, -5.415165" />
+                </If>
+            </If>
+			<If Condition="GetQuestStep(66080) == 1">
+				<HandOver ItemId="2000519" QuestId="66080" StepId="1" NpcId="1003282" XYZ="-3.03656, 48.168, -261.7075" />
+            </If>
+			<If Condition="GetQuestStep(66080) == 2">
+				<If Condition="not IsOnMap(138)">
+					<TeleportTo Name="Swiftperch" AetheryteId="13" />
+				</If>
+				<SimpleDuty QuestId="66080" StepId="2" InteractNpcId="1003283" XYZ="668.0552, 7.297715, 533.1654">
+					<HotSpots>
+						<HotSpot XYZ="663.422, 9.025163, 514.186" Radius="30" />
+					</HotSpots>
+					<TargetMobs>
+						<TargetMob Id="976" Weight="10000" />
+						<TargetMob Id="975" Weight="9000" />
+						<TargetMob Id="978" Weight="8000" />
+						<TargetMob Id="977" Weight="7000" />
+						<TargetMob Id="1373" Weight="6000" />
+						<TargetMob Id="945" Weight="5000" />
+						<TargetMob Id="980" Weight="4000" />
+						<TargetMob Id="617" Weight="3000" />
+					</TargetMobs>
+				</SimpleDuty>
+				<!--
+				Instance
+				
+				Hotspot
+				Map ID: 280, SubZone ID: 218, Location: <663.422, 9.025163, 514.186>
+				
+				Enemies
+				NPC ID: 978 | Name: Drowned Outranger
+				NPC ID: 1373 | Name: Baenryss of the Deep
+				NPC ID: 977 | Name: Drowned Brawler
+				NPC ID: 976 | Name: Drowned Saltmage
+				NPC ID: 975 | Name: Drowned Diviner
+				
+				Eventually shows up, kill after killing Baenryss
+				NPC ID: 945 | Name: Blanga
+
+				Cutscene
+				
+				New map
+				
+				Hotspot
+				Map ID: 280, SubZone ID: 218, Location: <658.9104, 9.556055, 489.7221>
+				
+				Enemy
+				NPC ID: 980 | Name: Lesser Gargoyle
+				
+				Don't worry about HP, Y'shtola shows up when HP is low and joins the fray
+				
+				After killing the gargoyle, kill this
+				NPC ID: 617 | Name: Masked Mage
+				
+				-->
+				<WaitWhile Condition="GetQuestStep(66080) == 2" />
+            </If>
+			<WaitWhile Condition="GetQuestStep(66080) == 3" />
+			<If Condition="GetQuestStep(66080) == 255">
+				<If Condition="not IsOnMap(129)">
+					<If Condition="not IsOnMap(128)">
+						<TeleportTo Name="Limsa Lominsa Lower Decks" AetheryteId="8" />
+					</If>
+				</If>
+				<If Condition="IsOnMap(129)">
+					<MoveTo Name="Limsa Lominsa Upper Decks" Distance="0" XYZ="-7.13642, 20.84274, 27.17651" />
+				</If>
+				<If Condition="IsOnMap(128)">
+					<TurnIn QuestId="66080" NpcId="1003282" XYZ="-3.03656, 48.168, -261.7075" />
+				</If>
+            </If>
+        </If>
+		
+		<!-- High Society -->
+        <If Condition="not IsQuestCompleted(66226)">
+            <If Condition="not HasQuest(66226)">
+                <MoveTo Name="Reyner" XYZ="-3.03656, 48.168, -261.7075" />
+                <If Condition="IsQuestAcceptQualified(66226)">
+	                <PickupQuest NpcId="1003282" QuestId="66226" XYZ="-3.03656, 48.168, -261.7075" />
+                </If>
+            </If>
+			<If Condition="GetQuestStep(66226) == 1">
+				<TalkTo InteractDistance="3.0" NpcId="1000972" XYZ="17.78358, 40.21601, -5.415165" />
+            </If>
+			<If Condition="GetQuestStep(66226) == 2">
+				<If Condition="IsOnMap(128)">
+					<MoveTo Name="Limsa Lominsa Lower Decks" Distance="0" XYZ="-9.65393, 42.99996, -25.46598" />
+				</If>
+				<TalkTo InteractDistance="3.0" NpcId="1003355" XYZ="-60.86829, 18.00033, 7.492188" />
+            </If>
+			<If Condition="GetQuestStep(66226) == 255">
+				<If Condition="IsOnMap(129)">
+					<MoveTo Name="Limsa Lominsa Upper Decks" Distance="0" XYZ="-7.13642, 20.84274, 27.17651" />
+				</If>
+				<TurnIn QuestId="66226" NpcId="1000972" ItemId="2000523" XYZ="17.78358, 40.21601, -5.415165" />
+            </If>
+        </If>
+		
+		<!-- A Mizzenmast Repast -->
+        <If Condition="not IsQuestCompleted(66081)">
+            <If Condition="not HasQuest(66081)">
+                <MoveTo Name="Baderon" Distance="3" XYZ="17.7562, 40.21601, -5.357965" />
+                <If Condition="IsQuestAcceptQualified(66081)">
+	                <PickupQuest NpcId="1000972" QuestId="66081" XYZ="17.7562, 40.21601, -5.357965" />
+                </If>
+            </If>
+			<If Condition="GetQuestStep(66081) == 1">
+				<BotSettings AutoEquip="0" />
+				<RunCode Name="AMizzenmastRepast" />
+				<If Condition="IsOnMap(128)">
+					<MoveTo Name="Limsa Lominsa Lower Decks" Distance="0" XYZ="-9.65393, 42.99996, -25.46598" />
+				</If>
+				<TalkTo InteractDistance="3.0" NpcId="1001029" XYZ="9.170593, 20.9994, -15.21332" />
+            </If>
+			<If Condition="GetQuestStep(66081) == 255">
+				<WaitTimer WaitTime="10" />
+				<BotSettings AutoEquip="1" />
+				<If Condition="IsOnMap(177)">
+					<UseTransport NpcId="2001010" InteractDistance="3" XYZ="-0.01531982, 1.449585, 7.522644" />
+				</If>
+				<If Condition="IsOnMap(128)">
+					<MoveTo Name="Limsa Lominsa Lower Decks" Distance="0" XYZ="-9.65393, 42.99996, -25.46598" />
+				</If>
+				<If Condition="IsOnMap(129)">
+					<UseTransport NpcId="1001029" InteractDistance="3.5" XYZ="9.170593, 20.9994, -15.21332" />
+				</If>
+				<If Condition="IsOnMap(198)">
+					<TurnIn QuestId="66081" NpcId="1002694" XYZ="-0.04577637, 1.600142, -7.003906" />
+				</If>
+            </If>
+        </If>
+		
+		<!-- The Lominsan Envoy -->
+        <If Condition="not IsQuestCompleted(66082)">
+            <If Condition="not HasQuest(66082)">
+                <MoveTo Name="Merlwyb" XYZ="-0.04577637, 1.600142, -7.003906" />
+                <If Condition="IsQuestAcceptQualified(66082)">
+	                <PickupQuest NpcId="1002694" QuestId="66082" XYZ="-0.04577637, 1.600142, -7.003906" />
+                </If>
+            </If>
+			<If Condition="GetQuestStep(66082) == 1">
+				<If Condition="IsOnMap(198)">
+					<UseTransport NpcId="2001835" InteractDistance="3.5" XYZ="0.0235393, 2.330988, 9.8216" />
+				</If>
+			</If>
+		</If>
+		
+		<!-- Good for What Ales You -->
+        <If Condition="not IsQuestCompleted(66962)">
+            <If Condition="not HasQuest(66962)">
+                <MoveTo Name="Dodozan" XYZ="-186.2059, 16, 56.9314" />
+                <If Condition="IsQuestAcceptQualified(66962)">
+	                <PickupQuest NpcId="1003505" QuestId="66962" XYZ="-186.2059, 16, 56.9314" />
+                </If>
+            </If>
+			<If Condition="GetQuestStep(66962) == 1">
+				<TalkTo InteractDistance="3.0" NpcId="1007961" XYZ="-189.8375, 0.9999907, 205.6152" />
+				<TalkTo InteractDistance="3.0" NpcId="1007962" XYZ="-170.3975, 4, 180.8041" />
+				<TalkTo InteractDistance="3.0" NpcId="1007960" XYZ="-154.162, 3.999999, 186.2668" />
+            </If>
+			<If Condition="GetQuestStep(66962) == 2">
+				<TalkTo InteractDistance="3.0" NpcId="1007797" XYZ="-260.731, 16.35219, 194.171" />
+            </If>
+			<If Condition="GetQuestStep(66962) == 255">
+				<TurnIn NpcId="1003505" ItemId="2001250" QuestId="66962" XYZ="-186.2059, 16, 56.9314" />
+            </If>
+        </If>
+		
+		<!-- The Lominsan Envoy -->
+        <If Condition="not IsQuestCompleted(66082)">
+			<If Condition="GetQuestStep(66082) == 1">
+				<If Condition="IsOnMap(129)">
+					<MoveTo Name="Limsa Lominsa Upper Decks" Distance="0" XYZ="-7.13642, 20.84274, 27.17651" />
+				</If>
+				<If Condition="IsOnMap(128)">
+					<TalkTo InteractDistance="3.0" NpcId="1000972" XYZ="17.7562, 40.21601, -5.357965" />
+				</If>
+            </If>
+			<If Condition="GetQuestStep(66082) == 2">
+				<If Condition="IsOnMap(128)">
+					<If Condition="IsOnSubMap(715)">
+						<UseTransport NpcId="1003597" DialogOption="0" InteractDistance="3.5" XYZ="8.194031, 39.99998, 17.74622" />
+					</If>
+					<If Condition="IsOnSubMap(725)">
+						<UseTransport NpcId="1002695" InteractDistance="3.5" XYZ="-23.95521, 91.99997, -2.828326" />
+					</If>
+				</If>
+			</If>
+			<If Condition="GetQuestStep(66082) == 3">
+				<UseTransport NpcId="2001668" InteractDistance="3.5" XYZ="-11.10527, 92.04318, 17.18466" />
+            </If>
+			<If Condition="GetQuestStep(66082) == 4">
+				<UseTransport NpcId="1000109" InteractDistance="3.5" XYZ="30.36026, -19, 116.3264" />
+				<TalkTo InteractDistance="3.0" NpcId="1002830" XYZ="36.63684, -18.8, 89.64673" />
+            </If>
+			<If Condition="GetQuestStep(66082) == 5">
+				<If Condition="IsOnMap(132)">
+					<!-- Attune to the New Gridania Aetheryte -->
+					<If Condition="not Managers.WorldManager.HasAetheryteId(2)">
+						<UseObject NpcId="2" UseTimes="1" BlacklistAfter="True" UseDistance="10" XYZ="32.9137, 2.670288, 30.0144" Radius="10" WaitTime="5000" Condition="not Managers.WorldManager.HasAetheryteId(2)" />
+						<UseTransport NpcId="2" UseTimes="1" DialogOption="2" BlacklistAfter="True" UseDistance="10" XYZ="32.9137, 2.670288, 30.0144" Radius="10" WaitTime="5000" />
+					</If>
+					<MoveTo Name="Old Gridania" Distance="0" XYZ="11.63608, 1.304507, -14.86805" />
+				</If>
+				<If Condition="IsOnMap(133)">
+					<HandOver ItemId="2000458" QuestId="66082" StepId="5" NpcId="1000460" XYZ="-159.411, 4.054098, -4.104736" />
+				</If>
+            </If>
+			<If Condition="GetQuestStep(66082) == 6">
+				<If Condition="IsOnMap(133)">
+					<MoveTo Name="New Gridania" Distance="0" XYZ="12.9924, 8.360191, -87.14084" />
+				</If>
+				<If Condition="IsOnMap(132)">
+					<MoveTo Name="Lionnellais" Distance="3" XYZ="28.85792, -19, 103.3303" />
+					<UseTransport NpcId="1000106" DialogOption="0" InteractDistance="3.5" XYZ="28.85792, -19, 103.3303" />
+				</If>
+            </If>
+			<If Condition="GetQuestStep(66082) == 7">
+				<UseTransport NpcId="2001671" InteractDistance="3.5" XYZ="7.156433, -21.95776, 123.7354" />
+            </If>
+			<If Condition="GetQuestStep(66082) == 8">
+				<If Condition="IsOnSubMap(654)">
+					<If Condition="Vector3.Distance(Core.Player.Location, Managers.GameObjectManager.GetObjectByNPCId(1004336).Location) &gt; 10">
+						<UseTransport NpcId="1004434" InteractDistance="3.5" XYZ="-27.18481, 83.19999, 4.395531" />
+					</If>
+				</If>
+				<If Condition="Vector3.Distance(Core.Player.Location, Managers.GameObjectManager.GetObjectByNPCId(1004336).Location) &lt; 10">
+					<TalkTo InteractDistance="3.0" NpcId="1004336" XYZ="-12.61926, 82.99987, 4.562378" />
+				</If>
+            </If>
+			<If Condition="GetQuestStep(66082) == 255">
+				<If Condition="not Managers.WorldManager.HasAetheryteId(9)">
+					<If Condition="IsOnMap(130)">
+						<If Condition="IsOnSubMap(654)">
+							<UseTransport NpcId="1004339" InteractDistance="3.5" DialogOption="1" XYZ="-25.98621, 81.8, -31.99823" />
+						</If>
+						<If Condition="not IsOnSubMap(654)">
+							<MoveTo Name="Aetheryte" Distance="3" XYZ="-141.4556, -3.154888, -166.775" />
+							<UseObject NpcId="9" UseTimes="1" BlacklistAfter="True" UseDistance="10" XYZ="-141.9508, -3.154888, -166.4268" Radius="10" WaitTime="5000" Condition="not Managers.WorldManager.HasAetheryteId(9)" />
+							<UseTransport NpcId="9" UseTimes="1" DialogOption="2" BlacklistAfter="True" UseDistance="10" XYZ="-141.9508, -3.154888, -166.4268" Radius="10" WaitTime="5000" />
+						</If>
+					</If>
+				</If>
+				<If Condition="IsOnMap(130)">
+					<If Condition="IsOnSubMap(654)">
+						<UseTransport NpcId="1004339" InteractDistance="3.5" DialogOption="0" XYZ="-25.98621, 81.8, -31.99823" />
+					</If>
+					<If Condition="not IsOnSubMap(654)">
+						<UseTransport NpcId="1001834" InteractDistance="3.5" DialogOption="1" XYZ="-23.33112, 10, -43.44244" />
+					</If>
+				</If>
+				<If Condition="IsOnMap(131)">
+					<TurnIn QuestId="66082" NpcId="1001821" ItemId="2000459" XYZ="-24.12457, 38, 85.31323" />
+				</If>
+            </If>
+        </If>
+		
+		<!-- Call of the Sea -->
+        <If Condition="not IsQuestCompleted(66210)">
+            <If Condition="not HasQuest(66210)">
+                <MoveTo Name="Bartholomew" XYZ="-24.12457, 38, 85.31323" />
+                <If Condition="IsQuestAcceptQualified(66210)">
+	                <PickupQuest NpcId="1001821" QuestId="66210" XYZ="-24.12457, 38, 85.31323" />
+                </If>
+            </If>
+			<If Condition="GetQuestStep(66210) == 255">
+				<If Condition="not IsOnMap(129)">
+					<If Condition="not IsOnMap(128)">
+						<TeleportTo Name="Limsa Lominsa Lower Decks" AetheryteId="8" />
+					</If>
+				</If>
+				<If Condition="IsOnMap(129)">
+					<MoveTo Name="Limsa Lominsa Upper Decks" Distance="0" XYZ="-7.13642, 20.84274, 27.17651" />
+				</If>
+				<If Condition="IsOnMap(128)">
+					<TurnIn QuestId="66210" NpcId="1000972" XYZ="18.06211, 40.21601, -5.313304" />
+				</If>
+            </If>
+        </If>
+		
+		<!-- Get to level 15 -->
+		<If Condition="Core.Player.ClassLevel &lt; 15">
+			<If Condition="IsOnMap(128)">
+				<MoveTo Name="Lower La Noscea" Distance="0" XYZ="24.91524, 44.49993, 181.1817" />
+			</If>
+			<Grind grindRef="LowerLaNoscea_Level15" while="Core.Player.ClassLevel &lt; 15" />
+		</If>
+		
+		<!-- From here, the Limsa Lominsa specific quests are over!
+			 Time to load the Main Scenario 15-50 profile! -->
+		<LoadProfile Path="Profiles/Questing/Main Scenario Quests/MainScenario_15-50.xml" />
+	</Order>
+</Profile>

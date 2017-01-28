@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+Known issues with this profile:
+	None!
+
+Included jobs:
+	Conjurer
+
+Missing jobs:
+	Arcanist
+	Gladiator
+	Lancer
+	Archer
+	Thaumaturge
+	Gladiator
+	Pugilist
+
+-->
+<Profile>
+	<Name>Questing - Job Quests (Level 40)</Name>
+	<KillRadius>50</KillRadius>
+	<BehaviorDirectory>../Quest Behaviors</BehaviorDirectory>
+	<CodeChunks>
+		<CodeChunk Name="RayaOSenna">
+		<![CDATA[ 
+				if(Core.Player.IsMounted)
+				{
+					ff14bot.Managers.Actionmanager.Dismount();
+					await Buddy.Coroutines.Coroutine.Sleep(3000);
+				}
+				ff14bot.Managers.MovementManager.SetFacing(0.9891489f);
+				ff14bot.Managers.MovementManager.MoveForwardStart();
+				await Buddy.Coroutines.Coroutine.Sleep(500);
+				ff14bot.Managers.MovementManager.Jump();
+				await Buddy.Coroutines.Coroutine.Sleep(500);
+				ff14bot.Managers.MovementManager.MoveForwardStop();
+        ]]>
+		</CodeChunk>
+		<CodeChunk Name="Dismount">
+		<![CDATA[ 
+				if(Core.Player.IsMounted)
+				{
+					ff14bot.Managers.Actionmanager.Dismount();
+					await Buddy.Coroutines.Coroutine.Sleep(3000);
+				}
+        ]]>
+		</CodeChunk>
+	</CodeChunks>
+	<GrindAreas />
+	<Order>
+		<BotSettings AutoEquip="1" />
+		<If Condition="Core.Player.CurrentJob == Enums.ClassJobType.WhiteMage">
+			<!-- O Brother, Where Art Thou -->
+			<If Condition="not IsQuestCompleted(66617)">
+				<If Condition="not HasQuest(66617)">
+					<If Condition="not IsOnMap(153)">
+						<TeleportTo Name="Camp Tranquil" AetheryteId="6" />
+					</If>
+					<MoveTo Name="Raya-O-Senna" Distance="2" XYZ="-143.325, 8.179872, 269.7141" />
+					<RunCode Name="RayaOSenna" />
+					<MoveTo Name="Raya-O-Senna" Distance="1" UseMesh="False" XYZ="-137.7426, 8.47965, 280.7405" />
+					<If Condition="IsQuestAcceptQualified(66617)">
+						<PickupQuest NpcId="1006751" QuestId="66617" XYZ="-139.4522, 8.712891, 281.6968" />
+					</If>
+				</If>
+				<If Condition="GetQuestStep(66617) == 1">
+					<If Condition="not IsOnMap(152)">
+						<TeleportTo Name="The Hawthorne Hut" AetheryteId="4" />
+					</If>
+					<TalkTo InteractDistance="3.0" NpcId="1007852" XYZ="-272.3889, 12.93542, -46.28064" />
+				</If>
+				<If Condition="GetQuestStep(66617) == 2">
+					<UseObject NpcId="2002394" XYZ="-271.5343, 13.74835, -51.77393" Radius="10" UseDistance="1" QuestId="66617" StepId="2" />
+				</If>
+				<If Condition="GetQuestStep(66617) == 255">
+					<If Condition="not IsOnMap(153)">
+						<TeleportTo Name="Camp Tranquil" AetheryteId="6" />
+					</If>
+					<MoveTo Name="Raya-O-Senna" Distance="2" XYZ="-143.325, 8.179872, 269.7141" />
+					<RunCode Name="RayaOSenna" />
+					<MoveTo Name="Raya-O-Senna" Distance="1" UseMesh="False" XYZ="-137.7426, 8.47965, 280.7405" />
+					<TurnIn NpcId="1006751" QuestId="66617" XYZ="-139.4522, 8.712891, 281.6968" />
+				</If>
+			</If>
+		</If>
+		
+		<If Condition="Core.Player.CurrentJob == Enums.ClassJobType.Scholar">
+			<!-- The Consequences of Anger -->
+			<If Condition="not IsQuestCompleted(66635)">
+				<If Condition="not HasQuest(66635)">
+					<If Condition="not IsOnMap(128)">
+						<TeleportTo Name="Limsa Lominsa Lower Decks" AetheryteId="8" />
+					</If>
+					<If Condition="IsOnMap(129)">
+						<MoveTo Name="Limsa Lominsa Upper Decks" Distance="0" XYZ="-7.13642, 20.84274, 27.17651" />
+					</If>
+					<MoveTo Name="Alka Zolka" XYZ="-4.470947, 44.99989, -250.5685" />
+					<If Condition="IsQuestAcceptQualified(66635)">
+						<PickupQuest NpcId="1006757" QuestId="66635" XYZ="-4.470947, 44.99989, -250.5685" />
+					</If>
+				</If>
+				<If Condition="GetQuestStep(66635) == 1">
+					<If Condition="not IsOnMap(139)">
+						<TeleportTo Name="Camp Bronze Lake" AetheryteId="15" />
+					</If>
+					<SimpleDuty InteractNpcId="1007837" XYZ="256.8245, -3.052745, 60.9292" GuardianNPCId="2146" QuestId="66635" StepId="1">
+						<TargetMobs>
+							<TargetMob Id="1925" Weight="2" />
+							<TargetMob Id="1924" Weight="2" />
+							<TargetMob Id="1926" Weight="2" />
+							<TargetMob Id="1650" />
+						</TargetMobs>
+					</SimpleDuty>
+					<!-- Instance
+					
+					Location:
+					Map ID: 139, SubZone ID: 0, Raw Zone ID: 328, Location: <241.2863, 1.600252, 59.66385>
+					
+					Enemies:
+					NPC ID: 1650 | Name: Tonberry Wanderer
+					NPC ID: 1925 | Name: Yellow Laver
+					NPC ID: 1924 | Name: Green Laver
+					NPC ID: 1926 | Name: Purple Laver
+					
+					-->
+				</If>
+				<If Condition="GetQuestStep(66635) == 2">
+					<TalkTo InteractDistance="3.0" NpcId="1007845" XYZ="256.3362, -3.206905, 58.09106" />
+				</If>
+				<If Condition="GetQuestStep(66635) == 255">
+					<If Condition="not IsOnMap(128)">
+						<TeleportTo Name="Limsa Lominsa Lower Decks" AetheryteId="8" />
+					</If>
+					<If Condition="IsOnMap(129)">
+						<MoveTo Name="Limsa Lominsa Upper Decks" Distance="0" XYZ="-7.13642, 20.84274, 27.17651" />
+					</If>
+					<TurnIn NpcId="1006757" QuestId="66635" XYZ="-4.470947, 44.99989, -250.5685" />
+				</If>
+			</If>
+		</If>
+		
+		<If Condition="Core.Player.CurrentJob == Enums.ClassJobType.BlackMage">
+			<!-- International Relations -->
+			<If Condition="not IsQuestCompleted(66611)">
+				<If Condition="not HasQuest(66611)">
+					<If Condition="not IsOnMap(130) and not IsOnMap(131)">
+						<TeleportTo Name="Uldah - Steps of Nald" AetheryteId="9" />
+					</If>
+					<If Condition="IsOnMap(130)">
+						<MoveTo Name="Ul'dah - Steps of Thal" Distance="0" XYZ="-114.9707, 9.999928, 9.398392" />
+					</If>
+					<MoveTo Name="Lalai" XYZ="87.5105, 18, 113.7255" />
+					<If Condition="IsQuestAcceptQualified(66611)">
+						<PickupQuest NpcId="1006752" QuestId="66611" XYZ="87.5105, 18, 113.7255" />
+					</If>
+				</If>
+				<If Condition="GetQuestStep(66611) == 1">
+					<If Condition="not IsOnMap(145)">
+						<TeleportTo Name="Camp Drybone" AetheryteId="18" />
+					</If>
+					<TalkTo InteractDistance="3.0" NpcId="1006753" XYZ="325.063, 11.23651, -6.21051" />
+				</If>
+				<If Condition="GetQuestStep(66611) == 2">
+					<If Condition="not IsOnMap(140)">
+						<TeleportTo Name="Horizon" AetheryteId="17" />
+					</If>
+					<TalkTo InteractDistance="3.0" NpcId="1007864" XYZ="-167.4067, 14.51378, -251.3009" />
+				</If>
+				<If Condition="GetQuestStep(66611) == 3">
+					<UseObject NpcId="2002535" XYZ="-178.3933, 15.42688, -244.6479" Radius="10" QuestId="66611" StepId="3" />
+				</If>
+				<If Condition="GetQuestStep(66611) == 4">
+					<UseItem NpcId="2002431" ItemId="2000810" XYZ="-178.3933, 15.42688, -244.6479" Radius="10" QuestId="66611" StepId="4" />
+				</If>
+				<If Condition="GetQuestStep(66611) == 5">
+					<TalkTo InteractDistance="3.0" NpcId="1007864" XYZ="-167.4067, 14.51378, -251.3009" />
+				</If>
+				<If Condition="GetQuestStep(66611) == 6">
+					<TalkTo InteractDistance="3.0" NpcId="1007865" XYZ="-223.1022, 14.51385, -365.2552" />
+				</If>
+				<If Condition="GetQuestStep(66611) == 7">
+					<UseObject NpcId="2002536" XYZ="-211.1696, 15.3963, -345.4185" Radius="10" QuestId="66611" StepId="7" />
+				</If>
+				<If Condition="GetQuestStep(66611) == 8">
+					<UseItem NpcId="2002432" ItemId="2000811" XYZ="-211.1696, 15.3963, -345.4185" Radius="10" QuestId="66611" StepId="8" />
+				</If>
+				<If Condition="GetQuestStep(66611) == 9">
+					<TalkTo InteractDistance="3.0" NpcId="1007865" XYZ="-223.1022, 14.51385, -365.2552" />
+				</If>
+				<If Condition="GetQuestStep(66611) == 10">
+					<TalkTo InteractDistance="3.0" NpcId="1007863" XYZ="-131.7006, 17.98201, -278.8587" />
+				</If>
+				<If Condition="GetQuestStep(66611) == 255">
+					<If Condition="not IsOnMap(145)">
+						<TeleportTo Name="Camp Drybone" AetheryteId="18" />
+					</If>
+					<TurnIn QuestId="66611" NpcId="1006753" XYZ="325.063, 11.23651, -6.21051" />
+				</If>
+			</If>
+		</If>
+		
+		<LoadProfile Path="Profiles/Questing/Main Scenario Quests/MainScenario_15-50.xml" />
+	</Order>
+</Profile>

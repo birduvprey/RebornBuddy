@@ -1,0 +1,773 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+Known issues with this profile:
+	None!
+
+Included classes:
+	Conjurer
+
+Missing jobs:
+	Lancer
+	Archer
+	Thaumaturge
+	Gladiator
+	Pugilist
+	Arcanist
+	Marauder (Double checked, no issues)
+
+-->
+<Profile>
+	<Name>Questing - Secondary Classes</Name>
+	<KillRadius>50</KillRadius>
+	<BehaviorDirectory>../Quest Behaviors</BehaviorDirectory>
+	<CodeChunks>
+		<CodeChunk Name="ArcanistEquip">
+		<![CDATA[ 
+				foreach(ff14bot.Managers.BagSlot slot in ff14bot.Managers.InventoryManager.FilledInventoryAndArmory)
+				{
+					BagSlot EquipSlot = ff14bot.Managers.InventoryManager.GetBagByInventoryBagId(ff14bot.Enums.InventoryBagId.EquippedItems)[ff14bot.Enums.EquipmentSlot.MainHand];
+					if(slot.RawItemId == 2142)
+					{
+						slot.Move(EquipSlot);
+					}
+				}
+        ]]>
+		</CodeChunk>
+		<CodeChunk Name="ArcanistEquip2">
+		<![CDATA[ 
+				foreach(ff14bot.Managers.BagSlot slot in ff14bot.Managers.InventoryManager.FilledInventoryAndArmory)
+				{
+					BagSlot EquipSlot = ff14bot.Managers.InventoryManager.GetBagByInventoryBagId(ff14bot.Enums.InventoryBagId.EquippedItems)[ff14bot.Enums.EquipmentSlot.MainHand];
+					if(slot.RawItemId == 2142)
+					{
+						slot.Move(EquipSlot);
+					}
+				}
+        ]]>
+		</CodeChunk>
+		<CodeChunk Name="ConjurerEquip">
+		<![CDATA[ 
+				foreach(ff14bot.Managers.BagSlot slot in ff14bot.Managers.InventoryManager.FilledInventoryAndArmory)
+				{
+					BagSlot EquipSlot = ff14bot.Managers.InventoryManager.GetBagByInventoryBagId(ff14bot.Enums.InventoryBagId.EquippedItems)[ff14bot.Enums.EquipmentSlot.MainHand];
+					if(slot.RawItemId == 1995)
+					{
+						slot.Move(EquipSlot);
+					}
+				}
+        ]]>
+		</CodeChunk>
+		<CodeChunk Name="ConjurerEquip2">
+		<![CDATA[ 
+				foreach(ff14bot.Managers.BagSlot slot in ff14bot.Managers.InventoryManager.FilledInventoryAndArmory)
+				{
+					BagSlot EquipSlot = ff14bot.Managers.InventoryManager.GetBagByInventoryBagId(ff14bot.Enums.InventoryBagId.EquippedItems)[ff14bot.Enums.EquipmentSlot.MainHand];
+					if(slot.RawItemId == 1995)
+					{
+						slot.Move(EquipSlot);
+					}
+				}
+        ]]>
+		</CodeChunk>
+		<CodeChunk Name="WhiteMageEquip">
+		<![CDATA[ 
+				foreach(ff14bot.Managers.BagSlot slot in ff14bot.Managers.InventoryManager.FilledInventoryAndArmory)
+				{
+					BagSlot EquipSlot = ff14bot.Managers.InventoryManager.GetBagByInventoryBagId(ff14bot.Enums.InventoryBagId.EquippedItems)[ff14bot.Enums.EquipmentSlot.SoulCrystal];
+					if(slot.RawItemId == 4547)
+					{
+						slot.Move(EquipSlot);
+					}
+				}
+        ]]>
+		</CodeChunk>
+		<CodeChunk Name="ScholarEquip">
+		<![CDATA[ 
+				foreach(ff14bot.Managers.BagSlot slot in ff14bot.Managers.InventoryManager.FilledInventoryAndArmory)
+				{
+					BagSlot EquipSlot = ff14bot.Managers.InventoryManager.GetBagByInventoryBagId(ff14bot.Enums.InventoryBagId.EquippedItems)[ff14bot.Enums.EquipmentSlot.SoulCrystal];
+					if(slot.RawItemId == 4550)
+					{
+						slot.Move(EquipSlot);
+					}
+				}
+        ]]>
+		</CodeChunk>
+		<CodeChunk Name="ArcherEquip">
+		<![CDATA[ 
+				foreach(ff14bot.Managers.BagSlot slot in ff14bot.Managers.InventoryManager.FilledInventoryAndArmory)
+				{
+					BagSlot EquipSlot = ff14bot.Managers.InventoryManager.GetBagByInventoryBagId(ff14bot.Enums.InventoryBagId.EquippedItems)[ff14bot.Enums.EquipmentSlot.MainHand];
+					if(slot.RawItemId == 1889)
+					{
+						slot.Move(EquipSlot);
+					}
+				}
+        ]]>
+		</CodeChunk>
+		<CodeChunk Name="ThaumaturgeEquip">
+		<![CDATA[ 
+				foreach(ff14bot.Managers.BagSlot slot in ff14bot.Managers.InventoryManager.FilledInventoryAndArmory)
+				{
+					BagSlot EquipSlot = ff14bot.Managers.InventoryManager.GetBagByInventoryBagId(ff14bot.Enums.InventoryBagId.EquippedItems)[ff14bot.Enums.EquipmentSlot.MainHand];
+					if(slot.RawItemId == 2055)
+					{
+						slot.Move(EquipSlot);
+					}
+				}
+        ]]>
+		</CodeChunk>
+		<CodeChunk Name="BlackMageEquip">
+		<![CDATA[ 
+				foreach(ff14bot.Managers.BagSlot slot in ff14bot.Managers.InventoryManager.FilledInventoryAndArmory)
+				{
+					BagSlot EquipSlot = ff14bot.Managers.InventoryManager.GetBagByInventoryBagId(ff14bot.Enums.InventoryBagId.EquippedItems)[ff14bot.Enums.EquipmentSlot.SoulCrystal];
+					if(slot.RawItemId == 4548)
+					{
+						slot.Move(EquipSlot);
+					}
+				}
+        ]]>
+		</CodeChunk>
+	</CodeChunks>
+	<GrindAreas>
+		<GrindArea name="LowerLaNoscea_Level4">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="47.63577, 60.93054, 94.4513" name="Lower La Noscea to Level 4" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="49" />
+				<TargetMob Id="417" />
+			</TargetMobs>
+			<MinLevel>0</MinLevel>
+			<MaxLevel>3</MaxLevel>
+		</GrindArea>
+		<GrindArea name="LowerLaNoscea_Level6">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="359.6747, 56.50045, -48.40549" name="Lower La Noscea to Level 6" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="115" />
+				<TargetMob Id="393" />
+			</TargetMobs>
+			<MinLevel>2</MinLevel>
+			<MaxLevel>6</MaxLevel>
+		</GrindArea>
+		<GrindArea name="LowerLaNoscea_Level7">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="265.4105, 73.83225, -317.6324" name="Lower La Noscea to Level 7" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="364" />
+			</TargetMobs>
+			<MinLevel>5</MinLevel>
+			<MaxLevel>9</MaxLevel>
+		</GrindArea>
+		<GrindArea name="LowerLaNoscea_Level8">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="421.8739, 79.09743, -352.1561" name="Lower La Noscea to Level 8" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="408" />
+			</TargetMobs>
+			<MinLevel>6</MinLevel>
+			<MaxLevel>10</MaxLevel>
+		</GrindArea>
+		<GrindArea name="LowerLaNoscea_Level9">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="586.8784, 69.83891, -254.5363" name="Lower La Noscea to Level 9" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="299" />
+			</TargetMobs>
+			<MinLevel>6</MinLevel>
+			<MaxLevel>10</MaxLevel>
+		</GrindArea>
+		<GrindArea name="MiddleLaNoscea_LostLamb">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="119.1412, 48.62115, 171.1557" name="Lost Lambs" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="392" />
+			</TargetMobs>
+			<MinLevel>1</MinLevel>
+			<MaxLevel>5</MaxLevel>
+		</GrindArea>
+		<GrindArea name="MiddleLaNoscea_PukHatchling">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="11.07999, 50.78557, -39.5241" name="Puk Hatchlings" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="401" />
+			</TargetMobs>
+			<MinLevel>2</MinLevel>
+			<MaxLevel>6</MaxLevel>
+		</GrindArea>
+		<GrindArea name="MiddleLaNoscea_Bogy">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="-58.36838, 27.32331, -118.2145" name="Bogies" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="404" />
+			</TargetMobs>
+			<MinLevel>5</MinLevel>
+			<MaxLevel>9</MaxLevel>
+		</GrindArea>
+		<GrindArea name="MiddleLaNoscea_Level15">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="-330.5348, 18.26253, -360.7863" name="Middle La Noscea to Level 15" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="561" />
+			</TargetMobs>
+			<MinLevel>11</MinLevel>
+			<MaxLevel>15</MaxLevel>
+		</GrindArea>
+		<GrindArea name="CentralShroud_Level12">
+			<Hotspots>
+				<Hotspot Radius="90" XYZ="60.51476, -15.80538, 171.1361" name="Central Shroud to Level 12" />
+			</Hotspots>
+			<TargetMobs>
+				<TargetMob Id="22" />
+				<TargetMob Id="54" />
+			</TargetMobs>
+			<MinLevel>8</MinLevel>
+			<MaxLevel>12</MaxLevel>
+		</GrindArea>
+	</GrindAreas>
+	<Order>
+		<BotSettings AutoEquip="1" />
+		
+		<!-- Conjurer -->
+		<If Condition="IsQuestCompleted(65977)">
+			<!-- Way of the Arcanist -->
+			<If Condition="not IsQuestCompleted(65988)">
+				<If Condition="not HasQuest(65988)">
+					<If Condition="not IsOnMap(128)">
+						<TeleportTo Name="Limsa Lominsa Lower Decks" AetheryteId="8" />
+					</If>
+					<MoveTo Name="Murie" XYZ="-335.7443, 12.89977, 1.388489" />
+					<If Condition="IsQuestAcceptQualified(65988)">
+						<UseTransport NpcId="1000895" InteractDistance="3.5" UseTimes="1" XYZ="-335.7443, 12.89977, 1.388489" />
+						<PickupQuest NpcId="1000895" QuestId="65988" XYZ="-335.7443, 12.89977, 1.388489" />
+					</If>
+				</If>
+				<If Condition="GetQuestStep(65988) == 255">
+					<TurnIn QuestId="65988" NpcId="1000909" XYZ="-326.3752, 12.89966, 9.994568" />
+				</If>
+			</If>
+			
+			<!-- Change to Arcanist -->
+			<While Condition="Core.Player.CurrentJob != Enums.ClassJobType.Arcanist and not HasQuest(66615) and not IsQuestCompleted(66615)">
+				<RunCode Name="ArcanistEquip" />
+			</While>
+			
+			<!-- Get to level 4 -->
+			<If Condition="Core.Player.ClassLevel &lt; 4">
+				<If Condition="not IsOnMap(128) and not IsOnMap(129) and not IsOnMap(135)">
+					<TeleportTo Name="Limsa Lominsa Lower Decks" AetheryteId="8" />
+				</If>
+				<If Condition="IsOnMap(129)">
+					<MoveTo Name="Limsa Lominsa Upper Decks" Distance="0" XYZ="-7.13642, 20.84274, 27.17651" />
+				</If>
+				<If Condition="IsOnMap(128)">
+					<MoveTo Name="Lower La Noscea" Distance="0" XYZ="24.91524, 44.49993, 181.1817" />
+				</If>
+				<If Condition="IsOnMap(135)">
+					<Grind grindRef="LowerLaNoscea_Level4" while="Core.Player.ClassLevel &lt; 4" />
+				</If>
+			</If>
+			
+			<!-- Get to level 6 -->
+			<If Condition="Core.Player.ClassLevel &lt; 6">
+				<If Condition="not IsOnMap(128) and not IsOnMap(129) and not IsOnMap(135)">
+					<TeleportTo Name="Limsa Lominsa Lower Decks" AetheryteId="8" />
+				</If>
+				<If Condition="IsOnMap(129)">
+					<MoveTo Name="Limsa Lominsa Upper Decks" Distance="0" XYZ="-7.13642, 20.84274, 27.17651" />
+				</If>
+				<If Condition="IsOnMap(128)">
+					<MoveTo Name="Lower La Noscea" Distance="0" XYZ="24.91524, 44.49993, 181.1817" />
+				</If>
+				<If Condition="IsOnMap(135)">
+					<Grind grindRef="LowerLaNoscea_Level6" while="Core.Player.ClassLevel &lt; 6" />
+				</If>
+			</If>
+			
+			<!-- Get to level 7 -->
+			<If Condition="Core.Player.ClassLevel &lt; 7">
+				<If Condition="not IsOnMap(128) and not IsOnMap(129) and not IsOnMap(135)">
+					<TeleportTo Name="Limsa Lominsa Lower Decks" AetheryteId="8" />
+				</If>
+				<If Condition="IsOnMap(129)">
+					<MoveTo Name="Limsa Lominsa Upper Decks" Distance="0" XYZ="-7.13642, 20.84274, 27.17651" />
+				</If>
+				<If Condition="IsOnMap(128)">
+					<MoveTo Name="Lower La Noscea" Distance="0" XYZ="24.91524, 44.49993, 181.1817" />
+				</If>
+				<If Condition="IsOnMap(135)">
+					<Grind grindRef="LowerLaNoscea_Level7" while="Core.Player.ClassLevel &lt; 7" />
+				</If>
+			</If>
+			
+			<!-- Get to level 8 -->
+			<If Condition="Core.Player.ClassLevel &lt; 8">
+				<If Condition="not IsOnMap(128) and not IsOnMap(129) and not IsOnMap(135)">
+					<TeleportTo Name="Limsa Lominsa Lower Decks" AetheryteId="8" />
+				</If>
+				<If Condition="IsOnMap(129)">
+					<MoveTo Name="Limsa Lominsa Upper Decks" Distance="0" XYZ="-7.13642, 20.84274, 27.17651" />
+				</If>
+				<If Condition="IsOnMap(128)">
+					<MoveTo Name="Lower La Noscea" Distance="0" XYZ="24.91524, 44.49993, 181.1817" />
+				</If>
+				<If Condition="IsOnMap(135)">
+					<Grind grindRef="LowerLaNoscea_Level8" while="Core.Player.ClassLevel &lt; 8" />
+				</If>
+			</If>
+			
+			<!-- Get to level 9 -->
+			<If Condition="Core.Player.ClassLevel &lt; 9">
+				<If Condition="not IsOnMap(128) and not IsOnMap(129) and not IsOnMap(135)">
+					<TeleportTo Name="Limsa Lominsa Lower Decks" AetheryteId="8" />
+				</If>
+				<If Condition="IsOnMap(129)">
+					<MoveTo Name="Limsa Lominsa Upper Decks" Distance="0" XYZ="-7.13642, 20.84274, 27.17651" />
+				</If>
+				<If Condition="IsOnMap(128)">
+					<MoveTo Name="Lower La Noscea" Distance="0" XYZ="24.91524, 44.49993, 181.1817" />
+				</If>
+				<If Condition="IsOnMap(135)">
+					<Grind grindRef="LowerLaNoscea_Level8" while="Core.Player.ClassLevel &lt; 9" />
+				</If>
+			</If>
+			
+			<!-- Lost Lamb -->
+			<If Condition="not HuntRankCompleted(Core.Player.CurrentJob, 1) and not HuntEntryCompleted(Core.Player.CurrentJob, 2)">
+				<If Condition="not IsOnMap(134)">
+					<TeleportTo Name="Summerford Farms" AetheryteId="52" />
+				</If>
+				<If Condition="IsOnMap(134)">
+					<Grind grindRef="MiddleLaNoscea_LostLamb" while="not HuntRankCompleted(Core.Player.CurrentJob, 1) and not HuntEntryCompleted(Core.Player.CurrentJob, 2)" />
+				</If>
+			</If>
+			
+			<!-- Puk Hatchling -->
+			<If Condition="not HuntRankCompleted(Core.Player.CurrentJob, 1) and not HuntEntryCompleted(Core.Player.CurrentJob, 4)">
+				<If Condition="not IsOnMap(134)">
+					<TeleportTo Name="Summerford Farms" AetheryteId="52" />
+				</If>
+				<If Condition="IsOnMap(134)">
+					<Grind grindRef="MiddleLaNoscea_PukHatchling" while="not HuntRankCompleted(Core.Player.CurrentJob, 1) and not HuntEntryCompleted(Core.Player.CurrentJob, 4)" />
+				</If>
+			</If>
+			
+			<!-- Bogy -->
+			<If Condition="not HuntRankCompleted(Core.Player.CurrentJob, 1) and not HuntEntryCompleted(Core.Player.CurrentJob, 6)">
+				<If Condition="not IsOnMap(134)">
+					<TeleportTo Name="Summerford Farms" AetheryteId="52" />
+				</If>
+				<If Condition="IsOnMap(134)">
+					<Grind grindRef="MiddleLaNoscea_Bogy" while="not HuntRankCompleted(Core.Player.CurrentJob, 1) and not HuntEntryCompleted(Core.Player.CurrentJob, 6)" />
+				</If>
+			</If>
+			
+			<!-- Get to level 15 -->
+			<If Condition="Core.Player.ClassLevel &lt; 15">
+				<If Condition="not IsOnMap(134)">
+					<TeleportTo Name="Summerford Farms" AetheryteId="52" />
+				</If>
+				<Grind grindRef="MiddleLaNoscea_Level15" while="Core.Player.ClassLevel &lt; 15" />
+			</If>
+			
+			<!-- Change back to Conjurer -->
+			<While Condition="Core.Player.CurrentJob != Enums.ClassJobType.Conjurer and not IsQuestCompleted(66615)">
+				<RunCode Name="ConjurerEquip" />
+			</While>
+			
+			<!-- Seer Folly -->
+			<If Condition="not IsQuestCompleted(66615)">
+				<If Condition="not HasQuest(66615)">
+					<If Condition="not IsOnMap(132)">
+						<If Condition="not IsOnMap(133)">
+							<TeleportTo Name="New Gridania" AetheryteId="2" />
+						</If>
+					</If>
+					<If Condition="IsOnMap(132)">
+						<MoveTo Name="Old Gridania" Distance="0" XYZ="-106.191, 1.08756, 5.450311" />
+					</If>
+					<MoveTo Name="E-Sumi-Yan" XYZ="-258.8083, -5.773526, -27.26788" />
+					<If Condition="IsQuestAcceptQualified(66615)">
+						<PickupQuest NpcId="1000692" QuestId="66615" XYZ="-258.8083, -5.773526, -27.26788" />
+					</If>
+				</If>
+				<If Condition="GetQuestStep(66615) == 1">
+					<If Condition="not IsOnMap(148)">
+						<TeleportTo Name="Bentbranch Meadows" AetheryteId="3" />
+					</If>
+					<SimpleDuty InteractNpcId="1007850" XYZ="-271.87, 19.66337, 97.42883" QuestId="66615" StepId="1">
+						<HotSpots>
+							<HotSpot XYZ="-270.9791, 19.12405, 94.39753" Radius="30" />
+						</HotSpots>
+						<TargetMobs>
+							<TargetMob Id="40" Weight="2" />
+							<TargetMob Id="11" Weight="0.9" />
+							<TargetMob Id="201" Weight="0.7" />
+							<TargetMob Id="130" Weight="0.5" />
+						</TargetMobs>
+					</SimpleDuty>
+					<!-- Instance
+					
+					Location:
+					Map ID: 148, SubZone ID: 0, Location: <-270.9791, 19.12405, 94.39753>
+					
+					Enemies:
+					
+					
+					-->
+				</If>
+				<If Condition="GetQuestStep(66615) == 255">
+					<If Condition="IsOnMap(153)">
+						<TeleportTo Name="Camp Tranquil" AetheryteId="6" />
+					</If>
+					<MoveTo Name="Raya-O-Senna" Distance="2" XYZ="-143.325, 8.179872, 269.7141" />
+					<RunCode Name="SeerFolly" />
+					<MoveTo Name="Raya-O-Senna" Distance="1" UseMesh="False" XYZ="-137.7426, 8.47965, 280.7405" />
+					<TurnIn QuestId="66615" NpcId="1006751" ItemId="2000938" XYZ="-139.4522, 8.712891, 281.6968" />
+				</If>
+			</If>
+			
+			<!-- Change to White Mage! -->
+			<While Condition="Core.Player.CurrentJob != Enums.ClassJobType.WhiteMage">
+				<RunCode Name="WhiteMageEquip" />
+			</While>
+		</If>
+		
+		<!-- Arcanist -->
+		<If Condition="IsQuestCompleted(65997)">
+			<!-- Way of the Conjurer -->
+			<If Condition="not IsQuestCompleted(65669)">
+				<If Condition="not HasQuest(65669)">
+					<If Condition="not IsOnMap(132)">
+						<If Condition="not IsOnMap(133)">
+							<TeleportTo Name="New Gridania" AetheryteId="2" />
+						</If>
+					</If>
+					<If Condition="IsOnMap(132)">
+						<MoveTo Name="Old Gridania" Distance="0" XYZ="-106.191, 1.08756, 5.450311" />
+					</If>
+					<MoveTo Name="Madelle" XYZ="-234.0276, -4, -11.09338" />
+					<If Condition="IsQuestAcceptQualified(65669)">
+						<PickupQuest NpcId="1000323" QuestId="65669" XYZ="-234.0276, -4, -11.09338" />
+					</If>
+				</If>
+				<If Condition="GetQuestStep(65669) == 255">
+					<TurnIn QuestId="65669" NpcId="1000692" ItemId="2000958" XYZ="-258.8083, -5.773526, -27.26788" />
+				</If>
+			</If>
+			
+			<!-- Change to Conjurer -->
+			<While Condition="Core.Player.CurrentJob != Enums.ClassJobType.Conjurer and not HasQuest(66633) and not IsQuestCompleted(66633)">
+				<RunCode Name="ConjurerEquip2" />
+			</While>
+			
+			<!-- Get to level 4 -->
+			<If Condition="Core.Player.ClassLevel &lt; 4">
+				<If Condition="not IsOnMap(128) and not IsOnMap(129) and not IsOnMap(135)">
+					<TeleportTo Name="Limsa Lominsa Lower Decks" AetheryteId="8" />
+				</If>
+				<If Condition="IsOnMap(129)">
+					<MoveTo Name="Limsa Lominsa Upper Decks" Distance="0" XYZ="-7.13642, 20.84274, 27.17651" />
+				</If>
+				<If Condition="IsOnMap(128)">
+					<MoveTo Name="Lower La Noscea" Distance="0" XYZ="24.91524, 44.49993, 181.1817" />
+				</If>
+				<If Condition="IsOnMap(135)">
+					<Grind grindRef="LowerLaNoscea_Level4" while="Core.Player.ClassLevel &lt; 4" />
+				</If>
+			</If>
+			
+			<!-- Get to level 6 -->
+			<If Condition="Core.Player.ClassLevel &lt; 6">
+				<If Condition="not IsOnMap(128) and not IsOnMap(129) and not IsOnMap(135)">
+					<TeleportTo Name="Limsa Lominsa Lower Decks" AetheryteId="8" />
+				</If>
+				<If Condition="IsOnMap(129)">
+					<MoveTo Name="Limsa Lominsa Upper Decks" Distance="0" XYZ="-7.13642, 20.84274, 27.17651" />
+				</If>
+				<If Condition="IsOnMap(128)">
+					<MoveTo Name="Lower La Noscea" Distance="0" XYZ="24.91524, 44.49993, 181.1817" />
+				</If>
+				<If Condition="IsOnMap(135)">
+					<Grind grindRef="LowerLaNoscea_Level6" while="Core.Player.ClassLevel &lt; 6" />
+				</If>
+			</If>
+			
+			<!-- Get to level 7 -->
+			<If Condition="Core.Player.ClassLevel &lt; 7">
+				<If Condition="not IsOnMap(128) and not IsOnMap(129) and not IsOnMap(135)">
+					<TeleportTo Name="Limsa Lominsa Lower Decks" AetheryteId="8" />
+				</If>
+				<If Condition="IsOnMap(129)">
+					<MoveTo Name="Limsa Lominsa Upper Decks" Distance="0" XYZ="-7.13642, 20.84274, 27.17651" />
+				</If>
+				<If Condition="IsOnMap(128)">
+					<MoveTo Name="Lower La Noscea" Distance="0" XYZ="24.91524, 44.49993, 181.1817" />
+				</If>
+				<If Condition="IsOnMap(135)">
+					<Grind grindRef="LowerLaNoscea_Level7" while="Core.Player.ClassLevel &lt; 7" />
+				</If>
+			</If>
+			
+			<!-- Get to level 10 -->
+			<If Condition="Core.Player.ClassLevel &lt; 10">
+				<If Condition="not IsOnMap(128) and not IsOnMap(129) and not IsOnMap(135)">
+					<TeleportTo Name="Limsa Lominsa Lower Decks" AetheryteId="8" />
+				</If>
+				<If Condition="IsOnMap(129)">
+					<MoveTo Name="Limsa Lominsa Upper Decks" Distance="0" XYZ="-7.13642, 20.84274, 27.17651" />
+				</If>
+				<If Condition="IsOnMap(128)">
+					<MoveTo Name="Lower La Noscea" Distance="0" XYZ="24.91524, 44.49993, 181.1817" />
+				</If>
+				<If Condition="IsOnMap(135)">
+					<Grind grindRef="LowerLaNoscea_Level8" while="Core.Player.ClassLevel &lt; 10" />
+				</If>
+			</If>
+			
+			<!-- Get to level 12 -->
+			<If Condition="Core.Player.ClassLevel &lt; 12">
+				<If Condition="not IsOnMap(148)">
+					<TeleportTo Name="Bentbranch Meadows" AetheryteId="3" />
+				</If>
+				<Grind grindRef="CentralShroud_Level12" while="Core.Player.ClassLevel &lt; 12" />
+			</If>
+			
+			<!-- Get to level 15 -->
+			<If Condition="Core.Player.ClassLevel &lt; 15">
+				<If Condition="not IsOnMap(134)">
+					<TeleportTo Name="Summerford Farms" AetheryteId="52" />
+				</If>
+				<Grind grindRef="MiddleLaNoscea_Level15" while="Core.Player.ClassLevel &lt; 15" />
+			</If>
+			
+			<!-- Change back to Arcanist -->
+			<While Condition="Core.Player.CurrentJob != Enums.ClassJobType.Arcanist and not IsQuestCompleted(66633)">
+				<RunCode Name="ArcanistEquip2" />
+			</While>
+			
+			<!-- Forgotten but Not Gone -->
+			<If Condition="not IsQuestCompleted(66633)">
+				<If Condition="not HasQuest(66633)">
+					<If Condition="not IsOnMap(128)">
+						<TeleportTo Name="Limsa Lominsa Lower Decks" AetheryteId="8" />
+					</If>
+					<MoveTo Name="Murie" XYZ="-335.7443, 12.89977, 1.388489" />
+					<If Condition="IsQuestAcceptQualified(66633)">
+						<PickupQuest NpcId="1000895" QuestId="66633" XYZ="-335.7443, 12.89977, 1.388489" />
+					</If>
+				</If>
+				<If Condition="GetQuestStep(66633) == 1">
+					<If Condition="IsOnMap(129)">
+						<MoveTo Name="Limsa Lominsa Upper Decks" Distance="0" XYZ="-7.13642, 20.84274, 27.17651" />
+					</If>
+					<TalkTo InteractDistance="3.0" NpcId="1006757" XYZ="-4.470947, 44.99989, -250.5685" />
+				</If>
+				<If Condition="GetQuestStep(66633) == 2">
+					<If Condition="not IsOnMap(137)">
+						<TeleportTo Name="Wineport" AetheryteId="11" />
+					</If>
+					<ExtendedDuty InteractNpcId="1007835" XYZ="-8.011047, 40.66735, 192.7672" QuestId="66633" StepId="2">
+						<HotSpots>
+							<HotSpot XYZ="-2.043, 40.37343, 192.563" Radius="80" />
+						</HotSpots>
+						<TargetMobs>
+							<TargetMob Id="1886" Weight="1" />
+							<TargetMob Id="1885" Weight="1" />
+							<TargetMob Id="1884" Weight="1" />
+							<TargetMob Id="1883" Weight="1" />
+						</TargetMobs>
+					</ExtendedDuty>
+					<!-- Instance
+					
+					Location:
+					Map ID: 137, SubZone ID: 0, Raw Zone ID: 327, Location: <-2.043, 40.37343, 192.563>
+					
+					Enemies:
+					NPC ID: 1885 | Name: Broken Lancer
+					NPC ID: 1884 | Name: Broken Thaumaturge
+					NPC ID: 1886 | Name: Broken Marauder
+					
+					-->
+				</If>
+				<If Condition="GetQuestStep(66633) == 3">
+					<TalkTo InteractDistance="3.0" NpcId="1007836" XYZ="31.3573, 34.07881, 222.7664" />
+				</If>
+				<If Condition="GetQuestStep(66633) == 255">
+					<If Condition="not IsOnMap(128)">
+						<TeleportTo Name="Limsa Lominsa Lower Decks" AetheryteId="8" />
+					</If>
+					<If Condition="IsOnMap(129)">
+						<MoveTo Name="Limsa Lominsa Upper Decks" Distance="0" XYZ="-7.13642, 20.84274, 27.17651" />
+					</If>
+					<TurnIn QuestId="66633" NpcId="1006757" XYZ="-4.470947, 44.99989, -250.5685" />
+				</If>
+			</If>
+		
+			<!-- Change to Scholar! -->
+			<While Condition="Core.Player.CurrentJob != Enums.ClassJobType.Scholar">
+				<RunCode Name="ScholarEquip" />
+			</While>
+		</If>
+		
+		<!-- Thaumaturge -->
+		<If Condition="IsQuestCompleted(65889)">
+			<!-- So You Want To Be An Archer -->
+			<If Condition="not IsQuestCompleted(65667)">
+				<If Condition="not HasQuest(65667)">
+					<If Condition="not IsOnMap(133)">
+						<TeleportTo Name="New Gridania" AetheryteId="2" />
+					</If>
+					<MoveTo Name="Athelyna" XYZ="201.3123, 7.450581E-09, 43.90015" />
+					<If Condition="IsQuestAcceptQualified(65667)">
+						<PickupQuest NpcId="1000197" QuestId="65667" XYZ="201.3123, 7.450581E-09, 43.90015" />
+					</If>
+				</If>
+				<If Condition="GetQuestStep(65667) == 255">
+					<TurnIn QuestId="65667" NpcId="1000200" XYZ="209.5521, 0.9999819, 35.01941" />
+				</If>
+			</If>
+			
+			<!-- Change to Archer -->
+			<While Condition="Core.Player.CurrentJob != Enums.ClassJobType.Archer and not HasQuest(66609) and not IsQuestCompleted(66609)">
+				<RunCode Name="ArcherEquip" />
+			</While>
+			
+			<!-- Get to level 4 -->
+			<If Condition="Core.Player.ClassLevel &lt; 4">
+				<If Condition="not IsOnMap(128) and not IsOnMap(129) and not IsOnMap(135)">
+					<TeleportTo Name="Limsa Lominsa Lower Decks" AetheryteId="8" />
+				</If>
+				<If Condition="IsOnMap(129)">
+					<MoveTo Name="Limsa Lominsa Upper Decks" Distance="0" XYZ="-7.13642, 20.84274, 27.17651" />
+				</If>
+				<If Condition="IsOnMap(128)">
+					<MoveTo Name="Lower La Noscea" Distance="0" XYZ="24.91524, 44.49993, 181.1817" />
+				</If>
+				<If Condition="IsOnMap(135)">
+					<Grind grindRef="LowerLaNoscea_Level4" while="Core.Player.ClassLevel &lt; 4" />
+				</If>
+			</If>
+			
+			<!-- Get to level 6 -->
+			<If Condition="Core.Player.ClassLevel &lt; 6">
+				<If Condition="not IsOnMap(128) and not IsOnMap(129) and not IsOnMap(135)">
+					<TeleportTo Name="Limsa Lominsa Lower Decks" AetheryteId="8" />
+				</If>
+				<If Condition="IsOnMap(129)">
+					<MoveTo Name="Limsa Lominsa Upper Decks" Distance="0" XYZ="-7.13642, 20.84274, 27.17651" />
+				</If>
+				<If Condition="IsOnMap(128)">
+					<MoveTo Name="Lower La Noscea" Distance="0" XYZ="24.91524, 44.49993, 181.1817" />
+				</If>
+				<If Condition="IsOnMap(135)">
+					<Grind grindRef="LowerLaNoscea_Level6" while="Core.Player.ClassLevel &lt; 6" />
+				</If>
+			</If>
+			
+			<!-- Get to level 7 -->
+			<If Condition="Core.Player.ClassLevel &lt; 7">
+				<If Condition="not IsOnMap(128) and not IsOnMap(129) and not IsOnMap(135)">
+					<TeleportTo Name="Limsa Lominsa Lower Decks" AetheryteId="8" />
+				</If>
+				<If Condition="IsOnMap(129)">
+					<MoveTo Name="Limsa Lominsa Upper Decks" Distance="0" XYZ="-7.13642, 20.84274, 27.17651" />
+				</If>
+				<If Condition="IsOnMap(128)">
+					<MoveTo Name="Lower La Noscea" Distance="0" XYZ="24.91524, 44.49993, 181.1817" />
+				</If>
+				<If Condition="IsOnMap(135)">
+					<Grind grindRef="LowerLaNoscea_Level7" while="Core.Player.ClassLevel &lt; 7" />
+				</If>
+			</If>
+			
+			<!-- Get to level 10 -->
+			<If Condition="Core.Player.ClassLevel &lt; 10">
+				<If Condition="not IsOnMap(128) and not IsOnMap(129) and not IsOnMap(135)">
+					<TeleportTo Name="Limsa Lominsa Lower Decks" AetheryteId="8" />
+				</If>
+				<If Condition="IsOnMap(129)">
+					<MoveTo Name="Limsa Lominsa Upper Decks" Distance="0" XYZ="-7.13642, 20.84274, 27.17651" />
+				</If>
+				<If Condition="IsOnMap(128)">
+					<MoveTo Name="Lower La Noscea" Distance="0" XYZ="24.91524, 44.49993, 181.1817" />
+				</If>
+				<If Condition="IsOnMap(135)">
+					<Grind grindRef="LowerLaNoscea_Level8" while="Core.Player.ClassLevel &lt; 10" />
+				</If>
+			</If>
+			
+			<!-- Get to level 12 -->
+			<If Condition="Core.Player.ClassLevel &lt; 12">
+				<If Condition="not IsOnMap(148)">
+					<TeleportTo Name="Bentbranch Meadows" AetheryteId="3" />
+				</If>
+				<Grind grindRef="CentralShroud_Level12" while="Core.Player.ClassLevel &lt; 12" />
+			</If>
+			
+			<!-- Get to level 15 -->
+			<If Condition="Core.Player.ClassLevel &lt; 15">
+				<If Condition="not IsOnMap(134)">
+					<TeleportTo Name="Summerford Farms" AetheryteId="52" />
+				</If>
+				<Grind grindRef="MiddleLaNoscea_Level15" while="Core.Player.ClassLevel &lt; 15" />
+			</If>
+			
+			<!-- Change back to Thaumaturge -->
+			<While Condition="Core.Player.CurrentJob != Enums.ClassJobType.Thaumaturge and not IsQuestCompleted(65604)">
+				<RunCode Name="ThaumaturgeEquip" />
+			</While>
+			
+			<!-- Taking the Black -->
+			<If Condition="not IsQuestCompleted(66609)">
+				<If Condition="not HasQuest(66609)">
+					<If Condition="not IsOnMap(130)">
+						<TeleportTo Name="Uldah - Steps of Nald" AetheryteId="9" />
+					</If>
+					<MoveTo Name="Yayake" XYZ="-196.8872, 18.46, 59.95264" />
+					<If Condition="IsQuestAcceptQualified(66609)">
+						<PickupQuest NpcId="1002279" QuestId="66609" XYZ="-196.8872, 18.46, 59.95264" />
+					</If>
+				</If>
+				<If Condition="GetQuestStep(66609) == 1">
+					<If Condition="not IsOnMap(145)">
+						<TeleportTo Name="Camp Drybone" AetheryteId="18" />
+					</If>
+					<UseObject NpcId="2002533" XYZ="-72.67877, -32.05927, -46.83002" Radius="10" QuestId="66609" StepId="1" />
+				</If>
+				<If Condition="GetQuestStep(66609) == 2">
+					<UseItem NpcId="2002429" ItemId="2000954" XYZ="-72.67877, -32.05927, -46.83002" Radius="10" QuestId="66609" StepId="2" />
+				</If>
+				<If Condition="GetQuestStep(66609) == 3">
+					<If Condition="not IsOnMap(130)">
+						<TeleportTo Name="Uldah - Steps of Nald" AetheryteId="9" />
+					</If>
+					<TalkTo InteractDistance="3.0" NpcId="1002279" XYZ="-196.8872, 18.46, 59.95264" />
+				</If>
+				<If Condition="GetQuestStep(66609) == 255">
+					<If Condition="IsOnMap(130)">
+						<MoveTo Name="Ul'dah - Steps of Thal" Distance="0" XYZ="-114.9707, 9.999928, 9.398392" />
+					</If>
+					<TurnIn QuestId="66609" NpcId="1006752" ItemId="2000808" XYZ="87.5105, 18, 113.7255" />
+				</If>
+			</If>
+			
+			<!-- Change to Black Mage! -->
+			<While Condition="Core.Player.CurrentJob != Enums.ClassJobType.BlackMage">
+				<RunCode Name="BlackMageEquip" />
+			</While>
+		</If>
+
+		<LoadProfile Path="Profiles/Questing/Main Scenario Quests/MainScenario_15-50.xml" />
+	</Order>
+</Profile>

@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+Known issues with this profile:
+	None!
+
+Included jobs:
+	Conjurer
+
+Missing jobs:
+	Arcanist
+	Gladiator
+	Lancer
+	Archer
+	Thaumaturge
+	Gladiator
+	Pugilist
+
+-->
+<Profile>
+	<Name>Questing - Class Quests (Level 30)</Name>
+	<KillRadius>50</KillRadius>
+	<BehaviorDirectory>../Quest Behaviors</BehaviorDirectory>
+	<GrindAreas />
+	<Order>
+		<BotSettings AutoEquip="1" />
+		<If Condition="Core.Player.CurrentJob == Enums.ClassJobType.Conjurer">
+			<!-- In Nature's Embrace - Conjurer -->
+			<If Condition="not IsQuestCompleted(65977)">
+				<If Condition="not HasQuest(65977)">
+					<If Condition="not IsOnMap(132)">
+						<If Condition="not IsOnMap(133)">
+							<TeleportTo Name="New Gridania" AetheryteId="2" />
+						</If>
+					</If>
+					<If Condition="IsOnMap(132)">
+						<MoveTo Name="Old Gridania" Distance="0" XYZ="-106.191, 1.08756, 5.450311" />
+					</If>
+					<MoveTo Name="E-Sumi-Yan" XYZ="-258.8083, -5.773526, -27.26788" />
+					<If Condition="IsQuestAcceptQualified(65977)">
+						<PickupQuest NpcId="1000692" QuestId="65977" XYZ="-258.8083, -5.773526, -27.26788" />
+					</If>
+				</If>
+				<If Condition="GetQuestStep(65977) == 1">
+					<If Condition="not IsOnMap(153)">
+						<TeleportTo Name="Quarrymill" AetheryteId="5" />
+					</If>
+					<UseObject NpcId="2000899" XYZ="43.90015, 6.546082, -1.937927" Radius="10" QuestId="65977" StepId="1" />
+				</If>
+				<If Condition="GetQuestStep(65977) == 2">
+					<TalkTo InteractDistance="3.0" NpcId="1002965" XYZ="49.42395, 6.578118, -3.280701" />
+				</If>
+				<If Condition="GetQuestStep(65977) == 3">
+					<UseObject NpcId="2000901" XYZ="122.3621, 17.8988, -136.8582" Radius="10" QuestId="65977" StepId="3" />
+				</If>
+				<If Condition="GetQuestStep(65977) == 4">
+					<TalkTo InteractDistance="3.0" NpcId="1002966" XYZ="124.1931, 17.55036, -129.9001" />
+				</If>
+				<If Condition="GetQuestStep(65977) == 5">
+					<UseObject NpcId="2000906" XYZ="292.0424, 15.36578, -107.2862" Radius="10" QuestId="65977" StepId="5" />
+				</If>
+				<If Condition="GetQuestStep(65977) == 6">
+					<TalkTo InteractDistance="3.0" NpcId="1002967" XYZ="293.1686, 16.17119, -112.6706" />
+				</If>
+				<If Condition="GetQuestStep(65977) == 7">
+					<SimpleDuty InteractNpcId="1002968" XYZ="332.1431, 4.136264, -85.64893" QuestId="65977" StepId="7">
+						<HotSpots>
+							<HotSpot XYZ="319.1471, 4.249999, -82.1616" Radius="30" />
+						</HotSpots>
+						<TargetMobs>
+							<TargetMob Id="1424" Weight="1" />
+							<TargetMob Id="1930" Weight="0.8" />
+							<TargetMob Id="596" Weight="0.5" />
+						</TargetMobs>
+					</SimpleDuty>
+				</If>
+				<If Condition="GetQuestStep(65977) == 255">
+					<If Condition="not IsOnMap(132)">
+						<If Condition="not IsOnMap(133)">
+							<TeleportTo Name="New Gridania" AetheryteId="2" />
+						</If>
+					</If>
+					<If Condition="IsOnMap(132)">
+						<MoveTo Name="Old Gridania" Distance="0" XYZ="-106.191, 1.08756, 5.450311" />
+					</If>
+					<TurnIn NpcId="1000692" QuestId="65977" XYZ="-258.8083, -5.773526, -27.26788" />
+				</If>
+			</If>
+			
+			<!-- Unicorn Power -->
+			<If Condition="not IsQuestCompleted(65730)">
+				<If Condition="not HasQuest(65730)">
+					<If Condition="not IsOnMap(132)">
+						<If Condition="not IsOnMap(133)">
+							<TeleportTo Name="New Gridania" AetheryteId="2" />
+						</If>
+					</If>
+					<If Condition="IsOnMap(132)">
+						<MoveTo Name="Old Gridania" Distance="0" XYZ="-106.191, 1.08756, 5.450311" />
+					</If>
+					<MoveTo Name="Braya" XYZ="-243.1525, -4.000004, -7.950012" />
+					<If Condition="IsQuestAcceptQualified(65730)">
+						<PickupQuest NpcId="1000705" QuestId="65730" XYZ="-243.1525, -4.000004, -7.950012" />
+					</If>
+				</If>
+				<If Condition="GetQuestStep(65730) == 1">
+					<If Condition="not IsOnMap(154)">
+						<TeleportTo Name="Fallgourd Float" AetheryteId="7" />
+					</If>
+					<UseSpell SpellId="120" NpcId="1008174" WaitTime="2" XYZ="-248.6763, -79.66112, 475.0286" />
+				</If>
+				<If Condition="GetQuestStep(65730) == 255">
+					<If Condition="not IsOnMap(132)">
+						<If Condition="not IsOnMap(133)">
+							<TeleportTo Name="New Gridania" AetheryteId="2" />
+						</If>
+					</If>
+					<If Condition="IsOnMap(132)">
+						<MoveTo Name="Old Gridania" Distance="0" XYZ="-106.191, 1.08756, 5.450311" />
+					</If>
+					<TurnIn NpcId="1000705" QuestId="65730" XYZ="-243.1525, -4.000004, -7.950012" />
+				</If>
+			</If>
+		</If>
+		
+		<If Condition="Core.Player.CurrentJob == Enums.ClassJobType.Arcanist">
+			<!-- Sinking Doesmaga - Arcanist -->
+			<If Condition="not IsQuestCompleted(65997)">
+				<If Condition="not HasQuest(65997)">
+					<If Condition="not IsOnMap(129)">
+						<TeleportTo Name="Limsa Lominsa Lower Decks" AetheryteId="8" />
+					</If>
+					<MoveTo Name="Thubyrgeim" XYZ="-326.3752, 12.89966, 9.994568" />
+					<If Condition="IsQuestAcceptQualified(65997)">
+						<PickupQuest NpcId="1000909" QuestId="65997" XYZ="-326.3752, 12.89966, 9.994568" />
+					</If>
+				</If>
+				<If Condition="GetQuestStep(65997) == 1">
+					<If Condition="not IsOnMap(137)">
+						<TeleportTo Name="Costa del Sol" AetheryteId="11" />
+					</If>
+					<HandOver ItemId="2000885" QuestId="65997" StepId="1" NpcId="1005251" XYZ="550.4692, 12.14773, 220.9353" />
+				</If>
+				<If Condition="GetQuestStep(65997) == 2">
+					<HandOver ItemId="2000886" QuestId="65997" StepId="2" NpcId="1005252" XYZ="586.0226, 14.59663, 376.2111" />
+				</If>
+				<If Condition="GetQuestStep(65997) == 3">
+		`			<HandOver ItemId="2000887" QuestId="65997" StepId="3" NpcId="1006273" XYZ="619.0126, 23.93624, 455.1002" />
+				</If>
+				<If Condition="GetQuestStep(65997) == 4">
+					<HandOver ItemId="2000888" QuestId="65997" StepId="4" NpcId="1005253" XYZ="564.3549, 20.61789, 504.3259" />
+				</If>
+				<If Condition="GetQuestStep(65997) == 5">
+					<HandOver ItemId="2000890" QuestId="65997" StepId="5" NpcId="1005254" XYZ="442.0081, 15.79327, 370.321" />
+				</If>
+				<If Condition="GetQuestStep(65997) == 6">
+					<ExtendedHandOver ItemId="2000891" QuestId="65997" StepId="6" NpcId="1005229" XYZ="522.9114, 17.41504, 456.3516" />
+				</If>
+				<If Condition="GetQuestStep(65997) == 7">
+					<SimpleDuty InteractNpcId="1005235" XYZ="684.3823, 11.59444, 411.9478" QuestId="65997" StepId="7">
+						<HotSpots>
+							<HotSpot XYZ="7.68713, 16.34722, -1.695764" Radius="30" />
+						</HotSpots>
+						<TargetMobs>
+							<TargetMob Id="1969" Weight="3" />
+							<TargetMob Id="1968" />
+							<TargetMob Id="1967" />
+							<TargetMob Id="1954" />
+							<TargetMob Id="1952" />
+							<TargetMob Id="1951" />
+							<TargetMob Id="1500" Weight="0.5" />
+						</TargetMobs>
+					</SimpleDuty>
+					<!-- Instance
+					
+					Location:
+					Map ID: 0, SubZone ID: 0, Raw Zone ID: 288, Location: <7.68713, 16.34722, -1.695764>
+					
+					Enemies:
+					NPC ID: 1967 | Name: Barber Hirskskrat
+					NPC ID: 1954 | Name: Morningstar Gunner
+					NPC ID: 1952 | Name: Morningstar Falmadair
+					NPC ID: 1951 | Name: Morningstar Boatswain
+					
+					-->
+				</If>
+				<If Condition="GetQuestStep(65997) == 8">
+					<If Condition="not IsOnMap(129)">
+						<TeleportTo Name="Limsa Lominsa Lower Decks" AetheryteId="8" />
+					</If>
+					<TalkTo InteractDistance="3.0" NpcId="1000909" XYZ="-326.3752, 12.89966, 9.994568" />
+				</If>
+				<If Condition="GetQuestStep(65997) == 255">
+					<TurnIn QuestId="65997" NpcId="1000909" ItemId="2000889" XYZ="-326.3752, 12.89966, 9.994568" />
+				</If>
+			</If>
+		</If>
+		
+		<If Condition="Core.Player.CurrentJob == Enums.ClassJobType.Thaumaturge">
+			<!-- Facing Your Demons -->
+			<If Condition="not IsQuestCompleted(65889)">
+				<If Condition="not HasQuest(65889)">
+					<If Condition="not IsOnMap(130)">
+						<TeleportTo Name="Uldah - Steps of Nald" AetheryteId="9" />
+					</If>
+					<MoveTo Name="Cocobuki" XYZ="-250.3548, 18, 80.88806" />
+					<If Condition="IsQuestAcceptQualified(65889)">
+						<PickupQuest NpcId="1001708" QuestId="65889" XYZ="-250.3548, 18, 80.88806" />
+					</If>
+				</If>
+				<If Condition="GetQuestStep(65889) == 1">
+					<If Condition="not IsOnMap(140)">
+						<TeleportTo Name="Horizon" AetheryteId="17" />
+					</If>
+					<HandOver ItemId="2000426" NpcId="1004070" XYZ="-455.8633, 23.11401, -326.9246" Condition="GetQuestById(65889).QuestI8CH == 3" />
+					<HandOver ItemId="2000426" NpcId="1004094" XYZ="-413.4738, 23.11401, -383.7186" Condition="GetQuestById(65889).QuestI8CH == 2" />
+					<HandOver ItemId="2000426" QuestId="65889" StepId="1" NpcId="1004096" XYZ="-444.7548, 25, -324.2695" />
+				</If>
+				<If Condition="GetQuestStep(65889) == 2">
+					<TalkTo InteractDistance="3.0" NpcId="1002316" XYZ="-436.7285, 23.77481, -350.8202" />
+				</If>
+				<If Condition="GetQuestStep(65889) == 3">
+					<UseObject NpcId="1002315" XYZ="-392.3248, 23.55769, -546.9902" Radius="10" QuestId="65889" StepId="3" />
+				</If>
+				<If Condition="GetQuestStep(65889) == 4">
+					<TalkTo InteractDistance="3.0" NpcId="1002315" XYZ="-392.3248, 23.55769, -546.9902" />
+				</If>
+				<If Condition="GetQuestStep(65889) == 5">
+					<ExtendedDuty InteractNpcId="1002317" XYZ="-269.8558, 15.34657, -718.1354" QuestId="65889" StepId="5">
+						<HotSpots>
+							<HotSpot XYZ="-200.7011, 14.63993, -736.3031" Radius="30" />
+						</HotSpots>
+						<TargetMobs>
+							<TargetMob Id="1221" />
+							<TargetMob Id="841" Weight="0.5" />
+						</TargetMobs>
+					</ExtendedDuty>
+				</If>
+				<If Condition="GetQuestStep(65889) == 255">
+					<If Condition="not IsOnMap(130)">
+						<TeleportTo Name="Uldah - Steps of Nald" AetheryteId="9" />
+					</If>
+					<TurnIn QuestId="65889" NpcId="1001708" XYZ="-250.3548, 18, 80.88806" />
+				</If>
+			</If>
+		</If>
+		
+		<LoadProfile Path="Profiles/Questing/Main Scenario Quests/MainScenario_15-50.xml" />
+	</Order>
+</Profile>

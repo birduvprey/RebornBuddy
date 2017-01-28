@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+Known issues with this profile:
+	- On step 1 of Topaz Teachings, there's a SelectString
+	  that you need to click 'Yes' on, the bot won't click it
+
+Included jobs:
+	Arcanist
+	Marauder (Double checked, no issues)
+	Conjurer
+
+Missing jobs:
+	Lancer
+	Archer
+	Thaumaturge
+	Gladiator
+	Pugilist
+
+-->
+<Profile>
+	<Name>Questing - Class Quests (Level 15)</Name>
+	<KillRadius>50</KillRadius>
+	<BehaviorDirectory>../Quest Behaviors</BehaviorDirectory>
+	<GrindAreas />
+	<Order>
+		<BotSettings AutoEquip="1" />
+		<If Condition="Core.Player.CurrentJob == Enums.ClassJobType.Arcanist">
+			<!-- Topaz Teachings - Arcanist -->
+			<If Condition="not IsQuestCompleted(66639)">
+				<If Condition="not HasQuest(66639)">
+					<If Condition="not IsOnMap(129)">
+						<TeleportTo Name="Limsa Lominsa Lower Decks" AetheryteId="8" />
+					</If>
+					<MoveTo Name="Thubyrgeim" XYZ="-326.3752, 12.89966, 9.994568" />
+					<If Condition="IsQuestAcceptQualified(66639)">
+						<PickupQuest NpcId="1000909" QuestId="66639" XYZ="-326.3752, 12.89966, 9.994568" />
+					</If>
+				</If>
+				<If Condition="GetQuestStep(66639) == 1">
+					<TalkTo InteractDistance="3.0" NpcId="1005199" XYZ="-348.3177, -2.37447, 11.91724" />
+					<!-- <UseTransport InteractDistance="3.0" NpcId="1005199" DialogOption="0" QuestId="66639" StepId="1" XYZ="-348.3177, -2.37447, 11.91724" /> -->
+					<!-- During TalkTo, a SelectString, click 'Yes.' -->
+				</If>
+				<If Condition="GetQuestStep(66639) == 255">
+					<TurnIn QuestId="66639" NpcId="1000909" XYZ="-326.3752, 12.89966, 9.994568" />
+				</If>
+			</If>
+			
+			<!-- Over the Rails -->
+			<If Condition="not IsQuestCompleted(65994)">
+				<If Condition="not HasQuest(65994)">
+					<MoveTo Name="Thubyrgeim" XYZ="-326.3752, 12.89966, 9.994568" />
+					<If Condition="IsQuestAcceptQualified(65994)">
+						<PickupQuest NpcId="1000909" QuestId="65994" XYZ="-326.3752, 12.89966, 9.994568" />
+					</If>
+				</If>
+				<If Condition="GetQuestStep(65994) == 1">
+					<If Condition="IsOnMap(129)">
+						<UseTransport NpcId="1000868" DialogOption="0" InteractDistance="3.5" XYZ="-192.0043, 0.9999907, 211.6884" />
+					</If>
+					<If Condition="IsOnMap(138)">
+						<TalkTo InteractDistance="3.0" NpcId="1005208" XYZ="316.0295, -24.13677, 211.2001" />
+					</If>
+				</If>
+				<If Condition="GetQuestStep(65994) == 2">
+					<TalkTo InteractDistance="3.0" NpcId="1005211" XYZ="204.2725, -36.40237, 306.1722" />
+					<WaitWhile Condition="GetQuestStep(65994) == 2" />
+				</If>
+				<If Condition="GetQuestStep(65994) == 3">
+					<TalkTo InteractDistance="3.0" NpcId="1005211" XYZ="204.2725, -36.40237, 306.1722" />
+					<WaitWhile Condition="GetQuestStep(65994) == 3" />
+				</If>
+				<If Condition="GetQuestStep(65994) == 4">
+					<SimpleDuty InteractNpcId="2002009" XYZ="173.8154, -41.36731, 280.7201" QuestId="65994" StepId="4">
+						<HotSpots>
+							<HotSpot XYZ="6.783015, 16.34722, 0.906988" Radius="30" />
+						</HotSpots>
+						<TargetMobs>
+							<TargetMob Id="1952" />
+							<TargetMob Id="1951" />
+							<TargetMob Id="1953" />
+							<TargetMob Id="1954" />
+							<TargetMob Id="1955" />
+						</TargetMobs>
+					</SimpleDuty>
+					<!-- Instance
+					
+					Location:
+					Map ID: 286, SubZone ID: 0, Location: <6.783015, 16.34722, 0.906988>
+					Mapped to Rhotano Sea (Map ID?)
+					
+					Enemies:
+					NPC ID: 1951 | Level: 14 | Name: Morningstar Boatswain
+					NPC ID: 1952 | Level: 14 | Name: Morningstar Falmadair
+					NPC ID: 1953 | Level: 16 | Name: Morningstar Navigator
+					NPC ID: 1954 | Level: 14 | Name: Morningstar Gunner
+					NPC ID: 1955 | Level: 14 | Name: Morningstar Gromet
+					
+					Protect this NPC:
+					NPC ID: 1494 | Level: 15 | Name: Geissfryn Eveningcalm
+					
+					-->
+					<WaitWhile Condition="GetQuestStep(65994) == 4" />
+				</If>
+				<WaitWhile Condition="GetQuestStep(65994) == 5" />
+				<If Condition="GetQuestStep(65994) == 255">
+					<If Condition="not IsOnMap(129)">
+						<TeleportTo Name="Limsa Lominsa Lower Decks" AetheryteId="8" />
+					</If>
+					<TurnIn QuestId="65994" NpcId="1000909" XYZ="-326.3752, 12.89966, 9.994568" />
+				</If>
+			</If>
+		</If>
+		
+		<If Condition="Core.Player.CurrentJob == Enums.ClassJobType.Marauder">
+			<!-- Brutal Strength - Marauder -->
+			<If Condition="not IsQuestCompleted(65852)">
+				<If Condition="not HasQuest(65852)">
+					<If Condition="not IsOnMap(129)">
+						<If Condition="not IsOnMap(128)">
+							<TeleportTo Name="Limsa Lominsa Lower Decks" AetheryteId="8" />
+						</If>
+					</If>
+					<If Condition="IsOnMap(129)">
+						<MoveTo Name="Limsa Lominsa Upper Decks" Distance="0" XYZ="-7.13642, 20.84274, 27.17651" />
+					</If>
+					<MoveTo Name="Wyrnzoen" XYZ="-1.205505, 44.99989, -255.8786" />
+					<If Condition="IsQuestAcceptQualified(65852)">
+						<PickupQuest NpcId="1000927" QuestId="65852" XYZ="-1.205505, 44.99989, -255.8786" />
+					</If>
+				</If>
+				<If Condition="GetQuestStep(65852) == 1">
+					<If Condition="IsOnMap(128)">
+						<MoveTo Name="Limsa Lominsa Lower Decks" Distance="0" XYZ="-9.65393, 42.99996, -25.46598" />
+					</If>
+					<If Condition="IsOnMap(129)">
+						<UseTransport NpcId="1000868" DialogOption="0" InteractDistance="3.5" XYZ="-192.0043, 0.9999907, 211.6884" />
+					</If>
+					<If Condition="IsOnMap(138)">
+						<TalkTo InteractDistance="3.0" NpcId="1002110" XYZ="319.8444, -31.89865, 273.5179" />
+					</If>
+				</If>
+				<If Condition="GetQuestStep(65852) == 2">
+					<UseObject NpcId="2000288" XYZ="99.22937, -14.29773, 141.8632" Radius="10" QuestId="65852" StepId="2" />
+				</If>
+				<If Condition="GetQuestStep(65852) == 3">
+					<If Condition="not IsOnMap(129)">
+						<If Condition="not IsOnMap(128)">
+							<TeleportTo Name="Limsa Lominsa Lower Decks" AetheryteId="8" />
+						</If>
+					</If>
+					<If Condition="IsOnMap(129)">
+						<MoveTo Name="Limsa Lominsa Upper Decks" Distance="0" XYZ="-7.13642, 20.84274, 27.17651" />
+					</If>
+					<If Condition="IsOnMap(128)">
+						<TalkTo InteractDistance="3.0" NpcId="1000927" XYZ="-1.205505, 44.99989, -255.8786" />
+					</If>
+				</If>
+				<If Condition="GetQuestStep(65852) == 4">
+					<If Condition="IsOnMap(128)">
+						<MoveTo Name="Limsa Lominsa Lower Decks" Distance="0" XYZ="-9.65393, 42.99996, -25.46598" />
+					</If>
+					<If Condition="IsOnMap(129)">
+						<MoveTo Name="Middle La Noscea" Distance="0" XYZ="65.0005, 19.99999, 0.349344" />
+					</If>
+					<If Condition="IsOnMap(134)">
+						<TalkTo InteractDistance="3.0" NpcId="1002111" XYZ="-206.8055, 41.75788, -39.62775" />
+					</If>
+				</If>
+				<If Condition="GetQuestStep(65852) == 5">
+					<UseSpell SpellId="39" NpcId="2001486" XYZ="-225.33, 42.19116, -35.20258" />
+				</If>
+				<If Condition="GetQuestStep(65852) == 6">
+					<TalkTo InteractDistance="3.0" NpcId="1002111" XYZ="-206.8055, 41.75788, -39.62775" />
+				</If>
+				<If Condition="GetQuestStep(65852) == 255">
+					<If Condition="not IsOnMap(129)">
+						<If Condition="not IsOnMap(128)">
+							<TeleportTo Name="Limsa Lominsa Lower Decks" AetheryteId="8" />
+						</If>
+					</If>
+					<If Condition="IsOnMap(129)">
+						<MoveTo Name="Limsa Lominsa Upper Decks" Distance="0" XYZ="-7.13642, 20.84274, 27.17651" />
+					</If>
+					<If Condition="IsOnMap(128)">
+						<TurnIn QuestId="65852" NpcId="1000927" XYZ="-1.205505, 44.99989, -255.8786" />
+					</If>
+				</If>
+			</If>
+		</If>
+		
+		<If Condition="Core.Player.CurrentJob == Enums.ClassJobType.Conjurer">
+			<!-- Trial by Water - Conjurer -->
+			<If Condition="not IsQuestCompleted(65628)">
+				<If Condition="not HasQuest(65628)">
+					<If Condition="not IsOnMap(132)">
+						<If Condition="not IsOnMap(133)">
+							<TeleportTo Name="New Gridania" AetheryteId="2" />
+						</If>
+					</If>
+					<If Condition="IsOnMap(132)">
+						<MoveTo Name="Old Gridania" Distance="0" XYZ="-106.191, 1.08756, 5.450311" />
+					</If>
+					<MoveTo Name="E-Sumi-Yan" XYZ="-258.8083, -5.773526, -27.26788" />
+					<If Condition="IsQuestAcceptQualified(65628)">
+						<PickupQuest NpcId="1000692" QuestId="65628" XYZ="-258.8083, -5.773526, -27.26788" />
+					</If>
+				</If>
+				<If Condition="GetQuestStep(65628) == 1">
+					<If Condition="IsOnMap(133)">
+						<UseTransport NpcId="1001263" DialogOption="0" InteractDistance="3.5" XYZ="181.4144, -2.35195, -240.4059" />
+					</If>
+					<UseItem NpcId="2000889" ItemId="2000121" XYZ="-276.936, 11.73413, 367.2083" Radius="10" QuestId="65628" StepId="1" />
+				</If>
+				<If Condition="GetQuestStep(65628) == 2">
+					<TalkTo InteractDistance="3.0" NpcId="1000561" XYZ="-230.1824, 3.544826, 279.0721" />
+				</If>
+				<If Condition="GetQuestStep(65628) == 3">
+					<TalkTo InteractDistance="3.0" NpcId="1000619" XYZ="-209.0639, 22.81337, 245.3497" />
+				</If>
+				<If Condition="GetQuestStep(65628) == 4">
+					<UseSpell SpellId="120" NpcId="1003001" XYZ="-234.3328, 18.31007, 245.6854" QuestId="65628" StepId="4" />
+				</If>
+				<If Condition="GetQuestStep(65628) == 5">
+					<TalkTo InteractDistance="3.0" NpcId="1003057" XYZ="-237.6593, 17.85008, 243.4882" />
+				</If>
+				<If Condition="GetQuestStep(65628) == 6">
+					<SimpleDuty InteractNpcId="1001213" XYZ="-66.05634, -7.982881, 231.1589" QuestId="65628" StepId="6">
+						<HotSpots>
+							<HotSpot XYZ="-51.9531, -9.74921, 232.8587" Radius="30" />
+						</HotSpots>
+						<TargetMobs>
+							<TargetMob Id="56" Weight="1" />
+							<TargetMob Id="142" Weight="0.6" />
+						</TargetMobs>
+					</SimpleDuty>
+					<!-- Instance
+					
+					Location:
+					Map ID: 152, SubZone ID: 0, Location: <-51.9531, -9.74921, 232.8587>
+					
+					Enemies:
+					NPC ID: 142 |  Name: Young Antelope Stag
+					NPC ID: 56 |  Name: Water Sprite
+					
+					-->
+				</If>
+				<If Condition="GetQuestStep(65628) == 7">
+					<TalkTo InteractDistance="3.0" NpcId="1003006" XYZ="-76.64612, -9.205918, 283.2227" />
+				</If>
+				<If Condition="GetQuestStep(65628) == 255">
+					<If Condition="IsOnMap(152)">
+						<UseTransport NpcId="1000541" DialogOption="0" InteractDistance="3.5" XYZ="-578.027, 7.932977, 74.81494" />
+					</If>
+					<TurnIn QuestId="65628" NpcId="1000692" XYZ="-258.8083, -5.773526, -27.26788" />
+				</If>
+			</If>
+		</If>
+		
+		<If Condition="Core.Player.CurrentJob == Enums.ClassJobType.Thaumaturge">
+			<!-- The Threat of Superiority -->
+			<If Condition="not IsQuestCompleted(65886)">
+				<If Condition="not HasQuest(65886)">
+					<If Condition="not IsOnMap(130)">
+						<TeleportTo Name="Uldah - Steps of Nald" AetheryteId="9" />
+					</If>
+					<MoveTo Name="Cocobuki" XYZ="-250.3548, 18, 80.88806" />
+					<If Condition="IsQuestAcceptQualified(65886)">
+						<PickupQuest NpcId="1001708" QuestId="65886" XYZ="-250.3548, 18, 80.88806" />
+					</If>
+				</If>
+				<If Condition="GetQuestStep(65886) == 1">
+					<TalkTo InteractDistance="3.0" NpcId="1001711" XYZ="-241.6266, 18.8, 83.32947" />
+				</If>
+				<If Condition="GetQuestStep(65886) == 2">
+					<EmoteNPC NpcId="1002301" Emote="cry" XYZ="-178.2102, 18, 61.41748" Radius="10" Condition="GetQuestById(65886).QuestI8AL == 0" />
+					<EmoteNPC NpcId="1002300" Emote="cry" XYZ="-176.9284, 18, 62.36353" Radius="10" Condition="GetQuestById(65886).QuestI8AL == 1" />
+					<EmoteNPC NpcId="1002302" Emote="cry" XYZ="-176.7148, 18, 64.34729" Radius="10" QuestId="65886" StepId="2" />
+				</If>
+				<If Condition="GetQuestStep(65886) == 3">
+					<TalkTo InteractDistance="3.0" NpcId="1001711" XYZ="-241.6266, 18.8, 83.32947" />
+				</If>
+				<If Condition="GetQuestStep(65886) == 4">
+					<If Condition="not IsOnMap(145)">
+						<TeleportTo Name="Camp Drybone" AetheryteId="18" />
+					</If>
+					<ExtendedDuty InteractNpcId="2001470" XYZ="-24.88751, -25.34528, 321.95" QuestId="65886" StepId="4">
+						<HotSpots>
+							<HotSpot XYZ="85.95137, -24.13868, 282.4504" Radius="50" />
+						</HotSpots>
+						<TargetMobs>
+							<TargetMob Id="1306" Weight="1" />
+						</TargetMobs>
+					</ExtendedDuty>
+				</If>
+				<If Condition="GetQuestStep(65886) == 255">
+					<If Condition="not IsOnMap(130)">
+						<TeleportTo Name="Uldah - Steps of Nald" AetheryteId="9" />
+					</If>
+					<TurnIn QuestId="65886" NpcId="1001711" XYZ="-241.6266, 18.8, 83.32947" />
+				</If>
+			</If>
+		</If>
+		
+		<LoadProfile Path="Profiles/Questing/Main Scenario Quests/MainScenario_15-50.xml" />
+	</Order>
+</Profile>

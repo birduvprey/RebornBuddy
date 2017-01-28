@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+Known issues with this profile:
+	None!
+
+Included jobs:
+	Conjurer
+
+Missing jobs:
+	Arcanist
+	Gladiator
+	Lancer
+	Archer
+	Thaumaturge
+	Gladiator
+	Pugilist
+
+-->
+<Profile>
+	<Name>Questing - Job Quests (Level 35)</Name>
+	<KillRadius>50</KillRadius>
+	<BehaviorDirectory>../Quest Behaviors</BehaviorDirectory>
+	<CodeChunks>
+		<CodeChunk Name="RayaOSenna">
+		<![CDATA[ 
+				if(Core.Player.IsMounted)
+				{
+					ff14bot.Managers.Actionmanager.Dismount();
+					await Buddy.Coroutines.Coroutine.Sleep(3000);
+				}
+				ff14bot.Managers.MovementManager.SetFacing(0.9891489f);
+				ff14bot.Managers.MovementManager.MoveForwardStart();
+				await Buddy.Coroutines.Coroutine.Sleep(500);
+				ff14bot.Managers.MovementManager.Jump();
+				await Buddy.Coroutines.Coroutine.Sleep(500);
+				ff14bot.Managers.MovementManager.MoveForwardStop();
+        ]]>
+		</CodeChunk>
+		<CodeChunk Name="TheLastRemnants">
+		<![CDATA[ 
+				if(Core.Player.IsMounted)
+				{
+					ff14bot.Managers.Actionmanager.Dismount();
+					await Buddy.Coroutines.Coroutine.Sleep(3000);
+				}
+				ff14bot.Managers.MovementManager.SetFacing(5.425516f);
+				ff14bot.Managers.MovementManager.MoveForwardStart();
+				await Buddy.Coroutines.Coroutine.Sleep(250);
+				ff14bot.Managers.MovementManager.Jump();
+				await Buddy.Coroutines.Coroutine.Sleep(2000);
+				ff14bot.Managers.MovementManager.MoveForwardStop();
+        ]]>
+		</CodeChunk>
+		<CodeChunk Name="Dismount">
+		<![CDATA[ 
+				if(Core.Player.IsMounted)
+				{
+					ff14bot.Managers.Actionmanager.Dismount();
+					await Buddy.Coroutines.Coroutine.Sleep(3000);
+				}
+        ]]>
+		</CodeChunk>
+	</CodeChunks>
+	<GrindAreas />
+	<Order>
+		<BotSettings AutoEquip="1" />
+		<If Condition="Core.Player.CurrentJob == Enums.ClassJobType.WhiteMage">
+			<!-- Only You Can Prevent Forest Ire -->
+			<If Condition="not IsQuestCompleted(66616)">
+				<If Condition="not HasQuest(66616)">
+					<If Condition="not IsOnMap(153)">
+						<TeleportTo Name="Camp Tranquil" AetheryteId="6" />
+					</If>
+					<MoveTo Name="Raya-O-Senna" Distance="2" XYZ="-143.325, 8.179872, 269.7141" />
+					<RunCode Name="RayaOSenna" />
+					<MoveTo Name="Raya-O-Senna" Distance="1" UseMesh="False" XYZ="-137.7426, 8.47965, 280.7405" />
+					<If Condition="IsQuestAcceptQualified(66616)">
+						<PickupQuest NpcId="1006751" QuestId="66616" XYZ="-139.4522, 8.712891, 281.6968" />
+					</If>
+				</If>
+				<If Condition="GetQuestStep(66616) == 1">
+					<If Condition="not IsOnMap(148)">
+						<TeleportTo Name="Bentbranch Meadows" AetheryteId="3" />
+					</If>
+					<MoveTo Name="Destination" Distance="3" XYZ="-400.1706, 61.59623, -151.2466" />
+					<RunCode Name="Dismount" />
+					<UseObject NpcId="2002392" XYZ="-416.5561, 60.99023, -148.6381" Radius="10" QuestId="66616" StepId="1" />
+				</If>
+				<If Condition="GetQuestStep(66616) == 255">
+					<If Condition="not IsOnMap(153)">
+						<TeleportTo Name="Camp Tranquil" AetheryteId="6" />
+					</If>
+					<MoveTo Name="Raya-O-Senna" Distance="2" XYZ="-143.325, 8.179872, 269.7141" />
+					<RunCode Name="RayaOSenna" />
+					<MoveTo Name="Raya-O-Senna" Distance="1" UseMesh="False" XYZ="-137.7426, 8.47965, 280.7405" />
+					<TurnIn NpcId="1006751" QuestId="66616" XYZ="-139.4522, 8.712891, 281.6968" />
+				</If>
+			</If>
+		</If>
+		
+		<If Condition="Core.Player.CurrentJob == Enums.ClassJobType.Scholar">
+			<!-- The Last Remnants -->
+			<If Condition="not IsQuestCompleted(66634)">
+				<If Condition="not HasQuest(66634)">
+					<If Condition="not IsOnMap(128)">
+						<TeleportTo Name="Limsa Lominsa Lower Decks" AetheryteId="8" />
+					</If>
+					<If Condition="IsOnMap(129)">
+						<MoveTo Name="Limsa Lominsa Upper Decks" Distance="0" XYZ="-7.13642, 20.84274, 27.17651" />
+					</If>
+					<MoveTo Name="Alka Zolka" XYZ="-4.470947, 44.99989, -250.5685" />
+					<If Condition="IsQuestAcceptQualified(66634)">
+						<PickupQuest NpcId="1006757" QuestId="66634" XYZ="-4.470947, 44.99989, -250.5685" />
+					</If>
+				</If>
+				<If Condition="GetQuestStep(66634) == 1">
+					<If Condition="not IsOnMap(180)">
+						<TeleportTo Name="Camp Overlook" AetheryteId="16" />
+					</If>
+					<UseObject NpcId="2002380" XYZ="-338.8877, 61.72266, -120.2564" Radius="10" Condition="GetQuestById(66634).QuestI8AH == 0" />
+					<UseObject NpcId="2002379" XYZ="-274.2809, 65.81213, -196.9788" Radius="10" Condition="GetQuestById(66634).QuestI8AH == 1" />
+					<If Condition="GetQuestById(66634).QuestI8AH == 2">
+						<MoveTo Name="Forgotten Whisper" Distance="1" XYZ="-295.9975, 70.48801, -271.2891" />
+						<RunCode Name="TheLastRemnants" />
+						<UseObject NpcId="2002382" XYZ="-327.8707, 65.87317, -267.5975" Radius="10" Condition="GetQuestById(66634).QuestI8AH == 2" />
+					</If>
+					<If Condition="GameObjectManager.GetObjectByNPCId(2002382) and Clio.Utilities.Vector3.Distance(Core.Player.Location, GameObjectManager.GetObjectByNPCId(2002382).Location) &lt; 7">
+						<MoveTo Name="Forgotten Whisper" Distance="1" UseMesh="False" XYZ="-316.7654, 52.04363, -286.56" />
+					</If>
+					<UseObject NpcId="2002381" XYZ="-360.5554, 66.33093, -310.8721" Radius="10" QuestId="66634" StepId="1" />
+				</If>
+				<If Condition="GetQuestStep(66634) == 2">
+					<UseObject NpcId="2002383" XYZ="-437.9492, 51.37708, -321.2482" Radius="10" QuestId="66634" StepId="2" />
+				</If>
+				<WaitWhile Condition="GetQuestStep(66634) == 3" />
+				<If Condition="GetQuestStep(66634) == 255">
+					<If Condition="not IsOnMap(128)">
+						<TeleportTo Name="Limsa Lominsa Lower Decks" AetheryteId="8" />
+					</If>
+					<If Condition="IsOnMap(129)">
+						<MoveTo Name="Limsa Lominsa Upper Decks" Distance="0" XYZ="-7.13642, 20.84274, 27.17651" />
+					</If>
+					<TurnIn NpcId="1006757" QuestId="66634" XYZ="-4.470947, 44.99989, -250.5685" />
+				</If>
+			</If>
+		</If>
+		
+		<If Condition="Core.Player.CurrentJob == Enums.ClassJobType.BlackMage">
+			<!-- You'll Never Go Back -->
+			<If Condition="not IsQuestCompleted(66610)">
+				<If Condition="not HasQuest(66610)">
+					<If Condition="not IsOnMap(130) and not IsOnMap(131)">
+						<TeleportTo Name="Uldah - Steps of Nald" AetheryteId="9" />
+					</If>
+					<If Condition="IsOnMap(130)">
+						<MoveTo Name="Ul'dah - Steps of Thal" Distance="0" XYZ="-114.9707, 9.999928, 9.398392" />
+					</If>
+					<MoveTo Name="Lalai" XYZ="87.5105, 18, 113.7255" />
+					<If Condition="IsQuestAcceptQualified(66610)">
+						<PickupQuest NpcId="1006752" QuestId="66610" XYZ="87.5105, 18, 113.7255" />
+					</If>
+				</If>
+				<If Condition="GetQuestStep(66610) == 1">
+					<If Condition="not IsOnMap(146)">
+						<TeleportTo Name="Forgotten Springs" AetheryteId="20" />
+					</If>
+					<UseObject NpcId="2002534" XYZ="-7.919495, 13.68732, 866.5444" Radius="10" QuestId="66610" StepId="1" />
+				</If>
+				<If Condition="GetQuestStep(66610) == 2">
+					<UseItem NpcId="2002430" ItemId="2000809" XYZ="-7.919495, 13.68732, 866.5444" Radius="10" QuestId="66610" StepId="2" />
+				</If>
+				<If Condition="GetQuestStep(66610) == 255">
+					<If Condition="not IsOnMap(130) and not IsOnMap(131)">
+						<TeleportTo Name="Uldah - Steps of Nald" AetheryteId="9" />
+					</If>
+					<If Condition="IsOnMap(130)">
+						<MoveTo Name="Ul'dah - Steps of Thal" Distance="0" XYZ="-114.9707, 9.999928, 9.398392" />
+					</If>
+					<TurnIn NpcId="1006752" QuestId="66610" XYZ="87.5105, 18, 113.7255" />
+				</If>
+			</If>
+		</If>
+		
+		<LoadProfile Path="Profiles/Questing/Main Scenario Quests/MainScenario_15-50.xml" />
+	</Order>
+</Profile>
