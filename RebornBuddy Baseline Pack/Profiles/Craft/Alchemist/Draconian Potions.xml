@@ -1,0 +1,1239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE Profile [<!-- Profile Settings -->
+<!-- Where do you want to port while witing / crafting-->
+<!ENTITY Waiting_AetheryteId "8">
+<!ENTITY Strength_Qty "0">
+<!ENTITY Dexterity_Qty "0">
+<!ENTITY Vitality_Qty "0">
+<!ENTITY Intelligence_Qty "0">
+<!ENTITY Mind_Qty "0">
+<!-- Gathering Settings -->
+<!ENTITY Gather_Salt "0">
+<!ENTITY CordialType_Unspoiled "Cordial">
+<!ENTITY CordialTime_Unspoiled "Auto">
+<!-- Fo you want to fish some Thaliak caiman to get water cluster faster ? -->
+<!ENTITY Fish "1">
+<!-- How many collectability to reach while farming sands -->
+<!ENTITY Sand_Collect_Rate "550">
+<!-- Ephemeral Settings -->
+<!ENTITY CordialType_Ephemeral_Furymint "Cordial">
+<!ENTITY CordialTime_Ephemeral_Furymint "Auto">
+<!-- Do you want to farm sand and furymint instead of waiting ? -->
+<!ENTITY Farm_Sand "0">
+<!ENTITY Farm_Sand_Collect_Rate "550">
+<!ENTITY CordialType_EphemeralFarm "Cordial">
+<!ENTITY CordialTime_EphemeralFarm "Auto">
+<!-- Craft Settings -->
+<!ENTITY Craft "0">
+<!-- Wich food do you want to use -->
+<!ENTITY ID_FOOD "12861">
+<!-- If you have at least 400 CP (used on STR/DEX recipes) -->
+<!ENTITY Extra_Touch_58 "0">
+<!-- If you have at least 438 CP (used on VIT/INT/MND recipes) -->
+<!ENTITY Extra_Touch_59 "0">
+<!-- You have Tricks of the Trade as cross skill and you want to use it set 1, 0 if you don't -->
+<!ENTITY ToT "1">
+<!-- You have Reclaim as cross skill and you want to use it set 1, 0 if you don't -->
+<!ENTITY Reclaim "0">
+<!-- (Reclaim set to 1 REQUIRED !) How many stacks at least to NOT use Reclaim -->
+<!ENTITY IQ_Stack "9">
+<!--   -->
+<!-- DO NOT TOUCH THIS -->
+<!ENTITY Version "Snorlax">
+<!ENTITY WaitCondition "not((ItemCount(12901) &lt; (&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;) and (IsTimeBetween(11,12) or IsTimeBetween(23,24))) or (ItemCount(12972) &lt; ((&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;)*2) and (IsTimeBetween(20,24) or IsTimeBetween(0,4))) or (ItemCount(19) &lt; ((&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;)*2) and (IsTimeBetween(2,3) or IsTimeBetween(6,7) or IsTimeBetween(10,11) or IsTimeBetween(14,15) or IsTimeBetween(18,19) or IsTimeBetween(22,23))) or (ItemCount(18) &lt; (&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;) and (IsTimeBetween(2,3) or IsTimeBetween(6,7) or IsTimeBetween(10,11) or IsTimeBetween(14,15) or IsTimeBetween(18,19) or IsTimeBetween(22,23))) or (ItemCount(19) &lt; ((&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;)*2) and &Fish; != 0 and IsTimeBetween(15,18)) or (IsTimeBetween(12,13) and ItemCount(19) &lt; ((&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;)*2) and &Fish; != 0))">]><Profile>
+	<Name>Draconian Potions</Name>
+	<BehaviorDirectory>..\..\..\Quest Behaviors</BehaviorDirectory>
+	<CodeChunks>
+		<CodeChunk Name="CBT">
+			<![CDATA[ 	ff14bot.Managers.ChatManager.SendChat("/gs change 1");	]]>
+		</CodeChunk>
+		<CodeChunk Name="ALC">
+			<![CDATA[ 	ff14bot.Managers.ChatManager.SendChat("/gs change 18");	]]>
+		</CodeChunk>
+		<CodeChunk Name="MIN">
+			<![CDATA[	ff14bot.Managers.ChatManager.SendChat("/gs change 20");	await Buddy.Coroutines.Coroutine.Sleep(2000);	if(!Core.Player.HasAura(222))	{	var result = true;	if (MovementManager.IsFlying)	{	result = await CommonTasks.Land();	await Buddy.Coroutines.Coroutine.Sleep(1000);	}		if (result && Core.Player.IsMounted)	{	await CommonTasks.StopAndDismount();	await Buddy.Coroutines.Coroutine.Sleep(1000);	}		ff14bot.Managers.Actionmanager.DoAction(238, Core.Player);	await Buddy.Coroutines.Coroutine.Sleep(2000);	}	]]>
+		</CodeChunk>
+		<CodeChunk Name="BTN">
+			<![CDATA[	ff14bot.Managers.ChatManager.SendChat("/gs change 21");	await Buddy.Coroutines.Coroutine.Sleep(2000);	if(!Core.Player.HasAura(221))	{	var result = true;	if (MovementManager.IsFlying)	{	result = await CommonTasks.Land();	await Buddy.Coroutines.Coroutine.Sleep(1000);	}		if (result && Core.Player.IsMounted)	{	Actionmanager.Dismount();	await Buddy.Coroutines.Coroutine.Sleep(1000);	}		ff14bot.Managers.Actionmanager.DoAction(221, Core.Player);	await Buddy.Coroutines.Coroutine.Sleep(2000);	}	]]>
+		</CodeChunk>
+		<CodeChunk name="FSH">
+			<![CDATA[	ff14bot.Managers.ChatManager.SendChat("/gs change 23");	]]>
+		</CodeChunk>
+		<CodeChunk Name="ToT">
+			<![CDATA[	SpellData data;		if ((CraftingManager.Condition == CraftingCondition.Good || CraftingManager.Condition == CraftingCondition.Excellent) &&	Actionmanager.CurrentActions.TryGetValue("Tricks of the Trade", out data) && Actionmanager.CanCast(data, null)) 	{	Actionmanager.DoAction("Tricks of the Trade", null);	await Coroutine.Wait(10000, () => CraftingManager.AnimationLocked);	await Coroutine.Wait(Timeout.Infinite, () => !CraftingManager.AnimationLocked);	}	await Coroutine.Sleep(250);	]]>
+		</CodeChunk>
+		<CodeChunk Name="TrickTouch">
+			<![CDATA[	SpellData data;		if ((CraftingManager.Condition == CraftingCondition.Good || CraftingManager.Condition == CraftingCondition.Excellent) &&	Actionmanager.CurrentActions.TryGetValue("Precise Touch", out data) && Actionmanager.CanCast(data, null)) 	{	Actionmanager.DoAction("Precise Touch", null);	} 	else 	{	Actionmanager.DoAction("Basic Touch", null);	}	await Coroutine.Wait(10000, () => CraftingManager.AnimationLocked);	await Coroutine.Wait(Timeout.Infinite, () => !CraftingManager.AnimationLocked);	await Coroutine.Sleep(250);	]]>
+		</CodeChunk>
+		<CodeChunk Name="TrickTouch2">
+			<![CDATA[	SpellData data;	if ((CraftingManager.Condition == CraftingCondition.Good || CraftingManager.Condition == CraftingCondition.Excellent) && Actionmanager.CurrentActions.TryGetValue("Precise Touch", out data) && Actionmanager.CanCast(data, null) && Core.Player.CurrentCP > 95)  {  Actionmanager.DoAction("Precise Touch", null);	} else { if(Core.Player.CurrentCP > 95){ Actionmanager.DoAction("Basic Touch", null); } else { Actionmanager.DoAction("Hasty Touch", null); } }	await Coroutine.Wait(10000, () => CraftingManager.AnimationLocked);	await Coroutine.Wait(Timeout.Infinite, () => !CraftingManager.AnimationLocked);	await Coroutine.Sleep(250);	]]>
+		</CodeChunk>
+		<CodeChunk Name="InnovationCheck">
+			<![CDATA[	SpellData data;	if (!(CraftingManager.Condition == CraftingCondition.Excellent || CraftingManager.Condition == CraftingCondition.Good))	{	if (Core.Player.CurrentCP > 41 && Actionmanager.CurrentActions.TryGetValue("Innovation", out data) && Actionmanager.CanCast(data, null))	{	Actionmanager.DoAction("Innovation", null);	await Coroutine.Wait(10000, () => CraftingManager.AnimationLocked);	await Coroutine.Wait(Timeout.Infinite, () => !CraftingManager.AnimationLocked);	}	else	{	if (Core.Player.CurrentCP > 37 && Actionmanager.CurrentActions.TryGetValue("Observe", out data) && Actionmanager.CanCast(data, null))	{	Actionmanager.DoAction("Observe", null);	await Coroutine.Wait(10000, () => CraftingManager.AnimationLocked);	await Coroutine.Wait(Timeout.Infinite, () => !CraftingManager.AnimationLocked);	}	}	}	await Coroutine.Sleep(250);	]]>
+		</CodeChunk>
+		<CodeChunk Name="InnovationCheck2">
+			<![CDATA[	SpellData data;	if (!(CraftingManager.Condition == CraftingCondition.Excellent || CraftingManager.Condition == CraftingCondition.Good))	{	if (Core.Player.CurrentCP > 73 && Actionmanager.CurrentActions.TryGetValue("Innovation", out data) && Actionmanager.CanCast(data, null))	{	Actionmanager.DoAction("Innovation", null);	await Coroutine.Wait(10000, () => CraftingManager.AnimationLocked);	await Coroutine.Wait(Timeout.Infinite, () => !CraftingManager.AnimationLocked);	}	else	{	if (Core.Player.CurrentCP > 69 && Actionmanager.CurrentActions.TryGetValue("Observe", out data) && Actionmanager.CanCast(data, null))	{	Actionmanager.DoAction("Observe", null);	await Coroutine.Wait(10000, () => CraftingManager.AnimationLocked);	await Coroutine.Wait(Timeout.Infinite, () => !CraftingManager.AnimationLocked);	}	}	}	await Coroutine.Sleep(250);	]]>
+		</CodeChunk>
+		<CodeChunk Name="Dismount">
+			<![CDATA[		var result=true;	if (MovementManager.IsFlying){result = await CommonTasks.Land();	await Buddy.Coroutines.Coroutine.Sleep(1000);}	if (result && Core.Player.IsMounted) {Actionmanager.Dismount();await Buddy.Coroutines.Coroutine.Sleep(1000);}	]]>
+		</CodeChunk>
+		<CodeChunk Name="EnableMount">
+			<![CDATA[	ff14bot.Settings.CharacterSettings.Instance.UseMount = true;	]]>
+		</CodeChunk>
+		<CodeChunk Name="MoveForward">
+			<![CDATA[	await Buddy.Coroutines.Coroutine.Sleep(500);	ff14bot.Managers.MovementManager.MoveForwardStart();	await Buddy.Coroutines.Coroutine.Sleep(2000);	ff14bot.Managers.MovementManager.MoveForwardStop();	await Buddy.Coroutines.Coroutine.Sleep(500);	]]>
+		</CodeChunk>
+		<CodeChunk Name="useAethernet">
+			<![CDATA[  ff14bot.Managers.GameObjectManager.GetObjectByNPCId(75).Interact(); await Buddy.Coroutines.Coroutine.Sleep(2000);  if (ff14bot.RemoteWindows.SelectString.IsOpen) ff14bot.RemoteWindows.SelectString.ClickSlot(0); await Buddy.Coroutines.Coroutine.Sleep(2000); if (ff14bot.RemoteWindows.SelectString.IsOpen) ff14bot.RemoteWindows.SelectString.ClickSlot(1); await Buddy.Coroutines.Coroutine.Sleep(5000); ]]>
+		</CodeChunk>
+	</CodeChunks>
+	<GrindAreas>
+		<GrindArea name="Dragon">
+			<HotSpots>
+				<HotSpot Radius="350" XYZ="-14.47088, -19.92993, 25.11162"/>
+			</HotSpots>
+			<TargetMobs>
+				<TargetMob Name="Moss Dragon" Id="3617" />
+			</TargetMobs>
+			<MinLevel>1</MinLevel>
+			<MaxLevel>61</MaxLevel>
+		</GrindArea>
+	</GrindAreas>
+	<Order>
+		<StopCrafting/>
+		<While Condition="ItemCount(12630) &lt; ((&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;)*2) or ItemCount(12640) &lt; (&Mind_Qty;*2) or ItemCount(12643) &lt; (&Intelligence_Qty;*2) or ItemCount(12639) &lt; (&Vitality_Qty;*2) or ItemCount(12638) &lt; (&Dexterity_Qty;*2) or ItemCount(12642) &lt; (&Strength_Qty;*2) or ItemCount(19) &lt; ((&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;)*2) or ItemCount(18) &lt; (&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;) or ItemCount(12972) &lt; ((&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;)*2) or ItemCount(12936) &lt; (&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;) or ItemCount(12901) &lt; (&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;)">
+			<RunCode Name="EnableMount"/>
+			<!-- Abalathian Rock Salt -->
+			<If Condition="ItemCount(12901) &lt; (&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;) and not(FreeItemSlots() &lt; 2)">
+				<ExLog Color="#FFFF00" Name="Draconian Potions &Version;"  Message="I don't have enough Abalathian Rock Salt !"/>
+				<If Condition="&Gather_Salt; != 0 and not(IsTimeBetween(11,12) or IsTimeBetween(23,24))">
+					<ExLog Color="#FFFF00" Name="Draconian Potions &Version;"  Message="I can't gather them because it's not between 11-12 AM-PM !"/>
+				</If>
+				<If Condition="&Gather_Salt; != 0 and (IsTimeBetween(11,12) or IsTimeBetween(23,24))">
+					<TeleportTo Name="Ok' Zundu" AetheryteId="73" Force="True"/>
+					<RunCode Name="MIN"/>
+					<ExMoveTo XYZ="-593.2999, -51.74009, -416.2549" />
+					<ExFlyTo XYZ="-591.6451, -25.34154, -487.7608" Radius="3.0" />
+					<ExFlyTo XYZ="-747.2891, -74.98775, -733.9128" Radius="3.0" />
+					<WaitWhile Condition ="IsTimeBetween(11,12) or IsTimeBetween(23,24)" />
+					<ExGather loops="1" spawnTimeout="15" CordialType="&CordialType_Unspoiled;" CordialTime="&CordialTime_Unspoiled;" DiscoverUnknowns="true" GatherIncrease="Yield">
+						<GatherObjects>
+							<GatherObject>Unspoiled Rocky Outcrop</GatherObject>
+						</GatherObjects>
+						<ItemNames>
+							<ItemName>Abalathian Rock Salt</ItemName>
+						</ItemNames>
+						<GatherRotation>Unspoiled</GatherRotation>
+						<HotSpots>
+							<HotSpot XYZ="-747.2891, -74.98775, -733.9128" Radius="250"/>
+						</HotSpots>
+					</ExGather>
+				</If>
+				<If Condition="&Gather_Salt; == 0">
+					<ExLog Color="#FFFF00"  Name="Draconian Potions &Version;"  Message="Take your pickaxe and... oh wait, they're also sold by a npc !"/>
+					<If Condition="not IsOnMap(419)">
+						<If Condition="not IsOnMap(418)">
+							<TeleportTo name="Foundation" aetheryteId="70" />
+						</If>
+						<ExMoveTo XYZ="-150.9296, 30.7863, -141.4302" />
+						<RunCode Name="MoveForward" />
+					</If>
+					<ExMoveTo XYZ="-194.8047, -11.62784, -28.36072" radius="5.0"/>
+					<While Condition="ItemCount(12901) &lt; ((&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;) -98)">
+						<BuyItem itemId="12901" itemCount="99" dialogOption="1" interactDistance="3.0" npcId="1011201" xyz="-194.8047, -11.62784, -28.36072" />
+					</While>
+					<While Condition="ItemCount(12901) &lt; ((&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;) -49)">
+						<BuyItem itemId="12901" itemCount="50" dialogOption="1" interactDistance="3.0" npcId="1011201" xyz="-194.8047, -11.62784, -28.36072" />
+					</While>
+					<While Condition="ItemCount(12901) &lt; ((&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;) -19)">
+						<BuyItem itemId="12901" itemCount="20" dialogOption="1" interactDistance="3.0" npcId="1011201" xyz="-194.8047, -11.62784, -28.36072" />
+					</While>
+					<While Condition="ItemCount(12901) &lt; ((&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;) -9)">
+						<BuyItem itemId="12901" itemCount="10" dialogOption="1" interactDistance="3.0" npcId="1011201" xyz="-194.8047, -11.62784, -28.36072" />
+					</While>
+					<If Condition="ItemCount(12901) == ((&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;) -9)">
+						<BuyItem itemId="12901" itemCount="9" dialogOption="1" interactDistance="3.0" npcId="1011201" xyz="-194.8047, -11.62784, -28.36072" />
+					</If>
+					<If Condition="ItemCount(12901) == ((&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;) -8)">
+						<BuyItem itemId="12901" itemCount="8" dialogOption="1" interactDistance="3.0" npcId="1011201" xyz="-194.8047, -11.62784, -28.36072" />
+					</If>
+					<If Condition="ItemCount(12901) == ((&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;) -7)">
+						<BuyItem itemId="12901" itemCount="7" dialogOption="1" interactDistance="3.0" npcId="1011201" xyz="-194.8047, -11.62784, -28.36072" />
+					</If>
+					<If Condition="ItemCount(12901) == ((&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;) -6)">
+						<BuyItem itemId="12901" itemCount="6" dialogOption="1" interactDistance="3.0" npcId="1011201" xyz="-194.8047, -11.62784, -28.36072" />
+					</If>
+					<If Condition="ItemCount(12901) == ((&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;) -5)">
+						<BuyItem itemId="12901" itemCount="5" dialogOption="1" interactDistance="3.0" npcId="1011201" xyz="-194.8047, -11.62784, -28.36072" />
+					</If>
+					<If Condition="ItemCount(12901) == ((&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;) -4)">
+						<BuyItem itemId="12901" itemCount="4" dialogOption="1" interactDistance="3.0" npcId="1011201" xyz="-194.8047, -11.62784, -28.36072" />
+					</If>
+					<If Condition="ItemCount(12901) == ((&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;) -3)">
+						<BuyItem itemId="12901" itemCount="3" dialogOption="1" interactDistance="3.0" npcId="1011201" xyz="-194.8047, -11.62784, -28.36072" />
+					</If>
+					<If Condition="ItemCount(12901) == ((&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;) -2)">
+						<BuyItem itemId="12901" itemCount="2" dialogOption="1" interactDistance="3.0" npcId="1011201" xyz="-194.8047, -11.62784, -28.36072" />
+					</If>
+					<If Condition="ItemCount(12901) == ((&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;) -1)">
+						<BuyItem itemId="12901" itemCount="1" dialogOption="1" interactDistance="3.0" npcId="1011201" xyz="-194.8047, -11.62784, -28.36072" />
+					</If>
+				</If>
+			</If>
+			<If Condition="not(ItemCount(12901) &lt; (&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;))">
+				<ExLog Color="#FFFF00" Name="Draconian Potions &Version;"  Message="I'm done with Abalathian Rock Salt !"/>
+			</If>
+			<!-- Duskborne Aethersand -->
+			<If Condition="ItemCount(12936) &lt; (&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;) and not(FreeItemSlots() &lt; 2)">
+				<ExLog Color="#FFFF00" Name="Draconian Potions &Version;"  Message="I don't have enough Duskborne Aethersand !"/>
+				<While Condition="ItemCount(12936) &lt; (&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;) and not(ItemCount(12901) &lt; (&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;) and (IsTimeBetween(11,12) or IsTimeBetween(23,24))) and not(FreeItemSlots() &lt; 2)">
+					<If Condition="FreeItemSlots() &lt; 20">
+						<ExPurify/>
+					</If>
+					<While Condition="IsTimeBetween(0,4) and not(FreeItemSlots() &lt; 2) and ItemCount(12936) &lt; (&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;)">
+						<If Condition="FreeItemSlots() &lt; 20">
+							<ExPurify/>
+						</If>
+						<TeleportTo Name="Falcons Nest" AetheryteId="71" Force="True"/>
+						<RunCode Name="BTN"/>
+						<ExMoveTo XYZ="461.7119, 212.5399, 696.9837"/>
+						<ExGather DiscoverUnknowns="true" AlwaysGather="false" GatherStrategy="TouchAndGo" CordialType="&CordialType_Ephemeral_Furymint;" CordialTime="&CordialTime_Ephemeral_Furymint;" while="IsTimeBetween(0,4) and ItemCount(12936) &lt; (&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;)" skipWindowDelay="1500">
+							<Items>
+								<Collectable Name="Clary Sage" Value="&Sand_Collect_Rate;"/>
+								<GatherItem Name="Furymint" />
+								<Collectable Name="Highland Oregano" Value="&Sand_Collect_Rate;"/>
+							</Items>
+							<GatherSpots>
+								<IndirectApproachGatherSpot ReturnToApproachLocation="false" ApproachLocation="-584.357, 118.5735, -410.6856" nodeLocation="-585.8388, 119.6912, -407.5294" />
+								<IndirectApproachGatherSpot ReturnToApproachLocation="false" ApproachLocation="-502.8308, 117.3001, -444.0552" nodeLocation="-501.2244, 118.0477, -443.4114" />
+							</GatherSpots>
+							<HotSpots>
+								<HotSpot XYZ="-586.7975, 127.4666, -406.9053" Radius="30"/>
+								<HotSpot XYZ="-511.3296, 128.6305, -455.8474" Radius="50"/>
+								<HotSpot XYZ="-691.3636, 140.3503, -374.2292" Radius="50"/>
+							</HotSpots>
+						</ExGather>
+					</While>
+					<While Condition="IsTimeBetween(4,8) and not(FreeItemSlots() &lt; 2) and ItemCount(12936) &lt; (&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;)">
+						<If Condition="FreeItemSlots() &lt; 20">
+							<ExPurify/>
+						</If>
+						<TeleportTo Name="Tailfeather" AetheryteId="76" Force="True"/>
+						<RunCode Name="MIN"/>
+						<ExMoveTo XYZ="520.1194, -51.27571, 40.14129"/>
+						<ExFlyTo XYZ="36.562, 13.66749, 252.4461" Radius="3.0" />
+						<ExFlyTo XYZ="-163.8157, 12.11641, 342.2419" Radius="3.0" />
+						<ExGather DiscoverUnknowns="true" AlwaysGather="false" GatherStrategy="TouchAndGo" CordialType="&CordialType_Ephemeral_Furymint;" CordialTime="&CordialTime_Ephemeral_Furymint;" while="IsTimeBetween(4,8) and ItemCount(12936) &lt; (&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;)" skipWindowDelay="1500">
+							<Items>
+								<Collectable Name="Radiant Fire Moraine" Value="&Sand_Collect_Rate;"/>
+								<Collectable Name="Bright Fire Rock" Value="&Sand_Collect_Rate;"/>
+								<Collectable Name="Fire Moraine" Value="&Sand_Collect_Rate;"/>
+							</Items>
+							<HotSpots>
+								<HotSpot XYZ="-254.241, -49.31017, 275.3868" Radius="30"/>
+								<HotSpot XYZ="-307.5015, -51.15042, 330.267" Radius="30"/>
+								<HotSpot XYZ="-148.6799, -61.24704, 394.047" Radius="20"/>
+							</HotSpots>
+						</ExGather>
+					</While>
+					<While Condition="IsTimeBetween(8,12) and not(FreeItemSlots() &lt; 2) and ItemCount(12936) &lt; (&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;) and not(ItemCount(12901) &lt; (&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;) and IsTimeBetween(11,12))">
+						<If Condition="FreeItemSlots() &lt; 20">
+							<ExPurify/>
+						</If>
+						<TeleportTo Name="Tailfeather" AetheryteId="76" Force="True"/>
+						<RunCode Name="BTN"/>
+						<ExMoveTo XYZ="520.1194, -51.27571, 40.14129"/>
+						<ExFlyTo XYZ="36.562, 13.66749, 252.4461" Radius="3.0" />
+						<ExFlyTo XYZ="-163.8157, 12.11641, 342.2419" Radius="3.0" />
+						<ExGather DiscoverUnknowns="true" AlwaysGather="false" GatherStrategy="TouchAndGo" CordialType="&CordialType_Ephemeral_Furymint;" CordialTime="&CordialTime_Ephemeral_Furymint;" while="IsTimeBetween(8,12) and ItemCount(12936) &lt; (&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;) and not(ItemCount(12901) &lt; (&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;) and IsTimeBetween(11,12))" skipWindowDelay="1500">
+							<Items>
+								<Collectable Name="Black Soil" Value="&Sand_Collect_Rate;"/>
+								<Collectable Name="Peat Moss" Value="&Sand_Collect_Rate;"/>
+								<Collectable Name="Granular Clay" Value="&Sand_Collect_Rate;"/>
+							</Items>
+							<HotSpots>
+								<HotSpot XYZ="-617.4734, -98.22275, 486.038" Radius="30"/>
+								<HotSpot XYZ="-553.9785, -76.84792, 419.580" Radius="30"/>
+								<HotSpot XYZ="-569.1127, -88.61699, 546.949" Radius="30"/>
+							</HotSpots>
+						</ExGather>
+					</While>
+					<While Condition="IsTimeBetween(12,16) and not(FreeItemSlots() &lt; 2) and ItemCount(12936) &lt; (&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;)">
+						<If Condition="FreeItemSlots() &lt; 20">
+							<ExPurify/>
+						</If>
+						<TeleportTo Name="Moghome" AetheryteId="78" Force="True"/>
+						<RunCode Name="MIN"/>
+						<ExFlyTo XYZ="315.8713, 27.29165, 265.4193" Radius="3.0" />
+						<ExFlyTo XYZ="310.1847, -10.75076, -113.7604" Radius="3.0" />
+						<ExGather DiscoverUnknowns="true" AlwaysGather="false" GatherStrategy="TouchAndGo" CordialType="&CordialType_Ephemeral_Furymint;" CordialTime="&CordialTime_Ephemeral_Furymint;" while="IsTimeBetween(12,16) and ItemCount(12936) &lt; (&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;)" skipWindowDelay="1500">
+							<Items>
+								<Collectable Name="Radiant Fire Moraine" Value="&Sand_Collect_Rate;"/>
+								<Collectable Name="Bright Fire Rock" Value="&Sand_Collect_Rate;"/>
+								<Collectable Name="Fire Moraine" Value="&Sand_Collect_Rate;"/>
+							</Items>
+							<HotSpots>
+								<HotSpot XYZ="322.2591, -20.08315, -149.3368" Radius="30"/>
+								<HotSpot XYZ="320.6808, -21.97984, -216.2199" Radius="30"/>
+								<HotSpot XYZ="299.7046, -29.75275, -107.2751" Radius="30"/>
+							</HotSpots>
+						</ExGather>
+					</While>
+					<While Condition="IsTimeBetween(16,20) and not(FreeItemSlots() &lt; 2) and ItemCount(12936) &lt; (&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;)">
+						<If Condition="FreeItemSlots() &lt; 20">
+							<ExPurify/>
+						</If>
+						<TeleportTo Name="Camp Cloudtop" AetheryteId="72" Fore="True"/>
+						<RunCode Name="MIN"/>
+						<MoveTo XYZ="-601.6155, -122.1475, 548.3532"/>
+						<ExFlyTo XYZ="125.623, 19.02453, 565.1636" Radius="3.0" />
+						<ExFlyTo XYZ="514.1337, -80.13731, 430.907" Radius="3.0" />
+						<ExGather DiscoverUnknowns="true" AlwaysGather="false" GatherStrategy="TouchAndGo" CordialType="&CordialType_Ephemeral_Furymint;" CordialTime="&CordialTime_Ephemeral_Furymint;" while="IsTimeBetween(16,20) and ItemCount(12936) &lt; (&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;)" skipWindowDelay="1500">
+							<Items>
+								<Collectable Name="Radiant Lightning Moraine" Value="&Sand_Collect_Rate;"/>
+								<Collectable Name="Bright Lightning Rock" Value="&Sand_Collect_Rate;"/>
+								<Collectable Name="Lightning Moraine" Value="&Sand_Collect_Rate;"/>
+							</Items>
+							<GatherSpots>
+								<IndirectApproachGatherSpot ApproachLocation="524.8009, -111.2728, 433.7963" NodeLocation="529.0662, -110.3256, 434.3149" />
+								<IndirectApproachGatherSpot ReturnToApproachLocation="false" ApproachLocation="659.7636, -124.5583, 326.8338" NodeLocation="661.9959, -122.6855, 333.0707" />
+								<IndirectApproachGatherSpot ReturnToApproachLocation="false" ApproachLocation="590.5559, -98.91835, 409.9416" NodeLocation="591.6068, -98.08508, 407.905" />
+							</GatherSpots>
+							<HotSpots>
+								<HotSpot XYZ="591.0585, -92.11768, 408.6512" Radius="30"/>
+								<HotSpot XYZ="506.149078, -105.9392, 431.053772" Radius="45"/>
+								<HotSpot XYZ="706.3032, -79.69473, 460.5809" Radius="40"/>
+							</HotSpots>
+						</ExGather>
+					</While>
+					<While Condition="IsTimeBetween(20,24) and not(FreeItemSlots() &lt; 2) and ItemCount(12936) &lt; (&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;) and not(ItemCount(12901) &lt; (&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;) and IsTimeBetween(23,24))">
+						<If Condition="FreeItemSlots() &lt; 20">
+							<ExPurify/>
+						</If>
+						<TeleportTo Name="Camp Cloudtop" AetheryteId="72" Force="True"/>
+						<RunCode Name="BTN"/>
+						<ExMoveTo XYZ="-602.2142, -122.2923, 554.533" />
+						<ExFlyTo XYZ="198.9948, -130.0014, 639.3207" Radius="3.0" />
+						<ExGather DiscoverUnknowns="true" AlwaysGather="false" GatherStrategy="TouchAndGo" CordialType="&CordialType_Ephemeral_Furymint;" CordialTime="&CordialTime_Ephemeral_Furymint;" while="IsTimeBetween(20,24) and ItemCount(12936) &lt; (&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;) and not(ItemCount(12901) &lt; (&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;) and IsTimeBetween(23,24))" skipWindowDelay="1500">
+							<Items>
+								<Collectable Name="Clary Sage" Value="&Sand_Collect_Rate;"/>
+								<GatherItem Name="Furymint" />
+								<Collectable Name="Highland Oregano" Value="&Sand_Collect_Rate;"/>
+							</Items>
+							<HotSpots>
+								<HotSpot XYZ="201.4897, -125.9551, 636.8804" Radius="30"/>
+								<HotSpot XYZ="91.30701, -139.0224, 584.8624" Radius="30"/>
+								<HotSpot XYZ="98.29739, -142.3631, 510.3914" Radius="30"/>
+							</HotSpots>
+						</ExGather>
+					</While>
+				</While>
+			</If>
+			<If Condition="not(ItemCount(12936) &lt; (&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;))">
+				<ExLog Color="#FFFF00" Name="Draconian Potions &Version;"  Message="I'm done with Duskborne Aethersand !"/>
+			</If>
+			<!-- Furymint -->
+			<If Condition="ItemCount(12972) &lt; ((&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;)*2) and not(FreeItemSlots() &lt; 2)">
+				<ExLog Color="#FFFF00" Name="Draconian Potions &Version;"  Message="I don't have enough Furymint !"/>
+				<If Condition="not(IsTimeBetween(20,24) or IsTimeBetween(0,4))">
+					<ExLog Color="#FFFF00" Name="Draconian Potions &Version;"  Message="I can't gather them because it's not between 8 PM - 4 AM !"/>
+				</If>
+				<If Condition="IsTimeBetween(20,24)">
+					<TeleportTo Name="Camp Cloudtop" AetheryteId="72" Force="True"/>
+					<RunCode Name="BTN"/>
+					<ExMoveTo XYZ="-602.2142, -122.2923, 554.533" />
+					<ExFlyTo XYZ="198.9948, -130.0014, 639.3207" Radius="3.0" />
+					<ExGather DiscoverUnknowns="true" AlwaysGather="false" GatherStrategy="TouchAndGo" CordialType="&CordialType_Ephemeral_Furymint;" CordialTime="&CordialTime_Ephemeral_Furymint;" while="IsTimeBetween(20,24) and  ItemCount(12972) &lt; ((&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;)*2) and not(ItemCount(12901) &lt; (&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;) and IsTimeBetween(23,24))" skipWindowDelay="1500">
+						<Items>
+							<GatherItem Name="Furymint" />
+						</Items>
+						<HotSpots>
+							<HotSpot XYZ="201.4897, -125.9551, 636.8804" Radius="30"/>
+							<HotSpot XYZ="91.30701, -139.0224, 584.8624" Radius="30"/>
+							<HotSpot XYZ="98.29739, -142.3631, 510.3914" Radius="30"/>
+						</HotSpots>
+					</ExGather>
+				</If>
+				<If Condition="IsTimeBetween(0,4)">
+					<TeleportTo Name="Falcons Nest" AetheryteId="71" Force="True"/>
+					<RunCode Name="BTN"/>
+					<ExFlyTo XYZ="441.3659, 227.2105, 696.4022" Radius="3.0" DismountAtDestination="false" />
+					<ExFlyTo XYZ="-565.7362, 132.6356, -453.2172" Radius="3.0" />
+					<ExGather DiscoverUnknowns="true" AlwaysGather="false" GatherStrategy="TouchAndGo" CordialType="&CordialType_Ephemeral_Furymint;" CordialTime="&CordialTime_Ephemeral_Furymint;" while="IsTimeBetween(0,4) and ItemCount(12972) &lt; ((&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;)*2)" skipWindowDelay="1500">
+						<Items>
+							<GatherItem Name="Furymint" />
+						</Items>
+						<GatherSpots>
+							<IndirectApproachGatherSpot ReturnToApproachLocation="false" ApproachLocation="-584.357, 118.5735, -410.6856" nodeLocation="-585.8388, 119.6912, -407.5294" />
+							<IndirectApproachGatherSpot ReturnToApproachLocation="false" ApproachLocation="-502.8308, 117.3001, -444.0552" nodeLocation="-501.2244, 118.0477, -443.4114" />
+						</GatherSpots>
+						<HotSpots>
+							<HotSpot XYZ="-586.7975, 127.4666, -406.9053" Radius="30"/>
+							<HotSpot XYZ="-511.3296, 128.6305, -455.8474" Radius="50"/>
+							<HotSpot XYZ="-691.3636, 140.3503, -374.2292" Radius="50"/>
+						</HotSpots>
+					</ExGather>
+				</If>
+			</If>
+			<If Condition="not(ItemCount(12972) &lt; ((&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;)*2))">
+				<ExLog Color="#FFFF00" Name="Draconian Potions &Version;"  Message="I'm done with Furymint !"/>
+			</If>
+			<!-- Water/Lightning Cluster -->
+			<If Condition="ItemCount(19) &lt; ((&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;)*2) or ItemCount(18) &lt; (&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;)">
+				<If Condition="ItemCount(19) &lt; ((&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;)*2)">
+					<ExLog Color="#FFFF00" Name="Draconian Potions &Version;"  Message="I don't have enough Water Cluster (Gathering) !"/>
+				</If>
+				<If Condition="ItemCount(18) &lt; (&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;)">
+					<ExLog Color="#FFFF00" Name="Draconian Potions &Version;"  Message="I don't have enough Lightning Cluster !"/>
+				</If>
+				<If Condition="not(IsTimeBetween(2,3) or IsTimeBetween(6,7) or IsTimeBetween(10,11) or IsTimeBetween(14,15) or IsTimeBetween(18,19) or IsTimeBetween(22,23))">
+					<ExLog Color="#FFFF00"  Name="Draconian Potions &Version;"  Message="But I can't gather them now !"/>
+				</If>
+				<If Condition="IsTimeBetween(2,3) or IsTimeBetween(6,7) or IsTimeBetween(10,11) or IsTimeBetween(14,15) or IsTimeBetween(18,19) or IsTimeBetween(22,23)">
+					<TeleportTo Name="Revenant's Toll" AetheryteId="24" Force="True"/>
+					<If Condition="IsTimeBetween(2,3) or IsTimeBetween(6,7) or IsTimeBetween(10,11)">
+						<RunCode Name="BTN"/>
+						<ExGather DiscoverUnknowns="true" loops="1" while="ItemCount(19) &lt; ((&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;)*2)" spawnTimeout="15" CordialType="&CordialType_Unspoiled;" CordialTime="&CordialTime_Unspoiled;" GatherIncrease="Yield" DisableRotationOverride="true">
+							<GatherObjects>
+								<GatherObject>Unspoiled Mature Tree</GatherObject>
+							</GatherObjects>
+							<ItemNames>
+								<ItemName>Water Cluster</ItemName>
+							</ItemNames>
+							<GatherRotation>Unspoiled</GatherRotation>
+							<HotSpots>
+								<HotSpot XYZ="509.2175, -3.772751, -426.0106" Radius="120"/>
+							</HotSpots>
+						</ExGather>
+						<ExGather DiscoverUnknowns="true" loops="1" while="ItemCount(18) &lt; (&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;) and not(ItemCount(19) &lt; ((&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;)*2))" spawnTimeout="15" CordialType="&CordialType_Unspoiled;" CordialTime="&CordialTime_Unspoiled;" GatherIncrease="Yield" DisableRotationOverride="true">
+							<GatherObjects>
+								<GatherObject>Unspoiled Mature Tree</GatherObject>
+							</GatherObjects>
+							<ItemNames>
+								<ItemName>Lightning Cluster</ItemName>
+							</ItemNames>
+							<GatherRotation>Unspoiled</GatherRotation>
+							<HotSpots>
+								<HotSpot XYZ="509.2175, -3.772751, -426.0106" Radius="120"/>
+							</HotSpots>
+						</ExGather>
+						<If Condition="IsTimeBetween(2,3)">
+							<TeleportTo Name="Home Sweet Home" aetheryteId="&Waiting_AetheryteId;" />
+							<WaitWhile Condition ="IsTimeBetween(2,3)" />
+						</If>
+						<If Condition="IsTimeBetween(6,7)">
+							<TeleportTo Name="Home Sweet Home" aetheryteId="&Waiting_AetheryteId;" />
+							<WaitWhile Condition ="IsTimeBetween(6,7)" />
+						</If>
+						<If Condition="IsTimeBetween(10,11)">
+							<TeleportTo Name="Home Sweet Home" aetheryteId="&Waiting_AetheryteId;" />
+							<WaitWhile Condition ="IsTimeBetween(10,11)" />
+						</If>
+					</If>
+					<If Condition="IsTimeBetween(14,15) or IsTimeBetween(18,19) or IsTimeBetween(22,23)">
+						<RunCode Name="MIN"/>
+						<ExGather DiscoverUnknowns="true" loops="1" while="ItemCount(19) &lt; ((&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;)*2)" spawnTimeout="15" CordialType="&CordialType_Unspoiled;" CordialTime="&CordialTime_Unspoiled;" GatherIncrease="Yield" DisableRotationOverride="true">
+							<GatherObjects>
+								<GatherObject>Unspoiled Rocky Outcrop</GatherObject>
+							</GatherObjects>
+							<ItemNames>
+								<ItemName>Water Cluster</ItemName>
+							</ItemNames>
+							<GatherRotation>Unspoiled</GatherRotation>
+							<HotSpots>
+								<HotSpot XYZ="345.458, -4.698928, -482.9557" Radius="120"/>
+							</HotSpots>
+						</ExGather>
+						<ExGather DiscoverUnknowns="true" loops="1" while="ItemCount(18) &lt; (&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;) and not(ItemCount(19) &lt; ((&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;)*2))" spawnTimeout="15" CordialType="&CordialType_Unspoiled;" CordialTime="&CordialTime_Unspoiled;" GatherIncrease="Yield" DisableRotationOverride="true">
+							<GatherObjects>
+								<GatherObject>Unspoiled Rocky Outcrop</GatherObject>
+							</GatherObjects>
+							<ItemNames>
+								<ItemName>Lightning Cluster</ItemName>
+							</ItemNames>
+							<GatherRotation>Unspoiled</GatherRotation>
+							<HotSpots>
+								<HotSpot XYZ="345.458, -4.698928, -482.9557" Radius="120"/>
+							</HotSpots>
+						</ExGather>
+						<If Condition="IsTimeBetween(14,15)">
+							<TeleportTo Name="Home Sweet Home" aetheryteId="&Waiting_AetheryteId;" />
+							<WaitWhile Condition ="IsTimeBetween(14,15)" />
+						</If>
+						<If Condition="IsTimeBetween(18,19)">
+							<TeleportTo Name="Home Sweet Home" aetheryteId="&Waiting_AetheryteId;" />
+							<WaitWhile Condition ="IsTimeBetween(18,19)" />
+						</If>
+						<If Condition="IsTimeBetween(22,23)">
+							<TeleportTo Name="Home Sweet Home" aetheryteId="&Waiting_AetheryteId;" />
+							<WaitWhile Condition ="IsTimeBetween(22,23)" />
+						</If>
+					</If>
+				</If>
+			</If>
+			<If Condition="not(ItemCount(19) &lt; ((&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;)*2)) or not(ItemCount(18) &lt; (&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;))">
+				<If Condition="not(ItemCount(19) &lt; ((&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;)*2))">
+					<ExLog Color="#FFFF00" Name="Draconian Potions &Version;"  Message="I'm done with Water Cluster !"/>
+				</If>
+				<If Condition="not(ItemCount(18) &lt; (&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;))">
+					<ExLog Color="#FFFF00" Name="Draconian Potions &Version;"  Message="I'm done with Lightning Cluster !"/>
+				</If>
+			</If>
+			<!-- Thaliak caiman (Water Cluster) -->
+			<If Condition="ItemCount(19) &lt; ((&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;)*2) and &Fish; != 0 and not(FreeItemSlots() &lt; 2)">
+				<If Condition="ItemCount(19) &lt; ((&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;)*2)">
+					<ExLog Color="#FFFF00" Name="Draconian Potions &Version;"  Message="I don't have enough Water Cluster (Fishing) !"/>
+				</If>
+				<If Condition="not(IsTimeBetween(15,18))">
+					<ExLog Color="#FFFF00"  Name="Draconian Potions &Version;"  Message="But I can't fish for them now !"/>
+				</If>
+				<If Condition="IsTimeBetween(15,18)">
+					<TeleportTo Name="Idyllshire" AetheryteId="75" />
+					<RunCode Name="FSH"/>
+					<ExMoveTo XYZ="71.70625, 209, -18.7505455" Distance="10" Force="True"/>
+					<RunCode Name="useAethernet"/>
+					<ExFlyTo XYZ="-88.10485, 180.7275, -173.6805" Radius="3.0"/>
+					<ExFlyTo XYZ="-63.41612, 54.06216, 129.8949" />
+					<RunCode Name="Dismount"/>
+					<Fish Condition="IsTimeBetween(15,18)" shuffleFishSpots="true" sitRate=".69" patience="Patience" snagging="true" bait="Bladed Steel Jig" mooch="5" Collect="true">
+						<FishSpots>
+							<FishSpot XYZ="-57.21039, 53.45807, 111.6945" heading="0,1.78" />
+							<FishSpot XYZ="-55.5114, 54.32302, 127.2057" heading="0,1.78" />
+							<FishSpot XYZ="-51.05783, 54.25337, 133.5217" heading="0,1.24" />
+							<FishSpot XYZ="-53.59542, 54.04964, 141.6731" heading="0,0.73" />
+						</FishSpots>
+					</Fish>
+					<ExPurify/>
+				</If>
+				<RunCode Name="EnableMount"/>
+			</If>
+			<If Condition="not(ItemCount(19) &lt; ((&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;)*2) and &Fish; != 0)">
+				<ExLog Color="#FFFF00" Name="Draconian Potions &Version;"  Message="I'm done with Water Cluster (Fishing) !"/>
+			</If>
+			<!-- Fish Resetting -->
+			<If Condition="IsTimeBetween(12,13) and ItemCount(19) &lt; ((&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;)*2) and &Fish; != 0 and not(FreeItemSlots() &lt; 2)">
+				<ExLog Color="#FFFF00" Name="Draconian Potions &Version;"  Message="I'm going to reset Fish !"/>
+				<If Condition="not HasAtLeast(12704,20)">
+					<ExLog Color="#FFFF00" Name="Draconian Potions &Version;"  Message="Not enough bait available, I'm going to buy you some !"/>
+					<TeleportTo Name="Camp Cloudtop" AetheryteId="72" Force="True"/>
+					<ExMoveTo XYZ="-650.1684, -123.7523, 523.7875" ForceLanding="true"/>
+					<BuyItem ItemId="12704" ItemCount="99" DialogOption="1" InteractDistance="3.0" NpcId="1011947" XYZ="-650.1684, -123.7523, 523.7875" />
+				</If>
+				<TeleportTo Name="Camp Cloudtop" AetheryteId="72" Force="True"/>
+				<RunCode Name="FSH"/>
+				<ExMoveTo XYZ="-602.2142, -122.2923, 554.533" />
+				<ExFlyTo XYZ="203.5816, -109.9027, 652.8904" Radius="3.0"/>
+				<Fish Condition="IsTimeBetween(12,13)" shuffleFishSpots="true" sitRate=".69" bait="Stonefly Nymph">
+					<FishSpots>
+						<FishSpot XYZ="218.9494, -125.2895, 677.1995" heading="0,0.2" />
+						<FishSpot XYZ="252.9679, -125.2895, 658.6575" heading="0,1.44" />
+						<FishSpot XYZ="220.3984, -125.2895, 631.2059" heading="0,3.8" />
+						<FishSpot XYZ="182.4873, -135.0074, 635.0411" heading="0,4.76" />
+					</FishSpots>
+				</Fish>
+				<RunCode Name="EnableMount"/>
+			</If>
+			<!-- Rue -->
+			<If Condition="ItemCount(12642) &lt; (&Strength_Qty;*2) and &WaitCondition; and not(FreeItemSlots() &lt; 2)">
+				<ExLog Color="#FFFF00" Name="Draconian Potions &Version;"  Message="I don't have enough Rue !"/>
+				<TeleportTo Name="Falcons Nest" AetheryteId="71" Force="True"/>
+				<RunCode Name="BTN"/>
+				<ExFlyTo XYZ="441.3659, 227.2105, 696.4022" Radius="3.0" DismountAtDestination="false" />
+				<ExFlyTo XYZ="-83.43105, 310.537, -88.52545" Radius="3.0" />
+				<ExGather while="ItemCount(12642) &lt; (&Strength_Qty;*2) and &WaitCondition; and not(FreeItemSlots() &lt; 2)" GatherIncrease="Yield" DisableRotationOverride="true">
+					<GatherObjects>
+						<GatherObject>Lush Vegetation Patch</GatherObject>
+					</GatherObjects>
+					<ItemNames>
+						<ItemName>Grade 5 Carbonized Matter</ItemName>
+						<ItemName>Timeworn Dragonskin Map</ItemName>
+						<ItemName>Rue</ItemName>
+					</ItemNames>
+					<GatherRotation>RegularNode</GatherRotation>
+					<GatherSpots>
+						<IndirectApproachGatherSpot ReturnToApproachLocation="true" ApproachLocation="-453.1555, 120.3001, -274.9049" nodeLocation="-460.4598, 120.6998, -282.0876" />
+						<StealthApproachGatherSpot ReturnToStealthLocation="true" StealthLocation="-454.0193, 122.0814, -456.4791" nodeLocation="-464.1032, 122.1049, -462.4032" />
+					</GatherSpots>
+					<HotSpots>
+						<HotSpot XYZ="-469.7902, 127.7917, -265.4348" Radius="50"/>
+						<HotSpot XYZ="-511.3296, 128.6305, -455.8474" Radius="50"/>
+						<HotSpot XYZ="-691.3636, 140.3503, -374.2292" Radius="50"/>
+					</HotSpots>
+				</ExGather>
+			</If>
+			<If Condition="not(ItemCount(12642) &lt; (&Strength_Qty;*2))">
+				<ExLog Color="#FFFF00" Name="Draconian Potions &Version;"  Message="I'm done with Rue !"/>
+			</If>
+			<!-- Coriander -->
+			<If Condition="ItemCount(12643) &lt; (&Intelligence_Qty;*2) and &WaitCondition; and not(FreeItemSlots() &lt; 2)">
+				<ExLog Color="#FFFF00" Name="Draconian Potions &Version;"  Message="I don't have enough Coriander !"/>
+				<TeleportTo Name="Falcons Nest" AetheryteId="71" Force="True"/>
+				<RunCode Name="BTN"/>
+				<ExFlyTo XYZ="441.3659, 227.2105, 696.4022" Radius="3.0" DismountAtDestination="false" />
+				<ExFlyTo XYZ="-83.43105, 310.537, -88.52545" Radius="3.0" />
+				<ExGather while="ItemCount(12643) &lt; (&Intelligence_Qty;*2) and &WaitCondition; and not(FreeItemSlots() &lt; 2)" GatherIncrease="Yield" DisableRotationOverride="true">
+					<GatherObjects>
+						<GatherObject>Lush Vegetation Patch</GatherObject>
+					</GatherObjects>
+					<ItemNames>
+						<ItemName>Grade 5 Carbonized Matter</ItemName>
+						<ItemName>Timeworn Dragonskin Map</ItemName>
+						<ItemName>Coriander</ItemName>
+					</ItemNames>
+					<GatherRotation>RegularNode</GatherRotation>
+					<GatherSpots>
+						<IndirectApproachGatherSpot ReturnToApproachLocation="true" ApproachLocation="-453.1555, 120.3001, -274.9049" nodeLocation="-460.4598, 120.6998, -282.0876" />
+						<StealthApproachGatherSpot ReturnToStealthLocation="true" StealthLocation="-454.0193, 122.0814, -456.4791" nodeLocation="-464.1032, 122.1049, -462.4032" />
+					</GatherSpots>
+					<HotSpots>
+						<HotSpot XYZ="-469.7902, 127.7917, -265.4348" Radius="50"/>
+						<HotSpot XYZ="-511.3296, 128.6305, -455.8474" Radius="50"/>
+						<HotSpot XYZ="-691.3636, 140.3503, -374.2292" Radius="50"/>
+					</HotSpots>
+				</ExGather>
+			</If>
+			<If Condition="not(ItemCount(12643) &lt; (&Intelligence_Qty;*2))">
+				<ExLog Color="#FFFF00" Name="Draconian Potions &Version;"  Message="I'm done with Coriander !"/>
+			</If>
+			<!-- Coneflower -->
+			<If Condition="ItemCount(12638) &lt; (&Dexterity_Qty;*2) and &WaitCondition; and not(FreeItemSlots() &lt; 2)">
+				<ExLog Color="#FFFF00" Name="Draconian Potions &Version;"  Message="I don't have enough Coneflower !"/>
+				<TeleportTo Name="Anyx Trine" AetheryteId="77" Force="True"/>
+				<RunCode Name="BTN"/>
+				<ExFlyTo XYZ="-289.3234, -3.640372, 60.82505" Radius="3.0" />
+				<ExFlyTo XYZ="-216.91, -25.85352, 196.2107" Radius="3.0" />
+				<ExFlyTo XYZ="-420.6207, -44.11576, 463.0867" Radius="3.0" />
+				<ExFlyTo XYZ="-553.3353, -85.52296, 419.714" Radius="3.0" />
+				<ExGather while="ItemCount(12638) &lt; (&Dexterity_Qty;*2) and &WaitCondition; and not(FreeItemSlots() &lt; 2)" GatherIncrease="Yield" DisableRotationOverride="true">
+					<GatherObjects>
+						<GatherObject>Lush Vegetation Patch</GatherObject>
+					</GatherObjects>
+					<ItemNames>
+						<ItemName>Grade 5 Carbonized Matter</ItemName>
+						<ItemName>Timeworn Dragonskin Map</ItemName>
+						<ItemName>Coneflower</ItemName>
+					</ItemNames>
+					<GatherRotation>RegularNode</GatherRotation>
+					<GatherSpots>
+						<StealthApproachGatherSpot ReturnToStealthLocation="true" StealthLocation="-693.4734, -105.5641, 620.0862" nodeLocation="-679.3283, -104.4418, 624.4818" />
+					</GatherSpots>
+					<HotSpots>
+						<HotSpot XYZ="-532.0055, -82.23738, 455.3998" Radius="70"/>
+						<HotSpot XYZ="-580.0791, -93.15157, 538.0186" Radius="70"/>
+						<HotSpot XYZ="-710.0841, -100.0908, 589.6254" Radius="60"/>
+					</HotSpots>
+				</ExGather>
+			</If>
+			<If Condition="not(ItemCount(12638) &lt; (&Dexterity_Qty;*2))">
+				<ExLog Color="#FFFF00" Name="Draconian Potions &Version;"  Message="I'm done with Coneflower !"/>
+			</If>
+			<!-- Cow Bitter -->
+			<If Condition="ItemCount(12639) &lt; (&Vitality_Qty;*2) and &WaitCondition; and not(FreeItemSlots() &lt; 2)">
+				<ExLog Color="#FFFF00" Name="Draconian Potions &Version;"  Message="I don't have enough Cow Bitter !"/>
+				<TeleportTo Name="Idyllshire" AetheryteId="75" Force="True"/>
+				<RunCode Name="BTN"/>
+				<ExMoveTo XYZ="71.70625, 209, -18.7505455" Distance="10" />
+				<RunCode Name="useAethernet"/>
+				<ExFlyTo XYZ="-517.9157, 141.9116, -274.003" Radius="3.0" />
+				<ExGather while="ItemCount(12639) &lt; (&Vitality_Qty;*2) and &WaitCondition; and not(FreeItemSlots() &lt; 2)" GatherIncrease="Yield" DisableRotationOverride="true">
+					<GatherObjects>
+						<GatherObject>Lush Vegetation Patch</GatherObject>
+					</GatherObjects>
+					<ItemNames>
+						<ItemName>Grade 5 Carbonized Matter</ItemName>
+						<ItemName>Timeworn Dragonskin Map</ItemName>
+						<ItemName>Cow Bitter</ItemName>
+					</ItemNames>
+					<GatherRotation>RegularNode</GatherRotation>
+					<GatherSpots>
+						<StealthApproachGatherSpot ReturnToStealthLocation="true" UnstealthAfter="true" StealthLocation="-512.0675, 141.4861, -277.4222" nodeLocation="-510.6701, 141.0723, -279.9205" />
+						<StealthApproachGatherSpot ReturnToStealthLocation="false" StealthLocation="-473.159, 143.2004, -298.8527" nodeLocation="-494.1652, 142.7381, -287.4084" />
+						<StealthApproachGatherSpot ReturnToStealthLocation="false" StealthLocation="-473.159, 143.2004, -298.8527" nodeLocation="-485.4606, 142.9737, -290.856" />
+						<StealthApproachGatherSpot ReturnToStealthLocation="true" StealthLocation="-391.9269, 146.2479, -183.8181" nodeLocation="-388.4753, 147.345, -177.1972" />
+						<StealthApproachGatherSpot ReturnToStealthLocation="true" StealthLocation="-391.9269, 146.2479, -183.8181" nodeLocation="-391.4452, 147.115, -169.2141" />
+						<IndirectApproachGatherSpot ReturnToApproachLocation="true" ApproachLocation="-571.7055, 147.9581, -147.7574" nodeLocation="-573.738, 148.4877, -158.4798" />
+					</GatherSpots>
+					<HotSpots>
+						<HotSpot XYZ="-517.4311, 155.392, -297.5033" Radius="50"/>
+						<HotSpot XYZ="-558.9656, 149.6086, -119.9824" Radius="50"/>
+						<HotSpot XYZ="-382.8387, 153.1599, -190.6937" Radius="50"/>
+					</HotSpots>
+				</ExGather>
+			</If>
+			<If Condition="not(ItemCount(12639) &lt; (&Vitality_Qty;*2))">
+				<ExLog Color="#FFFF00" Name="Draconian Potions &Version;"  Message="I'm done with Cow Bitter !"/>
+			</If>
+			<!-- Dandelion -->
+			<If Condition="ItemCount(12640) &lt; (&Mind_Qty;*2) and &WaitCondition; and not(FreeItemSlots() &lt; 2)">
+				<ExLog Color="#FFFF00" Name="Draconian Potions &Version;"  Message="I don't have enough Dandelion !"/>
+				<TeleportTo Name="Zenith" AetheryteId="79" Force="True"/>
+				<RunCode Name="BTN"/>
+				<ExFlyTo XYZ="-423.3196, 69.13547, 411.706" Radius="3.0" MountId="1" DismountAtDestination="false" />
+				<ExFlyTo XYZ="-223.9079, 73.30476, 369.493" Radius="3.0" MountId="1" DismountAtDestination="false" />
+				<ExFlyTo XYZ="-216.0441, -15.27015, 263.3171" Radius="3.0" />
+				<ExGather while="ItemCount(12640) &lt; (&Mind_Qty;*2) and &WaitCondition; and not(FreeItemSlots() &lt; 2)" GatherIncrease="Yield" DisableRotationOverride="true">
+					<GatherObjects>
+						<GatherObject>Lush Vegetation Patch</GatherObject>
+					</GatherObjects>
+					<ItemNames>
+						<ItemName>Grade 5 Carbonized Matter</ItemName>
+						<ItemName>Timeworn Dragonskin Map</ItemName>
+						<ItemName>Dandelion</ItemName>
+					</ItemNames>
+					<GatherRotation>RegularNode</GatherRotation>
+					<GatherSpots>
+						<StealthApproachGatherSpot ReturnToStealthLocation="true" UnStealthAfter="true" StealthLocation="-81.65399, -9.282702, 448.6534" NodeLocation="-88.15926, -8.882813, 447.7102" />
+						<IndirectApproachGatherSpot ReturnToApproachLocation="false" ApproachLocation="-27.539, -13.48827, 370.4258" NodeLocation="-33.43795, -13.69157, 374.1798" />
+					</GatherSpots>
+					<HotSpots>
+						<HotSpot XYZ="-211.961, -10.23702, 282.1108" Radius="50"/>
+						<HotSpot XYZ="-89.7104, -4.862249, 419.6288" Radius="50"/>
+						<HotSpot XYZ="-11.89164, -11.48173, 375.9863" Radius="50"/>
+					</HotSpots>
+				</ExGather>
+			</If>
+			<If Condition="not(ItemCount(12640) &lt; (&Mind_Qty;*2))">
+				<ExLog Color="#FFFF00" Name="Draconian Potions &Version;"  Message="I'm done with Dandelion !"/>
+			</If>
+			<!-- Dragon Blood -->
+			<If Condition="ItemCount(12630) &lt; ((&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;)*2) and &WaitCondition; and not(FreeItemSlots() &lt; 2)">
+				<ExLog Color="#FFFF00" Name="Draconian Potions &Version;"  Message="I don't have enough Dragon Blood !"/>
+				<TeleportTo Name="Zenith" AetheryteId="79" Force="True"/>
+				<RunCode Name="CBT" />
+				<ExFlyTo XYZ="-533.3515, 57.23525, 343.3924" />
+				<ExFlyTo XYZ="-428.366, 82.90056, 404.3706" />
+				<ExFlyTo XYZ="-25.58971, 67.52552, 110.9375" />
+				<RunCode Name="CBT" />
+				<Grind grindRef="Dragon" while="ItemCount(12630) &lt; ((&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;)*2) and &WaitCondition; and not(FreeItemSlots() &lt; 2)" />
+			</If>
+			<If Condition="not(ItemCount(12630) &lt; ((&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;)*2))">
+				<ExLog Color="#FFFF00" Name="Draconian Potions &Version;"  Message="I'm done with Dragon Blood !"/>
+			</If>
+			<!-- Waiting -->
+			<If Condition ="&WaitCondition; and not(ItemCount(12638) &lt; (&Dexterity_Qty;*2)) and not(ItemCount(12639) &lt; (&Vitality_Qty;*2)) and not(ItemCount(12643) &lt; (&Intelligence_Qty;*2)) and not(ItemCount(12640) &lt; (&Mind_Qty;*2)) and not(ItemCount(12630) &lt; ((&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;)*2)) and (ItemCount(12630) &lt; ((&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;)*2) or ItemCount(12640) &lt; (&Mind_Qty;*2) or ItemCount(12643) &lt; (&Intelligence_Qty;*2) or ItemCount(12639) &lt; (&Vitality_Qty;*2) or ItemCount(12638) &lt; (&Dexterity_Qty;*2) or ItemCount(12642) &lt; (&Strength_Qty;*2) or ItemCount(19) &lt; ((&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;)*2) or ItemCount(18) &lt; (&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;) or ItemCount(12972) &lt; ((&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;)*2) or ItemCount(12936) &lt; (&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;) or ItemCount(12901) &lt; (&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;)) and not(FreeItemSlots() &lt; 2)">
+				<If Condition="&Farm_Sand; !=0 ">
+					<ExLog Color="#FFFF00"  Name="Draconian Potions &Version;"  Message="Nothing available, I'm going to farm some ephemerals nodes untill something interesting spawn !"/>
+					<While Condition="&WaitCondition; and (ItemCount(12630) &lt; ((&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;)*2) or ItemCount(12640) &lt; (&Mind_Qty;*2) or ItemCount(12643) &lt; (&Intelligence_Qty;*2) or ItemCount(12639) &lt; (&Vitality_Qty;*2) or ItemCount(12638) &lt; (&Dexterity_Qty;*2) or ItemCount(12642) &lt; (&Strength_Qty;*2) or ItemCount(19) &lt; ((&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;)*2) or ItemCount(18) &lt; (&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;) or ItemCount(12972) &lt; ((&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;)*2) or ItemCount(12936) &lt; (&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;) or ItemCount(12901) &lt; (&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;)) and not(FreeItemSlots() &lt; 2)">
+						<If Condition="FreeItemSlots() &lt; 20">
+							<ExPurify/>
+						</If>
+						<While Condition="IsTimeBetween(0,4) and not(FreeItemSlots() &lt; 2) and &WaitCondition; and (ItemCount(12630) &lt; ((&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;)*2) or ItemCount(12640) &lt; (&Mind_Qty;*2) or ItemCount(12643) &lt; (&Intelligence_Qty;*2) or ItemCount(12639) &lt; (&Vitality_Qty;*2) or ItemCount(12638) &lt; (&Dexterity_Qty;*2) or ItemCount(12642) &lt; (&Strength_Qty;*2) or ItemCount(19) &lt; ((&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;)*2) or ItemCount(18) &lt; (&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;) or ItemCount(12972) &lt; ((&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;)*2) or ItemCount(12936) &lt; (&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;) or ItemCount(12901) &lt; (&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;))">
+							<If Condition="FreeItemSlots() &lt; 20">
+								<ExPurify/>
+							</If>
+							<TeleportTo Name="Falcons Nest" AetheryteId="71" Force="True"/>
+							<RunCode Name="BTN"/>
+							<ExMoveTo XYZ="461.7119, 212.5399, 696.9837"/>
+							<ExGather DiscoverUnknowns="true" AlwaysGather="false" GatherStrategy="TouchAndGo" CordialType="&CordialType_EphemeralFarm;" CordialTime="&CordialTime_EphemeralFarm;" while="IsTimeBetween(0,4) and &WaitCondition; and (ItemCount(12630) &lt; ((&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;)*2) or ItemCount(12640) &lt; (&Mind_Qty;*2) or ItemCount(12643) &lt; (&Intelligence_Qty;*2) or ItemCount(12639) &lt; (&Vitality_Qty;*2) or ItemCount(12638) &lt; (&Dexterity_Qty;*2) or ItemCount(12642) &lt; (&Strength_Qty;*2) or ItemCount(19) &lt; ((&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;)*2) or ItemCount(18) &lt; (&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;) or ItemCount(12972) &lt; ((&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;)*2) or ItemCount(12936) &lt; (&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;) or ItemCount(12901) &lt; (&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;))" skipWindowDelay="1500">
+								<Items>
+									<Collectable Name="Clary Sage" Value="&Farm_Sand_Collect_Rate;"/>
+									<GatherItem Name="Furymint" />
+									<Collectable Name="Highland Oregano" Value="&Farm_Sand_Collect_Rate;"/>
+								</Items>
+								<GatherSpots>
+									<IndirectApproachGatherSpot ReturnToApproachLocation="false" ApproachLocation="-584.357, 118.5735, -410.6856" nodeLocation="-585.8388, 119.6912, -407.5294" />
+									<IndirectApproachGatherSpot ReturnToApproachLocation="false" ApproachLocation="-502.8308, 117.3001, -444.0552" nodeLocation="-501.2244, 118.0477, -443.4114" />
+								</GatherSpots>
+								<HotSpots>
+									<HotSpot XYZ="-586.7975, 127.4666, -406.9053" Radius="30"/>
+									<HotSpot XYZ="-511.3296, 128.6305, -455.8474" Radius="50"/>
+									<HotSpot XYZ="-691.3636, 140.3503, -374.2292" Radius="50"/>
+								</HotSpots>
+							</ExGather>
+						</While>
+						<While Condition="IsTimeBetween(4,8) and not(FreeItemSlots() &lt; 2) and &WaitCondition; and (ItemCount(12630) &lt; ((&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;)*2) or ItemCount(12640) &lt; (&Mind_Qty;*2) or ItemCount(12643) &lt; (&Intelligence_Qty;*2) or ItemCount(12639) &lt; (&Vitality_Qty;*2) or ItemCount(12638) &lt; (&Dexterity_Qty;*2) or ItemCount(12642) &lt; (&Strength_Qty;*2) or ItemCount(19) &lt; ((&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;)*2) or ItemCount(18) &lt; (&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;) or ItemCount(12972) &lt; ((&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;)*2) or ItemCount(12936) &lt; (&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;) or ItemCount(12901) &lt; (&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;))">
+							<If Condition="FreeItemSlots() &lt; 20">
+								<ExPurify/>
+							</If>
+							<TeleportTo Name="Tailfeather" AetheryteId="76" Force="True"/>
+							<RunCode Name="MIN"/>
+							<ExMoveTo XYZ="520.1194, -51.27571, 40.14129"/>
+							<ExFlyTo XYZ="36.562, 13.66749, 252.4461" Radius="3.0" />
+							<ExFlyTo XYZ="-163.8157, 12.11641, 342.2419" Radius="3.0" />
+							<ExGather DiscoverUnknowns="true" AlwaysGather="false" GatherStrategy="TouchAndGo" CordialType="&CordialType_EphemeralFarm;" CordialTime="&CordialTime_EphemeralFarm;" while="IsTimeBetween(4,8) and &WaitCondition; and (ItemCount(12630) &lt; ((&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;)*2) or ItemCount(12640) &lt; (&Mind_Qty;*2) or ItemCount(12643) &lt; (&Intelligence_Qty;*2) or ItemCount(12639) &lt; (&Vitality_Qty;*2) or ItemCount(12638) &lt; (&Dexterity_Qty;*2) or ItemCount(12642) &lt; (&Strength_Qty;*2) or ItemCount(19) &lt; ((&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;)*2) or ItemCount(18) &lt; (&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;) or ItemCount(12972) &lt; ((&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;)*2) or ItemCount(12936) &lt; (&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;) or ItemCount(12901) &lt; (&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;))" skipWindowDelay="1500">
+								<Items>
+									<Collectable Name="Radiant Fire Moraine" Value="&Farm_Sand_Collect_Rate;"/>
+									<Collectable Name="Bright Fire Rock" Value="&Farm_Sand_Collect_Rate;"/>
+									<Collectable Name="Fire Moraine" Value="&Farm_Sand_Collect_Rate;"/>
+								</Items>
+								<HotSpots>
+									<HotSpot XYZ="-254.241, -49.31017, 275.3868" Radius="30"/>
+									<HotSpot XYZ="-307.5015, -51.15042, 330.267" Radius="30"/>
+									<HotSpot XYZ="-148.6799, -61.24704, 394.047" Radius="20"/>
+								</HotSpots>
+							</ExGather>
+						</While>
+						<While Condition="IsTimeBetween(8,12) and not(FreeItemSlots() &lt; 2) and &WaitCondition; and (ItemCount(12630) &lt; ((&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;)*2) or ItemCount(12640) &lt; (&Mind_Qty;*2) or ItemCount(12643) &lt; (&Intelligence_Qty;*2) or ItemCount(12639) &lt; (&Vitality_Qty;*2) or ItemCount(12638) &lt; (&Dexterity_Qty;*2) or ItemCount(12642) &lt; (&Strength_Qty;*2) or ItemCount(19) &lt; ((&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;)*2) or ItemCount(18) &lt; (&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;) or ItemCount(12972) &lt; ((&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;)*2) or ItemCount(12936) &lt; (&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;) or ItemCount(12901) &lt; (&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;))">
+							<If Condition="FreeItemSlots() &lt; 20">
+								<ExPurify/>
+							</If>
+							<TeleportTo Name="Tailfeather" AetheryteId="76" Force="True"/>
+							<RunCode Name="BTN"/>
+							<ExMoveTo XYZ="520.1194, -51.27571, 40.14129"/>
+							<ExFlyTo XYZ="36.562, 13.66749, 252.4461" Radius="3.0" />
+							<ExFlyTo XYZ="-163.8157, 12.11641, 342.2419" Radius="3.0" />
+							<ExGather DiscoverUnknowns="true" AlwaysGather="false" GatherStrategy="TouchAndGo" CordialType="&CordialType_EphemeralFarm;" CordialTime="&CordialTime_EphemeralFarm;" while="IsTimeBetween(8,12) and &WaitCondition; and (ItemCount(12630) &lt; ((&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;)*2) or ItemCount(12640) &lt; (&Mind_Qty;*2) or ItemCount(12643) &lt; (&Intelligence_Qty;*2) or ItemCount(12639) &lt; (&Vitality_Qty;*2) or ItemCount(12638) &lt; (&Dexterity_Qty;*2) or ItemCount(12642) &lt; (&Strength_Qty;*2) or ItemCount(19) &lt; ((&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;)*2) or ItemCount(18) &lt; (&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;) or ItemCount(12972) &lt; ((&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;)*2) or ItemCount(12936) &lt; (&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;) or ItemCount(12901) &lt; (&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;))" skipWindowDelay="1500">
+								<Items>
+									<Collectable Name="Black Soil" Value="&Farm_Sand_Collect_Rate;"/>
+									<Collectable Name="Peat Moss" Value="&Farm_Sand_Collect_Rate;"/>
+									<Collectable Name="Granular Clay" Value="&Farm_Sand_Collect_Rate;"/>
+								</Items>
+								<HotSpots>
+									<HotSpot XYZ="-617.4734, -98.22275, 486.038" Radius="30"/>
+									<HotSpot XYZ="-553.9785, -76.84792, 419.580" Radius="30"/>
+									<HotSpot XYZ="-569.1127, -88.61699, 546.949" Radius="30"/>
+								</HotSpots>
+							</ExGather>
+						</While>
+						<While Condition="IsTimeBetween(12,16) and not(FreeItemSlots() &lt; 2) and &WaitCondition; and (ItemCount(12630) &lt; ((&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;)*2) or ItemCount(12640) &lt; (&Mind_Qty;*2) or ItemCount(12643) &lt; (&Intelligence_Qty;*2) or ItemCount(12639) &lt; (&Vitality_Qty;*2) or ItemCount(12638) &lt; (&Dexterity_Qty;*2) or ItemCount(12642) &lt; (&Strength_Qty;*2) or ItemCount(19) &lt; ((&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;)*2) or ItemCount(18) &lt; (&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;) or ItemCount(12972) &lt; ((&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;)*2) or ItemCount(12936) &lt; (&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;) or ItemCount(12901) &lt; (&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;))">
+							<If Condition="FreeItemSlots() &lt; 20">
+								<ExPurify/>
+							</If>
+							<TeleportTo Name="Moghome" AetheryteId="78" Force="True"/>
+							<RunCode Name="MIN"/>
+							<ExFlyTo XYZ="315.8713, 27.29165, 265.4193" Radius="3.0" />
+							<ExFlyTo XYZ="310.1847, -10.75076, -113.7604" Radius="3.0" />
+							<ExGather DiscoverUnknowns="true" AlwaysGather="false" GatherStrategy="TouchAndGo" CordialType="&CordialType_EphemeralFarm;" CordialTime="&CordialTime_EphemeralFarm;" while="IsTimeBetween(12,16) and &WaitCondition; and (ItemCount(12630) &lt; ((&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;)*2) or ItemCount(12640) &lt; (&Mind_Qty;*2) or ItemCount(12643) &lt; (&Intelligence_Qty;*2) or ItemCount(12639) &lt; (&Vitality_Qty;*2) or ItemCount(12638) &lt; (&Dexterity_Qty;*2) or ItemCount(12642) &lt; (&Strength_Qty;*2) or ItemCount(19) &lt; ((&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;)*2) or ItemCount(18) &lt; (&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;) or ItemCount(12972) &lt; ((&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;)*2) or ItemCount(12936) &lt; (&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;) or ItemCount(12901) &lt; (&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;))" skipWindowDelay="1500">
+								<Items>
+									<Collectable Name="Radiant Fire Moraine" Value="&Farm_Sand_Collect_Rate;"/>
+									<Collectable Name="Bright Fire Rock" Value="&Farm_Sand_Collect_Rate;"/>
+									<Collectable Name="Fire Moraine" Value="&Farm_Sand_Collect_Rate;"/>
+								</Items>
+								<HotSpots>
+									<HotSpot XYZ="322.2591, -20.08315, -149.3368" Radius="30"/>
+									<HotSpot XYZ="320.6808, -21.97984, -216.2199" Radius="30"/>
+									<HotSpot XYZ="299.7046, -29.75275, -107.2751" Radius="30"/>
+								</HotSpots>
+							</ExGather>
+						</While>
+						<While Condition="IsTimeBetween(16,20) and not(FreeItemSlots() &lt; 2) and &WaitCondition; and (ItemCount(12630) &lt; ((&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;)*2) or ItemCount(12640) &lt; (&Mind_Qty;*2) or ItemCount(12643) &lt; (&Intelligence_Qty;*2) or ItemCount(12639) &lt; (&Vitality_Qty;*2) or ItemCount(12638) &lt; (&Dexterity_Qty;*2) or ItemCount(12642) &lt; (&Strength_Qty;*2) or ItemCount(19) &lt; ((&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;)*2) or ItemCount(18) &lt; (&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;) or ItemCount(12972) &lt; ((&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;)*2) or ItemCount(12936) &lt; (&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;) or ItemCount(12901) &lt; (&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;))">
+							<If Condition="FreeItemSlots() &lt; 20">
+								<ExPurify/>
+							</If>
+							<TeleportTo Name="Camp Cloudtop" AetheryteId="72" Fore="True"/>
+							<RunCode Name="MIN"/>
+							<MoveTo XYZ="-601.6155, -122.1475, 548.3532"/>
+							<ExFlyTo XYZ="125.623, 19.02453, 565.1636" Radius="3.0" />
+							<ExFlyTo XYZ="514.1337, -80.13731, 430.907" Radius="3.0" />
+							<ExGather DiscoverUnknowns="true" AlwaysGather="false" GatherStrategy="TouchAndGo" CordialType="&CordialType_EphemeralFarm;" CordialTime="&CordialTime_EphemeralFarm;" while="IsTimeBetween(16,20) and &WaitCondition; and (ItemCount(12630) &lt; ((&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;)*2) or ItemCount(12640) &lt; (&Mind_Qty;*2) or ItemCount(12643) &lt; (&Intelligence_Qty;*2) or ItemCount(12639) &lt; (&Vitality_Qty;*2) or ItemCount(12638) &lt; (&Dexterity_Qty;*2) or ItemCount(12642) &lt; (&Strength_Qty;*2) or ItemCount(19) &lt; ((&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;)*2) or ItemCount(18) &lt; (&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;) or ItemCount(12972) &lt; ((&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;)*2) or ItemCount(12936) &lt; (&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;) or ItemCount(12901) &lt; (&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;))" skipWindowDelay="1500">
+								<Items>
+									<Collectable Name="Radiant Lightning Moraine" Value="&Farm_Sand_Collect_Rate;"/>
+									<Collectable Name="Bright Lightning Rock" Value="&Farm_Sand_Collect_Rate;"/>
+									<Collectable Name="Lightning Moraine" Value="&Farm_Sand_Collect_Rate;"/>
+								</Items>
+								<GatherSpots>
+									<IndirectApproachGatherSpot ApproachLocation="524.8009, -111.2728, 433.7963" NodeLocation="529.0662, -110.3256, 434.3149" />
+									<IndirectApproachGatherSpot ReturnToApproachLocation="false" ApproachLocation="659.7636, -124.5583, 326.8338" NodeLocation="661.9959, -122.6855, 333.0707" />
+									<IndirectApproachGatherSpot ReturnToApproachLocation="false" ApproachLocation="590.5559, -98.91835, 409.9416" NodeLocation="591.6068, -98.08508, 407.905" />
+								</GatherSpots>
+								<HotSpots>
+									<HotSpot XYZ="591.0585, -92.11768, 408.6512" Radius="30"/>
+									<HotSpot XYZ="506.149078, -105.9392, 431.053772" Radius="45"/>
+									<HotSpot XYZ="706.3032, -79.69473, 460.5809" Radius="40"/>
+								</HotSpots>
+							</ExGather>
+						</While>
+						<While Condition="IsTimeBetween(20,24) and not(FreeItemSlots() &lt; 2) and &WaitCondition; and (ItemCount(12630) &lt; ((&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;)*2) or ItemCount(12640) &lt; (&Mind_Qty;*2) or ItemCount(12643) &lt; (&Intelligence_Qty;*2) or ItemCount(12639) &lt; (&Vitality_Qty;*2) or ItemCount(12638) &lt; (&Dexterity_Qty;*2) or ItemCount(12642) &lt; (&Strength_Qty;*2) or ItemCount(19) &lt; ((&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;)*2) or ItemCount(18) &lt; (&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;) or ItemCount(12972) &lt; ((&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;)*2) or ItemCount(12936) &lt; (&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;) or ItemCount(12901) &lt; (&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;))">
+							<If Condition="FreeItemSlots() &lt; 20">
+								<ExPurify/>
+							</If>
+							<TeleportTo Name="Camp Cloudtop" AetheryteId="72" Force="True"/>
+							<RunCode Name="BTN"/>
+							<ExMoveTo XYZ="-602.2142, -122.2923, 554.533" />
+							<ExFlyTo XYZ="198.9948, -130.0014, 639.3207" Radius="3.0" />
+							<ExGather DiscoverUnknowns="true" AlwaysGather="false" GatherStrategy="TouchAndGo" CordialType="&CordialType_EphemeralFarm;" CordialTime="&CordialTime_EphemeralFarm;" while="IsTimeBetween(20,24) and &WaitCondition; and (ItemCount(12630) &lt; ((&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;)*2) or ItemCount(12640) &lt; (&Mind_Qty;*2) or ItemCount(12643) &lt; (&Intelligence_Qty;*2) or ItemCount(12639) &lt; (&Vitality_Qty;*2) or ItemCount(12638) &lt; (&Dexterity_Qty;*2) or ItemCount(12642) &lt; (&Strength_Qty;*2) or ItemCount(19) &lt; ((&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;)*2) or ItemCount(18) &lt; (&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;) or ItemCount(12972) &lt; ((&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;)*2) or ItemCount(12936) &lt; (&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;) or ItemCount(12901) &lt; (&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;))" skipWindowDelay="1500">
+								<Items>
+									<Collectable Name="Clary Sage" Value="&Farm_Sand_Collect_Rate;"/>
+									<GatherItem Name="Furymint" />
+									<Collectable Name="Highland Oregano" Value="&Farm_Sand_Collect_Rate;"/>
+								</Items>
+								<HotSpots>
+									<HotSpot XYZ="201.4897, -125.9551, 636.8804" Radius="30"/>
+									<HotSpot XYZ="91.30701, -139.0224, 584.8624" Radius="30"/>
+									<HotSpot XYZ="98.29739, -142.3631, 510.3914" Radius="30"/>
+								</HotSpots>
+							</ExGather>
+						</While>
+						<If Condition="FreeItemSlots() &lt; 20">
+							<ExPurify/>
+						</If>
+					</While>
+				</If>
+				<If Condition="&Farm_Sand; == 0 ">
+					<TeleportTo Name="Home Sweet Home" aetheryteId="&Waiting_AetheryteId;" />
+					<ExLog Color="#FFFF00"  Name="Draconian Potions &Version;"  Message="Nothing to do, waiting for something to spawn !"/>
+					<WaitWhile Condition ="&WaitCondition;" />
+				</If>
+			</If>
+			<RunCode Name="EnableMount"/>
+		</While>
+		<If Condition="not(ItemCount(12630) &lt; ((&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;)*2) or ItemCount(12640) &lt; (&Mind_Qty;*2) or ItemCount(12643) &lt; (&Intelligence_Qty;*2) or ItemCount(12639) &lt; (&Vitality_Qty;*2) or ItemCount(12638) &lt; (&Dexterity_Qty;*2) or ItemCount(12642) &lt; (&Strength_Qty;*2) or ItemCount(19) &lt; ((&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;)*2) or ItemCount(18) &lt; (&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;) or ItemCount(12972) &lt; ((&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;)*2) or ItemCount(12936) &lt; (&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;) or ItemCount(12901) &lt; (&Strength_Qty; + &Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;))">
+			<ExLog Color="#FFFF00" Name="Draconian Potions &Version;"  Message="All materials gathered !"/>
+		</If>
+		<!-- Crafting -->
+		<If Condition="&Craft; !=0 and not(FreeItemSlots() &lt; 2)">
+			<ExLog Color="#FFFF00" Name="Draconian Potions &Version;"  Message="It's time to craft !"/>
+			<TeleportTo name="Home Sweet Home" aetheryteId="&Waiting_AetheryteId;" />
+			<RunCode Name="ALC" />
+			<RunCode Name="Dismount"/>
+			<WaitTimer WaitTime="3"/>
+			<!-- Draconian Potion Of Strengh -->
+			<ExLog Color="#FFFF00" Name="Draconian Potions &Version;"  Message="Draconian Potion Of Strengh !"/>
+			<While Condition="ItemCount(18) &gt; (&Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;) and ItemCount(19) &gt; ((&Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;)*2+1) and ItemCount(12630) &gt; ((&Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;)*2+1) and ItemCount(12901) &gt; (&Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;) and ItemCount(12936) &gt; (&Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;) and ItemCount(12972) &gt; ((&Dexterity_Qty; + &Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;)*2+1) and ItemCount(12642) &gt; 1 and &Strength_Qty;">
+				<If Condition="&ID_FOOD; != 0">
+					<EatFood ItemId="&ID_FOOD;" HqOnly="True"/>
+				</If>
+				<!-- Required Skills : Steady Hand 2, Careful synthesis 2, Hasty Touch, Byregot's Blessing, Comfort Zone -->
+				<!-- Optionnals : Tricks of the Trade, Reclaim -->
+				<Synthesize RecipeId="31206" MinimumCp="382" HQMats="-1,-1,-1,-1,-1,-1" RequiredSkills="281, 100069, 100108, 100009, 286" />
+				<CraftActionByName Name="Comfort Zone" />
+				<RunCode Name="ToT"/>
+				<CraftActionByName Name="Inner Quiet" />
+				<RunCode Name="ToT"/>
+				<CraftActionByName Name="Steady Hand II" />
+				<CraftActionByName Name="Hasty Touch" />
+				<If Condition="&Extra_Touch_58; == 0">
+					<CraftActionByName Name="Hasty Touch" />
+				</If>
+				<If Condition="&Extra_Touch_58; != 0">
+					<RunCode Name="TrickTouch"/>
+				</If>
+				<RunCode Name="TrickTouch"/>
+				<RunCode Name="TrickTouch"/>
+				<RunCode Name="TrickTouch"/>
+				<RunCode Name="ToT"/>
+				<CraftActionByName Name="Careful Synthesis II" />
+				<RunCode Name="ToT"/>
+				<CraftActionByName Name="Master's Mend II" />
+				<RunCode Name="ToT"/>
+				<CraftActionByName Name="Steady Hand II" />
+				<RunCode Name="TrickTouch"/>
+				<RunCode Name="TrickTouch"/>
+				<RunCode Name="TrickTouch2"/>
+				<CraftActionByName Name="Steady Hand" />
+				<If Condition="CraftingManager.Condition == CraftingCondition.Excellent">
+					<CraftActionByName Name="Byregot's Blessing" />
+					<CraftActionByName Name="Careful Synthesis II" />
+					<CraftActionByName Name="Careful Synthesis II" />
+					<CraftActionByName Name="Careful Synthesis II" />
+				</If>
+				<RunCode Name="ToT"/>
+				<If Condition="&Reclaim; != 0 and Core.Player.CharacterAuras.GetAuraStacksById(251) &lt; &IQ_Stack;">
+					<CraftActionByName Name="Reclaim" />
+					<CraftActionByName Name="Hasty Touch" />
+					<CraftActionByName Name="Hasty Touch" />
+					<CraftActionByName Name="Hasty Touch" />
+					<CraftActionByName Name="Hasty Touch" />
+				</If>
+				<CraftActionByName Name="Great Strides" />
+				<If Condition="CraftingManager.Condition == CraftingCondition.Excellent or CraftingManager.Condition == CraftingCondition.Good">
+					<CraftActionByName Name="Byregot's Blessing" />
+					<CraftActionByName Name="Careful Synthesis II" />
+					<CraftActionByName Name="Careful Synthesis II" />
+					<CraftActionByName Name="Careful Synthesis II" />
+				</If>
+				<RunCode Name="InnovationCheck"/>
+				<If Condition="CraftingManager.Condition == CraftingCondition.Excellent or CraftingManager.Condition == CraftingCondition.Good">
+					<CraftActionByName Name="Byregot's Blessing" />
+					<CraftActionByName Name="Careful Synthesis II" />
+					<CraftActionByName Name="Careful Synthesis II" />
+					<CraftActionByName Name="Careful Synthesis II" />
+				</If>
+				<CraftActionByName Name="Byregot's Blessing" />
+				<CraftActionByName Name="Careful Synthesis II" />
+				<CraftActionByName Name="Careful Synthesis II" />
+				<CraftActionByName Name="Careful Synthesis II" />
+			</While>
+			<!-- Draconian Potion Of Dexterity -->
+			<ExLog Color="#FFFF00" Name="Draconian Potions &Version;"  Message="Draconian Potion Of Dexterity !"/>
+			<While Condition="ItemCount(18) &gt; (&Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;) and ItemCount(19) &gt; ((&Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;)*2+1) and ItemCount(12630) &gt; ((&Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;)*2+1) and ItemCount(12901) &gt; (&Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;) and ItemCount(12936) &gt; (&Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;) and ItemCount(12972) &gt; ((&Vitality_Qty; + &Intelligence_Qty; + &Mind_Qty;)*2+1) and ItemCount(12638) &gt; 1 and &Dexterity_Qty;">
+				<If Condition="&ID_FOOD; != 0">
+					<EatFood ItemId="&ID_FOOD;" HqOnly="True"/>
+				</If>
+				<!-- Required Skills : Steady Hand 2, Careful synthesis 2, Hasty Touch, Byregot's Blessing, Comfort Zone -->
+				<!-- Optionnals : Tricks of the Trade, Reclaim -->
+				<Synthesize RecipeId="31207" MinimumCp="382" HQMats="-1,-1,-1,-1,-1,-1" RequiredSkills="281, 100069, 100108, 100009, 286" />
+				<CraftActionByName Name="Comfort Zone" />
+				<RunCode Name="ToT"/>
+				<CraftActionByName Name="Inner Quiet" />
+				<RunCode Name="ToT"/>
+				<CraftActionByName Name="Steady Hand II" />
+				<CraftActionByName Name="Hasty Touch" />
+				<If Condition="&Extra_Touch_58; == 0">
+					<CraftActionByName Name="Hasty Touch" />
+				</If>
+				<If Condition="&Extra_Touch_58; != 0">
+					<RunCode Name="TrickTouch"/>
+				</If>
+				<RunCode Name="TrickTouch"/>
+				<RunCode Name="TrickTouch"/>
+				<RunCode Name="TrickTouch"/>
+				<RunCode Name="ToT"/>
+				<CraftActionByName Name="Careful Synthesis II" />
+				<RunCode Name="ToT"/>
+				<CraftActionByName Name="Master's Mend II" />
+				<RunCode Name="ToT"/>
+				<CraftActionByName Name="Steady Hand II" />
+				<RunCode Name="TrickTouch"/>
+				<RunCode Name="TrickTouch"/>
+				<RunCode Name="TrickTouch2"/>
+				<CraftActionByName Name="Steady Hand" />
+				<If Condition="CraftingManager.Condition == CraftingCondition.Excellent">
+					<CraftActionByName Name="Byregot's Blessing" />
+					<CraftActionByName Name="Careful Synthesis II" />
+					<CraftActionByName Name="Careful Synthesis II" />
+					<CraftActionByName Name="Careful Synthesis II" />
+				</If>
+				<RunCode Name="ToT"/>
+				<If Condition="&Reclaim; != 0 and Core.Player.CharacterAuras.GetAuraStacksById(251) &lt; &IQ_Stack;">
+					<CraftActionByName Name="Reclaim" />
+					<CraftActionByName Name="Hasty Touch" />
+					<CraftActionByName Name="Hasty Touch" />
+					<CraftActionByName Name="Hasty Touch" />
+					<CraftActionByName Name="Hasty Touch" />
+				</If>
+				<CraftActionByName Name="Great Strides" />
+				<If Condition="CraftingManager.Condition == CraftingCondition.Excellent or CraftingManager.Condition == CraftingCondition.Good">
+					<CraftActionByName Name="Byregot's Blessing" />
+					<CraftActionByName Name="Careful Synthesis II" />
+					<CraftActionByName Name="Careful Synthesis II" />
+					<CraftActionByName Name="Careful Synthesis II" />
+				</If>
+				<RunCode Name="InnovationCheck"/>
+				<If Condition="CraftingManager.Condition == CraftingCondition.Excellent or CraftingManager.Condition == CraftingCondition.Good">
+					<CraftActionByName Name="Byregot's Blessing" />
+					<CraftActionByName Name="Careful Synthesis II" />
+					<CraftActionByName Name="Careful Synthesis II" />
+					<CraftActionByName Name="Careful Synthesis II" />
+				</If>
+				<CraftActionByName Name="Byregot's Blessing" />
+				<CraftActionByName Name="Careful Synthesis II" />
+				<CraftActionByName Name="Careful Synthesis II" />
+				<CraftActionByName Name="Careful Synthesis II" />
+			</While>
+			<!-- Draconian Potion Of Vitality -->
+			<ExLog Color="#FFFF00" Name="Draconian Potions &Version;"  Message="Draconian Potion Of Vitality !"/>
+			<While Condition="ItemCount(18) &gt; (&Intelligence_Qty; + &Mind_Qty;) and ItemCount(19) &gt; ((&Intelligence_Qty; + &Mind_Qty;)*2+1) and ItemCount(12630) &gt; ((&Intelligence_Qty; + &Mind_Qty;)*2+1)and ItemCount(12901) &gt; (&Intelligence_Qty; + &Mind_Qty;) and ItemCount(12936) &gt; (&Intelligence_Qty; + &Mind_Qty;) and ItemCount(12972) &gt; ((&Intelligence_Qty; + &Mind_Qty;)*2+1)and ItemCount(12639) &gt; 1 and &Vitality_Qty;">				
+				<If Condition="&ID_FOOD; != 0">
+					<EatFood ItemId="&ID_FOOD;" HqOnly="True"/>
+				</If>
+				<!-- Required Skills : Steady Hand 2, Careful synthesis 2, Hasty Touch, Byregot's Blessing, Comfort Zone, Muscle Memory, Ingenuity II -->
+				<!-- Optionnals : Tricks of the Trade, Reclaim -->
+				<Synthesize RecipeId="31208" MinimumCp="420" HQMats="-1,-1,-1,-1,-1,-1" RequiredSkills="281, 100069, 100108, 100009, 286, 100136, 283" />
+				<CraftActionByName Name="Muscle Memory" />
+				<RunCode Name="ToT"/>
+				<CraftActionByName Name="Comfort Zone" />
+				<RunCode Name="ToT"/>
+				<CraftActionByName Name="Inner Quiet" />
+				<RunCode Name="ToT"/>
+				<CraftActionByName Name="Steady Hand II" />
+				<CraftActionByName Name="Hasty Touch" />
+				<If Condition="&Extra_Touch_59; == 0">
+					<CraftActionByName Name="Hasty Touch" />
+				</If>
+				<If Condition="&Extra_Touch_59; != 0">
+					<RunCode Name="TrickTouch"/>
+				</If>
+				<RunCode Name="TrickTouch"/>
+				<RunCode Name="TrickTouch"/>
+				<RunCode Name="TrickTouch"/>
+				<RunCode Name="ToT"/>
+				<CraftActionByName Name="Master's Mend II" />
+				<RunCode Name="ToT"/>
+				<CraftActionByName Name="Steady Hand II" />
+				<CraftActionByName Name="Hasty Touch" />
+				<RunCode Name="TrickTouch"/>
+				<RunCode Name="TrickTouch"/>
+				<CraftActionByName Name="Steady Hand" />
+				<If Condition="CraftingManager.Condition == CraftingCondition.Excellent">
+					<CraftActionByName Name="Byregot's Blessing" />
+					<CraftActionByName Name="Ingenuity II" />
+					<CraftActionByName Name="Careful Synthesis II" />
+					<CraftActionByName Name="Careful Synthesis II" />
+					<CraftActionByName Name="Careful Synthesis II" />
+				</If>
+				<RunCode Name="ToT"/>
+				<If Condition="&Reclaim; != 0 and Core.Player.CharacterAuras.GetAuraStacksById(251) &lt; &IQ_Stack;">
+					<CraftActionByName Name="Reclaim" />
+					<CraftActionByName Name="Hasty Touch" />
+					<CraftActionByName Name="Hasty Touch" />
+					<CraftActionByName Name="Hasty Touch" />
+					<CraftActionByName Name="Hasty Touch" />
+				</If>
+				<CraftActionByName Name="Great Strides" />
+				<If Condition="CraftingManager.Condition == CraftingCondition.Excellent or CraftingManager.Condition == CraftingCondition.Good">
+					<CraftActionByName Name="Byregot's Blessing" />
+					<CraftActionByName Name="Ingenuity II" />
+					<CraftActionByName Name="Careful Synthesis II" />
+					<CraftActionByName Name="Careful Synthesis II" />
+					<CraftActionByName Name="Careful Synthesis II" />
+				</If>
+				<RunCode Name="InnovationCheck2"/>
+				<If Condition="CraftingManager.Condition == CraftingCondition.Excellent or CraftingManager.Condition == CraftingCondition.Good">
+					<CraftActionByName Name="Byregot's Blessing" />
+					<CraftActionByName Name="Ingenuity II" />
+					<CraftActionByName Name="Careful Synthesis II" />
+					<CraftActionByName Name="Careful Synthesis II" />
+					<CraftActionByName Name="Careful Synthesis II" />
+				</If>
+				<CraftActionByName Name="Ingenuity II" />
+				<CraftActionByName Name="Byregot's Blessing" />
+				<CraftActionByName Name="Careful Synthesis II" />
+				<CraftActionByName Name="Careful Synthesis II" />
+				<CraftActionByName Name="Careful Synthesis II" />
+			</While>
+			<!-- Draconian Potion Of Intelligence -->
+			<ExLog Color="#FFFF00" Name="Draconian Potions &Version;"  Message="Draconian Potion Of Intelligence !"/>
+			<While Condition="ItemCount(18) &gt; (&Mind_Qty;) and ItemCount(19) &gt; ((&Mind_Qty;)*2+1) and ItemCount(12630) &gt; ((&Mind_Qty;)*2+1) and ItemCount(12901) &gt; (&Mind_Qty;) and ItemCount(12936) &gt; (&Mind_Qty;) and ItemCount(12972) &gt; ((&Mind_Qty;)*2+1) and ItemCount(12643) &gt; 1 and &Intelligence_Qty;">
+				<If Condition="&ID_FOOD; != 0">
+					<EatFood ItemId="&ID_FOOD;" HqOnly="True"/>
+				</If>
+				<!-- Required Skills : Steady Hand 2, Careful synthesis 2, Hasty Touch, Byregot's Blessing, Comfort Zone, Muscle Memory, Ingenuity II -->
+				<!-- Optionnals : Tricks of the Trade, Reclaim -->
+				<Synthesize RecipeId="31209" MinimumCp="420" HQMats="-1,-1,-1,-1,-1,-1" RequiredSkills="281, 100069, 100108, 100009, 286, 100136, 283" />
+				<CraftActionByName Name="Muscle Memory" />
+				<RunCode Name="ToT"/>
+				<CraftActionByName Name="Comfort Zone" />
+				<RunCode Name="ToT"/>
+				<CraftActionByName Name="Inner Quiet" />
+				<RunCode Name="ToT"/>
+				<CraftActionByName Name="Steady Hand II" />
+				<CraftActionByName Name="Hasty Touch" />
+				<If Condition="&Extra_Touch_59; == 0">
+					<CraftActionByName Name="Hasty Touch" />
+				</If>
+				<If Condition="&Extra_Touch_59; != 0">
+					<RunCode Name="TrickTouch"/>
+				</If>
+				<RunCode Name="TrickTouch"/>
+				<RunCode Name="TrickTouch"/>
+				<RunCode Name="TrickTouch"/>
+				<RunCode Name="ToT"/>
+				<CraftActionByName Name="Master's Mend II" />
+				<RunCode Name="ToT"/>
+				<CraftActionByName Name="Steady Hand II" />
+				<CraftActionByName Name="Hasty Touch" />
+				<RunCode Name="TrickTouch"/>
+				<RunCode Name="TrickTouch"/>
+				<CraftActionByName Name="Steady Hand" />
+				<If Condition="CraftingManager.Condition == CraftingCondition.Excellent">
+					<CraftActionByName Name="Byregot's Blessing" />
+					<CraftActionByName Name="Ingenuity II" />
+					<CraftActionByName Name="Careful Synthesis II" />
+					<CraftActionByName Name="Careful Synthesis II" />
+					<CraftActionByName Name="Careful Synthesis II" />
+				</If>
+				<RunCode Name="ToT"/>
+				<If Condition="&Reclaim; != 0 and Core.Player.CharacterAuras.GetAuraStacksById(251) &lt; &IQ_Stack;">
+					<CraftActionByName Name="Reclaim" />
+					<CraftActionByName Name="Hasty Touch" />
+					<CraftActionByName Name="Hasty Touch" />
+					<CraftActionByName Name="Hasty Touch" />
+					<CraftActionByName Name="Hasty Touch" />
+				</If>
+				<CraftActionByName Name="Great Strides" />
+				<If Condition="CraftingManager.Condition == CraftingCondition.Excellent or CraftingManager.Condition == CraftingCondition.Good">
+					<CraftActionByName Name="Byregot's Blessing" />
+					<CraftActionByName Name="Ingenuity II" />
+					<CraftActionByName Name="Careful Synthesis II" />
+					<CraftActionByName Name="Careful Synthesis II" />
+					<CraftActionByName Name="Careful Synthesis II" />
+				</If>
+				<RunCode Name="InnovationCheck2"/>
+				<If Condition="CraftingManager.Condition == CraftingCondition.Excellent or CraftingManager.Condition == CraftingCondition.Good">
+					<CraftActionByName Name="Byregot's Blessing" />
+					<CraftActionByName Name="Ingenuity II" />
+					<CraftActionByName Name="Careful Synthesis II" />
+					<CraftActionByName Name="Careful Synthesis II" />
+					<CraftActionByName Name="Careful Synthesis II" />
+				</If>
+				<CraftActionByName Name="Ingenuity II" />
+				<CraftActionByName Name="Byregot's Blessing" />
+				<CraftActionByName Name="Careful Synthesis II" />
+				<CraftActionByName Name="Careful Synthesis II" />
+				<CraftActionByName Name="Careful Synthesis II" />
+			</While>
+			<!-- Draconian Potion Of Mind -->
+			<ExLog Color="#FFFF00" Name="Draconian Potions &Version;"  Message="Draconian Potion Of Mind !"/>
+			<While Condition="ItemCount(18) &gt; 0 and ItemCount(19) &gt; 1 and ItemCount(12630) &gt; 1 and ItemCount(12901) &gt; 0	and ItemCount(12936) &gt; 0	and ItemCount(12972) &gt; 0	and ItemCount(12640) &gt; 1 and &Mind_Qty;">
+				<If Condition="&ID_FOOD; != 0">
+					<EatFood ItemId="&ID_FOOD;" HqOnly="True"/>
+				</If>
+				<!-- Required Skills : Steady Hand 2, Careful synthesis 2, Hasty Touch, Byregot's Blessing, Comfort Zone, Muscle Memory, Ingenuity II -->
+				<!-- Optionnals : Tricks of the Trade, Reclaim -->
+				<Synthesize RecipeId="31210" MinimumCp="420" HQMats="-1,-1,-1,-1,-1,-1" RequiredSkills="281, 100069, 100108, 100009, 286, 100136, 283" />
+				<CraftActionByName Name="Muscle Memory" />
+				<RunCode Name="ToT"/>
+				<CraftActionByName Name="Comfort Zone" />
+				<RunCode Name="ToT"/>
+				<CraftActionByName Name="Inner Quiet" />
+				<RunCode Name="ToT"/>
+				<CraftActionByName Name="Steady Hand II" />
+				<CraftActionByName Name="Hasty Touch" />
+				<If Condition="&Extra_Touch_59; == 0">
+					<CraftActionByName Name="Hasty Touch" />
+				</If>
+				<If Condition="&Extra_Touch_59; != 0">
+					<RunCode Name="TrickTouch"/>
+				</If>
+				<RunCode Name="TrickTouch"/>
+				<RunCode Name="TrickTouch"/>
+				<RunCode Name="TrickTouch"/>
+				<RunCode Name="ToT"/>
+				<CraftActionByName Name="Master's Mend II" />
+				<RunCode Name="ToT"/>
+				<CraftActionByName Name="Steady Hand II" />
+				<CraftActionByName Name="Hasty Touch" />
+				<RunCode Name="TrickTouch"/>
+				<RunCode Name="TrickTouch"/>
+				<CraftActionByName Name="Steady Hand" />
+				<If Condition="CraftingManager.Condition == CraftingCondition.Excellent">
+					<CraftActionByName Name="Byregot's Blessing" />
+					<CraftActionByName Name="Ingenuity II" />
+					<CraftActionByName Name="Careful Synthesis II" />
+					<CraftActionByName Name="Careful Synthesis II" />
+					<CraftActionByName Name="Careful Synthesis II" />
+				</If>
+				<RunCode Name="ToT"/>
+				<If Condition="&Reclaim; != 0 and Core.Player.CharacterAuras.GetAuraStacksById(251) &lt; &IQ_Stack;">
+					<CraftActionByName Name="Reclaim" />
+					<CraftActionByName Name="Hasty Touch" />
+					<CraftActionByName Name="Hasty Touch" />
+					<CraftActionByName Name="Hasty Touch" />
+					<CraftActionByName Name="Hasty Touch" />
+				</If>
+				<CraftActionByName Name="Great Strides" />
+				<If Condition="CraftingManager.Condition == CraftingCondition.Excellent or CraftingManager.Condition == CraftingCondition.Good">
+					<CraftActionByName Name="Byregot's Blessing" />
+					<CraftActionByName Name="Ingenuity II" />
+					<CraftActionByName Name="Careful Synthesis II" />
+					<CraftActionByName Name="Careful Synthesis II" />
+					<CraftActionByName Name="Careful Synthesis II" />
+				</If>
+				<RunCode Name="InnovationCheck2"/>
+				<If Condition="CraftingManager.Condition == CraftingCondition.Excellent or CraftingManager.Condition == CraftingCondition.Good">
+					<CraftActionByName Name="Byregot's Blessing" />
+					<CraftActionByName Name="Ingenuity II" />
+					<CraftActionByName Name="Careful Synthesis II" />
+					<CraftActionByName Name="Careful Synthesis II" />
+					<CraftActionByName Name="Careful Synthesis II" />
+				</If>
+				<CraftActionByName Name="Ingenuity II" />
+				<CraftActionByName Name="Byregot's Blessing" />
+				<CraftActionByName Name="Careful Synthesis II" />
+				<CraftActionByName Name="Careful Synthesis II" />
+				<CraftActionByName Name="Careful Synthesis II" />
+			</While>
+			<StopCrafting/>
+		</If>
+		<If Condition="FreeItemSlots() &lt; 2">
+			<RunCode Name="EnableMount"/>
+			<TeleportTo Name="Home Sweet Home" aetheryteId="&Waiting_AetheryteId;" />
+			<ExLog Color="#FFFF00" Name="Draconian Potions &Version;"  Message="Only 1 Free slot left, stopping the profile !"/>
+		</If>
+		<If Condition="not(FreeItemSlots() &lt; 2)">
+			<RunCode Name="EnableMount"/>
+			<ExLog Color="#FFFF00"  Name="Draconian Potions &Version;"  Message="Draconian Potions Profile Completed ! ༼ つ ͡◕ Ѿ ͡◕ ༽つ Entrax "/>
+		</If>
+	</Order>
+</Profile>
