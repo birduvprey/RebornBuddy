@@ -2,8 +2,9 @@
 
 #########################################################################
 ####         Common RebornBuddy Baseline pack maintained by          ####
-#### @birduvprey / Discord - Donations to PayPal falcnor@gmail.com   ####
-####					   Updated 02/14/2017                        ####
+####     @birduvprey / Discord - Donations paypal.me/birduvprey      ####
+####					   Updated 02/17/2017                        ####
+####   Thank you to those who pushed me to do this.(@Wilklersticks)  ####
 #########################################################################
 
 #########################################################################
