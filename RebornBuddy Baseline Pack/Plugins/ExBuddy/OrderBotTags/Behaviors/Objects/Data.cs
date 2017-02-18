@@ -706,10 +706,21 @@ namespace ExBuddy.OrderBotTags.Behaviors.Objects
 
             #region RedCrafter
             {
+                ShopItem.SoulOfTheCrafter,
+                new ShopItemInfo
+                {
+                    Index = 51 + (int) ShopItem.SoulOfTheCrafter,
+                    ShopType = ShopType.RedCrafter,
+                    ItemId = 10336,
+                    Cost = 480,
+                    Yield = 1
+                }
+            },
+            {
                 ShopItem.RedCrafterToken,
                 new ShopItemInfo
                 {
-                    Index = 5 + (int) ShopItem.RedCrafterToken,
+                    Index = 51 + (int) ShopItem.RedCrafterToken,
                     ShopType = ShopType.RedCrafter,
                     ItemId = 12838,
                     Cost = 50,
@@ -720,7 +731,7 @@ namespace ExBuddy.OrderBotTags.Behaviors.Objects
                 ShopItem.GoblinCup,
                 new ShopItemInfo
                 {
-                    Index = 5 + (int) ShopItem.GoblinCup,
+                    Index = 51 + (int) ShopItem.GoblinCup,
                     ShopType = ShopType.RedCrafter,
                     ItemId = 14104,
                     Cost = 50,
@@ -731,7 +742,7 @@ namespace ExBuddy.OrderBotTags.Behaviors.Objects
                 ShopItem.CompetenceIV,
                 new ShopItemInfo
                 {
-                    Index = 5 + (int) ShopItem.CompetenceIV,
+                    Index = 51 + (int) ShopItem.CompetenceIV,
                     ShopType = ShopType.RedCrafter,
                     ItemId = 5702,
                     Cost = 50,
@@ -742,7 +753,7 @@ namespace ExBuddy.OrderBotTags.Behaviors.Objects
                 ShopItem.CunningIV,
                 new ShopItemInfo
                 {
-                    Index = 5 + (int) ShopItem.CunningIV,
+                    Index = 51 + (int) ShopItem.CunningIV,
                     ShopType = ShopType.RedCrafter,
                     ItemId = 5707,
                     Cost = 50,
@@ -753,7 +764,7 @@ namespace ExBuddy.OrderBotTags.Behaviors.Objects
                 ShopItem.CommandIV,
                 new ShopItemInfo
                 {
-                    Index = 5 + (int) ShopItem.CommandIV,
+                    Index = 51 + (int) ShopItem.CommandIV,
                     ShopType = ShopType.RedCrafter,
                     ItemId = 5712,
                     Cost = 50,
