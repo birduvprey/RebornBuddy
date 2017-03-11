@@ -1,11 +1,11 @@
 ﻿namespace ExBuddy.Interfaces
 {
-	using Clio.Utilities;
+    using Clio.Utilities;
 
-	public interface IInteractWithNpc
-	{
-		Vector3 Location { get; set; }
+    public interface IInteractWithNpc
+    {
+        Vector3 Location { get; set; }
 
-		uint NpcId { get; set; }
-	}
+        uint NpcId { get; set; }
+    }
 }

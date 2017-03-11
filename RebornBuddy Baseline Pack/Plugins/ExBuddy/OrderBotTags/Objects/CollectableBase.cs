@@ -1,29 +1,29 @@
 ﻿namespace ExBuddy.OrderBotTags.Objects
 {
-	using Clio.XmlEngine;
-	using ExBuddy.Interfaces;
+    using Clio.XmlEngine;
+    using ExBuddy.Interfaces;
 
-	public abstract class CollectableBase : INamedItem
-	{
-		[XmlAttribute("Value")]
-		public int Value { get; set; }
+    public abstract class CollectableBase : INamedItem
+    {
+        [XmlAttribute("Value")]
+        public int Value { get; set; }
 
-		#region INamedItem Members
+        #region INamedItem Members
 
-		[XmlAttribute("Id")]
-		public uint Id { get; set; }
+        [XmlAttribute("Id")]
+        public uint Id { get; set; }
 
-		[XmlAttribute("Name")]
-		public string Name { get; set; }
+        [XmlAttribute("Name")]
+        public string Name { get; set; }
 
-		[XmlAttribute("LocalName")]
-		public string LocalName { get; set; }
+        [XmlAttribute("LocalName")]
+        public string LocalName { get; set; }
 
-		#endregion
+        #endregion INamedItem Members
 
-		public override string ToString()
-		{
-			return this.DynamicToString();
-		}
-	}
+        public override string ToString()
+        {
+            return this.DynamicToString();
+        }
+    }
 }

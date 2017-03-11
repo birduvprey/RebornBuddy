@@ -1,160 +1,161 @@
 ﻿namespace ExBuddy.Helpers
 {
-	using System;
-	using System.Linq;
-	using ExBuddy.Logging;
-	using ExBuddy.Plugins;
-	using ExBuddy.Plugins.Skywatcher;
-	using ff14bot;
-	using ff14bot.Managers;
+    using ExBuddy.Logging;
+    using ExBuddy.Plugins;
+    using ExBuddy.Plugins.Skywatcher;
+    using ff14bot;
+    using ff14bot.Managers;
+    using System;
+    using System.Linq;
 
-	public static class SkywatcherPlugin
-	{
-		public static readonly DateTime EorzeaStartTime = new DateTime(2010, 7, 13);
+    public static class SkywatcherPlugin
+    {
+        public static readonly DateTime EorzeaStartTime = new DateTime(2010, 7, 13);
 
-		private static readonly DateTime EpochStart = new DateTime(1970, 1, 1, 0, 0, 0);
+        private static readonly DateTime EpochStart = new DateTime(1970, 1, 1, 0, 0, 0);
 
-		public static DateTime EorzeaToLocal(DateTime eDateTime)
-		{
-			var localDate = ConvertFromUnixTimestamp((ulong)((eDateTime - EpochStart).TotalSeconds * (7.0 / 144.0)));
+        public static DateTime EorzeaToLocal(DateTime eDateTime)
+        {
+            var localDate = ConvertFromUnixTimestamp((ulong)((eDateTime - EpochStart).TotalSeconds * (7.0 / 144.0)));
 
-			return localDate;
-		}
+            return localDate;
+        }
 
-		private static DateTime ConvertFromUnixTimestamp(ulong timestamp)
-		{
-			return new DateTime(1970, 1, 1, 0, 0, 0, 0).AddDays(timestamp / 86400.0);
-		}
-		public static TimeSpan GetEorzeaTimeTillNextInterval()
-		{
-			var timeOfDay = WorldManager.EorzaTime.TimeOfDay;
+        private static DateTime ConvertFromUnixTimestamp(ulong timestamp)
+        {
+            return new DateTime(1970, 1, 1, 0, 0, 0, 0).AddDays(timestamp / 86400.0);
+        }
 
-			var secondsLeft = 60 - timeOfDay.Seconds;
-			var minutesLeft = 60 - timeOfDay.Minutes + (secondsLeft == 0 ? 0 : -1);
-			var hoursLeft = 8 - (timeOfDay.Hours%8) + (minutesLeft == 0 && secondsLeft == 0 ? 0 : -1);
+        public static TimeSpan GetEorzeaTimeTillNextInterval()
+        {
+            var timeOfDay = WorldManager.EorzaTime.TimeOfDay;
 
-			var timeleft = new TimeSpan(hoursLeft, minutesLeft, secondsLeft);
+            var secondsLeft = 60 - timeOfDay.Seconds;
+            var minutesLeft = 60 - timeOfDay.Minutes + (secondsLeft == 0 ? 0 : -1);
+            var hoursLeft = 8 - (timeOfDay.Hours % 8) + (minutesLeft == 0 && secondsLeft == 0 ? 0 : -1);
 
-			return timeleft;
-		}
+            var timeleft = new TimeSpan(hoursLeft, minutesLeft, secondsLeft);
 
-		public static int GetIntervalNumber()
-		{
-			var interval = ((DateTime.UtcNow.ToUniversalTime().AddHours(8) - EorzeaStartTime).TotalSeconds/1400);
+            return timeleft;
+        }
 
-			return Convert.ToInt32(interval);
-		}
+        public static int GetIntervalNumber()
+        {
+            var interval = ((DateTime.UtcNow.ToUniversalTime().AddHours(8) - EorzeaStartTime).TotalSeconds / 1400);
 
-		public static double GetTimeTillNextInterval()
-		{
-			var timeOfDay = WorldManager.EorzaTime.TimeOfDay;
+            return Convert.ToInt32(interval);
+        }
 
-			var secondsLeft = 60 - timeOfDay.Seconds;
-			var minutesLeft = 60 - timeOfDay.Minutes + (secondsLeft == 0 ? 0 : -1);
-			var hoursLeft = 8 - (timeOfDay.Hours%8) + (minutesLeft == 0 && secondsLeft == 0 ? 0 : -1);
+        public static double GetTimeTillNextInterval()
+        {
+            var timeOfDay = WorldManager.EorzaTime.TimeOfDay;
 
-			var timeLeft = (secondsLeft*1000 + minutesLeft*60*1000 + hoursLeft*3600*1000)*(7.0/144.0);
-			return timeLeft;
-		}
+            var secondsLeft = 60 - timeOfDay.Seconds;
+            var minutesLeft = 60 - timeOfDay.Minutes + (secondsLeft == 0 ? 0 : -1);
+            var hoursLeft = 8 - (timeOfDay.Hours % 8) + (minutesLeft == 0 && secondsLeft == 0 ? 0 : -1);
 
-		public static string GetWeatherNameById(byte weatherId)
-		{
-			string weatherName;
-			WorldManager.WeatherDictionary.TryGetValue(weatherId, out weatherName);
-			return weatherName;
-		}
+            var timeLeft = (secondsLeft * 1000 + minutesLeft * 60 * 1000 + hoursLeft * 3600 * 1000) * (7.0 / 144.0);
+            return timeLeft;
+        }
 
-		public static bool IsWeather(byte weatherId)
-		{
-			return weatherId == WorldManager.CurrentWeatherId;
-		}
+        public static string GetWeatherNameById(byte weatherId)
+        {
+            string weatherName;
+            WorldManager.WeatherDictionary.TryGetValue(weatherId, out weatherName);
+            return weatherName;
+        }
 
-		public static bool IsWeather(string weatherName)
-		{
-			return string.Equals(weatherName, WorldManager.CurrentWeather, StringComparison.InvariantCultureIgnoreCase);
-		}
+        public static bool IsWeather(byte weatherId)
+        {
+            return weatherId == WorldManager.CurrentWeatherId;
+        }
 
-		public static bool IsWeatherInZone(int zoneId, params byte[] weatherIds)
-		{
-			if (!CheckEnabled())
-			{
-				return false;
-			}
+        public static bool IsWeather(string weatherName)
+        {
+            return string.Equals(weatherName, WorldManager.CurrentWeather, StringComparison.InvariantCultureIgnoreCase);
+        }
 
-			var currentWeatherId = Skywatcher.WeatherProvider.GetCurrentWeatherByZone(zoneId);
+        public static bool IsWeatherInZone(int zoneId, params byte[] weatherIds)
+        {
+            if (!CheckEnabled())
+            {
+                return false;
+            }
 
-			return weatherIds.Any(wid => wid == currentWeatherId);
-		}
+            var currentWeatherId = Skywatcher.WeatherProvider.GetCurrentWeatherByZone(zoneId);
 
-		public static bool IsWeatherInZone(int zoneId, params string[] weatherNames)
-		{
-			if (!CheckEnabled())
-			{
-				return false;
-			}
+            return weatherIds.Any(wid => wid == currentWeatherId);
+        }
 
-			var weatherId = Skywatcher.WeatherProvider.GetCurrentWeatherByZone(zoneId);
+        public static bool IsWeatherInZone(int zoneId, params string[] weatherNames)
+        {
+            if (!CheckEnabled())
+            {
+                return false;
+            }
 
-			if (!weatherId.HasValue)
-			{
-				return false;
-			}
+            var weatherId = Skywatcher.WeatherProvider.GetCurrentWeatherByZone(zoneId);
 
-			string weatherName;
-			if (!WorldManager.WeatherDictionary.TryGetValue((byte) weatherId, out weatherName))
-			{
-				return false;
-			}
+            if (!weatherId.HasValue)
+            {
+                return false;
+            }
 
-			return weatherNames.Any(wn => string.Equals(wn, weatherName, StringComparison.InvariantCultureIgnoreCase));
-		}
+            string weatherName;
+            if (!WorldManager.WeatherDictionary.TryGetValue((byte)weatherId, out weatherName))
+            {
+                return false;
+            }
 
-		public static bool PredictWeatherInZone(int zoneId, TimeSpan timeSpan, params byte[] weatherIds)
-		{
-			if (!CheckEnabled())
-			{
-				return false;
-			}
+            return weatherNames.Any(wn => string.Equals(wn, weatherName, StringComparison.InvariantCultureIgnoreCase));
+        }
 
-			var weatherId = Skywatcher.WeatherProvider.GetForecastByZone(zoneId, timeSpan);
+        public static bool PredictWeatherInZone(int zoneId, TimeSpan timeSpan, params byte[] weatherIds)
+        {
+            if (!CheckEnabled())
+            {
+                return false;
+            }
 
-			return weatherIds.Any(wid => wid == weatherId);
-		}
+            var weatherId = Skywatcher.WeatherProvider.GetForecastByZone(zoneId, timeSpan);
 
-		public static bool PredictWeatherInZone(int zoneId, TimeSpan timeSpan, params string[] weatherNames)
-		{
-			if (!CheckEnabled())
-			{
-				return false;
-			}
+            return weatherIds.Any(wid => wid == weatherId);
+        }
 
-			var weatherId = Skywatcher.WeatherProvider.GetForecastByZone(zoneId, timeSpan);
+        public static bool PredictWeatherInZone(int zoneId, TimeSpan timeSpan, params string[] weatherNames)
+        {
+            if (!CheckEnabled())
+            {
+                return false;
+            }
 
-			if (!weatherId.HasValue)
-			{
-				return false;
-			}
+            var weatherId = Skywatcher.WeatherProvider.GetForecastByZone(zoneId, timeSpan);
 
-			string weatherName;
-			if (!WorldManager.WeatherDictionary.TryGetValue((byte) weatherId, out weatherName))
-			{
-				return false;
-			}
+            if (!weatherId.HasValue)
+            {
+                return false;
+            }
 
-			return weatherNames.Any(wn => string.Equals(wn, weatherName, StringComparison.InvariantCultureIgnoreCase));
-		}
+            string weatherName;
+            if (!WorldManager.WeatherDictionary.TryGetValue((byte)weatherId, out weatherName))
+            {
+                return false;
+            }
 
-		private static bool CheckEnabled()
-		{
-			if (!ExBotPlugin<Skywatcher>.IsEnabled)
-			{
-				Logger.Instance.Error(Localization.Localization.SkyWatcher_CheckEnabled);
-				TreeRoot.Stop();
+            return weatherNames.Any(wn => string.Equals(wn, weatherName, StringComparison.InvariantCultureIgnoreCase));
+        }
 
-				return false;
-			}
+        private static bool CheckEnabled()
+        {
+            if (!ExBotPlugin<Skywatcher>.IsEnabled)
+            {
+                Logger.Instance.Error(Localization.Localization.SkyWatcher_CheckEnabled);
+                TreeRoot.Stop();
 
-			return true;
-		}
-	}
+                return false;
+            }
+
+            return true;
+        }
+    }
 }

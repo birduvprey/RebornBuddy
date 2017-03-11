@@ -1,22 +1,22 @@
 namespace ExBuddy.OrderBotTags.Behaviors.Objects
 {
-	using ff14bot.Managers;
+    using ff14bot.Managers;
 
-	public struct ShopItemInfo
-	{
-		public ushort Cost { get; set; }
+    public struct ShopItemInfo
+    {
+        public ushort Cost { get; set; }
 
-		public uint Index { get; set; }
+        public uint Index { get; set; }
 
-		public Item ItemData
-		{
-			get { return DataManager.ItemCache[ItemId]; }
-		}
+        public Item ItemData
+        {
+            get { return DataManager.ItemCache[ItemId]; }
+        }
 
-		public uint ItemId { get; set; }
+        public uint ItemId { get; set; }
 
-		public ShopType ShopType { get; set; }
+        public ShopType ShopType { get; set; }
 
-		public byte Yield { get; set; }
-	}
+        public byte Yield { get; set; }
+    }
 }

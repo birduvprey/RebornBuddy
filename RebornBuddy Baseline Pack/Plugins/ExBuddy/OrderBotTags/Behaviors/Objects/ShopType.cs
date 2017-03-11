@@ -1,13 +1,13 @@
 ﻿namespace ExBuddy.OrderBotTags.Behaviors.Objects
 {
-	public enum ShopType
-	{
-		BlueCrafter,
+    public enum ShopType
+    {
+        BlueCrafter,
 
-		RedCrafter,
+        RedCrafter,
 
-		BlueGatherer,
+        BlueGatherer,
 
-		RedGatherer
-	}
+        RedGatherer
+    }
 }

@@ -1,15 +1,15 @@
 ﻿namespace ExBuddy.Interfaces
 {
-	using System;
+    using System;
 
-	public interface IWeatherProvider
-	{
-		void Disable();
+    public interface IWeatherProvider
+    {
+        void Disable();
 
-		void Enable();
+        void Enable();
 
-		int? GetCurrentWeatherByZone(int zoneId);
+        int? GetCurrentWeatherByZone(int zoneId);
 
-		int? GetForecastByZone(int zoneId, TimeSpan timeSpan);
-	}
+        int? GetForecastByZone(int zoneId, TimeSpan timeSpan);
+    }
 }

@@ -1,34 +1,34 @@
 ﻿namespace ExBuddy.GameObjects.Npcs
 {
-	using Clio.Utilities;
-	using ExBuddy.Interfaces;
+    using Clio.Utilities;
+    using ExBuddy.Interfaces;
 
-	public class MasterPieceSupply : INpc
-	{
-		#region IAetheryteId Members
+    public class MasterPieceSupply : INpc
+    {
+        #region IAetheryteId Members
 
-		public uint AetheryteId { get; set; }
+        public uint AetheryteId { get; set; }
 
-		#endregion
+        #endregion IAetheryteId Members
 
-		#region INamedItem Members
+        #region INamedItem Members
 
-		public string Name { get; set; }
+        public string Name { get; set; }
 
-		#endregion
+        #endregion INamedItem Members
 
-		#region IZoneId Members
+        #region IZoneId Members
 
-		public ushort ZoneId { get; set; }
+        public ushort ZoneId { get; set; }
 
-		#endregion
+        #endregion IZoneId Members
 
-		#region IInteractWithNpc Members
+        #region IInteractWithNpc Members
 
-		public Vector3 Location { get; set; }
+        public Vector3 Location { get; set; }
 
-		public uint NpcId { get; set; }
+        public uint NpcId { get; set; }
 
-		#endregion
-	}
+        #endregion IInteractWithNpc Members
+    }
 }

@@ -1,4 +1,4 @@
 ﻿namespace ExBuddy.Interfaces
 {
-	public interface IFlightVars : IFlightMovementArgs, IFlightNavigationArgs {}
+    public interface IFlightVars : IFlightMovementArgs, IFlightNavigationArgs { }
 }

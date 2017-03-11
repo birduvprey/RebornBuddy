@@ -1,23 +1,23 @@
 ﻿namespace ExBuddy.Interfaces
 {
-	using System.Threading.Tasks;
-	using ExBuddy.Attributes;
-	using ExBuddy.OrderBotTags.Gather;
+    using ExBuddy.Attributes;
+    using ExBuddy.OrderBotTags.Gather;
+    using System.Threading.Tasks;
 
-	public interface IGatheringRotation
-	{
-		GatheringRotationAttribute Attributes { get; }
+    public interface IGatheringRotation
+    {
+        GatheringRotationAttribute Attributes { get; }
 
-		bool CanBeOverriden { get; }
+        bool CanBeOverriden { get; }
 
-		Task<bool> ExecuteRotation(ExGatherTag tag);
+        Task<bool> ExecuteRotation(ExGatherTag tag);
 
-		Task<bool> Gather(ExGatherTag tag);
+        Task<bool> Gather(ExGatherTag tag);
 
-		Task<bool> Prepare(ExGatherTag tag);
+        Task<bool> Prepare(ExGatherTag tag);
 
-		int ResolveOverridePriority(ExGatherTag tag);
+        int ResolveOverridePriority(ExGatherTag tag);
 
-		bool ShouldForceGather(ExGatherTag tag);
-	}
+        bool ShouldForceGather(ExGatherTag tag);
+    }
 }

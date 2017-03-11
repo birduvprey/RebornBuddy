@@ -1,6 +1,6 @@
 ﻿namespace ExBuddy.Plugins.Skywatcher.Objects
 {
-	using System.Collections.Generic;
+    using System.Collections.Generic;
 
-	public class LocationIndex : Dictionary<string, Location> {}
+    public class LocationIndex : Dictionary<string, Location> { }
 }

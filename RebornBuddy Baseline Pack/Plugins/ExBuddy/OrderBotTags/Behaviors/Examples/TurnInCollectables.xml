@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <!DOCTYPE Profile [
-<!-- 
+<!--
 
 		Idyllshire
 
@@ -80,7 +80,7 @@ CulDelineation
 	<Name>ExBuddy: Turn in Collectables</Name>
 	<KillRadius>50</KillRadius>
 	<Order>
-		<ExLog Color="#FFC0CB" Name="ExBuddy" Message="Turning in collectables "/>
+		<ExLog Color="#FFC0CB" Name="ExBuddy" Message="Turning in collectables " />
 		<ExTurnInCollectables location="Idyllshire" forcePurchase="True">
 			<ShopPurchases>
 				<ShopPurchase shopItem="BlueGatherToken" maxCount="&BlueGatherToken_Count;" />

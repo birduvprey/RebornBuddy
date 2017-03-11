@@ -1,20 +1,20 @@
 ﻿namespace ExBuddy.Enumerations
 {
-	using System;
+    using System;
 
-	[Flags]
-	public enum CordialTime : byte
-	{
-		None = 0,
+    [Flags]
+    public enum CordialTime : byte
+    {
+        None = 0,
 
-		BeforeGather = 1 << 0,
+        BeforeGather = 1 << 0,
 
-		AfterGather = 1 << 1,
+        AfterGather = 1 << 1,
 
-		IfNeeded = 1 << 2 | BeforeGather,
+        IfNeeded = 1 << 2 | BeforeGather,
 
-		IfNeededOrAfter = IfNeeded | AfterGather,
+        IfNeededOrAfter = IfNeeded | AfterGather,
 
-		Auto = BeforeGather | AfterGather
-	}
+        Auto = BeforeGather | AfterGather
+    }
 }

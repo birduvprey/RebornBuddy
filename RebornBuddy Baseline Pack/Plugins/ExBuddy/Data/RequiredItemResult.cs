@@ -1,9 +1,9 @@
 namespace ExBuddy.Data
 {
-	using ff14bot.Managers;
+    using ff14bot.Managers;
 
-	public class RequiredItemResult : LocalizeableResult
-	{
-		public uint MasterpieceSupplyDutyResultId { get; set; }
-	}
+    public class RequiredItemResult : LocalizeableResult
+    {
+        public uint MasterpieceSupplyDutyResultId { get; set; }
+    }
 }

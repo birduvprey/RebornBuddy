@@ -1,23 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace ExBuddy.Localization
 {
+    using ff14bot.Helpers;
     using System.IO;
     using System.Reflection;
     using System.Resources;
-    using ff14bot.Helpers;
-
 
     /// <summary>
     /// This jiggery is required due to how hb/rb/etc handle the resource system.
     /// </summary>
     public static class LocalizationInitializer
     {
-
         internal static bool Initialized = false;
 
         private static void AddLocalizedResourcesFromAssembly(ResourceManager resourceMgr)

@@ -1,13 +1,13 @@
 ﻿namespace ExBuddy.Enumerations
 {
-	public enum GatherIncrease
-	{
-		Quality,
+    public enum GatherIncrease
+    {
+        Quality,
 
-		Yield,
+        Yield,
 
-		YieldAndQuality,
+        YieldAndQuality,
 
-		Auto
-	}
+        Auto
+    }
 }

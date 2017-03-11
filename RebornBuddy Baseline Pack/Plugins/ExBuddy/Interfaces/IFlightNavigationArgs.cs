@@ -1,13 +1,13 @@
 ﻿namespace ExBuddy.Interfaces
 {
-	public interface IFlightNavigationArgs
-	{
-		float ForcedAltitude { get; set; }
+    public interface IFlightNavigationArgs
+    {
+        float ForcedAltitude { get; set; }
 
-		int InverseParabolicMagnitude { get; set; }
+        int InverseParabolicMagnitude { get; set; }
 
-		float Radius { get; set; }
+        float Radius { get; set; }
 
-		float Smoothing { get; set; }
-	}
+        float Smoothing { get; set; }
+    }
 }

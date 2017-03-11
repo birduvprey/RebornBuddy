@@ -1,9 +1,9 @@
 namespace ExBuddy.Enumerations
 {
-	public enum GatherSpotType
-	{
-		GatherSpot,
+    public enum GatherSpotType
+    {
+        GatherSpot,
 
-		StealthGatherSpot
-	}
+        StealthGatherSpot
+    }
 }

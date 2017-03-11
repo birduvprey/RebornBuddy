@@ -1,50 +1,56 @@
 ﻿namespace ExBuddy.Windows
 {
-	using System.Threading.Tasks;
-	using Buddy.Coroutines;
-	using ExBuddy.Enumerations;
-	using ExBuddy.Helpers;
-	using ff14bot.RemoteWindows;
+    using Buddy.Coroutines;
+    using ExBuddy.Enumerations;
+    using ExBuddy.Helpers;
+    using ff14bot.RemoteWindows;
+    using System.Threading.Tasks;
 
-	public sealed class ShopExchangeCurrency : Window<ShopExchangeCurrency>
-	{
-		public ShopExchangeCurrency()
-			: base("ShopExchangeCurrency") {}
+    public sealed class ShopExchangeCurrency : Window<ShopExchangeCurrency>
+    {
+        public ShopExchangeCurrency()
+            : base("ShopExchangeCurrency") { }
 
-		public SendActionResult PurchaseItem(uint index)
-		{
-			return TrySendAction(2, 0, 0, 1, index);
-		}
+        public SendActionResult PurchaseItem(uint index)
+        {
+            return TrySendAction(2, 0, 0, 1, index);
+        }
 
-		public async Task<bool> PurchaseItem(uint index, byte attempts, ushort interval = 200)
-		{
-			var result = SendActionResult.None;
-			var purchaseAttempts = 0;
-			while (result != SendActionResult.Success && !SelectYesno.IsOpen && purchaseAttempts++ < attempts
-			       && Behaviors.ShouldContinue)
-			{
-				result = PurchaseItem(index);
+        public SendActionResult PurchaseItem(uint index, uint qty)
+        {
+            return TrySendAction(3, 0, 0, 1, index, 1, qty);
+        }
 
-				await Behaviors.Wait(interval, () => SelectYesno.IsOpen);
-			}
+        public async Task<bool> PurchaseItem(uint index, uint qty, byte attempts, ushort interval = 200)
+        {
+            var result = SendActionResult.None;
+            var purchaseAttempts = 0;
+            while (result != SendActionResult.Success && !SelectYesno.IsOpen && purchaseAttempts++ < attempts
+                   && Behaviors.ShouldContinue)
+            {
+                // result = PurchaseItem(index);
+                result = PurchaseItem(index, qty);
 
-			if (purchaseAttempts > attempts)
-			{
-				return false;
-			}
+                await Behaviors.Wait(interval, () => SelectYesno.IsOpen);
+            }
 
-			// Wait an extra second in case interval is really short.
-			await Coroutine.Wait(1000, () => SelectYesno.IsOpen);
+            if (purchaseAttempts > attempts)
+            {
+                return false;
+            }
 
-			purchaseAttempts = 0;
-			while (SelectYesno.IsOpen && purchaseAttempts++ < attempts && Behaviors.ShouldContinue)
-			{
-				SelectYesno.ClickYes();
+            // Wait an extra second in case interval is really short.
+            await Coroutine.Wait(1000, () => SelectYesno.IsOpen);
 
-				await Behaviors.Wait(interval, () => !SelectYesno.IsOpen);
-			}
+            purchaseAttempts = 0;
+            while (SelectYesno.IsOpen && purchaseAttempts++ < attempts && Behaviors.ShouldContinue)
+            {
+                SelectYesno.ClickYes();
 
-			return !SelectYesno.IsOpen;
-		}
-	}
+                await Behaviors.Wait(interval, () => !SelectYesno.IsOpen);
+            }
+
+            return !SelectYesno.IsOpen;
+        }
+    }
 }

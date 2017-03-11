@@ -1,14 +1,14 @@
 namespace ExBuddy.Interfaces
 {
-	using System.Threading.Tasks;
-	using Clio.Utilities;
+    using Clio.Utilities;
+    using System.Threading.Tasks;
 
-	public interface IReturnStrategy : ITeleportLocation
-	{
-		Vector3 InitialLocation { get; set; }
+    public interface IReturnStrategy : ITeleportLocation
+    {
+        Vector3 InitialLocation { get; set; }
 
-		Task<bool> ReturnToLocation();
+        Task<bool> ReturnToLocation();
 
-		Task<bool> ReturnToZone();
-	}
+        Task<bool> ReturnToZone();
+    }
 }

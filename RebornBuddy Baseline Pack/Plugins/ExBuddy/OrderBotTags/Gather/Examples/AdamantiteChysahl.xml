@@ -21,13 +21,13 @@
 						result = await CommonTasks.Land();
 						await Buddy.Coroutines.Coroutine.Sleep(1000);
 					}
-					
+
 					if (result && Core.Player.IsMounted)
 					{
 						await CommonTasks.StopAndDismount();
 						await Buddy.Coroutines.Coroutine.Sleep(1000);
 					}
-					
+
 					ff14bot.Managers.Actionmanager.DoAction(238, Core.Player);
 					await Buddy.Coroutines.Coroutine.Sleep(2000);
 				}
@@ -46,13 +46,13 @@
 						result = await CommonTasks.Land();
 						await Buddy.Coroutines.Coroutine.Sleep(1000);
 					}
-					
+
 					if (result && Core.Player.IsMounted)
 					{
 						Actionmanager.Dismount();
 						await Buddy.Coroutines.Coroutine.Sleep(1000);
 					}
-					
+
 					ff14bot.Managers.Actionmanager.DoAction(221, Core.Player);
 					await Buddy.Coroutines.Coroutine.Sleep(2000);
 				}

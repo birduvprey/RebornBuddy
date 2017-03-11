@@ -1,13 +1,13 @@
 ﻿namespace ExBuddy.OrderBotTags.Objects
 {
-	using System.ComponentModel;
-	using Clio.XmlEngine;
+    using Clio.XmlEngine;
+    using System.ComponentModel;
 
-	[XmlElement("CollectableTurnIn")]
-	public class CollectableTurnIn : CollectableBase
-	{
-		[DefaultValue(int.MaxValue)]
-		[XmlAttribute("MaxValueForTurnIn")]
-		public int MaxValueForTurnIn { get; set; }
-	}
+    [XmlElement("CollectableTurnIn")]
+    public class CollectableTurnIn : CollectableBase
+    {
+        [DefaultValue(int.MaxValue)]
+        [XmlAttribute("MaxValueForTurnIn")]
+        public int MaxValueForTurnIn { get; set; }
+    }
 }

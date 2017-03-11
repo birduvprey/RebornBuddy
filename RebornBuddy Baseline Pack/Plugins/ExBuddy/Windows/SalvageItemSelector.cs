@@ -1,10 +1,10 @@
 ﻿namespace ExBuddy.Windows
 {
-	using ExBuddy.Agents;
+    using ExBuddy.Agents;
 
-	public sealed class SalvageItemSelector : Window<SalvageItemSelector, Desynthesis>
-	{
-		public SalvageItemSelector()
-			: base("SalvageItemSelector") {}
-	}
+    public sealed class SalvageItemSelector : Window<SalvageItemSelector, Desynthesis>
+    {
+        public SalvageItemSelector()
+            : base("SalvageItemSelector") { }
+    }
 }
