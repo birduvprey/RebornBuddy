@@ -37,5 +37,5 @@ using System.Runtime.InteropServices;
 
 [assembly: AssemblyVersion("3.3.*")]
 #pragma warning disable CS7035 // The specified version string does not conform to the recommended format - major.minor.build.revision
-[assembly: AssemblyFileVersion("3.3.0.1608090")]
+[assembly: AssemblyFileVersion("3.3.0.1609000")]
 #pragma warning restore CS7035 // The specified version string does not conform to the recommended format - major.minor.build.revision
